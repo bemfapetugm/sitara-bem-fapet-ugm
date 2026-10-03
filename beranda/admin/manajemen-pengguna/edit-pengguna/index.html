@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Pengguna | SITARA</title>
+
+    <!-- FONT -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS UTAMA DASHBOARD -->
+    <link rel="stylesheet" href="../../admin.css">
+
+    <!-- CSS KHUSUS HALAMAN -->
+    <link rel="stylesheet" href="edit-pengguna.css">
+</head>
+
+<body>
+
+    <div class="admin-container">
+
+        <!-- =====================================================
+             SIDEBAR
+        ====================================================== -->
+        <aside class="sidebar">
+
+            <!-- BRAND -->
+            <div class="sidebar-brand">
+
+                <img
+                    src="../../../../assets/images/logo.png"
+                    alt="Logo SITARA"
+                >
+
+                <div class="brand-text">
+                    <h2>SITARA</h2>
+                    <p>Admin Panel</p>
+                </div>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+            <nav class="sidebar-nav">
+
+                <div class="nav-label">
+                    MENU UTAMA
+                </div>
+
+                <a
+                    href="../../index.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">▦</span>
+                    <span>Dashboard</span>
+                </a>
+
+
+                <a
+                    href="../index.html"
+                    class="nav-item active"
+                >
+                    <span class="nav-icon">♟</span>
+                    <span>Manajemen Pengguna</span>
+                </a>
+
+
+                <a
+                    href="../../data-kementerian/index.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">▤</span>
+                    <span>Data Kementerian</span>
+                </a>
+<div class="nav-label">
+                    ADMINISTRASI
+                </div>
+
+
+                <a
+                    href="../../monitoring-pengajuan/index.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">▧</span>
+                    <span>Monitoring Pengajuan</span>
+                </a>
+
+
+                <a
+                    href="../../monitoring-dokumen/index.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">▤</span>
+                    <span>Monitoring Dokumen</span>
+                </a>
+
+
+                <div class="nav-label">
+                    PREFERENSI
+                </div>
+
+
+                <a
+                    href="../../pengaturan/index.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">⚙</span>
+                    <span>Pengaturan</span>
+                </a>
+
+            </nav>
+
+
+            <!-- SIDEBAR FOOTER -->
+            <div class="sidebar-footer">
+
+                <div class="admin-profile">
+
+                    <div class="profile-avatar">
+                        A
+                    </div>
+
+                    <div class="profile-info">
+                        <h4>admin</h4>
+                        <p>admin</p>
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="btnLogout"
+                    class="logout-button"
+                >
+                    → Keluar
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =====================================================
+             MAIN CONTENT
+        ====================================================== -->
+        <main class="main-content">
+
+            <!-- TOPBAR -->
+            <header class="topbar">
+
+                <div class="topbar-title">
+
+                    <h2>Edit Pengguna</h2>
+
+                    <p>
+                        Manajemen akun pengguna SITARA
+                    </p>
+
+                </div>
+
+
+                <div class="topbar-right">
+
+                    <span
+                        id="tanggalSekarang"
+                        class="topbar-date"
+                    >
+                        Memuat tanggal...
+                    </span>
+
+                    <div class="topbar-avatar">
+                        A
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- CONTENT -->
+            <section class="dashboard-content">
+
+
+                <!-- BREADCRUMB -->
+                <div class="edit-breadcrumb">
+
+                    <a href="../index.html">
+                        Manajemen Pengguna
+                    </a>
+
+                    <span>/</span>
+
+                    <strong>
+                        Edit Pengguna
+                    </strong>
+
+                </div>
+
+
+                <!-- PAGE HEADING -->
+                <div class="edit-page-heading">
+
+                    <h1>
+                        Edit Pengguna
+                    </h1>
+
+                    <p>
+                        Lihat dan ubah informasi akun pengguna SITARA.
+                    </p>
+
+                </div>
+
+
+                <!-- FORM CARD -->
+                <div class="edit-user-card">
+
+                    <!-- CARD HEADER -->
+                    <div class="edit-user-card-header">
+
+                        <div>
+                            <h3>
+                                Informasi Pengguna
+                            </h3>
+
+                            <p>
+                                Perbarui data pengguna sesuai kebutuhan.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- FORM -->
+                    <form id="formEditPengguna">
+
+                        <div class="edit-form-grid">
+
+
+                            <!-- NAMA LENGKAP -->
+                            <div class="edit-form-group edit-full-width">
+
+                                <label for="nama_lengkap">
+                                    Nama Lengkap
+                                    <span>*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="nama_lengkap"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- EMAIL -->
+                            <div class="edit-form-group">
+
+                                <label for="email">
+                                    Email
+                                    <span>*</span>
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- NIM -->
+                            <div class="edit-form-group">
+
+                                <label for="nim">
+                                    NIM
+                                    <span>*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="nim"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- NOMOR TELEPON -->
+                            <div class="edit-form-group">
+
+                                <label for="no_telepon">
+                                    Nomor Telepon
+                                    <span>*</span>
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="no_telepon"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- KEMENTERIAN -->
+                            <div class="edit-form-group">
+
+                                <label for="kementerian_id">
+                                    Kementerian
+                                    <span id="kementerianRequired">*</span>
+                                </label>
+
+                                <select id="kementerian_id">
+
+                                    <option value="">
+                                        Memuat kementerian...
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <!-- ROLE -->
+                            <div class="edit-form-group">
+
+                                <label for="role">
+                                    Role
+                                    <span>*</span>
+                                </label>
+
+                                <select
+                                    id="role"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Pilih role
+                                    </option>
+
+                                    <option value="admin">
+                                        Admin
+                                    </option>
+
+                                    <option value="pimpinan">
+                                        Pimpinan
+                                    </option>
+
+                                    <option value="menko">
+                                        Menko
+                                    </option>
+
+                                    <option value="mensetkab">
+                                        Mensetkab
+                                    </option>
+
+                                    <option value="menkeu">
+                                        Menkeu
+                                    </option>
+
+                                    <option value="menteri">
+                                        Menteri
+                                    </option>
+
+                                    <option value="kementerian">
+                                        Kementerian
+                                    </option>
+
+                                    <option value="anggota">
+                                        Anggota
+                                    </option>
+
+                                    <option value="tamu">
+                                        Tamu
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <!-- STATUS -->
+                            <div class="edit-form-group">
+
+                                <label>
+                                    Status Akun
+                                </label>
+
+                                <div
+                                    id="statusAkun"
+                                    class="edit-status-display"
+                                >
+                                    -
+                                </div>
+
+                                <small>
+                                    Status akun akan dikelola melalui
+                                    menu perubahan status.
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- USER ID -->
+                        <input
+                            type="hidden"
+                            id="user_id"
+                        >
+
+
+                        <!-- INFORMATION -->
+                        <div class="edit-form-info">
+
+                            <strong>
+                                Informasi keamanan
+                            </strong>
+
+                            <p>
+                                Password pengguna tidak ditampilkan
+                                pada halaman ini. Perubahan password
+                                akan menggunakan mekanisme tersendiri.
+                            </p>
+
+                        </div>
+
+
+                        <!-- ACTION -->
+                        <div class="edit-form-actions">
+
+                            <button
+                                type="button"
+                                id="btnBatal"
+                                class="edit-btn edit-btn-secondary"
+                            >
+                                Batal
+                            </button>
+
+
+                            <button
+                                type="submit"
+                                id="btnSimpan"
+                                class="edit-btn edit-btn-primary"
+                            >
+                                Simpan Perubahan
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="edit-pengguna.js"></script>
+
+</body>
+
+</html>

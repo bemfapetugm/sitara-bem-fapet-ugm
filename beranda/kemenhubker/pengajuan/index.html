@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Pengajuan | Kemenhubker | SITARA</title>
+
+
+    <!-- Google Font -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- CSS Dashboard -->
+
+    <link
+        rel="stylesheet"
+        href="../kemenhubker.css"
+    >
+
+
+    <!-- CSS Pengajuan -->
+
+    <link
+        rel="stylesheet"
+        href="pengajuan.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="kemen-container">
+
+
+    <!-- =========================================
+         SIDEBAR
+    ========================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- BRAND -->
+
+        <div class="sidebar-brand">
+
+            <img
+                src="../../../assets/images/logo.png"
+                alt="Logo SITARA"
+            >
+
+            <div class="brand-text">
+
+                <h2>SITARA</h2>
+
+                <p>Panel Kementerian</p>
+
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="sidebar-nav">
+
+
+            <!-- MENU UTAMA -->
+
+            <p class="nav-label">
+                MENU UTAMA
+            </p>
+
+
+            <a
+                href="../index.html"
+                class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    ▦
+                </span>
+
+                <span>
+                    Beranda
+                </span>
+
+            </a>
+
+
+            <!-- ADMINISTRASI -->
+
+            <p class="nav-label">
+                ADMINISTRASI
+            </p>
+
+
+            <a
+                href="index.html"
+                class="nav-item active"
+            >
+
+                <span class="nav-icon">
+                    ▧
+                </span>
+
+                <span>
+                    Pengajuan
+                </span>
+
+            </a>
+
+
+            <a
+                href="../riwayat-pengajuan/index.html"
+                class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    ≡
+                </span>
+
+                <span>
+                    Riwayat Pengajuan
+                </span>
+
+            </a>
+
+
+            <!-- DOKUMEN -->
+
+            <p class="nav-label">
+                DOKUMEN
+            </p>
+
+
+            <a
+                href="../dokumen/index.html"
+                class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    ▤
+                </span>
+
+                <span>
+                    Dokumen
+                </span>
+
+            </a>
+
+
+            <!-- PREFERENSI -->
+
+            <p class="nav-label">
+                PREFERENSI
+            </p>
+
+
+            <a
+                href="../pengaturan/index.html"
+                class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    ⚙
+                </span>
+
+                <span>
+                    Pengaturan
+                </span>
+
+            </a>
+
+
+        </nav>
+
+
+        <!-- SIDEBAR FOOTER -->
+
+        <div class="sidebar-footer">
+
+
+            <div class="user-profile">
+
+                <div
+                    class="profile-avatar"
+                    id="profileAvatar"
+                >
+                    K
+                </div>
+
+
+                <div class="profile-info">
+
+                    <h4 id="profileName">
+                        Kementerian
+                    </h4>
+
+                    <p id="profileRole">
+                        kementerian
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="logout-button"
+                id="logoutButton"
+            >
+
+                ⇥ Keluar
+
+            </button>
+
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =========================================
+         MAIN CONTENT
+    ========================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =========================================
+             TOPBAR
+        ========================================== -->
+
+        <header class="topbar">
+
+
+            <div class="topbar-title">
+
+                <h2>
+                    Pengajuan
+                </h2>
+
+                <p>
+                    Kelola pengajuan administrasi
+                    Kementerian Hubungan Kerja Sama
+                </p>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <div
+                    class="topbar-date"
+                    id="currentDate"
+                >
+                    Memuat tanggal...
+                </div>
+
+
+                <div
+                    class="topbar-avatar"
+                    id="topbarAvatar"
+                >
+                    K
+                </div>
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- =========================================
+             PENGAJUAN CONTENT
+        ========================================== -->
+
+        <section class="pengajuan-content">
+
+
+            <!-- =====================================
+                 PAGE HEADER
+            ====================================== -->
+
+            <div class="page-header">
+
+
+                <div class="page-header-text">
+
+                    <p class="page-label">
+                        ADMINISTRASI
+                    </p>
+
+                    <h1>
+                        Pengajuan
+                    </h1>
+
+                    <p>
+                        Kelola dan ajukan dokumen administrasi
+                        Kementerian Hubungan Kerja Sama melalui SITARA.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="btn-primary"
+                    id="btnBuatPengajuan"
+                >
+
+                    <span class="btn-icon">
+                        +
+                    </span>
+
+                    Buat Pengajuan
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- =====================================
+                 STATISTICS
+            ====================================== -->
+
+            <div class="pengajuan-stats">
+
+
+                <!-- TOTAL -->
+
+                <div class="pengajuan-stat-card">
+
+                    <div class="pengajuan-stat-icon">
+                        ▧
+                    </div>
+
+                    <div>
+
+                        <p>
+                            Total Pengajuan
+                        </p>
+
+                        <h2 id="statTotal">
+                            0
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PROSES -->
+
+                <div class="pengajuan-stat-card">
+
+                    <div class="pengajuan-stat-icon">
+                        ◷
+                    </div>
+
+                    <div>
+
+                        <p>
+                            Sedang Diproses
+                        </p>
+
+                        <h2 id="statProses">
+                            0
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <!-- REVISI -->
+
+                <div class="pengajuan-stat-card">
+
+                    <div class="pengajuan-stat-icon">
+                        ↻
+                    </div>
+
+                    <div>
+
+                        <p>
+                            Perlu Revisi
+                        </p>
+
+                        <h2 id="statRevisi">
+                            0
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SELESAI -->
+
+                <div class="pengajuan-stat-card">
+
+                    <div class="pengajuan-stat-icon">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <p>
+                            Selesai
+                        </p>
+
+                        <h2 id="statSelesai">
+                            0
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =====================================
+                 DATA PENGAJUAN
+            ====================================== -->
+
+            <div class="content-card pengajuan-card">
+
+
+                <!-- CARD HEADER -->
+
+                <div class="card-header">
+
+
+                    <div>
+
+                        <h3>
+                            Daftar Pengajuan
+                        </h3>
+
+                        <p>
+                            Seluruh pengajuan yang dibuat oleh kementerian.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =================================
+                     FILTER
+                ================================== -->
+
+                <div class="pengajuan-filter">
+
+
+                    <!-- SEARCH -->
+
+                    <div class="filter-search">
+
+                        <span class="filter-icon">
+                            ⌕
+                        </span>
+
+                        <input
+                            type="text"
+                            id="searchPengajuan"
+                            placeholder="Cari nomor atau perihal pengajuan..."
+                        >
+
+                    </div>
+
+
+                    <!-- JENIS -->
+
+                    <div class="filter-group">
+
+                        <select
+                            id="filterJenis"
+                        >
+
+                            <option value="">
+                                Semua Jenis
+                            </option>
+
+                            <option value="proposal">
+                                Proposal Kegiatan
+                            </option>
+
+                            <option value="lpj">
+                                LPJ Kegiatan
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- STATUS -->
+
+                    <div class="filter-group">
+
+                        <select
+                            id="filterStatus"
+                        >
+
+                            <option value="">
+                                Semua Status
+                            </option>
+
+                            <option value="diajukan">
+                                Diajukan
+                            </option>
+
+                            <option value="diproses">
+                                Diproses
+                            </option>
+
+                            <option value="revisi">
+                                Perlu Revisi
+                            </option>
+
+                            <option value="selesai">
+                                Selesai
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =================================
+                     TABLE
+                ================================== -->
+
+                <div class="table-wrapper">
+
+
+                    <table class="pengajuan-table">
+
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    No.
+                                </th>
+
+                                <th>
+                                    Nomor Pengajuan
+                                </th>
+
+                                <th>
+                                    Jenis Pengajuan
+                                </th>
+
+                                <th>
+                                    Perihal
+                                </th>
+
+                                <th>
+                                    Tanggal
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Aksi
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="pengajuanTableBody">
+
+
+                            <!-- EMPTY STATE -->
+
+                            <tr>
+
+                                <td
+                                    colspan="7"
+                                    class="empty-state"
+                                >
+
+                                    <div class="empty-icon">
+                                        ▧
+                                    </div>
+
+                                    <strong>
+                                        Belum ada pengajuan
+                                    </strong>
+
+                                    <span>
+                                        Pengajuan yang dibuat akan muncul di sini.
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+
+                        </tbody>
+
+
+                    </table>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- =========================================
+     MODAL PILIH JENIS PENGAJUAN
+========================================== -->
+
+<div
+    class="modal-overlay"
+    id="pengajuanModal"
+>
+
+
+    <div class="pengajuan-modal">
+
+
+        <!-- MODAL HEADER -->
+
+        <div class="modal-header">
+
+
+            <div>
+
+                <p class="modal-label">
+                    PENGAJUAN BARU
+                </p>
+
+                <h2>
+                    Pilih Jenis Pengajuan
+                </h2>
+
+                <p>
+                    Pilih jenis dokumen yang ingin diajukan.
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closePengajuanModal"
+                aria-label="Tutup"
+            >
+
+                ×
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- MODAL OPTIONS -->
+
+        <div class="pengajuan-options">
+
+
+            <!-- PROPOSAL -->
+
+            <button
+                type="button"
+                class="pengajuan-option"
+                data-type="proposal"
+            >
+
+                <div class="option-icon">
+                    ▧
+                </div>
+
+
+                <div class="option-content">
+
+                    <h3>
+                        Proposal Kegiatan
+                    </h3>
+
+                    <p>
+                        Ajukan proposal kegiatan untuk
+                        proses administrasi dan pendanaan.
+                    </p>
+
+                </div>
+
+
+                <span class="option-arrow">
+                    →
+                </span>
+
+            </button>
+
+
+
+            <!-- LPJ -->
+
+            <button
+                type="button"
+                class="pengajuan-option"
+                data-type="lpj"
+            >
+
+                <div class="option-icon">
+                    ▤
+                </div>
+
+
+                <div class="option-content">
+
+                    <h3>
+                        Laporan Pertanggungjawaban
+                    </h3>
+
+                    <p>
+                        Ajukan LPJ atas kegiatan dan
+                        penggunaan dana.
+                    </p>
+
+                </div>
+
+
+                <span class="option-arrow">
+                    →
+                </span>
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- MODAL FOOTER -->
+
+        <div class="modal-footer">
+
+            <button
+                type="button"
+                class="btn-secondary"
+                id="cancelPengajuanModal"
+            >
+
+                Batal
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================== -->
+
+<script
+    src="pengajuan.js"
+></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | SITARA</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS Admin -->
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+    <div class="admin-container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+                <img src="../../assets/images/logo.png" alt="Logo SITARA">
+
+                <div class="brand-text">
+                    <h2>SITARA</h2>
+                    <p>Admin Panel</p>
+                </div>
+            </div>
+
+            <!-- MENU NAVIGASI -->
+            <nav class="sidebar-nav">
+
+                <p class="nav-label">MENU UTAMA</p>
+
+                <a href="#" class="nav-item active">
+                    <span class="nav-icon">▦</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="manajemen-pengguna/index.html" class="nav-item">
+                    <span class="nav-icon">♙</span>
+                    <span>Manajemen Pengguna</span>
+                </a>
+
+                <a href="data-kementerian/index.html" class="nav-item">
+                    <span class="nav-icon">▤</span>
+                    <span>Data Kementerian</span>
+                </a>
+<p class="nav-label">ADMINISTRASI</p>
+
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">▧</span>
+                    <span>Monitoring Pengajuan</span>
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">▤</span>
+                    <span>Monitoring Dokumen</span>
+                </a>
+
+                <p class="nav-label">PREFERENSI</p>
+
+                <a href="pengaturan/index.html" class="nav-item">
+                    <span class="nav-icon">⚙</span>
+                    <span>Pengaturan</span>
+                </a>
+
+            </nav>
+
+            <!-- SIDEBAR FOOTER -->
+            <div class="sidebar-footer">
+
+                <div class="admin-profile">
+                    <div class="profile-avatar">A</div>
+
+                    <div class="profile-info">
+                        <h4>Administrator</h4>
+                        <p>Super Admin</p>
+                    </div>
+                </div>
+
+                <button type="button" class="logout-button" id="logoutButton">
+                    ⇥ Keluar
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- HEADER -->
+            <header class="topbar">
+
+                <div class="topbar-title">
+                    <h2>Dashboard</h2>
+                    <p>Panel pengelolaan Sistem SITARA</p>
+                </div>
+
+                <div class="topbar-right">
+
+                    <div class="topbar-date" id="currentDate">
+                        Memuat tanggal...
+                    </div>
+
+                    <div class="topbar-avatar">
+                        A
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- CONTENT -->
+            <section class="dashboard-content">
+
+                <!-- WELCOME -->
+                <div class="welcome-section">
+
+                    <div>
+                        <p class="welcome-label">ADMINISTRATOR SITARA</p>
+
+                        <h1>Selamat Datang, Admin!</h1>
+
+                        <p>
+                            Pantau dan kelola aktivitas administrasi
+                            seluruh unit BEM Fakultas Peternakan UGM.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- STATISTIC CARDS -->
+                <div class="stats-grid">
+
+                    <!-- TOTAL PENGGUNA -->
+                    <div class="stat-card">
+
+                        <div class="stat-icon icon-users">
+                            ♙
+                        </div>
+
+                        <div class="stat-info">
+                            <p>Total Pengguna</p>
+                            <h2 id="totalUsers">0</h2>
+                            <span>Seluruh akun SITARA</span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- TOTAL KEMENTERIAN -->
+                    <div class="stat-card">
+
+                        <div class="stat-icon icon-ministry">
+                            ▤
+                        </div>
+
+                        <div class="stat-info">
+                            <p>Total Kementerian</p>
+                            <h2 id="totalMinistries">0</h2>
+                            <span>Unit kementerian</span>
+                        </div>
+
+                    </div>
+<!-- TOTAL PENGAJUAN -->
+                    <div class="stat-card">
+
+                        <div class="stat-icon icon-documents">
+                            ▧
+                        </div>
+
+                        <div class="stat-info">
+                            <p>Total Pengajuan</p>
+                            <h2 id="totalSubmissions">0</h2>
+                            <span>Seluruh pengajuan dokumen</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RECENT ACTIVITIES -->
+                <div class="content-card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h3>Aktivitas Administrasi Terbaru</h3>
+
+                            <p>
+                                Ringkasan aktivitas administrasi
+                                dari seluruh unit SITARA.
+                            </p>
+                        </div>
+
+                        <button type="button" class="btn-view-all">
+                            Lihat Semua
+                        </button>
+
+                    </div>
+
+
+                    <!-- TABLE -->
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Unit</th>
+                                    <th>Aktivitas</th>
+                                    <th>Tanggal</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="activityTable">
+
+                                <tr>
+                                    <td colspan="5" class="empty-state">
+                                        Belum ada aktivitas administrasi.
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FOOTER -->
+                <footer class="dashboard-footer">
+                    <p>
+                        © 2026 SITARA — Sistem Administrasi Terpadu Nala Sathya
+                    </p>
+                </footer>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- JAVASCRIPT ADMIN -->
+    <script src="admin.js"></script>
+
+</body>
+</html>

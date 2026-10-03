@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Data Kementerian | SITARA</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Shared Admin CSS -->
+    <link rel="stylesheet" href="../admin.css">
+
+    <!-- Page CSS -->
+    <link rel="stylesheet" href="data-kementerian.css">
+</head>
+
+<body>
+
+    <div class="admin-container">
+
+        <!-- ==================================================
+             SIDEBAR
+        ================================================== -->
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+                <img src="../../../assets/images/logo.png" alt="Logo SITARA">
+
+                <div class="brand-text">
+                    <h2>SITARA</h2>
+                    <p>Admin Panel</p>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <p class="nav-label">MENU UTAMA</p>
+
+                <a href="../index.html" class="nav-item">
+                    <span class="nav-icon">▦</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="../manajemen-pengguna/index.html" class="nav-item">
+                    <span class="nav-icon">♙</span>
+                    <span>Manajemen Pengguna</span>
+                </a>
+
+                <a href="index.html" class="nav-item active">
+                    <span class="nav-icon">▤</span>
+                    <span>Data Kementerian</span>
+                </a>
+
+                <p class="nav-label">ADMINISTRASI</p>
+
+                <a href="../monitoring-pengajuan/index.html" class="nav-item">
+                    <span class="nav-icon">▧</span>
+                    <span>Monitoring Pengajuan</span>
+                </a>
+
+                <a href="../monitoring-dokumen/index.html" class="nav-item">
+                    <span class="nav-icon">▤</span>
+                    <span>Monitoring Dokumen</span>
+                </a>
+
+                <p class="nav-label">PREFERENSI</p>
+
+                <a href="../pengaturan/index.html" class="nav-item">
+                    <span class="nav-icon">⚙</span>
+                    <span>Pengaturan</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar-footer">
+
+                <div class="admin-profile">
+                    <div class="profile-avatar">A</div>
+
+                    <div class="profile-info">
+                        <h4>admin</h4>
+                        <p>admin</p>
+                    </div>
+                </div>
+
+                <button type="button" class="logout-button" id="logoutButton">
+                    ⇥ Keluar
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ==================================================
+             MAIN CONTENT
+        ================================================== -->
+        <main class="main-content">
+
+            <!-- TOPBAR -->
+            <header class="topbar">
+
+                <div class="topbar-title">
+
+                    <h2>
+                        Data Kementerian
+                    </h2>
+
+                    <p>
+                        Kelola data dan informasi kementerian
+                        dalam sistem SITARA.
+                    </p>
+
+                </div>
+
+
+                <div class="topbar-right">
+
+                    <div
+                        class="topbar-date"
+                        id="currentDate"
+                    >
+                        -
+                    </div>
+
+                    <div
+                        class="topbar-avatar"
+                        id="topbarAvatar"
+                    >
+                        A
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- ==================================================
+                 PAGE CONTENT
+            ================================================== -->
+            <section class="dashboard-content">
+
+
+                <!-- PAGE HEADER -->
+                <div class="page-header">
+
+                    <div>
+
+                        <h3>
+                            Daftar Kementerian
+                        </h3>
+
+                        <p>
+                            Data berikut terhubung langsung
+                            dengan database kementerian SITARA.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ==================================================
+                     STATISTIK
+                ================================================== -->
+                <div class="ministry-summary">
+
+                    <div class="summary-card">
+
+                        <div class="summary-icon">
+                            ▦
+                        </div>
+
+                        <div class="summary-content">
+
+                            <span>
+                                Total Kementerian
+                            </span>
+
+                            <strong id="totalKementerian">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="summary-card">
+
+                        <div class="summary-icon active">
+                            ✓
+                        </div>
+
+                        <div class="summary-content">
+
+                            <span>
+                                Kementerian Aktif
+                            </span>
+
+                            <strong id="totalAktif">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="summary-card">
+
+                        <div class="summary-icon inactive">
+                            –
+                        </div>
+
+                        <div class="summary-content">
+
+                            <span>
+                                Kementerian Nonaktif
+                            </span>
+
+                            <strong id="totalNonaktif">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ==================================================
+                     DATA TABLE CARD
+                ================================================== -->
+                <div class="data-card">
+
+
+                    <!-- TABLE HEADER -->
+                    <div class="data-card-header">
+
+                        <div>
+
+                            <h3>
+                                Data Kementerian
+                            </h3>
+
+                            <p>
+                                Informasi akun kelembagaan
+                                dan Menteri pada setiap kementerian.
+                            </p>
+
+                        </div>
+
+
+                        <div class="header-actions">
+
+                            <button
+                                type="button"
+                                class="btn-add"
+                                id="btnAddKementerian"
+                            >
+                                <span>＋</span>
+                                Tambah Kementerian
+                            </button>
+
+                            <button
+                                type="button"
+                                class="btn-refresh"
+                                id="btnRefresh"
+                            >
+                                <span class="refresh-icon">
+                                    ↻
+                                </span>
+
+                                Muat Ulang
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- LOADING -->
+                    <div
+                        class="table-loading"
+                        id="tableLoading"
+                    >
+
+                        <div class="loading-spinner"></div>
+
+                        <p>
+                            Memuat data kementerian...
+                        </p>
+
+                    </div>
+
+
+                    <!-- ERROR -->
+                    <div
+                        class="table-error"
+                        id="tableError"
+                        style="display: none;"
+                    >
+
+                        <div class="error-icon">
+                            !
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Data gagal dimuat
+                            </strong>
+
+                            <p id="errorMessage">
+                                Terjadi kesalahan saat mengambil
+                                data kementerian.
+                            </p>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            id="btnRetry"
+                        >
+                            Coba Lagi
+                        </button>
+
+                    </div>
+
+
+                    <!-- TABLE WRAPPER -->
+                    <div
+                        class="table-wrapper"
+                        id="tableWrapper"
+                        style="display: none;"
+                    >
+
+                        <table class="ministry-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th width="90">
+                                        ID
+                                    </th>
+
+                                    <th>
+                                        Kementerian
+                                    </th>
+
+                                    <th>
+                                        Email Kementerian
+                                    </th>
+
+                                    <th>
+                                        Email Menteri
+                                    </th>
+
+                                    <th width="120">
+                                        Status
+                                    </th>
+
+                                    <th width="100">
+                                        Aksi
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="kementerianTableBody">
+
+                                <!--
+                                    Data akan dimasukkan
+                                    melalui data-kementerian.js
+                                -->
+
+                            </tbody>
+
+                        </table>
+
+
+                        <!-- EMPTY STATE -->
+                        <div
+                            class="empty-state"
+                            id="emptyState"
+                            style="display: none;"
+                        >
+
+                            <div class="empty-icon">
+                                ▦
+                            </div>
+
+                            <h4>
+                                Belum ada data kementerian
+                            </h4>
+
+                            <p>
+                                Data kementerian belum tersedia
+                                pada database SITARA.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- ==================================================
+        MODAL EDIT KEMENTERIAN
+    ================================================== -->
+    <div
+        class="modal-overlay"
+        id="editModal"
+    >
+
+        <div class="modal-card">
+
+            <!-- MODAL HEADER -->
+            <div class="modal-header">
+
+                <div>
+
+                    <h3>
+                        Edit Data Kementerian
+                    </h3>
+
+                    <p>
+                        Perbarui informasi kementerian.
+                    </p>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    id="btnCloseModal"
+                    aria-label="Tutup"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <!-- MODAL BODY -->
+            <form
+                id="formEditKementerian"
+                autocomplete="off"
+            >
+
+                <!-- ID -->
+                <div class="form-group">
+
+                    <label for="edit_kementerian_id">
+                        ID Kementerian
+                    </label>
+
+                    <input
+                        type="text"
+                        id="edit_kementerian_id"
+                        name="kementerian_id"
+                        readonly
+                    >
+
+                </div>
+
+
+                <!-- NAMA -->
+                <div class="form-group">
+
+                    <label for="edit_nama_unit">
+                        Nama Kementerian
+                        <span>*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="edit_nama_unit"
+                        name="nama_unit"
+                        placeholder="Nama kementerian"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- EMAIL KEMENTERIAN -->
+                <div class="form-group">
+
+                    <label for="edit_email_kementerian">
+                        Email Akun Kementerian
+                    </label>
+
+                    <input
+                        type="email"
+                        id="edit_email_kementerian"
+                        name="email_kementerian"
+                        placeholder="contoh@gmail.com"
+                    >
+
+                    <small>
+                        Email ini digunakan sebagai identitas
+                        akun kelembagaan kementerian.
+                    </small>
+
+                </div>
+
+
+                <!-- EMAIL MENTERI -->
+                <div class="form-group">
+
+                    <label for="edit_email_menteri">
+                        Email Menteri
+                    </label>
+
+                    <input
+                        type="email"
+                        id="edit_email_menteri"
+                        name="email_menteri"
+                        placeholder="contoh@gmail.com"
+                    >
+
+                    <small>
+                        Email ini digunakan untuk menghubungkan
+                        akun Menteri dengan kementerian.
+                    </small>
+
+                </div>
+
+
+                <!-- STATUS -->
+                <div class="form-group">
+
+                    <label for="edit_status">
+                        Status
+                        <span>*</span>
+                    </label>
+
+                    <select
+                        id="edit_status"
+                        name="status"
+                        required
+                    >
+
+                        <option value="Aktif">
+                            Aktif
+                        </option>
+
+                        <option value="Nonaktif">
+                            Nonaktif
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- MODAL FOOTER -->
+                <div class="modal-footer">
+
+                    <button
+                        type="button"
+                        class="btn-cancel"
+                        id="btnCancelEdit"
+                    >
+                        Batal
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="btn-save"
+                        id="btnSaveKementerian"
+                    >
+
+                        <span id="saveButtonText">
+                            Simpan Perubahan
+                        </span>
+
+                        <span
+                            class="button-spinner"
+                            id="saveButtonSpinner"
+                            style="display: none;"
+                        ></span>
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+    
+    <!-- ==================================================
+        MODAL TAMBAH KEMENTERIAN
+    ================================================== -->
+    <div
+        class="modal-overlay"
+        id="addModal"
+    >
+
+        <div class="modal-card">
+
+            <!-- MODAL HEADER -->
+            <div class="modal-header">
+
+                <div>
+
+                    <h3>
+                        Tambah Kementerian
+                    </h3>
+
+                    <p>
+                        Tambahkan data kementerian baru ke sistem SITARA.
+                    </p>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    id="btnCloseAddModal"
+                    aria-label="Tutup"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <!-- MODAL BODY -->
+            <form
+                id="formAddKementerian"
+                autocomplete="off"
+            >
+
+                <!-- NAMA -->
+                <div class="form-group">
+
+                    <label for="add_nama_unit">
+                        Nama Kementerian
+                        <span>*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="add_nama_unit"
+                        name="nama_unit"
+                        placeholder="Nama kementerian"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- EMAIL KEMENTERIAN -->
+                <div class="form-group">
+
+                    <label for="add_email_kementerian">
+                        Email Akun Kementerian
+                    </label>
+
+                    <input
+                        type="email"
+                        id="add_email_kementerian"
+                        name="email_kementerian"
+                        placeholder="contoh@gmail.com"
+                    >
+
+                    <small>
+                        Email ini digunakan sebagai identitas
+                        akun kelembagaan kementerian.
+                    </small>
+
+                </div>
+
+
+                <!-- EMAIL MENTERI -->
+                <div class="form-group">
+
+                    <label for="add_email_menteri">
+                        Email Menteri
+                    </label>
+
+                    <input
+                        type="email"
+                        id="add_email_menteri"
+                        name="email_menteri"
+                        placeholder="contoh@gmail.com"
+                    >
+
+                    <small>
+                        Email ini digunakan untuk menghubungkan
+                        akun Menteri dengan kementerian.
+                    </small>
+
+                </div>
+
+
+                <!-- STATUS -->
+                <div class="form-group">
+
+                    <label for="add_status">
+                        Status
+                        <span>*</span>
+                    </label>
+
+                    <select
+                        id="add_status"
+                        name="status"
+                        required
+                    >
+
+                        <option value="Aktif" selected>
+                            Aktif
+                        </option>
+
+                        <option value="Nonaktif">
+                            Nonaktif
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- MODAL FOOTER -->
+                <div class="modal-footer">
+
+                    <button
+                        type="button"
+                        class="btn-cancel"
+                        id="btnCancelAdd"
+                    >
+                        Batal
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn-save"
+                        id="btnCreateKementerian"
+                    >
+
+                        <span id="createButtonText">
+                            Simpan Kementerian
+                        </span>
+
+                        <span
+                            class="button-spinner"
+                            id="createButtonSpinner"
+                            style="display: none;"
+                        ></span>
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- ==================================================
+        TOAST NOTIFICATION
+    ================================================== -->
+    <div
+        class="toast"
+        id="toast"
+    >
+
+        <div
+            class="toast-icon"
+            id="toastIcon"
+        >
+            ✓
+        </div>
+
+        <div class="toast-content">
+
+            <strong id="toastTitle">
+                Berhasil
+            </strong>
+
+            <p id="toastMessage">
+                Data berhasil diperbarui.
+            </p>
+
+        </div>
+
+        <button
+            type="button"
+            class="toast-close"
+            id="toastClose"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+    ================================================== -->
+
+    <script src="data-kementerian.js"></script>
+
+</body>
+
+</html>

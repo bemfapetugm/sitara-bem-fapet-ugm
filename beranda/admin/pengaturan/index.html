@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pengaturan | SITARA</title>
+
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- ADMIN CSS -->
+    <link rel="stylesheet" href="../admin.css">
+
+    <!-- PAGE CSS -->
+    <link rel="stylesheet" href="pengaturan.css">
+</head>
+
+<body>
+
+    <div class="admin-container">
+
+        <!-- =========================================
+             SIDEBAR
+        ========================================== -->
+
+        <aside class="sidebar">
+
+            <!-- BRAND -->
+            <div class="sidebar-brand">
+
+                <img
+                    src="../../../assets/images/logo.png"
+                    alt="Logo SITARA"
+                >
+
+                <div class="brand-text">
+                    <h2>SITARA</h2>
+                    <p>Admin Panel</p>
+                </div>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+            <nav class="sidebar-nav">
+
+                <!-- MENU UTAMA -->
+                <p class="nav-label">MENU UTAMA</p>
+
+                <a
+                    href="../index.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">▦</span>
+                    <span>Dashboard</span>
+                </a>
+
+
+                <a
+                    href="../manajemen-pengguna/index.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">♙</span>
+                    <span>Manajemen Pengguna</span>
+                </a>
+
+
+                <a
+                    href="../data-kementerian/index.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">▤</span>
+                    <span>Data Kementerian</span>
+                </a>
+
+
+                <!-- ADMINISTRASI -->
+                <p class="nav-label">ADMINISTRASI</p>
+
+                <a
+                    href="../monitoring-pengajuan/index.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">▧</span>
+                    <span>Monitoring Pengajuan</span>
+                </a>
+
+
+                <a
+                    href="../monitoring-dokumen/index.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">▤</span>
+                    <span>Monitoring Dokumen</span>
+                </a>
+
+
+                <!-- PREFERENSI -->
+                <p class="nav-label">PREFERENSI</p>
+
+                <a
+                    href="index.html"
+                    class="nav-item active"
+                >
+                    <span class="nav-icon">⚙</span>
+                    <span>Pengaturan</span>
+                </a>
+
+            </nav>
+
+
+            <!-- SIDEBAR FOOTER -->
+            <div class="sidebar-footer">
+
+                <div class="admin-profile">
+
+                    <div class="profile-avatar">
+                        A
+                    </div>
+
+                    <div class="profile-info">
+                        <h4>admin</h4>
+                        <p>admin</p>
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="logoutButton"
+                    class="logout-button"
+                >
+                    ⇥ Keluar
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =========================================
+             MAIN CONTENT
+        ========================================== -->
+
+        <main class="main-content">
+
+            <!-- TOPBAR -->
+            <header class="topbar">
+
+                <div class="topbar-title">
+
+                    <h2>Pengaturan</h2>
+
+                    <p>
+                        Kelola informasi akun dan keamanan SITARA
+                    </p>
+
+                </div>
+
+
+                <div class="topbar-right">
+
+                    <div
+                        class="topbar-date"
+                        id="currentDate"
+                    >
+                        Memuat tanggal...
+                    </div>
+
+                    <div class="topbar-avatar">
+                        A
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =========================================
+                 CONTENT
+            ========================================== -->
+
+            <section class="dashboard-content">
+
+                <!-- BREADCRUMB -->
+                <div class="breadcrumb">
+
+                    <span>Dashboard</span>
+
+                    <span>/</span>
+
+                    <strong>Pengaturan</strong>
+
+                </div>
+
+
+                <!-- PAGE HEADING -->
+                <div class="page-heading">
+
+                    <div>
+
+                        <h2>Pengaturan</h2>
+
+                        <p>
+                            Kelola informasi profil dan keamanan akun Anda.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================
+                     PROFIL AKUN
+                ========================================== -->
+
+                <div class="settings-card">
+
+                    <div class="settings-card-header">
+
+                        <div>
+
+                            <h3>Profil Akun</h3>
+
+                            <p>
+                                Informasi akun pengguna yang sedang masuk ke SITARA.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <form id="formProfilAkun">
+
+                        <div class="settings-form-grid">
+
+                            <!-- NAMA LENGKAP -->
+                            <div class="settings-form-group">
+
+                                <label for="nama_lengkap">
+                                    Nama Lengkap
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="nama_lengkap"
+                                    name="nama_lengkap"
+                                    placeholder="Masukkan nama lengkap"
+                                    autocomplete="name"
+                                >
+
+                            </div>
+
+
+                            <!-- EMAIL -->
+                            <div class="settings-form-group">
+
+                                <label for="email">
+                                    Email
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="contoh@ugm.ac.id"
+                                    autocomplete="email"
+                                >
+
+                            </div>
+
+
+                            <!-- NIM -->
+                            <div class="settings-form-group">
+
+                                <label for="nim">
+                                    NIM
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="nim"
+                                    name="nim"
+                                    placeholder="Masukkan NIM"
+                                    autocomplete="off"
+                                >
+
+                            </div>
+
+
+                            <!-- NOMOR TELEPON -->
+                            <div class="settings-form-group">
+
+                                <label for="no_telepon">
+                                    Nomor Telepon
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="no_telepon"
+                                    name="no_telepon"
+                                    placeholder="08xxxxxxxxxx"
+                                    autocomplete="tel"
+                                >
+
+                            </div>
+
+
+                            <!-- KEMENTERIAN -->
+                            <div class="settings-form-group">
+
+                                <label for="kementerian">
+                                    Kementerian
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="kementerian"
+                                    name="kementerian"
+                                    placeholder="Kementerian"
+                                    readonly
+                                >
+
+                            </div>
+
+
+                            <!-- ROLE -->
+                            <div class="settings-form-group">
+
+                                <label for="role">
+                                    Role
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="role"
+                                    name="role"
+                                    placeholder="Role"
+                                    readonly
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ACTION -->
+                        <div class="settings-form-actions">
+
+                            <button
+                                type="submit"
+                                id="btnSimpanProfil"
+                                class="btn-primary"
+                            >
+                                Simpan Perubahan
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+                <!-- =========================================
+                     KEAMANAN
+                ========================================== -->
+
+                <div class="settings-card">
+
+                    <div class="settings-card-header">
+
+                        <div>
+
+                            <h3>Keamanan</h3>
+
+                            <p>
+                                Kelola password untuk menjaga keamanan akun SITARA.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <form id="formKeamanan">
+
+                        <div class="settings-form-grid">
+
+                            <!-- PASSWORD SAAT INI -->
+                            <div class="settings-form-group full-width">
+
+                                <label for="password_saat_ini">
+                                    Password Saat Ini
+                                </label>
+
+                                <input
+                                    type="password"
+                                    id="password_saat_ini"
+                                    name="password_saat_ini"
+                                    placeholder="Masukkan password saat ini"
+                                    autocomplete="current-password"
+                                >
+
+                            </div>
+
+
+                            <!-- PASSWORD BARU -->
+                            <div class="settings-form-group">
+
+                                <label for="password_baru">
+                                    Password Baru
+                                </label>
+
+                                <input
+                                    type="password"
+                                    id="password_baru"
+                                    name="password_baru"
+                                    placeholder="Masukkan password baru"
+                                    autocomplete="new-password"
+                                >
+
+                                <small>
+                                    Gunakan minimal 8 karakter.
+                                </small>
+
+                            </div>
+
+
+                            <!-- KONFIRMASI PASSWORD -->
+                            <div class="settings-form-group">
+
+                                <label for="konfirmasi_password">
+                                    Konfirmasi Password Baru
+                                </label>
+
+                                <input
+                                    type="password"
+                                    id="konfirmasi_password"
+                                    name="konfirmasi_password"
+                                    placeholder="Ulangi password baru"
+                                    autocomplete="new-password"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ACTION -->
+                        <div class="settings-form-actions">
+
+                            <button
+                                type="submit"
+                                id="btnUbahPassword"
+                                class="btn-primary"
+                            >
+                                Ubah Password
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="pengaturan.js"></script>
+
+</body>
+
+</html>

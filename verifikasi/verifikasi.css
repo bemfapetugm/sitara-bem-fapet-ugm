@@ -1,0 +1,129 @@
+/* ==========================================
+   SITARA - VERIFIKASI AKUN
+   Tema Merah SITARA
+========================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+
+  background: #f5f3f2;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #263238;
+}
+
+/* ==========================================
+   VERIFICATION CARD
+========================================== */
+
+.verification-card {
+  width: 100%;
+  max-width: 480px;
+  padding: 40px 30px;
+
+  background: #ffffff;
+  border-radius: 18px;
+  text-align: center;
+
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
+}
+
+/* ==========================================
+   STATUS ICON
+========================================== */
+
+.status-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: #f5e5e2;
+  color: #7F2D25;
+
+  font-size: 32px;
+  font-weight: bold;
+}
+
+/* ==========================================
+   HEADING
+========================================== */
+
+h2 {
+  margin: 0 0 14px;
+
+  color: #7F2D25;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+/* ==========================================
+   DESCRIPTION
+========================================== */
+
+p {
+  color: #596579;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ==========================================
+   LOGIN BUTTON
+========================================== */
+
+.login-link {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 13px 24px;
+
+  border-radius: 8px;
+  background: #7F2D25;
+  color: #ffffff;
+
+  text-decoration: none;
+  font-weight: bold;
+
+  transition: all 0.25s ease;
+}
+
+/* HOVER BUTTON */
+
+.login-link:hover {
+  background: #61221D;
+  box-shadow: 0 4px 12px rgba(127, 45, 37, 0.2);
+  transform: translateY(-2px);
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 480px) {
+  .verification-card {
+    padding: 35px 22px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  .login-link {
+    width: 100%;
+  }
+}

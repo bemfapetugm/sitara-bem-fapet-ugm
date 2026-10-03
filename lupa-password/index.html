@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SITARA | Lupa Password</title>
+
+    <link rel="stylesheet" href="lupa-password.css">
+</head>
+
+<body>
+
+    <main class="forgot-container">
+
+        <section class="forgot-card">
+
+            <a href="../login/index.html" class="back-link">
+                ← Kembali ke Login
+            </a>
+
+            <div class="forgot-header">
+
+                <div class="icon-wrapper">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         width="32"
+                         height="32"
+                         viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="1.8"
+                         stroke-linecap="round"
+                         stroke-linejoin="round">
+
+                        <rect x="3" y="5" width="18" height="14" rx="3"/>
+                        <path d="m3 7 9 6 9-6"/>
+
+                    </svg>
+                </div>
+
+                <h1>Lupa Kata Sandi?</h1>
+
+                <p>
+                    Jangan khawatir! Masukkan alamat email yang terdaftar 
+                    di SITARA. Kami akan mengirimkan tautan untuk 
+                    mengatur ulang kata sandi Anda.
+                </p>
+
+            </div>
+
+            <form id="forgotPasswordForm">
+
+                <div class="form-group">
+
+                    <label for="email">Alamat Email Terdaftar</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Masukkan alamat email Anda"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+                <button type="submit" id="submitButton">
+                    <span id="buttonText">Kirim Tautan Reset</span>
+                    <span id="buttonSpinner" class="spinner hidden"></span>
+                </button>
+
+                <div id="message" class="message hidden" role="status"></div>
+
+            </form>
+
+            <div class="forgot-footer">
+                <p>Ingat kata sandi Anda?
+                    <a href="../login/index.html">Masuk</a>
+                </p>
+            </div>
+
+        </section>
+
+        <footer>
+            <p>© 2026 BEM Fakultas Peternakan UGM. Hak cipta dilindungi.</p>
+        </footer>
+
+    </main>
+
+    <script src="lupa-password.js"></script>
+
+</body>
+</html>

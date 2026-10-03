@@ -1,0 +1,353 @@
+/* ==========================================
+   SUBMISSION CARD LIST
+   SITARA KEMENSETKAB
+========================================== */
+
+
+.content {
+
+    padding:32px;
+
+}
+
+
+
+/* HEADER HALAMAN */
+
+.page-header {
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:28px;
+
+}
+
+
+.page-header h1 {
+
+    font-size:28px;
+
+    font-weight:700;
+
+    margin-bottom:8px;
+
+}
+
+
+
+.page-header p {
+
+    color:#6b7280;
+
+}
+
+
+
+/* FILTER */
+
+.filter-button {
+
+    padding:10px 18px;
+
+    border-radius:12px;
+
+    border:1px solid #eee;
+
+    background:white;
+
+    color:#8f2f24;
+
+    font-weight:600;
+
+}
+
+
+
+/* LIST */
+
+
+.submission-list {
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+
+
+
+/* CARD */
+
+
+.submission-card {
+
+
+    background:white;
+
+
+    border-radius:20px;
+
+
+    padding:24px;
+
+
+    border:1px solid #f1f1f1;
+
+
+    box-shadow:
+
+    0 8px 25px rgba(0,0,0,.05);
+
+
+    transition:.25s ease;
+
+
+}
+
+
+
+.submission-card:hover {
+
+
+    transform:translateY(-3px);
+
+
+    box-shadow:
+
+    0 12px 35px rgba(0,0,0,.08);
+
+
+}
+
+
+
+/* HEADER CARD */
+
+
+.submission-header {
+
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+
+}
+
+
+
+.submission-number {
+
+
+    font-size:14px;
+
+    font-weight:700;
+
+    color:#8f2f24;
+
+
+}
+
+
+
+.submission-type {
+
+
+    padding:6px 14px;
+
+
+    border-radius:999px;
+
+
+    background:#fff0ec;
+
+
+    color:#8f2f24;
+
+
+    font-size:12px;
+
+
+    font-weight:600;
+
+
+}
+
+
+
+
+/* CONTENT */
+
+
+.submission-content {
+
+
+    margin-top:18px;
+
+
+}
+
+
+
+.submission-content h3 {
+
+
+    font-size:18px;
+
+
+    font-weight:700;
+
+
+    margin-bottom:8px;
+
+
+}
+
+
+
+.submission-ministry {
+
+
+    color:#6b7280;
+
+
+    font-size:14px;
+
+
+}
+
+
+
+
+
+/* FOOTER */
+
+
+.submission-footer {
+
+
+    margin-top:22px;
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    align-items:center;
+
+
+}
+
+
+
+.submission-meta {
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:18px;
+
+
+    color:#6b7280;
+
+
+    font-size:13px;
+
+
+}
+
+
+
+/* STATUS */
+
+
+.status {
+
+
+    padding:7px 14px;
+
+
+    border-radius:999px;
+
+
+    font-size:12px;
+
+
+    font-weight:600;
+
+
+}
+
+
+
+.status.submitted {
+
+
+    background:#fff3cd;
+
+
+    color:#856404;
+
+
+}
+
+
+
+
+
+/* BUTTON */
+
+
+.detail-button {
+
+
+    background:#8f2f24;
+
+
+    color:white;
+
+
+    border:none;
+
+
+    padding:10px 18px;
+
+
+    border-radius:12px;
+
+
+    cursor:pointer;
+
+
+    font-weight:600;
+
+
+    transition:.2s;
+
+
+}
+
+
+
+.detail-button:hover {
+
+
+    opacity:.9;
+
+
+}

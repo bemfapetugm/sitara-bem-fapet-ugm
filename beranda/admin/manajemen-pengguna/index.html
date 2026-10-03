@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manajemen Pengguna | SITARA</title>
+
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../admin.css">
+    <link rel="stylesheet" href="pengguna.css">
+</head>
+
+<body>
+
+    <div class="admin-container">
+
+        <!-- ================================= -->
+        <!-- SIDEBAR -->
+        <!-- ================================= -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+                <img 
+                    src="../../../assets/images/logo.png"
+                    alt="Logo SITARA"
+                >
+                <div class="brand-text">
+                    <h2>SITARA</h2>
+                    <p>
+                        Admin Panel
+                    </p>
+                </div>
+            </div>
+
+
+            <!-- MENU SIDEBAR -->
+
+            <nav class="sidebar-nav">
+
+                <p class="nav-label">MENU UTAMA</p>
+
+                <a href="../index.html" class="nav-item">
+                    <span class="nav-icon">▦</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="index.html" class="nav-item active">
+                    <span class="nav-icon">♙</span>
+                    <span>Manajemen Pengguna</span>
+                </a>
+
+                <a href="../data-kementerian/index.html" class="nav-item">
+                    <span class="nav-icon">▤</span>
+                    <span>Data Kementerian</span>
+                </a>
+<p class="nav-label">ADMINISTRASI</p>
+
+                <a href="../monitoring-pengajuan/index.html" class="nav-item">
+                    <span class="nav-icon">▧</span>
+                    <span>Monitoring Pengajuan</span>
+                </a>
+
+                <a href="../monitoring-dokumen/index.html" class="nav-item">
+                    <span class="nav-icon">▤</span>
+                    <span>Monitoring Dokumen</span>
+                </a>
+
+                <p class="nav-label">PREFERENSI</p>
+                
+                <a href="../pengaturan/index.html" class="nav-item">
+                    <span class="nav-icon">⚙</span>
+                    <span>Pengaturan</span>
+                </a>
+
+            </nav>
+
+
+            <!-- PROFIL ADMIN -->
+
+            <div class="sidebar-footer">
+
+                <div class="admin-profile">
+                    <div class="profile-avatar">
+                        A
+                    </div>
+                    <div class="profile-info">
+                        <h4>Administrator</h4>
+                        <p>Super Admin</p>
+                    </div>
+                </div>
+
+                <button
+                    type="button"
+                    id="logoutButton"
+                    class="logout-button">
+                    ⇥ Keluar
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ================================= -->
+        <!-- MAIN CONTENT -->
+        <!-- ================================= -->
+
+        <main class="main-content">
+
+            <!-- HEADER -->
+
+            <header class="topbar">
+
+                <div class="topbar-title">
+                    <h2>Manajemen Pengguna</h2>
+                    <p>Kelola seluruh akun pengguna SITARA</p>
+                </div>
+
+                <div class="topbar-right">
+                    <div 
+                        class="topbar-date"
+                        id="currentDate">
+                        Memuat tanggal...
+                    </div>
+                    <div class="topbar-avatar">
+                        A
+                    </div>
+                </div>
+
+            </header>
+
+
+            <!-- ================================= -->
+            <!-- CONTENT -->
+            <!-- ================================= -->
+
+            <section class="dashboard-content">
+
+                <!-- BREADCRUMB -->
+
+                <div class="breadcrumb">
+                    <span>Dashboard</span>
+                    <span>/</span>
+                    <strong>Manajemen Pengguna</strong>
+                </div>
+
+
+                <!-- PAGE INTRO -->
+
+                <div class="page-heading">
+
+                    <div>
+                        <h2>Data Pengguna</h2>
+
+                        <p>
+                            Pantau dan kelola akun anggota, pimpinan,
+                            serta administrator SITARA.
+                        </p>
+                    </div>
+
+                    <button type="button" class="btn-primary" id="btnTambahPengguna">
+                        + Tambah Pengguna
+                    </button>
+
+                </div>
+
+
+                <!-- ================================= -->
+                <!-- STATISTIK PENGGUNA -->
+                <!-- ================================= -->
+
+                <div class="user-stats-grid">
+
+                    <div class="user-stat-card">
+                        <div class="user-stat-icon maroon">♙</div>
+
+                        <div class="user-stat-info">
+                            <p>Total Pengguna</p>
+                            <h2 id="totalUsers">0</h2>
+                            <span>Seluruh akun SITARA</span>
+                        </div>
+                    </div>
+
+
+                    <div class="user-stat-card">
+                        <div class="user-stat-icon green">✓</div>
+
+                        <div class="user-stat-info">
+                            <p>Akun Aktif</p>
+                            <h2 id="activeUsers">0</h2>
+                            <span>Pengguna aktif</span>
+                        </div>
+                    </div>
+
+
+                    <div class="user-stat-card">
+                        <div class="user-stat-icon orange">◷</div>
+
+                        <div class="user-stat-info">
+                            <p>Menunggu Verifikasi</p>
+                            <h2 id="pendingUsers">0</h2>
+                            <span>Belum verifikasi email</span>
+                        </div>
+                    </div>
+
+
+                    <div class="user-stat-card">
+                        <div class="user-stat-icon blue">⊘</div>
+
+                        <div class="user-stat-info">
+                            <p>Akun Nonaktif</p>
+                            <h2 id="inactiveUsers">0</h2>
+                            <span>Akun tidak aktif</span>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- ================================= -->
+                <!-- TABEL PENGGUNA -->
+                <!-- ================================= -->
+
+                <div class="user-content-card">
+
+                    <!-- TABLE HEADER -->
+
+                    <div class="user-card-header">
+
+                        <div>
+                            <h3>Daftar Pengguna</h3>
+
+                            <p>
+                                Informasi akun seluruh pengguna SITARA
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- SEARCH & FILTER -->
+
+                    <div class="user-toolbar">
+
+                        <div class="user-search">
+                            <span>⌕</span>
+
+                            <input
+                                type="text"
+                                id="searchUser"
+                                placeholder="Cari nama, email, atau NIM..."
+                            >
+                        </div>
+
+
+                        <div class="user-filter">
+
+                            <select id="filterRole">
+                                <option value="">Semua Role</option>
+                                <option value="anggota">Anggota</option>
+                                <option value="pimpinan">Pimpinan</option>
+                                <option value="admin">Admin</option>
+                            </select>
+
+
+                            <select id="filterStatus">
+                                <option value="">Semua Status</option>
+                                <option value="aktif">Aktif</option>
+                                <option value="pending">Menunggu Verifikasi</option>
+                                <option value="nonaktif">Nonaktif</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TABLE -->
+
+                    <div class="user-table-wrapper">
+
+                        <table class="user-table">
+
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Pengguna</th>
+                                    <th>Email</th>
+                                    <th>NIM</th>
+                                    <th>Kementerian</th>
+                                    <th>Role</th>
+                                    <th>Status Akun</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+
+
+                            <tbody id="userTableBody">
+
+                                <!-- Data pengguna akan dimuat melalui JavaScript -->
+
+                                <tr>
+                                    <td colspan="8" style="text-align:center;">
+                                        Tidak ada pengguna yang ditemukan.
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+
+                    <!-- TABLE FOOTER -->
+
+                    <div class="user-table-footer">
+
+                        <span id="tableInfo">
+                            Menampilkan 0 pengguna
+                        </span>
+
+                        <div class="pagination" id="pagination">
+                            <!-- Pagination akan dibuat melalui JavaScript -->
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="pengguna.js"></script>
+
+</body>
+
+</html>

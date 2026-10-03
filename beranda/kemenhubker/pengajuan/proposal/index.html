@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Pengajuan Proposal | SITARA
+    </title>
+
+
+    <!-- GOOGLE FONT -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- CSS DASHBOARD KEMENHUBKER -->
+
+    <link
+        rel="stylesheet"
+        href="../../kemenhubker.css"
+    >
+
+
+    <!-- CSS PROPOSAL -->
+
+    <link
+        rel="stylesheet"
+        href="proposal.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="kemen-container">
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- BRAND -->
+
+        <div class="sidebar-brand">
+
+            <img
+                src="../../../../assets/images/logo.png"
+                alt="Logo SITARA"
+            >
+
+            <div class="brand-text">
+
+                <h2>
+                    SITARA
+                </h2>
+
+                <p>
+                    Panel Kementerian
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="sidebar-nav">
+
+
+            <p class="nav-label">
+                MENU UTAMA
+            </p>
+
+
+            <a
+                href="../../index.html"
+                class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    ▦
+                </span>
+
+                <span>
+                    Beranda
+                </span>
+
+            </a>
+
+
+            <p class="nav-label">
+                ADMINISTRASI
+            </p>
+
+
+            <a
+                href="../index.html"
+                class="nav-item active"
+            >
+
+                <span class="nav-icon">
+                    ▧
+                </span>
+
+                <span>
+                    Pengajuan
+                </span>
+
+            </a>
+
+
+            <a
+                href="../../riwayat-pengajuan/index.html"
+                class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    ≡
+                </span>
+
+                <span>
+                    Riwayat Pengajuan
+                </span>
+
+            </a>
+
+
+            <p class="nav-label">
+                DOKUMEN
+            </p>
+
+
+            <a
+                href="../../dokumen/index.html"
+                class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    ▤
+                </span>
+
+                <span>
+                    Dokumen
+                </span>
+
+            </a>
+
+
+            <p class="nav-label">
+                PREFERENSI
+            </p>
+
+
+            <a
+                href="../../pengaturan/index.html"
+                class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    ⚙
+                </span>
+
+                <span>
+                    Pengaturan
+                </span>
+
+            </a>
+
+
+        </nav>
+
+
+        <!-- SIDEBAR FOOTER -->
+
+        <div class="sidebar-footer">
+
+
+            <div class="user-profile">
+
+
+                <div
+                    class="profile-avatar"
+                    id="profileAvatar"
+                >
+                    KH
+                </div>
+
+
+                <div class="profile-info">
+
+                    <h4 id="profileName">
+                        Kementerian Hubungan Kerja Sama
+                    </h4>
+
+                    <p id="profileRole">
+                        Kementerian
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <button
+                type="button"
+                class="logout-button"
+                id="logoutButton"
+            >
+                ⇥ Keluar
+            </button>
+
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+
+            <div class="topbar-title">
+
+                <h2>
+                    Pengajuan Proposal
+                </h2>
+
+                <p>
+                    Pengajuan Proposal Kegiatan
+                </p>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+
+                <div
+                    class="topbar-date"
+                    id="currentDate"
+                >
+                    Memuat tanggal...
+                </div>
+
+
+                <div
+                    class="topbar-avatar"
+                    id="topbarAvatar"
+                >
+                    KH
+                </div>
+
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- =====================================================
+             DASHBOARD CONTENT
+        ====================================================== -->
+
+        <section class="dashboard-content">
+
+
+            <!-- BREADCRUMB -->
+
+            <div class="breadcrumb">
+
+                <a href="../../index.html">
+                    Beranda
+                </a>
+
+                <span>
+                    /
+                </span>
+
+                <a href="../index.html">
+                    Pengajuan
+                </a>
+
+                <span>
+                    /
+                </span>
+
+                <strong>
+                    Proposal
+                </strong>
+
+            </div>
+
+
+
+            <!-- PAGE HEADING -->
+
+            <div class="page-heading">
+
+                <h2>
+                    Proposal Kegiatan
+                </h2>
+
+                <p>
+                    Lengkapi data pengajuan proposal
+                    sebelum dikirim untuk proses pemeriksaan.
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 FORM CARD
+            ================================================== -->
+
+            <div class="form-card">
+
+
+                <!-- FORM HEADER -->
+
+                <div class="form-card-header">
+
+                    <h3>
+                        Form Pengajuan Proposal
+                    </h3>
+
+                    <p>
+                        Pastikan seluruh informasi dan dokumen
+                        yang diunggah telah sesuai.
+                    </p>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     FORM
+                ================================================== -->
+
+                <form
+                    id="formProposal"
+                    enctype="multipart/form-data"
+                >
+
+
+                    <!-- =================================================
+                         A. IDENTITAS PENGAJUAN
+                    ================================================== -->
+
+                    <div class="form-section">
+
+
+                        <div class="form-section-title">
+
+                            <h4>
+                                A. Identitas Pengajuan
+                            </h4>
+
+                            <p>
+                                Informasi identitas pengajuan proposal.
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+
+                            <!-- KEMENTERIAN -->
+
+                            <div class="form-group">
+
+                                <label for="namaKementerian">
+
+                                    Kementerian
+
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="namaKementerian"
+                                    name="namaKementerian"
+                                    value="Kementerian Hubungan Kerja Sama"
+                                    readonly
+                                >
+
+                                <small>
+                                    Data diambil otomatis dari akun
+                                    yang sedang login.
+                                </small>
+
+                            </div>
+
+
+
+                            <!-- TANGGAL PENGAJUAN -->
+
+                            <div class="form-group">
+
+                                <label for="tanggalPengajuan">
+
+                                    Tanggal Pengajuan
+
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="tanggalPengajuan"
+                                    name="tanggalPengajuan"
+                                    readonly
+                                >
+
+                                <small>
+                                    Tanggal pengajuan diisi otomatis
+                                    oleh sistem.
+                                </small>
+
+                            </div>
+
+
+
+                            <!-- PENANGGUNG JAWAB -->
+
+                            <div class="form-group">
+
+                                <label for="penanggungJawab">
+
+                                    Penanggung Jawab
+                                    <span>*</span>
+
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="penanggungJawab"
+                                    name="penanggungJawab"
+                                    placeholder="Masukkan nama sekretaris kementerian"
+                                    required
+                                >
+
+                                <small>
+                                    Diisi dengan nama sekretaris kementerian.
+                                </small>
+
+                            </div>
+
+
+
+                            <!-- KONTAK -->
+
+                            <div class="form-group">
+
+                                <label for="kontakPenanggungJawab">
+
+                                    Kontak Penanggung Jawab
+                                    <span>*</span>
+
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="kontakPenanggungJawab"
+                                    name="kontakPenanggungJawab"
+                                    placeholder="Contoh: 081234567890"
+                                    required
+                                >
+
+                                <small>
+                                    Diisi dengan nomor telepon sekretaris
+                                    kementerian yang dapat dihubungi.
+                                </small>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         B. INFORMASI PROPOSAL
+                    ================================================== -->
+
+                    <div class="form-section">
+
+
+                        <div class="form-section-title">
+
+                            <h4>
+                                B. Informasi Proposal
+                            </h4>
+
+                            <p>
+                                Informasi mengenai kegiatan yang diajukan.
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+
+                            <!-- JUDUL PROPOSAL -->
+
+                            <div class="form-group full-width">
+
+                                <label for="judulProposal">
+
+                                    Judul Proposal Kegiatan
+                                    <span>*</span>
+
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="judulProposal"
+                                    name="judulProposal"
+                                    placeholder="Masukkan judul proposal kegiatan"
+                                    required
+                                >
+
+                            </div>
+
+
+
+                            <!-- TANGGAL PELAKSANAAN -->
+
+                            <div class="form-group">
+
+                                <label for="tanggalPelaksanaan">
+
+                                    Tanggal Pelaksanaan
+                                    <span>*</span>
+
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="tanggalPelaksanaan"
+                                    name="tanggalPelaksanaan"
+                                    required
+                                >
+
+                            </div>
+
+
+
+                            <!-- WAKTU MULAI -->
+
+                            <div class="form-group">
+
+                                <label for="waktuMulai">
+
+                                    Waktu Mulai
+                                    <span>*</span>
+
+                                </label>
+
+                                <input
+                                    type="time"
+                                    id="waktuMulai"
+                                    name="waktuMulai"
+                                    required
+                                >
+
+                            </div>
+
+
+
+                            <!-- WAKTU SELESAI -->
+
+                            <div class="form-group">
+
+                                <label for="waktuSelesai">
+
+                                    Waktu Selesai
+                                    <span>*</span>
+
+                                </label>
+
+                                <input
+                                    type="time"
+                                    id="waktuSelesai"
+                                    name="waktuSelesai"
+                                    required
+                                >
+
+                            </div>
+
+
+
+                            <!-- TEMPAT PELAKSANAAN -->
+
+                            <div class="form-group">
+
+                                <label for="tempatPelaksanaan">
+
+                                    Tempat Pelaksanaan
+                                    <span>*</span>
+
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="tempatPelaksanaan"
+                                    name="tempatPelaksanaan"
+                                    placeholder="Masukkan tempat pelaksanaan kegiatan"
+                                    required
+                                >
+
+                            </div>
+
+
+
+                            <!-- DESKRIPSI KEGIATAN -->
+
+                            <div class="form-group full-width">
+
+                                <label for="deskripsiKegiatan">
+
+                                    Deskripsi Kegiatan
+                                    <span>*</span>
+
+                                </label>
+
+                                <textarea
+                                    id="deskripsiKegiatan"
+                                    name="deskripsiKegiatan"
+                                    rows="6"
+                                    placeholder="Jelaskan secara singkat mengenai kegiatan yang akan dilaksanakan."
+                                    required
+                                ></textarea>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         C. RENCANA ANGGARAN
+                    ================================================== -->
+
+                    <div class="form-section">
+
+
+                        <div class="form-section-title">
+
+                            <h4>
+                                C. Rencana Anggaran
+                            </h4>
+
+                            <p>
+                                Informasi mengenai dana yang diajukan
+                                dan rekening pencairan.
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+
+                            <!-- TOTAL DANA -->
+
+                            <div class="form-group">
+
+                                <label for="totalDana">
+
+                                    Total Dana yang Diajukan
+                                    <span>*</span>
+
+                                </label>
+
+
+                                <div class="input-prefix">
+
+                                    <span>
+                                        Rp
+                                    </span>
+
+                                    <input
+                                        type="number"
+                                        id="totalDana"
+                                        name="totalDana"
+                                        min="0"
+                                        placeholder="0"
+                                        required
+                                    >
+
+                                </div>
+
+
+                            </div>
+
+
+
+                            <!-- SUMBER DANA -->
+
+                            <div class="form-group">
+
+                                <label for="sumberDana">
+
+                                    Sumber Dana
+                                    <span>*</span>
+
+                                </label>
+
+
+                                <select
+                                    id="sumberDana"
+                                    name="sumberDana"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Pilih sumber dana
+                                    </option>
+
+                                    <option value="Dana Fakultas">
+                                        Dana Fakultas
+                                    </option>
+
+                                    <option value="Dana Kas">
+                                        Dana Kas
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+
+                            <!-- NOMOR REKENING -->
+
+                            <div class="form-group">
+
+                                <label for="nomorRekening">
+
+                                    Nomor Rekening
+                                    <span>*</span>
+
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="nomorRekening"
+                                    name="nomorRekening"
+                                    inputmode="numeric"
+                                    placeholder="Masukkan nomor rekening"
+                                    required
+                                >
+
+                            </div>
+
+
+
+                            <!-- BANK REKENING -->
+
+                            <div class="form-group">
+
+                                <label for="bankRekening">
+
+                                    Bank Rekening
+                                    <span>*</span>
+
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="bankRekening"
+                                    name="bankRekening"
+                                    placeholder="Contoh: BNI"
+                                    required
+                                >
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                        D. DOKUMEN
+                    ================================================== -->
+
+                    <div class="form-section">
+
+                        <div class="form-section-title">
+
+                            <h4>
+                                D. Dokumen
+                            </h4>
+
+                            <p>
+                                Unggah dokumen yang diperlukan untuk
+                                proses pemeriksaan pengajuan.
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+
+                            <!-- PROPOSAL KEGIATAN -->
+
+                            <div class="form-group full-width">
+
+                                <label for="fileProposal">
+
+                                    Proposal Kegiatan
+                                    <span>*</span>
+
+                                </label>
+
+
+                                <div class="file-upload">
+
+                                    <input
+                                        type="file"
+                                        id="fileProposal"
+                                        name="fileProposal"
+                                        accept=".doc,.docx"
+                                        required
+                                    >
+
+                                    <div class="file-upload-info">
+
+                                        <strong>
+                                            Pilih Proposal Kegiatan
+                                        </strong>
+
+                                        <span>
+                                            Format Word (.doc/.docx) · Wajib
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+
+                                <small>
+                                    Dokumen proposal kegiatan yang diajukan.
+                                </small>
+
+                            </div>
+
+
+
+                            <!-- FORM KEGIATAN -->
+
+                            <div class="form-group full-width">
+
+                                <label for="fileFormKegiatan">
+
+                                    Form Kegiatan
+                                    <span>*</span>
+
+                                </label>
+
+
+                                <div class="file-upload">
+
+                                    <input
+                                        type="file"
+                                        id="fileFormKegiatan"
+                                        name="fileFormKegiatan"
+                                        accept=".doc,.docx"
+                                        required
+                                    >
+
+                                    <div class="file-upload-info">
+
+                                        <strong>
+                                            Pilih Form Kegiatan
+                                        </strong>
+
+                                        <span>
+                                            Format Word (.doc/.docx) · Wajib
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+
+                                <small>
+                                    Form kegiatan yang menjadi bagian
+                                    dari pengajuan.
+                                </small>
+
+                            </div>
+
+
+
+                            <!-- SURAT PENCAIRAN -->
+
+                            <div class="form-group full-width">
+
+                                <label for="fileSuratPencairan">
+
+                                    Surat Pencairan
+                                    <span>*</span>
+
+                                </label>
+
+
+                                <div class="file-upload">
+
+                                    <input
+                                        type="file"
+                                        id="fileSuratPencairan"
+                                        name="fileSuratPencairan"
+                                        accept=".doc,.docx"
+                                        required
+                                    >
+
+                                    <div class="file-upload-info">
+
+                                        <strong>
+                                            Pilih Surat Pencairan
+                                        </strong>
+
+                                        <span>
+                                            Format Word (.doc/.docx) · Wajib
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+
+                                <small>
+                                    Surat pencairan yang diperlukan
+                                    dalam proses pengajuan dana.
+                                </small>
+
+                            </div>
+
+
+
+                            <!-- SURAT PEMINJAMAN -->
+
+                            <div class="form-group full-width">
+
+                                <label for="fileSuratPeminjaman">
+
+                                    Surat Peminjaman Fasilitas dan Tempat
+
+                                </label>
+
+
+                                <div class="file-upload">
+
+                                    <input
+                                        type="file"
+                                        id="fileSuratPeminjaman"
+                                        name="fileSuratPeminjaman"
+                                        accept=".doc,.docx"
+                                    >
+
+                                    <div class="file-upload-info">
+
+                                        <strong>
+                                            Pilih Surat Peminjaman
+                                        </strong>
+
+                                        <span>
+                                            Format Word (.doc/.docx) · Opsional
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+
+                                <small>
+                                    Diunggah apabila kegiatan memerlukan
+                                    peminjaman fasilitas dan/atau tempat.
+                                </small>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         E. CATATAN
+                    ================================================== -->
+
+                    <div class="form-section">
+
+
+                        <div class="form-section-title">
+
+                            <h4>
+                                E. Catatan
+                            </h4>
+
+                            <p>
+                                Tambahkan informasi lain yang diperlukan.
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="catatan">
+
+                                Catatan Tambahan
+
+                            </label>
+
+
+                            <textarea
+                                id="catatan"
+                                name="catatan"
+                                rows="4"
+                                placeholder="Masukkan catatan tambahan jika diperlukan."
+                            ></textarea>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         FORM ACTION
+                    ================================================== -->
+
+                    <div class="form-actions">
+
+
+                        <a
+                            href="../index.html"
+                            class="btn-secondary"
+                        >
+                            Batal
+                        </a>
+
+
+                        <button
+                            type="submit"
+                            class="btn-primary"
+                            id="btnSubmitProposal"
+                        >
+                            Kirim Pengajuan
+                        </button>
+
+
+                    </div>
+
+
+                </form>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- JAVASCRIPT -->
+
+<script src="proposal.js"></script>
+
+
+</body>
+
+</html>

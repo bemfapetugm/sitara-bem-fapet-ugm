@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tambah Pengguna | SITARA</title>
+
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- ADMIN CSS -->
+    <link rel="stylesheet" href="../../admin.css">
+
+    <!-- PAGE CSS -->
+    <link rel="stylesheet" href="tambah-pengguna.css">
+</head>
+
+<body>
+
+    <div class="admin-container">
+
+        <!-- =========================================
+             SIDEBAR
+        ========================================== -->
+
+        <aside class="sidebar">
+
+            <!-- BRAND -->
+
+            <div class="sidebar-brand">
+
+                <img
+                    src="../../../../assets/images/logo.png"
+                    alt="Logo SITARA"
+                >
+
+                <div class="brand-text">
+
+                    <h2>SITARA</h2>
+
+                    <p>
+                        Admin Panel
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+
+            <nav class="sidebar-nav">
+
+                <p class="nav-label">
+                    MENU UTAMA
+                </p>
+
+
+                <a
+                    href="../../index.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">▦</span>
+                    <span>Dashboard</span>
+                </a>
+
+
+                <a
+                    href="../index.html"
+                    class="nav-item active"
+                >
+                    <span class="nav-icon">♙</span>
+                    <span>Manajemen Pengguna</span>
+                </a>
+
+
+                <a
+                    href="../../data-kementerian/index.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">▤</span>
+                    <span>Data Kementerian</span>
+                </a>
+<p class="nav-label">
+                    ADMINISTRASI
+                </p>
+
+
+                <a
+                    href="../../monitoring-pengajuan/index.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">▧</span>
+                    <span>Monitoring Pengajuan</span>
+                </a>
+
+
+                <a
+                    href="../../monitoring-dokumen/index.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">▤</span>
+                    <span>Monitoring Dokumen</span>
+                </a>
+
+                <p class="nav-label">PREFERENSI</p>
+
+                <a href="../../pengaturan/index.html" class="nav-item">
+                    <span class="nav-icon">⚙</span>
+                    <span>Pengaturan</span>
+                </a>
+
+            </nav>
+
+
+            <!-- SIDEBAR FOOTER -->
+
+            <div class="sidebar-footer">
+
+                <div class="admin-profile">
+
+                    <div class="profile-avatar">
+                        A
+                    </div>
+
+                    <div class="profile-info">
+
+                        <h4>
+                            admin
+                        </h4>
+
+                        <p>
+                            admin
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="btnLogout"
+                    class="logout-button"
+                >
+                    ⇥ Keluar
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =========================================
+             MAIN CONTENT
+        ========================================== -->
+
+        <main class="main-content">
+
+
+            <!-- TOPBAR -->
+
+            <header class="topbar">
+
+                <div class="topbar-title">
+
+                    <h2>
+                        Tambah Pengguna
+                    </h2>
+
+                    <p>
+                        Kelola akun pengguna SITARA
+                    </p>
+
+                </div>
+
+
+                <div class="topbar-right">
+
+                    <div
+                        class="topbar-date"
+                        id="tanggalSekarang"
+                    >
+                        Memuat tanggal...
+                    </div>
+
+                    <div class="topbar-avatar">
+                        A
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =========================================
+                 CONTENT
+            ========================================== -->
+
+            <section class="dashboard-content">
+
+
+                <!-- BREADCRUMB -->
+
+                <div class="breadcrumb">
+
+                    <a href="../index.html">
+                        Manajemen Pengguna
+                    </a>
+
+                    <span>/</span>
+
+                    <strong>
+                        Tambah Pengguna
+                    </strong>
+
+                </div>
+
+
+                <!-- PAGE HEADING -->
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <h2>
+                            Tambah Pengguna
+                        </h2>
+
+                        <p>
+                            Tambahkan akun pengguna baru ke dalam sistem SITARA.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================
+                     FORM CARD
+                ========================================== -->
+
+                <div class="form-card">
+
+
+                    <!-- CARD HEADER -->
+
+                    <div class="form-card-header">
+
+                        <div>
+
+                            <h3>
+                                Informasi Pengguna
+                            </h3>
+
+                            <p>
+                                Lengkapi data pengguna yang akan ditambahkan.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- FORM -->
+
+                    <form id="formTambahPengguna">
+
+                        <div class="form-grid">
+
+
+                            <!-- NAMA LENGKAP -->
+
+                            <div class="form-group full-width">
+
+                                <label for="nama_lengkap">
+
+                                    Nama Lengkap
+
+                                    <span>*</span>
+
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="nama_lengkap"
+                                    name="nama_lengkap"
+                                    placeholder="Masukkan nama lengkap"
+                                    autocomplete="name"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- EMAIL -->
+
+                            <div class="form-group">
+
+                                <label for="email">
+
+                                    Email
+
+                                    <span>*</span>
+
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="contoh@ugm.ac.id"
+                                    autocomplete="email"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- NIM -->
+
+                            <div class="form-group">
+
+                                <label for="nim">
+
+                                    NIM
+
+                                    <span>*</span>
+
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="nim"
+                                    name="nim"
+                                    placeholder="Masukkan NIM"
+                                    autocomplete="off"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- NOMOR TELEPON -->
+
+                            <div class="form-group">
+
+                                <label for="no_telepon">
+
+                                    Nomor Telepon
+
+                                    <span>*</span>
+
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="no_telepon"
+                                    name="no_telepon"
+                                    placeholder="08xxxxxxxxxx"
+                                    autocomplete="tel"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- KEMENTERIAN -->
+
+                            <div class="form-group">
+
+                                <label for="kementerian_id">
+                                    Kementerian
+                                    <span id="kementerianRequired">*</span>
+                                </label>
+
+                                <select
+                                    id="kementerian_id"
+                                    name="kementerian_id"
+                                >
+                                    <option value="">
+                                        Memuat kementerian...
+                                    </option>
+                                </select>
+
+                            </div>
+
+
+                            <!-- ROLE -->
+
+                            <div class="form-group">
+
+                                <label for="role">
+                                    Role
+                                    <span>*</span>
+                                </label>
+
+                                <select
+                                    id="role"
+                                    name="role"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Pilih role
+                                    </option>
+
+                                    <option value="admin">
+                                        Admin
+                                    </option>
+
+                                    <option value="pimpinan">
+                                        Pimpinan
+                                    </option>
+
+                                    <option value="menko">
+                                        Menko
+                                    </option>
+
+                                    <option value="menteri">
+                                        Menteri
+                                    </option>
+
+                                    <option value="kementerian">
+                                        Kementerian
+                                    </option>
+
+                                    <option value="mensetkab">
+                                        Mensetkab
+                                    </option>
+
+                                    <option value="menkeu">
+                                        Menkeu
+                                    </option>
+
+                                    <option value="anggota">
+                                        Anggota
+                                    </option>
+
+                                    <option value="tamu">
+                                        Tamu
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                            <!-- PASSWORD -->
+
+                            <div class="form-group">
+
+                                <label for="password">
+
+                                    Password
+
+                                    <span>*</span>
+
+                                </label>
+
+                                <input
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    placeholder="Minimal 8 karakter"
+                                    autocomplete="new-password"
+                                    minlength="8"
+                                    required
+                                >
+
+                                <small>
+                                    Password minimal 8 karakter.
+                                </small>
+
+                            </div>
+
+
+                            <!-- KONFIRMASI PASSWORD -->
+
+                            <div class="form-group">
+
+                                <label for="confirm_password">
+
+                                    Konfirmasi Password
+
+                                    <span>*</span>
+
+                                </label>
+
+                                <input
+                                    type="password"
+                                    id="confirm_password"
+                                    name="confirm_password"
+                                    placeholder="Ulangi password"
+                                    autocomplete="new-password"
+                                    minlength="8"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- =================================
+                             INFO AKUN
+                        ================================== -->
+
+                        <div class="form-info">
+
+                            <strong>
+                                Informasi akun
+                            </strong>
+
+                            <p>
+                                Akun yang dibuat oleh administrator akan
+                                langsung berstatus aktif dan dapat digunakan
+                                untuk masuk ke SITARA.
+                            </p>
+
+                        </div>
+
+
+                        <!-- =================================
+                             ACTION
+                        ================================== -->
+
+                        <div class="form-actions">
+
+                            <button
+                                type="button"
+                                id="btnBatal"
+                                class="btn-secondary"
+                            >
+                                Batal
+                            </button>
+
+                            <button
+                                type="submit"
+                                id="btnSimpan"
+                                class="btn-primary"
+                            >
+                                Simpan Pengguna
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="tambah-pengguna.js"></script>
+
+</body>
+
+</html>

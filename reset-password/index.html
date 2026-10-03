@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SITARA | Reset Password</title>
+
+    <link rel="stylesheet" href="reset-password.css">
+</head>
+
+<body>
+
+    <main class="reset-container">
+
+        <section class="reset-card">
+
+            <!-- LOGO / ICON -->
+            <div class="icon-wrapper">
+
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     width="32"
+                     height="32"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="1.8"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+
+                    <rect x="3" y="11" width="18" height="11" rx="2"/>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                    <path d="M12 15v3"/>
+
+                </svg>
+
+            </div>
+
+
+            <!-- HEADER -->
+            <div class="reset-header">
+
+                <h1>Atur Ulang Kata Sandi</h1>
+
+                <p>
+                    Buat kata sandi baru untuk akun SITARA Anda. Pastikan kata sandi mudah diingat, tetapi sulit ditebak oleh orang lain.
+                </p>
+
+            </div>
+
+
+            <!-- TOKEN STATUS -->
+            <div id="tokenMessage" class="message hidden" role="status"></div>
+
+
+            <!-- FORM RESET PASSWORD -->
+            <form id="resetPasswordForm">
+
+                <!-- PASSWORD BARU -->
+                <div class="form-group">
+
+                    <label for="newPassword">
+                        Kata Sandi Baru
+                    </label>
+
+                    <div class="password-wrapper">
+
+                        <input
+                            type="password"
+                            id="newPassword"
+                            name="newPassword"
+                            placeholder="Masukkan kata sandi baru"
+                            autocomplete="new-password"
+                            minlength="8"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="toggle-password"
+                            data-target="newPassword"
+                            aria-label="Tampilkan password"
+                        >
+                            Lihat
+                        </button>
+
+                    </div>
+
+                    <small class="input-hint">
+                        Minimal 8 karakter.
+                    </small>
+
+                </div>
+
+
+                <!-- KONFIRMASI PASSWORD -->
+                <div class="form-group">
+
+                    <label for="confirmPassword">
+                        Konfirmasi Kata Sandi Baru
+                    </label>
+
+                    <div class="password-wrapper">
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            name="confirmPassword"
+                            placeholder="Masukkan kembali kata sandi baru"
+                            autocomplete="new-password"
+                            minlength="8"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="toggle-password"
+                            data-target="confirmPassword"
+                            aria-label="Tampilkan konfirmasi password"
+                        >
+                            Lihat
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SUBMIT BUTTON -->
+                <button
+                    type="submit"
+                    id="submitButton"
+                    disabled
+                >
+
+                    <span id="buttonText">
+                        Simpan Kata Sandi Baru
+                    </span>
+
+                    <span id="buttonSpinner" class="spinner hidden"></span>
+
+                </button>
+
+            </form>
+
+            <!-- NOTIFIKASI RESET PASSWORD -->
+            <div
+                id="message"
+                class="message hidden"
+                role="status"
+                aria-live="polite"
+            ></div>
+
+            <!-- FOOTER -->
+            <div class="reset-footer">
+
+                <a href="../login/index.html">
+                    ← Kembali ke Login
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- COPYRIGHT -->
+        <footer>
+            <p>© 2026 BEM Fakultas Peternakan UGM. Hak cipta dilindungi.</p>
+        </footer>
+
+    </main>
+
+
+    <script src="reset-password.js"></script>
+
+</body>
+
+</html>
