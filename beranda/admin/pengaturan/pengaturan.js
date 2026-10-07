@@ -102,7 +102,7 @@ function checkAdminSession() {
         );
 
         window.location.href =
-            "../../../login/index.html";
+            "/login/index.html";
 
         return null;
     }
@@ -140,7 +140,7 @@ function checkAdminSession() {
         sessionStorage.removeItem("sitaraUser");
 
         window.location.href =
-            "../../../login/index.html";
+            "/login/index.html";
 
         return null;
     }
@@ -705,7 +705,7 @@ if (logoutButton) {
             );
 
             window.location.href =
-                "../../../login/index.html";
+                "/login/index.html";
         }
     );
 }

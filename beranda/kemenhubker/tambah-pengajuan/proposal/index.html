@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isi Informasi Proposal | SITARA</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../kemenhubker.css">
+    <link rel="stylesheet" href="proposal.css">
+<style>
+      .nav-icon {
+        width: 22px;
+        height: 22px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 22px;
+      }
+
+      .nav-icon svg {
+        width: 19px;
+        height: 19px;
+        stroke-width: 1.9;
+      }
+
+      .nav-item.active .nav-icon svg {
+        stroke: currentColor;
+      }
+    </style>
+  </head>
+
+<body>
+<div class="kemen-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <img src="../../../../assets/images/logo.png" alt="Logo SITARA">
+            <div class="brand-text">
+                <h2>SITARA</h2>
+                <p>Panel Kementerian</p>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+  <p class="nav-label">MENU UTAMA</p>
+  <a href="../../index.html" class="nav-item"><span class="nav-icon"><i data-lucide="house"></i></span><span>Dashboard</span></a>
+  <p class="nav-label">PENGAJUAN</p>
+  <a href="../../tambah-pengajuan/index.html" class="nav-item active"><span class="nav-icon"><i data-lucide="file-plus-2"></i></span><span>Tambah Pengajuan</span></a>
+  <a href="../../tindak-lanjut/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="file-search"></i></span><span>Tindak Lanjut</span></a>
+  <a href="../../riwayat-pengajuan/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="history"></i></span><span>Riwayat Pengajuan</span></a>
+  <p class="nav-label">DOKUMEN</p>
+  <a href="../../template-dokumen/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="files"></i></span><span>Template Dokumen</span></a>
+  <a href="../../arsip-dokumen-final/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="folder"></i></span><span>Arsip Dokumen Final</span></a>
+</nav>
+
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="profile-avatar" id="profileAvatar">KH</div>
+                <div class="profile-info">
+                    <h4 id="profileName">Kementerian Hubungan Kerja Sama</h4>
+                    <p id="profileRole">Kementerian</p>
+                </div>
+            </div>
+
+            <button type="button" class="logout-button" id="logoutButton">⇥ Keluar</button>
+        </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+        <header class="topbar">
+            <div class="topbar-title">
+                <h2>Tambah Pengajuan</h2>
+                <p>Buat pengajuan administrasi baru Kementerian Hubungan Kerja Sama melalui SITARA</p>
+            </div>
+
+            <div class="topbar-right">
+                <div class="topbar-date" id="currentDate">Memuat tanggal...</div>
+                <div class="topbar-avatar" id="topbarAvatar">KH</div>
+            </div>
+        </header>
+
+        <section class="proposal-content">
+
+            <!-- BREADCRUMB -->
+            <div class="proposal-breadcrumb">
+                <a href="../../index.html"><span>Beranda</span></a><span>›</span>
+                <a href="../index.html">Tambah Pengajuan</a>
+                <span>›</span>
+                <strong>Isi Informasi</strong>
+            </div>
+
+            <!-- STEP INDICATOR -->
+            <div class="submission-steps" aria-label="Tahapan pengajuan proposal">
+                <div class="submission-step completed">
+                    <div class="step-number">
+                        <span>✓</span>
+                    </div>
+                    <div class="step-copy">
+                        <strong>Pilih Dokumen</strong>
+                        <span>Proposal Kegiatan</span>
+                    </div>
+                </div>
+
+                <div class="step-line completed"></div>
+
+                <div class="submission-step active">
+                    <div class="step-number">2</div>
+                    <div class="step-copy">
+                        <strong>Isi Informasi</strong>
+                        <span>Lengkapi data pengajuan</span>
+                    </div>
+                </div>
+
+                <div class="step-line"></div>
+
+                <div class="submission-step">
+                    <div class="step-number">3</div>
+                    <div class="step-copy">
+                        <strong>Unggah Dokumen</strong>
+                        <span>Upload file yang diperlukan</span>
+                    </div>
+                </div>
+
+                <div class="step-line"></div>
+
+                <div class="submission-step">
+                    <div class="step-number">4</div>
+                    <div class="step-copy">
+                        <strong>Tinjau &amp; Kirim</strong>
+                        <span>Periksa kembali dan ajukan</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TWO COLUMN AREA -->
+            <div class="proposal-layout">
+
+                <!-- FORM -->
+                <section class="proposal-card">
+
+                    <div class="proposal-card-header">
+                        <div class="proposal-title-wrap">
+                            <div class="proposal-title-icon">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M7 3.5h7.3L19 8.2V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1z"></path>
+                                    <path d="M14 3.5V9h5M9 13h6M9 16.5h5"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h1>Informasi Pengajuan</h1>
+                                <p>Lengkapi data pengajuan sesuai dengan dokumen yang dipilih.</p>
+                            </div>
+                        </div>
+
+                        <div class="document-chip">
+                            <span class="chip-icon">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M7 3.5h7.3L19 8.2V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1z"></path>
+                                    <path d="M14 3.5V9h5M9 13h6M9 16.5h4"></path>
+                                </svg>
+                            </span>
+                            <span>
+                                <small>Jenis Dokumen</small>
+                                <strong>Proposal Kegiatan</strong>
+                            </span>
+                        </div>
+                    </div>
+
+                    <form id="formProposal" novalidate>
+
+                        <!-- 1. DATA KEGIATAN -->
+                        <div class="form-section">
+                            <div class="section-bar">
+                                <span class="section-number">1</span>
+                                <h2>Data Kegiatan</h2>
+                            </div>
+
+                            <div class="form-grid activity-grid">
+
+                                <div class="form-group">
+                                    <label for="judulProposal">
+                                        Nama Kegiatan <span>*</span>
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="judulProposal"
+                                        name="judulProposal"
+                                        placeholder="Masukkan nama kegiatan"
+                                        required
+                                    >
+                                    <small>Contoh: Seminar Nasional Peternakan 2026</small>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="tanggalPelaksanaan">
+                                        Tanggal Pelaksanaan <span>*</span>
+                                    </label>
+                                    <div class="input-with-icon">
+                                        <span class="field-icon">
+                                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                                <rect x="4" y="5" width="16" height="15" rx="2"></rect>
+                                                <path d="M8 3v4M16 3v4M4 9h16"></path>
+                                            </svg>
+                                        </span>
+                                        <input
+                                            type="date"
+                                            id="tanggalPelaksanaan"
+                                            name="tanggalPelaksanaan"
+                                            required
+                                        >
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="tempatPelaksanaan">
+                                        Tempat Pelaksanaan <span>*</span>
+                                    </label>
+                                    <div class="input-with-icon">
+                                        <span class="field-icon">
+                                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                                <path d="M12 21s6-5.2 6-11a6 6 0 1 0-12 0c0 5.8 6 11 6 11z"></path>
+                                                <circle cx="12" cy="10" r="2"></circle>
+                                            </svg>
+                                        </span>
+                                        <input
+                                            type="text"
+                                            id="tempatPelaksanaan"
+                                            name="tempatPelaksanaan"
+                                            placeholder="Masukkan lokasi kegiatan"
+                                            required
+                                        >
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="sumberDana">
+                                        Sumber Dana <span>*</span>
+                                    </label>
+                                    <div class="select-wrap">
+                                        <select id="sumberDana" name="sumberDana" required>
+                                            <option value="">Pilih sumber dana</option>
+                                            <option value="Dana Fakultas">Dana Fakultas</option>
+                                            <option value="Dana Kas">Dana Kas</option>
+                                        </select>
+                                        <span class="select-arrow"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group full-width">
+                                    <label for="deskripsiKegiatan">
+                                        Deskripsi Singkat Kegiatan <span>*</span>
+                                    </label>
+                                    <textarea
+                                        id="deskripsiKegiatan"
+                                        name="deskripsiKegiatan"
+                                        maxlength="500"
+                                        placeholder="Jelaskan secara singkat tujuan, sasaran peserta, dan bentuk kegiatan yang akan dilaksanakan..."
+                                        required
+                                    ></textarea>
+                                    <div class="character-count"><span id="deskripsiCount">0</span>/500</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. PENANGGUNG JAWAB -->
+                        <div class="form-section compact-section">
+                            <div class="section-bar">
+                                <span class="section-number">2</span>
+                                <h2>Penanggung Jawab</h2>
+                            </div>
+
+                            <div class="form-grid responsible-grid">
+
+                                <div class="form-group">
+                                    <label for="penanggungJawab">
+                                        Nama Penanggung Jawab <span>*</span>
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="penanggungJawab"
+                                        name="penanggungJawab"
+                                        placeholder="Masukkan nama lengkap"
+                                        required
+                                    >
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="jabatan">
+                                        Jabatan <span>*</span>
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="jabatan"
+                                        name="jabatan"
+                                        placeholder="Masukkan jabatan"
+                                        required
+                                    >
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="kontakPenanggungJawab">
+                                        Nomor WhatsApp <span>*</span>
+                                    </label>
+                                    <div class="input-with-icon">
+                                        <span class="field-icon phone-icon">
+                                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                                <path d="M6.5 4.5 9 4l2 4-2 1.5c1 2.1 2.4 3.5 4.5 4.5L15 12l4 2-.5 2.5C18.2 18.1 17.4 19 16 19 9.9 19 5 14.1 5 8c0-1.4.9-2.2 1.5-3.5z"></path>
+                                            </svg>
+                                        </span>
+                                        <input
+                                            type="tel"
+                                            id="kontakPenanggungJawab"
+                                            name="kontakPenanggungJawab"
+                                            inputmode="numeric"
+                                            placeholder="08xxxxxxxxx"
+                                            required
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3. INFORMASI TAMBAHAN -->
+                        <div class="form-section compact-section">
+                            <div class="section-bar">
+                                <span class="section-number">3</span>
+                                <h2>Informasi Tambahan</h2>
+                            </div>
+
+                            <div class="form-grid">
+                                <div class="form-group full-width">
+                                    <label for="catatan">
+                                        Catatan <em>(Opsional)</em>
+                                    </label>
+                                    <textarea
+                                        id="catatan"
+                                        name="catatan"
+                                        maxlength="500"
+                                        rows="2"
+                                        placeholder="Tambahkan catatan lain yang relevan untuk pengajuan ini..."
+                                    ></textarea>
+                                    <div class="character-count"><span id="catatanCount">0</span>/500</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- HIDDEN BACKEND FIELDS:
+                             Tetap dipertahankan agar struktur payload proposal lama
+                             tidak rusak ketika tahap unggah/tinjau diintegrasikan. -->
+                        <input type="hidden" id="namaKementerian" name="namaKementerian">
+                        <input type="hidden" id="tanggalPengajuan" name="tanggalPengajuan">
+                        <input type="hidden" id="waktuMulai" name="waktuMulai" value="">
+                        <input type="hidden" id="waktuSelesai" name="waktuSelesai" value="">
+                        <input type="hidden" id="totalDana" name="totalDana" value="">
+                        <input type="hidden" id="nomorRekening" name="nomorRekening" value="">
+                        <input type="hidden" id="bankRekening" name="bankRekening" value="">
+                        <input type="hidden" id="nomorSurat" name="nomorSurat" value="">
+
+                        <!-- Upload fields are intentionally NOT shown in step 2. -->
+                        <input type="hidden" id="fileProposal">
+                        <input type="hidden" id="fileFormKegiatan">
+                        <input type="hidden" id="fileSuratPencairan">
+                        <input type="hidden" id="fileSuratPeminjaman">
+
+                        <div class="form-actions">
+                            <a href="../index.html" class="back-button">
+                                <span>←</span>
+                                <span>Kembali ke Pilih Dokumen</span>
+                            </a>
+
+                            <button
+                                type="button"
+                                class="next-button"
+                                id="btnNextUpload"
+                            >
+                                <span>Lanjut ke Unggah Dokumen</span>
+                                <span>→</span>
+                            </button>
+                        </div>
+
+                    </form>
+                </section>
+
+                <!-- RIGHT GUIDE -->
+                <aside class="proposal-guide">
+
+                    <div class="guide-card guide-card-warning">
+                        <div class="guide-card-title">
+                            <span class="guide-title-icon">!</span>
+                            <h2>Panduan Pengisian</h2>
+                        </div>
+
+                        <p class="guide-intro">
+                            Pastikan semua informasi diisi dengan benar dan sesuai dengan data kegiatan yang diajukan.
+                        </p>
+
+                        <div class="guide-step">
+                            <span>1</span>
+                            <div>
+                                <strong>Lengkapi data kegiatan</strong>
+                                <p>Isi nama, tanggal, tempat, dan sumber dana.</p>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <span>2</span>
+                            <div>
+                                <strong>Isi data penanggung jawab</strong>
+                                <p>Pastikan nomor WhatsApp aktif.</p>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <span>3</span>
+                            <div>
+                                <strong>Tambahkan informasi tambahan</strong>
+                                <p>Opsional, sesuai kebutuhan.</p>
+                            </div>
+                        </div>
+
+                        <div class="guide-step">
+                            <span>4</span>
+                            <div>
+                                <strong>Lanjut ke unggah dokumen</strong>
+                                <p>Setelah informasi lengkap, unggah dokumen yang diperlukan.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-card guide-card-success">
+                        <div class="guide-card-title">
+                            <span class="guide-title-icon">✓</span>
+                            <h2>Ketentuan Pengajuan</h2>
+                        </div>
+
+                        <ul>
+                            <li>Informasi yang diisi harus sesuai dengan proposal.</li>
+                            <li>Nama kegiatan harus jelas dan spesifik.</li>
+                            <li>Nomor WhatsApp digunakan untuk narahubung.</li>
+                            <li>Pastikan tanggal dan tempat kegiatan sudah final.</li>
+                            <li>Periksa kembali data sebelum melanjutkan.</li>
+                        </ul>
+                    </div>
+
+                </aside>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="proposal.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>document.addEventListener("DOMContentLoaded",function(){if(window.lucide)lucide.createIcons();});</script>
+</body>
+</html>

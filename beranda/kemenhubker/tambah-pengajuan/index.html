@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tambah Pengajuan | Kemenhubker | SITARA</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../kemenhubker.css">
+    <link rel="stylesheet" href="tambah-pengajuan.css">
+<style>
+      .nav-icon {
+        width: 22px;
+        height: 22px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 22px;
+      }
+
+      .nav-icon svg {
+        width: 19px;
+        height: 19px;
+        stroke-width: 1.9;
+      }
+
+      .nav-item.active .nav-icon svg {
+        stroke: currentColor;
+      }
+    </style>
+  </head>
+
+<body>
+
+<div class="kemen-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+            <img src="../../../assets/images/logo.png" alt="Logo SITARA">
+            <div class="brand-text">
+                <h2>SITARA</h2>
+                <p>Panel Kementerian</p>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+  <p class="nav-label">MENU UTAMA</p>
+  <a href="../index.html" class="nav-item"><span class="nav-icon"><i data-lucide="house"></i></span><span>Dashboard</span></a>
+  <p class="nav-label">PENGAJUAN</p>
+  <a href="index.html" class="nav-item active"><span class="nav-icon"><i data-lucide="file-plus-2"></i></span><span>Tambah Pengajuan</span></a>
+  <a href="../tindak-lanjut/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="file-search"></i></span><span>Tindak Lanjut</span></a>
+  <a href="../riwayat-pengajuan/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="history"></i></span><span>Riwayat Pengajuan</span></a>
+  <p class="nav-label">DOKUMEN</p>
+  <a href="../template-dokumen/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="files"></i></span><span>Template Dokumen</span></a>
+  <a href="../arsip-dokumen-final/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="folder"></i></span><span>Arsip Dokumen Final</span></a>
+</nav>
+
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="profile-avatar" id="profileAvatar">KH</div>
+                <div class="profile-info">
+                    <h4 id="profileName">Kementerian Hubungan Kerja Sama</h4>
+                    <p id="profileRole">Kementerian</p>
+                </div>
+            </div>
+
+            <button type="button" class="logout-button" id="logoutButton">
+                ⇥ Keluar
+            </button>
+        </div>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+        <header class="topbar">
+            <div class="topbar-title">
+                <h2>Tambah Pengajuan</h2>
+                <p>Buat pengajuan administrasi baru Kementerian Hubungan Kerja Sama melalui SITARA</p>
+            </div>
+
+            <div class="topbar-right">
+                <div class="topbar-date" id="currentDate">Memuat tanggal...</div>
+                <div class="topbar-avatar" id="topbarAvatar">KH</div>
+            </div>
+        </header>
+
+        <section class="tambah-content">
+
+            <!-- BREADCRUMB -->
+            <div class="selection-breadcrumb">
+                <a href="../index.html" aria-label="Beranda"><span>Beranda</span></a>
+                <span class="crumb-separator">›</span>
+                <strong>Tambah Pengajuan</strong>
+            </div>
+
+            <!-- STEP INDICATOR -->
+            <div class="submission-steps" aria-label="Tahapan pengajuan">
+                <div class="submission-step active">
+                    <div class="step-number">1</div>
+                    <div class="step-copy">
+                        <strong>Pilih Dokumen</strong>
+                        <span>Pilih jenis dokumen yang diajukan</span>
+                    </div>
+                </div>
+
+                <div class="step-line"></div>
+
+                <div class="submission-step">
+                    <div class="step-number">2</div>
+                    <div class="step-copy">
+                        <strong>Isi Informasi</strong>
+                        <span>Lengkapi data pengajuan</span>
+                    </div>
+                </div>
+
+                <div class="step-line"></div>
+
+                <div class="submission-step">
+                    <div class="step-number">3</div>
+                    <div class="step-copy">
+                        <strong>Unggah Dokumen</strong>
+                        <span>Upload file yang diperlukan</span>
+                    </div>
+                </div>
+
+                <div class="step-line"></div>
+
+                <div class="submission-step">
+                    <div class="step-number">4</div>
+                    <div class="step-copy">
+                        <strong>Tinjau &amp; Kirim</strong>
+                        <span>Periksa kembali dan ajukan</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- INTRO CARD -->
+            <div class="selection-intro">
+                <div class="intro-left">
+                    <div class="intro-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M7 3.5h7.3L19 8.2V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1z"></path>
+                            <path d="M14 3.5V9h5"></path>
+                            <path d="M9 13h6M9 16.5h6"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1>Pilih Dokumen yang Diajukan</h1>
+                        <p>Pilih satu atau lebih dokumen yang ingin diajukan dalam pengajuan.</p>
+                    </div>
+                </div>
+
+                <div class="selection-info">
+                    <span class="info-symbol">i</span>
+                    <p>Anda dapat mengajukan lebih dari satu dokumen dalam satu pengajuan selama masih dalam jenis yang sama.</p>
+                </div>
+            </div>
+
+            <!-- DOCUMENT AREA -->
+            <div class="selection-layout">
+
+                <div class="document-groups">
+
+                    <!-- PROPOSAL -->
+                    <section class="document-group" data-group="proposal">
+                        <div class="group-heading">
+                            <span class="heading-accent"></span>
+                            <div>
+                                <h2>Proposal Kegiatan</h2>
+                                <p>Dokumen untuk pengajuan kegiatan yang akan dilaksanakan.</p>
+                            </div>
+                        </div>
+
+                        <div class="document-grid">
+
+                            <button type="button" class="document-card" data-group="proposal" data-doc="proposal" data-title="Proposal Kegiatan" data-description="Dokumen utama pengajuan kegiatan untuk mendapatkan persetujuan.">
+                                <span class="custom-check" aria-hidden="true"></span>
+                                <span class="document-icon proposal-icon">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M7 3.5h7.3L19 8.2V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1z"></path>
+                                        <path d="M14 3.5V9h5M9 13h6M9 16.5h4.5"></path>
+                                    </svg>
+                                </span>
+                                <span class="document-copy">
+                                    <strong>Proposal Kegiatan</strong>
+                                    <small>Dokumen utama pengajuan kegiatan untuk mendapatkan persetujuan.</small>
+                                </span>
+                            </button>
+
+                            <button type="button" class="document-card" data-group="proposal" data-doc="form" data-title="Form Kegiatan" data-description="Formulir pendukung informasi kegiatan.">
+                                <span class="custom-check" aria-hidden="true"></span>
+                                <span class="document-icon blue-icon">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M6 4.5h12a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-13a1 1 0 0 1 1-1z"></path>
+                                        <path d="M9 8h6M9 12h6M9 16h4"></path>
+                                        <circle cx="7.4" cy="8" r=".7"></circle>
+                                    </svg>
+                                </span>
+                                <span class="document-copy">
+                                    <strong>Form Kegiatan</strong>
+                                    <small>Formulir pendukung informasi kegiatan.</small>
+                                </span>
+                            </button>
+
+                            <button type="button" class="document-card" data-group="proposal" data-doc="pencairan" data-title="Surat Pencairan Dana" data-description="Pengajuan pencairan dana kegiatan yang telah disetujui.">
+                                <span class="custom-check" aria-hidden="true"></span>
+                                <span class="document-icon proposal-icon">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <ellipse cx="12" cy="6.5" rx="6.5" ry="2.7"></ellipse>
+                                        <path d="M5.5 6.5v5.5c0 1.5 2.9 2.7 6.5 2.7s6.5-1.2 6.5-2.7V6.5"></path>
+                                        <path d="M5.5 12v5.5c0 1.5 2.9 2.7 6.5 2.7s6.5-1.2 6.5-2.7V12"></path>
+                                    </svg>
+                                </span>
+                                <span class="document-copy">
+                                    <strong>Surat Pencairan Dana</strong>
+                                    <small>Pengajuan pencairan dana kegiatan yang telah disetujui.</small>
+                                </span>
+                            </button>
+
+                            <button type="button" class="document-card" data-group="proposal" data-doc="peminjaman" data-title="Peminjaman Fasilitas" data-description="Pengajuan peminjaman fasilitas untuk kegiatan.">
+                                <span class="custom-check" aria-hidden="true"></span>
+                                <span class="document-icon blue-icon">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M4.5 20V8.5L12 4l7.5 4.5V20"></path>
+                                        <path d="M8 20v-6h8v6M7 10h2M15 10h2"></path>
+                                    </svg>
+                                </span>
+                                <span class="document-copy">
+                                    <strong>Peminjaman Fasilitas</strong>
+                                    <small>Pengajuan peminjaman fasilitas untuk kegiatan.</small>
+                                </span>
+                            </button>
+
+                        </div>
+                    </section>
+
+
+
+                </div>
+
+                <!-- SUMMARY -->
+                <aside class="selection-summary">
+                    <div class="summary-header">
+                        <div class="summary-icon">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M6 3.5h9l3 3V20a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1z"></path>
+                                <path d="M14 3.5V7h4M8.5 11h7M8.5 14.5h7M8.5 18h4"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h2>Ringkasan Pilihan</h2>
+                            <p id="summaryCount">0 dokumen dipilih</p>
+                        </div>
+                    </div>
+
+                    <div class="summary-body" id="summaryBody">
+                        <div class="summary-empty" id="summaryEmpty">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M6.5 4.5h8l3 3V19a1 1 0 0 1-1 1h-10a1 1 0 0 1-1-1V5.5a1 1 0 0 1 1-1z"></path>
+                                <path d="M14.5 4.5V8h3M9 12h5M9 15.5h5"></path>
+                            </svg>
+                            <strong>Belum ada dokumen yang dipilih</strong>
+                            <span>Pilih dokumen dari daftar di sebelah kiri untuk melanjutkan.</span>
+                        </div>
+                    </div>
+
+                    <div class="summary-footer" id="summaryFooter" hidden>
+                        <span id="summaryType">Jenis: —</span>
+                        <button type="button" id="clearSelection">Hapus semua</button>
+                    </div>
+                </aside>
+
+            </div>
+
+            <!-- BOTTOM ACTIONS -->
+            <div class="selection-actions">
+                <a class="back-button" href="../index.html">
+                    <span>←</span>
+                    <span>Kembali ke Dashboard</span>
+                </a>
+
+                <button type="button" class="next-button" id="nextButton" disabled>
+                    <span>Lanjut ke Isi Informasi</span>
+                    <span>→</span>
+                </button>
+            </div>
+
+        </section>
+
+    </main>
+</div>
+
+<script src="tambah-pengajuan.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>document.addEventListener("DOMContentLoaded",function(){if(window.lucide)lucide.createIcons();});</script>
+</body>
+</html>

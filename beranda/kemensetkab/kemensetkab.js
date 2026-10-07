@@ -23,7 +23,7 @@ const sessionData =
 if (!sessionData) {
 
     window.location.href =
-        "../../login/index.html";
+        "/login/index.html";
 
 } else {
 
@@ -49,7 +49,7 @@ if (!sessionData) {
 
 
             window.location.href =
-                "../../login/index.html";
+                "/login/index.html";
 
         }
         else {
@@ -73,7 +73,7 @@ if (!sessionData) {
 
 
         window.location.href =
-            "../../login/index.html";
+            "/login/index.html";
 
     }
 
@@ -248,9 +248,9 @@ function displayUserProfile(user) {
 
         kementerian: "Kementerian",
 
-        mensetkab: "MenSetKab",
+        mensetkab: "Menteri Sekretariat Kabinet",
 
-        menkeu: "MenKeu",
+        menkeu: "Kementerian Keuangan",
 
         anggota: "Anggota",
 
@@ -269,7 +269,9 @@ function displayUserProfile(user) {
     // ======================================
 
     const initial =
-        getInitials(name);
+        String(user.kementerian_id || "").trim() === "KEM001"
+            ? "KS"
+            : getInitials(name);
 
 
     // ======================================
@@ -455,7 +457,7 @@ function initializeLogout() {
 
 
             window.location.href =
-                "../../login/index.html";
+                "/login/index.html";
 
         }
     );
@@ -467,170 +469,93 @@ function initializeLogout() {
 // ==========================================
 
 function renderDashboardKemensetkab(data) {
+    const statistik = data?.statistik || {};
 
+    setText("totalPengajuan", statistik.total_pengajuan ?? 0);
+    setText("totalProses", statistik.sedang_diproses ?? 0);
+    setText("totalRevisi", statistik.perlu_revisi ?? 0);
+    setText("totalDokumen", statistik.total_dokumen ?? 0);
 
-    // ===============================
-    // STATISTIK
-    // ===============================
+    const tableBody = document.getElementById("pengajuanTerbaruBody");
+    if (!tableBody) return;
 
-    const statistik =
-        data.statistik;
+    const pengajuan = Array.isArray(data?.pengajuan_terbaru)
+        ? data.pengajuan_terbaru
+        : [];
 
-
-    if (statistik) {
-
-
-        const totalPengajuan =
-            document.getElementById(
-                "totalPengajuan"
-            );
-
-
-        const totalProses =
-            document.getElementById(
-                "totalProses"
-            );
-
-
-        const totalRevisi =
-            document.getElementById(
-                "totalRevisi"
-            );
-
-
-        const totalDokumen =
-            document.getElementById(
-                "totalDokumen"
-            );
-
-
-        if (totalPengajuan) {
-
-            totalPengajuan.textContent =
-                statistik.total_pengajuan;
-
-        }
-
-
-        if (totalProses) {
-
-            totalProses.textContent =
-                statistik.sedang_diproses;
-
-        }
-
-
-        if (totalRevisi) {
-
-            totalRevisi.textContent =
-                statistik.perlu_revisi;
-
-        }
-
-
-        if (totalDokumen) {
-
-            totalDokumen.textContent =
-                statistik.total_dokumen;
-
-        }
-
+    if (!pengajuan.length) {
+        tableBody.innerHTML = `
+            <tr><td colspan="5" class="empty-state">Belum ada pengajuan masuk.</td></tr>
+        `;
+        return;
     }
 
-        // ===============================
-    // TABEL PENGAJUAN TERBARU
-    // ===============================
+    tableBody.innerHTML = pengajuan.map((item, index) => `
+        <tr>
+            <td>${index + 1}</td>
+            <td><strong>${escapeHtml(item.nomor_pengajuan || "-")}</strong></td>
+            <td>${escapeHtml(item.asal_kementerian || "-")}</td>
+            <td>${getJenisBadge(item.jenis)}</td>
+            <td>${getStatusBadge(item.status_label || item.status)}</td>
+        </tr>
+    `).join("");
+}
 
-    const tableBody =
-        document.getElementById(
-            "pengajuanTerbaruBody"
-        );
+function setText(id, value) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = value;
+}
 
+function normalizeStatus(value) {
+    return String(value || "")
+        .trim()
+        .toLowerCase()
+        .replace(/_/g, " ")
+        .replace(/\s+/g, " ");
+}
 
-    if (tableBody) {
-
-
-        const pengajuan =
-            data.pengajuan_terbaru || [];
-
-
-        // Jika belum ada data
-
-        if (pengajuan.length === 0) {
-
-            tableBody.innerHTML = `
-
-                <tr>
-
-                    <td 
-                        colspan="5"
-                        class="empty-state"
-                    >
-                        Belum ada pengajuan masuk.
-                    </td>
-
-                </tr>
-
-            `;
-
-        }
-
-
-        else {
-
-
-            tableBody.innerHTML = "";
-
-
-            pengajuan.forEach(
-                function(item, index) {
-
-
-                    const row = `
-
-                    <tr>
-
-                        <td>
-                            ${index + 1}
-                        </td>
-
-
-                        <td>
-                            ${item.nomor_pengajuan || "-"}
-                        </td>
-
-
-                        <td>
-                            ${item.asal_kementerian || "-"}
-                        </td>
-
-
-                        <td>
-                            ${item.jenis || "-"}
-                        </td>
-
-
-                        <td>
-                            <span class="status-badge">
-                                ${item.status || "-"}
-                            </span>
-                        </td>
-
-
-                    </tr>
-
-                    `;
-
-
-                    tableBody.innerHTML += row;
-
-
-                }
-            );
-
-
-        }
-
+function getStatusInfo(value) {
+    const raw = String(value || "").trim();
+    const normalized = normalizeStatus(raw);
+    const map = [
+        [/^diajukan$/, ["Diajukan", "diajukan"]],
+        [/menunggu verifikasi|perlu verifikasi/, ["Menunggu Verifikasi", "menunggu-verifikasi"]],
+        [/perlu revisi|^revisi$/, ["Perlu Revisi", "perlu-revisi"]],
+        [/menunggu persetujuan mensetkab|menunggu persetujuan menteri sekretariat kabinet/, ["Menunggu Persetujuan Mensetkab", "menunggu-mensetkab"]],
+        [/menunggu persetujuan ketua bem|menunggu persetujuan ketua/, ["Menunggu Persetujuan Ketua BEM", "menunggu-ketua"]],
+        [/diajukan ke dpm/, ["Diajukan ke DPM", "diajukan-dpm"]],
+        [/disetujui dpm/, ["Disetujui DPM", "disetujui-dpm"]],
+        [/diajukan ke fakultas/, ["Diajukan ke Fakultas", "diajukan-fakultas"]],
+        [/disetujui fakultas/, ["Disetujui Fakultas", "disetujui-fakultas"]],
+        [/menunggu dokumen fakultas/, ["Menunggu Dokumen Fakultas", "menunggu-fakultas"]],
+        [/dalam proses|diproses|proses/, ["Dalam Proses", "dalam-proses"]],
+        [/selesai/, ["Selesai", "selesai"]],
+        [/ditolak|ditolak/, ["Ditolak", "ditolak"]]
+    ];
+    for (const [regex, info] of map) {
+        if (regex.test(normalized)) return {label: info[0], cls: info[1]};
     }
+    return {label: raw || "-", cls: "lainnya"};
+}
 
+function getStatusBadge(value) {
+    const info = getStatusInfo(value);
+    return `<span class="status-badge status-${info.cls}">${escapeHtml(info.label)}</span>`;
+}
+
+function getJenisBadge(value) {
+    const raw = String(value || "").trim();
+    const normalized = raw.toLowerCase();
+    const label = normalized === "proposal" ? "Proposal" : normalized === "lpj" ? "LPJ" : (raw || "-");
+    const cls = normalized === "proposal" ? "proposal" : normalized === "lpj" ? "lpj" : "lainnya";
+    return `<span class="jenis-badge jenis-${cls}">${escapeHtml(label)}</span>`;
+}
+
+function escapeHtml(value) {
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }

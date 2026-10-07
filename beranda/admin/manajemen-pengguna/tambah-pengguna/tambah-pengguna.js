@@ -55,6 +55,7 @@ const btnLogout =
 const ALLOWED_ROLES = [
     "admin",
     "pimpinan",
+    "dpm",
     "menko",
     "menteri",
     "kementerian",
@@ -110,7 +111,7 @@ function checkAdminSession() {
         );
 
         window.location.href =
-            "../../../login/index.html";
+            "/login/index.html";
 
         return null;
     }
@@ -122,7 +123,7 @@ function checkAdminSession() {
         );
 
         window.location.href =
-            "../../../login/index.html";
+            "/login/index.html";
 
         return null;
     }
@@ -488,7 +489,7 @@ if (btnLogout) {
             );
 
             window.location.href =
-                "../../../login/index.html";
+                "/login/index.html";
 
         }
     );

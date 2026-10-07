@@ -12,7 +12,7 @@ const userSession = sessionStorage.getItem("sitaraUser");
 // Jika belum login, arahkan ke halaman login
 if (!userSession) {
 
-    window.location.href = "../../login/index.html";
+    window.location.href = "/login/index.html";
 
 } else {
 
@@ -45,7 +45,7 @@ if (!userSession) {
 
                 sessionStorage.removeItem("sitaraUser");
 
-                window.location.href = "../../login/index.html";
+                window.location.href = "/login/index.html";
 
             }
 
@@ -62,7 +62,7 @@ if (!userSession) {
 
         sessionStorage.removeItem("sitaraUser");
 
-        window.location.href = "../../login/index.html";
+        window.location.href = "/login/index.html";
 
     }
 
@@ -203,7 +203,7 @@ function initializeLogout() {
         sessionStorage.removeItem("sitaraUser");
 
         // Arahkan kembali ke halaman login
-        window.location.href = "../../login/index.html";
+        window.location.href = "/login/index.html";
 
     });
 

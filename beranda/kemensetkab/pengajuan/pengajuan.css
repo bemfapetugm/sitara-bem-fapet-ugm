@@ -351,3 +351,25 @@
 
 
 }
+.status-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px;padding:6px;background:#f8f9fa;border:1px solid #eee;border-radius:14px;width:max-content;max-width:100%;}
+.status-tab{border:0;background:transparent;color:#6b7280;padding:9px 13px;border-radius:10px;font:600 12px Inter,sans-serif;cursor:pointer;white-space:nowrap;}
+.status-tab span{display:inline-flex;min-width:20px;justify-content:center;margin-left:4px;padding:2px 6px;border-radius:20px;background:#e5e7eb;color:#6b7280;font-size:10px;}
+.status-tab.active{background:#fff;color:#8f2f24;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+.status-tab.active span{background:#fff0ec;color:#8f2f24;}
+.submission-card{padding:24px;}
+.submission-card h3{margin:7px 0 5px;font-size:17px;color:#1f2937;}
+.submission-card p{margin:0;color:#6b7280;font-size:13px;}
+.submission-body{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-top:20px;padding-top:16px;border-top:1px solid #f0f0f0;}
+.submission-info{display:flex;align-items:center;gap:15px;color:#6b7280;font-size:12px;}
+.status-pill{padding:6px 10px;border-radius:999px;font-weight:600;background:#f3f4f6;color:#6b7280;}
+.status-pill.verifikasi{background:#fff7ed;color:#c2410c}.status-pill.menunggu_revisi{background:#fff7ed;color:#9a3412}.status-pill.perbaikan{background:#fef2f2;color:#b91c1c}.status-pill.proses{background:#eff6ff;color:#1d4ed8}.status-pill.eksternal{background:#f5f3ff;color:#6d28d9}.status-pill.selesai{background:#f0fdf4;color:#15803d}
+.stage-text{font-size:12px;color:#9ca3af;}
+.empty-state,.error-state{background:#fff;border:1px solid #eee;border-radius:18px;padding:45px;text-align:center;color:#6b7280;}
+.empty-icon{width:42px;height:42px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;border-radius:50%;background:#f0fdf4;color:#16a34a;font-weight:700;}
+.empty-state h3,.error-state h3{margin:0 0 6px;color:#1f2937;font-size:16px}.empty-state p,.error-state p{margin:0;font-size:13px}.retry-button{margin-top:16px;border:0;border-radius:10px;padding:9px 15px;background:#8f2f24;color:#fff;font-weight:600;cursor:pointer;}
+@media(max-width:900px){.status-tabs{width:100%;overflow-x:auto;flex-wrap:nowrap}.submission-body{align-items:flex-start;flex-direction:column}.stage-text{margin-left:0}.submission-footer{margin-top:15px}.detail-button{width:auto;}}
+
+.jenis-badge{display:inline-flex;align-items:center;justify-content:center;padding:6px 10px;border-radius:999px;font-size:11px;font-weight:700;white-space:nowrap}
+.jenis-proposal{background:#f1eaff;color:#6d3fd1}.jenis-lpj{background:#eaf8ef;color:#15803d}.jenis-lainnya{background:#f3f4f6;color:#6b7280}
+.status-pill{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap}
+.status-diajukan{background:#eef2f6!important;color:#475569!important}.status-menunggu-verifikasi{background:#eaf3ff!important;color:#2563eb!important}.status-perlu-revisi{background:#fff4df!important;color:#b45309!important}.status-menunggu-mensetkab,.status-menunggu-ketua{background:#f1eaff!important;color:#6d3fd1!important}.status-diajukan-dpm,.status-diajukan-fakultas{background:#fff4df!important;color:#b45309!important}.status-disetujui-dpm,.status-disetujui-fakultas{background:#eaf8ef!important;color:#15803d!important}.status-menunggu-fakultas,.status-dalam-proses{background:#eaf3ff!important;color:#2563eb!important}.status-selesai{background:#eaf8ef!important;color:#15803d!important}.status-ditolak{background:#fdecec!important;color:#b91c1c!important}

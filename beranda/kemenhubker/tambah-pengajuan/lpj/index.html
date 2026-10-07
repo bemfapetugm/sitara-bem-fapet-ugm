@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Pengajuan LPJ | SITARA
+    </title>
+
+
+    <!-- GOOGLE FONT -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- CSS DASHBOARD KEMENHUBKER -->
+
+    <link
+        rel="stylesheet"
+        href="../../kemenhubker.css"
+    >
+
+
+    <!-- CSS LPJ -->
+
+    <link
+        rel="stylesheet"
+        href="lpj.css"
+    >
+
+<style>
+      .nav-icon {
+        width: 22px;
+        height: 22px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 22px;
+      }
+
+      .nav-icon svg {
+        width: 19px;
+        height: 19px;
+        stroke-width: 1.9;
+      }
+
+      .nav-item.active .nav-icon svg {
+        stroke: currentColor;
+      }
+    </style>
+  </head>
+
+
+<body>
+
+
+<div class="kemen-container">
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- BRAND -->
+
+        <div class="sidebar-brand">
+
+            <img
+                src="../../../../assets/images/logo.png"
+                alt="Logo SITARA"
+            >
+
+            <div class="brand-text">
+
+                <h2>
+                    SITARA
+                </h2>
+
+                <p>
+                    Panel Kementerian
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="sidebar-nav">
+  <p class="nav-label">MENU UTAMA</p>
+  <a href="../../index.html" class="nav-item"><span class="nav-icon"><i data-lucide="house"></i></span><span>Dashboard</span></a>
+  <p class="nav-label">PENGAJUAN</p>
+  <a href="../../tambah-pengajuan/index.html" class="nav-item active"><span class="nav-icon"><i data-lucide="file-plus-2"></i></span><span>Tambah Pengajuan</span></a>
+  <a href="../../tindak-lanjut/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="file-search"></i></span><span>Tindak Lanjut</span></a>
+  <a href="../../riwayat-pengajuan/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="history"></i></span><span>Riwayat Pengajuan</span></a>
+  <p class="nav-label">DOKUMEN</p>
+  <a href="../../template-dokumen/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="files"></i></span><span>Template Dokumen</span></a>
+  <a href="../../arsip-dokumen-final/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="folder"></i></span><span>Arsip Dokumen Final</span></a>
+</nav>
+
+
+        <!-- SIDEBAR FOOTER -->
+
+        <div class="sidebar-footer">
+
+
+            <div class="user-profile">
+
+
+                <div
+                    class="profile-avatar"
+                    id="profileAvatar"
+                >
+                    KH
+                </div>
+
+
+                <div class="profile-info">
+
+                    <h4 id="profileName">
+                        Kementerian Hubungan Kerja Sama
+                    </h4>
+
+                    <p id="profileRole">
+                        Kementerian
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <button
+                type="button"
+                class="logout-button"
+                id="logoutButton"
+            >
+                ⇥ Keluar
+            </button>
+
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+
+            <div class="topbar-title">
+
+                <h2>
+                    Pengajuan LPJ
+                </h2>
+
+                <p>
+                    Pengajuan Laporan Pertanggungjawaban
+                </p>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+
+                <div
+                    class="topbar-date"
+                    id="currentDate"
+                >
+                    Memuat tanggal...
+                </div>
+
+
+                <div
+                    class="topbar-avatar"
+                    id="topbarAvatar"
+                >
+                    KH
+                </div>
+
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- =====================================================
+             DASHBOARD CONTENT
+        ====================================================== -->
+
+        <section class="dashboard-content">
+
+
+            <!-- BREADCRUMB -->
+
+            <div class="breadcrumb">
+
+                <a href="../../index.html">
+                    Beranda
+                </a>
+
+                <span>
+                    /
+                </span>
+
+                <a href="../index.html">
+                    Pengajuan
+                </a>
+
+                <span>
+                    /
+                </span>
+
+                <strong>
+                    LPJ
+                </strong>
+
+            </div>
+
+
+
+            <!-- PAGE HEADING -->
+
+            <div class="page-heading">
+
+                <h2>
+                    Laporan Pertanggungjawaban
+                </h2>
+
+                <p>
+                    Lengkapi data pengajuan LPJ sebelum dikirim
+                    untuk proses pemeriksaan.
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 FORM CARD
+            ================================================== -->
+
+            <div class="form-card">
+
+
+                <!-- FORM HEADER -->
+
+                <div class="form-card-header">
+
+                    <h3>
+                        Form Pengajuan LPJ
+                    </h3>
+
+                    <p>
+                        Pastikan seluruh informasi dan dokumen
+                        yang diunggah telah sesuai.
+                    </p>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     FORM
+                ================================================== -->
+
+                <form
+                    id="formLPJ"
+                    enctype="multipart/form-data"
+                >
+
+
+                    <!-- =================================================
+                         A. IDENTITAS PENGAJUAN
+                    ================================================== -->
+
+                    <div class="form-section">
+
+
+                        <div class="form-section-title">
+
+                            <h4>
+                                A. Identitas Pengajuan
+                            </h4>
+
+                            <p>
+                                Informasi identitas pengajuan LPJ.
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+
+                            <!-- KEMENTERIAN -->
+
+                            <div class="form-group">
+
+                                <label for="namaKementerian">
+
+                                    Kementerian
+
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="namaKementerian"
+                                    name="namaKementerian"
+                                    value="Kementerian Hubungan Kerja Sama"
+                                    readonly
+                                >
+
+                                <small>
+                                    Data diambil otomatis dari akun
+                                    yang sedang login.
+                                </small>
+
+                            </div>
+
+
+
+                            <!-- TANGGAL PENGAJUAN -->
+
+                            <div class="form-group">
+
+                                <label for="tanggalPengajuan">
+
+                                    Tanggal Pengajuan
+
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="tanggalPengajuan"
+                                    name="tanggalPengajuan"
+                                    readonly
+                                >
+
+                                <small>
+                                    Tanggal pengajuan diisi otomatis
+                                    oleh sistem.
+                                </small>
+
+                            </div>
+
+
+
+                            <!-- PENANGGUNG JAWAB -->
+
+                            <div class="form-group">
+
+                                <label for="penanggungJawab">
+
+                                    Penanggung Jawab
+                                    <span>*</span>
+
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="penanggungJawab"
+                                    name="penanggungJawab"
+                                    placeholder="Masukkan nama sekretaris kementerian"
+                                    required
+                                >
+
+                                <small>
+                                    Diisi dengan nama sekretaris kementerian.
+                                </small>
+
+                            </div>
+
+
+
+                            <!-- KONTAK -->
+
+                            <div class="form-group">
+
+                                <label for="kontakPenanggungJawab">
+
+                                    Kontak Penanggung Jawab
+                                    <span>*</span>
+
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="kontakPenanggungJawab"
+                                    name="kontakPenanggungJawab"
+                                    placeholder="Contoh: 081234567890"
+                                    required
+                                >
+
+                                <small>
+                                    Diisi dengan nomor telepon sekretaris
+                                    kementerian yang dapat dihubungi.
+                                </small>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         B. INFORMASI LPJ
+                    ================================================== -->
+
+                    <div class="form-section">
+
+
+                        <div class="form-section-title">
+
+                            <h4>
+                                B. Informasi LPJ
+                            </h4>
+
+                            <p>
+                                Informasi mengenai kegiatan yang
+                                dipertanggungjawabkan.
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+
+                            <!-- JUDUL KEGIATAN -->
+
+                            <div class="form-group full-width">
+
+                                <label for="judulKegiatan">
+
+                                    Judul Kegiatan
+                                    <span>*</span>
+
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="judulKegiatan"
+                                    name="judulKegiatan"
+                                    placeholder="Masukkan judul kegiatan"
+                                    required
+                                >
+
+                            </div>
+
+
+
+                            <!-- TANGGAL PELAKSANAAN -->
+
+                            <div class="form-group">
+
+                                <label for="tanggalPelaksanaan">
+
+                                    Tanggal Pelaksanaan
+                                    <span>*</span>
+
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="tanggalPelaksanaan"
+                                    name="tanggalPelaksanaan"
+                                    required
+                                >
+
+                            </div>
+
+
+
+                            <!-- TEMPAT PELAKSANAAN -->
+
+                            <div class="form-group">
+
+                                <label for="tempatPelaksanaan">
+
+                                    Tempat Pelaksanaan
+                                    <span>*</span>
+
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="tempatPelaksanaan"
+                                    name="tempatPelaksanaan"
+                                    placeholder="Masukkan tempat pelaksanaan kegiatan"
+                                    required
+                                >
+
+                            </div>
+
+
+
+                            <!-- DESKRIPSI EVALUASI -->
+
+                            <div class="form-group full-width">
+
+                                <label for="deskripsiEvaluasi">
+
+                                    Deskripsi Evaluasi Kegiatan
+                                    <span>*</span>
+
+                                </label>
+
+                                <textarea
+                                    id="deskripsiEvaluasi"
+                                    name="deskripsiEvaluasi"
+                                    rows="6"
+                                    placeholder="Jelaskan pelaksanaan kegiatan, hasil yang dicapai, kendala yang dihadapi, serta evaluasi atau tindak lanjut kegiatan."
+                                    required
+                                ></textarea>
+
+                                <small>
+                                    Jelaskan hasil pelaksanaan kegiatan,
+                                    kendala, evaluasi, dan tindak lanjut
+                                    yang diperlukan.
+                                </small>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         C. REALISASI ANGGARAN
+                    ================================================== -->
+
+                    <div class="form-section">
+
+
+                        <div class="form-section-title">
+
+                            <h4>
+                                C. Realisasi Anggaran
+                            </h4>
+
+                            <p>
+                                Informasi mengenai realisasi dana
+                                kegiatan.
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+
+                            <!-- TOTAL DANA -->
+
+                            <div class="form-group">
+
+                                <label for="totalDana">
+
+                                    Total Dana
+                                    <span>*</span>
+
+                                </label>
+
+
+                                <div class="input-prefix">
+
+                                    <span>
+                                        Rp
+                                    </span>
+
+                                    <input
+                                        type="number"
+                                        id="totalDana"
+                                        name="totalDana"
+                                        min="0"
+                                        placeholder="0"
+                                        required
+                                    >
+
+                                </div>
+
+
+                            </div>
+
+
+
+                            <!-- SUMBER DANA -->
+
+                            <div class="form-group">
+
+                                <label for="sumberDana">
+
+                                    Sumber Dana
+                                    <span>*</span>
+
+                                </label>
+
+
+                                <select
+                                    id="sumberDana"
+                                    name="sumberDana"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Pilih sumber dana
+                                    </option>
+
+                                    <option value="Dana Fakultas">
+                                        Dana Fakultas
+                                    </option>
+
+                                    <option value="Dana Kas">
+                                        Dana Kas
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         D. DOKUMEN LPJ
+                    ================================================== -->
+
+                    <div class="form-section">
+
+
+                        <div class="form-section-title">
+
+                            <h4>
+                                D. Dokumen LPJ
+                            </h4>
+
+                            <p>
+                                Unggah dokumen LPJ yang diperlukan
+                                untuk proses pemeriksaan.
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+
+                            <!-- DOKUMEN LPJ -->
+
+                            <div class="form-group full-width">
+
+                                <label for="fileLPJ">
+
+                                    Dokumen LPJ
+                                    <span>*</span>
+
+                                </label>
+
+
+                                <div class="file-upload">
+
+                                    <input
+                                        type="file"
+                                        id="fileLPJ"
+                                        name="fileLPJ"
+                                        accept=".pdf,.doc,.docx"
+                                        required
+                                    >
+
+                                    <div class="file-upload-info">
+
+                                        <strong>
+                                            Pilih Dokumen LPJ
+                                        </strong>
+
+                                        <span>
+                                            Format PDF / Word (.pdf/.doc/.docx) · Wajib
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+
+                                <small>
+                                    Unggah dokumen Laporan
+                                    Pertanggungjawaban kegiatan.
+                                </small>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         E. CATATAN
+                    ================================================== -->
+
+                    <div class="form-section">
+
+
+                        <div class="form-section-title">
+
+                            <h4>
+                                E. Catatan
+                            </h4>
+
+                            <p>
+                                Tambahkan informasi lain yang diperlukan.
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="catatan">
+
+                                Catatan Tambahan
+
+                            </label>
+
+
+                            <textarea
+                                id="catatan"
+                                name="catatan"
+                                rows="4"
+                                placeholder="Masukkan catatan tambahan jika diperlukan."
+                            ></textarea>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         FORM ACTION
+                    ================================================== -->
+
+                    <div class="form-actions">
+
+
+                        <a
+                            href="../index.html"
+                            class="btn-secondary"
+                        >
+                            Batal
+                        </a>
+
+
+                        <button
+                            type="submit"
+                            class="btn-primary"
+                            id="btnSubmitLPJ"
+                        >
+                            Kirim Pengajuan
+                        </button>
+
+
+                    </div>
+
+
+                </form>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- JAVASCRIPT -->
+
+<script src="lpj.js"></script>
+
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>document.addEventListener("DOMContentLoaded",function(){if(window.lucide)lucide.createIcons();});</script>
+</body>
+
+</html>

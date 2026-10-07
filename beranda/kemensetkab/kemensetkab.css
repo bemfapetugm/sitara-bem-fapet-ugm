@@ -1279,3 +1279,26 @@ td {
     }
 
 }
+
+/* ===== SITARA GLOBAL LABELS / KEMENSETKAB ===== */
+.dashboard-grid { align-items: start; }
+.quick-card { align-self: start; height: fit-content; }
+.dashboard-table-wrapper { max-height: 330px; overflow: auto; }
+.dashboard-table-wrapper thead th { position: sticky; top: 0; z-index: 2; background: #fafafa; }
+.status-badge, .jenis-badge { display:inline-flex; align-items:center; justify-content:center; white-space:nowrap; border-radius:999px; font-size:11px; font-weight:700; line-height:1.25; }
+.status-badge { padding:7px 10px; background:#f3f4f6; color:#6b7280; }
+.status-diajukan { background:#eef2f6; color:#475569; }
+.status-menunggu-verifikasi { background:#eaf3ff; color:#2563eb; }
+.status-perlu-revisi { background:#fff4df; color:#b45309; }
+.status-menunggu-mensetkab, .status-menunggu-ketua { background:#f1eaff; color:#6d3fd1; }
+.status-diajukan-dpm, .status-diajukan-fakultas { background:#fff4df; color:#b45309; }
+.status-disetujui-dpm, .status-disetujui-fakultas { background:#eaf8ef; color:#15803d; }
+.status-menunggu-fakultas, .status-dalam-proses { background:#eaf3ff; color:#2563eb; }
+.status-selesai { background:#eaf8ef; color:#15803d; }
+.status-ditolak { background:#fdecec; color:#b91c1c; }
+.status-lainnya { background:#f3f4f6; color:#6b7280; }
+.jenis-badge { padding:6px 10px; }
+.jenis-proposal { background:#f1eaff; color:#6d3fd1; }
+.jenis-lpj { background:#eaf8ef; color:#15803d; }
+.jenis-lainnya { background:#f3f4f6; color:#6b7280; }
+@media (max-width: 1200px) { .dashboard-table-wrapper { max-height: 360px; } }

@@ -1,0 +1,15 @@
+<!doctype html><html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Detail Pengajuan | DPM</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="detail.css"></head><body><div class="kemen-container">
+<aside class="sidebar"><div class="sidebar-brand"><img src="../../../../assets/images/logo.png"><div class="brand-text"><h2>SITARA</h2><p>Panel DPM</p></div></div><nav class="sidebar-nav"><p class="nav-label">MENU UTAMA</p><a href="../../index.html" class="nav-item"><span class="nav-icon">▦</span><span>Dashboard</span></a><p class="nav-label">ADMINISTRASI</p><a href="../index.html" class="nav-item active"><span class="nav-icon">▧</span><span>Pengajuan Masuk</span></a><p class="nav-label">DOKUMEN</p><a href="../../riwayat/index.html" class="nav-item"><span class="nav-icon">≡</span><span>Riwayat</span></a></nav><div class="sidebar-footer"><div class="user-profile"><div class="profile-avatar" id="profileAvatar">DP</div><div class="profile-info"><h4 id="profileName">DPM</h4><p>DPM</p></div></div><button class="logout-button" id="logoutButton">⇥ Keluar</button></div></aside>
+<main class="main-content"><header class="topbar"><div class="topbar-title"><h2>Detail Pengajuan</h2><p>Review Proposal dan LPJ</p></div><div class="topbar-right"><div class="topbar-date" id="currentDate">Memuat tanggal...</div><div class="topbar-avatar" id="topbarAvatar">DP</div></div></header><section class="dashboard-content"><a href="../index.html" class="back-link">← Kembali ke Pengajuan</a><div id="detail"><div class="empty-state">Memuat detail...</div></div></section></main></div>
+<div class="modal-backdrop" id="modal" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-header"><div><h3 id="modalTitle">Konfirmasi</h3><p id="modalText"></p></div><button type="button" class="modal-close" id="closeBtn" aria-label="Tutup">×</button></div>
+    <div id="noteWrap"><label for="modalNote" id="noteLabel">Catatan</label><textarea id="modalNote" placeholder="Tulis catatan..." autocomplete="off"></textarea></div>
+    <div id="uploadWrap" class="upload-wrap" style="display:none">
+      <div class="upload-help">Unggah dokumen final dalam format Word (.doc/.docx). Semua dokumen yang tercantum wajib diunggah.</div>
+      <div id="uploadList" class="upload-list"></div>
+    </div>
+    <div class="modal-actions"><button type="button" class="btn-secondary" id="cancelBtn">Batal</button><button type="button" class="btn-primary" id="confirmBtn">Submit</button></div>
+  </div>
+</div>
+<script src="detail.js"></script></body></html>

@@ -80,7 +80,7 @@ function checkAdminSession() {
         );
 
         window.location.href =
-            "../../../login/index.html";
+            "/login/index.html";
 
         return null;
     }
@@ -92,7 +92,7 @@ function checkAdminSession() {
         );
 
         window.location.href =
-            "../../../login/index.html";
+            "/login/index.html";
 
         return null;
     }
@@ -1089,7 +1089,7 @@ function initializeAdminShell(user) {
         logoutButton.addEventListener("click", () => {
             if (!confirm("Apakah Anda yakin ingin keluar dari SITARA?")) return;
             sessionStorage.removeItem("sitaraUser");
-            window.location.href = "../../../login/index.html";
+            window.location.href = "/login/index.html";
         });
     }
 }

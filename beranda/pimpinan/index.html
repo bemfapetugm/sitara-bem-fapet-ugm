@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ketua BEM | SITARA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="pimpinan.css"></head><body>
+<div class="kemen-container">
+<aside class="sidebar"><div class="sidebar-brand"><img src="../../assets/images/logo.png" alt="Logo SITARA"><div class="brand-text"><h2>SITARA</h2><p>Panel Pimpinan</p></div></div>
+<nav class="sidebar-nav"><p class="nav-label">MENU UTAMA</p>
+<a href="index.html" class="nav-item active"><span class="nav-icon">▦</span><span>Dashboard</span></a>
+<p class="nav-label">ADMINISTRASI</p><a href="pengajuan/index.html" class="nav-item"><span class="nav-icon">▧</span><span>Pengajuan Masuk</span></a>
+<p class="nav-label">DOKUMEN</p><a href="riwayat/index.html" class="nav-item"><span class="nav-icon">≡</span><span>Riwayat</span></a></nav>
+<div class="sidebar-footer"><div class="user-profile"><div class="profile-avatar" id="profileAvatar">KB</div><div class="profile-info"><h4 id="profileName">Ketua BEM</h4><p id="profileRole">Pimpinan</p></div></div><button type="button" class="logout-button" id="logoutButton">⇥ Keluar</button></div></aside>
+<main class="main-content"><header class="topbar"><div class="topbar-title"><h2>Dashboard</h2><p>Persetujuan Proposal dan LPJ Kabinet Nala Sathya</p></div><div class="topbar-right"><div class="topbar-date" id="currentDate">Memuat tanggal...</div><div class="topbar-avatar" id="topbarAvatar">KB</div></div></header>
+<section class="dashboard-content"><section class="welcome-section"><div><p class="welcome-label">Selamat datang,</p><h1 id="welcomeTitle">Ketua BEM</h1><p>Periksa Proposal dan LPJ yang telah diteruskan untuk mendapatkan keputusan.</p></div><div class="welcome-icon">✓</div></section>
+<section class="stats-grid"><div class="stat-card"><div class="stat-icon">▧</div><div class="stat-info"><p>Menunggu Persetujuan</p><h2 id="statMenunggu">0</h2><span>Dokumen menunggu keputusan Ketua BEM.</span></div></div><div class="stat-card"><div class="stat-icon">◷</div><div class="stat-info"><p>Proses Revisi</p><h2 id="statRevisi">0</h2><span>Proses revisi dokumen oleh Mensetkab.</span></div></div><div class="stat-card"><div class="stat-icon">✓</div><div class="stat-info"><p>Sudah Diputuskan</p><h2 id="statDisetujui">0</h2><span>Dokumen yang disetujui oleh Ketua BEM.</span></div></div><div class="stat-card"><div class="stat-icon">×</div><div class="stat-info"><p>Ditolak</p><h2 id="statDitolak">0</h2><span>Dokumen yang ditolak oleh Ketua BEM.</span></div></div></section>
+<section class="content-card"><div class="card-header"><div><h3>Pengajuan Menunggu Persetujuan</h3><p>Proposal dan LPJ yang saat ini berada pada tahap Ketua BEM.</p></div><a href="pengajuan/index.html" class="btn-view-all">Lihat Semua →</a></div><div class="table-wrapper dashboard-table-wrapper"><table><thead><tr><th>Pengajuan</th><th>Jenis</th><th>Asal Kementerian</th><th>Tanggal</th><th>Status</th><th></th></tr></thead><tbody id="recentList"><tr><td colspan="6" class="empty-state">Memuat data...</td></tr></tbody></table></div></section>
+<section class="content-card"><div class="card-header"><div><h3>Aktivitas Terbaru</h3><p>Aktivitas yang berkaitan dengan keputusan Ketua BEM.</p></div></div><div id="activityList" class="activity-list"><div class="empty-state">Memuat aktivitas...</div></div></section>
+</section></main></div>
+<script src="pimpinan.js"></script></body></html>

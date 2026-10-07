@@ -121,7 +121,7 @@ function checkAdminSession() {
 
         alert("Sesi login tidak ditemukan. Silakan login kembali.");
 
-        window.location.href = "../../../../login/index.html";
+        window.location.href = "/login/index.html";
 
         return null;
     }
@@ -130,7 +130,7 @@ function checkAdminSession() {
 
         alert("Token sesi tidak ditemukan. Silakan login kembali.");
 
-        window.location.href = "../../../../login/index.html";
+        window.location.href = "/login/index.html";
 
         return null;
     }
@@ -766,7 +766,7 @@ if (btnLogout) {
             );
 
             window.location.href =
-                "../../../../login/index.html";
+                "/login/index.html";
 
         }
     );

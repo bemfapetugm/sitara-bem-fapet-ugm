@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Tinjau & Kirim | SITARA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../../kemenhubker.css" />
+    <link rel="stylesheet" href="review.css" />
+  <style>
+      .nav-icon {
+        width: 22px;
+        height: 22px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 22px;
+      }
+
+      .nav-icon svg {
+        width: 19px;
+        height: 19px;
+        stroke-width: 1.9;
+      }
+
+      .nav-item.active .nav-icon svg {
+        stroke: currentColor;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="kemen-container">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <img src="../../../../../assets/images/logo.png" alt="Logo SITARA" />
+          <div class="brand-text">
+            <h2>SITARA</h2>
+            <p>Panel Kementerian</p>
+          </div>
+        </div>
+        <nav class="sidebar-nav">
+  <p class="nav-label">MENU UTAMA</p>
+  <a href="../../../index.html" class="nav-item"><span class="nav-icon"><i data-lucide="house"></i></span><span>Dashboard</span></a>
+  <p class="nav-label">PENGAJUAN</p>
+  <a href="../../index.html" class="nav-item active"><span class="nav-icon"><i data-lucide="file-plus-2"></i></span><span>Tambah Pengajuan</span></a>
+  <a href="../../../tindak-lanjut/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="file-search"></i></span><span>Tindak Lanjut</span></a>
+  <a href="../../../riwayat-pengajuan/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="history"></i></span><span>Riwayat Pengajuan</span></a>
+  <p class="nav-label">DOKUMEN</p>
+  <a href="../../../template-dokumen/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="files"></i></span><span>Template Dokumen</span></a>
+  <a href="../../../arsip-dokumen-final/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="folder"></i></span><span>Arsip Dokumen Final</span></a>
+</nav>
+        <div class="sidebar-footer">
+          <div class="user-profile">
+            <div class="profile-avatar" id="profileAvatar">KH</div>
+            <div class="profile-info">
+              <h4 id="profileName">Kementerian Hubungan Kerja Sama</h4>
+              <p>Kementerian</p>
+            </div>
+          </div>
+          <button type="button" class="logout-button" id="logoutButton">
+            ⇥ Keluar
+          </button>
+        </div>
+      </aside>
+      <main class="main-content">
+        <header class="topbar">
+          <div class="topbar-title">
+            <h2>Tambah Pengajuan</h2>
+            <p>
+              Buat pengajuan administrasi baru Kementerian Hubungan Kerja Sama
+              melalui SITARA
+            </p>
+          </div>
+          <div class="topbar-right">
+            <div class="topbar-date" id="currentDate">Memuat tanggal...</div>
+            <div class="topbar-avatar" id="topbarAvatar">KH</div>
+          </div>
+        </header>
+        <section class="workflow-content">
+          <div class="workflow-breadcrumb">
+            <a href="../../../index.html">Beranda</a><span>›</span
+            ><a href="../../index.html">Tambah Pengajuan</a><span>›</span
+            ><a href="../index.html">Isi Informasi</a><span>›</span
+            ><a href="../upload/index.html">Unggah Dokumen</a><span>›</span
+            ><strong>Tinjau &amp; Kirim</strong>
+          </div>
+          <div class="submission-steps">
+            <div class="submission-step completed">
+              <div class="step-number">✓</div>
+              <div class="step-copy">
+                <strong>Pilih Dokumen</strong><span id="selectedDocumentsStep">Dokumen terpilih</span>
+              </div>
+            </div>
+            <div class="step-line completed"></div>
+            <div class="submission-step completed">
+              <div class="step-number">✓</div>
+              <div class="step-copy">
+                <strong>Isi Informasi</strong
+                ><span>Data pengajuan telah diisi</span>
+              </div>
+            </div>
+            <div class="step-line completed"></div>
+            <div class="submission-step completed">
+              <div class="step-number">✓</div>
+              <div class="step-copy">
+                <strong>Unggah Dokumen</strong><span>File telah diunggah</span>
+              </div>
+            </div>
+            <div class="step-line completed"></div>
+            <div class="submission-step active">
+              <div class="step-number">4</div>
+              <div class="step-copy">
+                <strong>Tinjau &amp; Kirim</strong
+                ><span>Periksa kembali dan ajukan</span>
+              </div>
+            </div>
+          </div>
+          <div class="review-layout">
+            <div class="review-main">
+              <section class="review-card review-head">
+                <div class="title-wrap">
+                  <div class="title-icon">◉</div>
+                  <div>
+                    <h1>Tinjau Pengajuan</h1>
+                    <p>
+                      Periksa kembali seluruh informasi dan dokumen sebelum
+                      mengirim pengajuan.
+                    </p>
+                  </div>
+                </div>
+                <div class="ready">
+                  <b>✓</b>
+                  <div>
+                    <strong>Data siap dikirim</strong
+                    ><span>Semua informasi dan dokumen telah dilengkapi.</span>
+                  </div>
+                </div>
+              </section>
+              <section class="review-card">
+                <div class="section-bar">
+                  <span>1</span><strong>Informasi Pengajuan</strong
+                  ><button id="editInfo">✎ &nbsp; Edit</button>
+                </div>
+                <div id="infoGrid" class="info-grid"></div>
+              </section>
+              <section class="review-card">
+                <div class="section-bar">
+                  <span>2</span><strong>Daftar Dokumen</strong
+                  ><button id="editDocs">✎ &nbsp; Edit</button>
+                </div>
+                <div class="table-wrap">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>No.</th>
+                        <th>Nama Dokumen</th>
+                        <th>Status</th>
+                        <th>Nama File</th>
+                        <th>Ukuran</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody id="docTable"></tbody>
+                  </table>
+                </div>
+              </section>
+            </div>
+            <aside class="review-side">
+              <section class="summary-card">
+                <div class="side-title">
+                  <span>▤</span>
+                  <h2>Ringkasan Pengajuan</h2>
+                </div>
+                <div id="summary"></div>
+              </section>
+              <section class="check-card">
+                <div class="side-title">
+                  <span>i</span>
+                  <h2>Sebelum Mengirim</h2>
+                </div>
+                <label
+                  ><input type="checkbox" class="confirm" />Saya telah
+                  memastikan semua informasi yang diisi sudah benar.</label
+                ><label
+                  ><input type="checkbox" class="confirm" />Semua dokumen wajib
+                  telah diunggah.</label
+                ><label
+                  ><input type="checkbox" class="confirm" />Dokumen yang
+                  diunggah sesuai dengan ketentuan format dan ukuran.</label
+                ><label
+                  ><input type="checkbox" class="confirm" />Saya siap mengirim
+                  pengajuan untuk diproses oleh Kementerian Sekretariat Kabinet.</label
+                >
+              </section>
+            </aside>
+          </div>
+          <div class="workflow-actions">
+            <a href="../upload/index.html" class="back-button"
+              >← &nbsp; Kembali ke Unggah Dokumen</a
+            >
+            <div class="right-actions">
+<button id="sendProposal" class="next-button" disabled>
+                ➤ &nbsp; Kirim Pengajuan
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="review.js?v=20261007-01"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+<script>document.addEventListener("DOMContentLoaded",function(){if(window.lucide)lucide.createIcons();});</script>
+</body>
+</html>

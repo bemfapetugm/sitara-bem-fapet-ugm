@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensetkab | SITARA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="mensetkab.css">
+</head>
+<body>
+<div class="kemen-container">
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <img src="../../../assets/images/logo.png" alt="Logo SITARA">
+            <div class="brand-text">
+                <h2>SITARA</h2>
+                <p>Panel Menteri</p>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <p class="nav-label">MENU UTAMA</p>
+            <a href="index.html" class="nav-item active">
+                <span class="nav-icon">▦</span><span>Dashboard</span>
+            </a>
+
+            <p class="nav-label">ADMINISTRASI</p>
+            <a href="pengajuan/index.html" class="nav-item">
+                <span class="nav-icon">▧</span><span>Pengajuan Masuk</span>
+            </a>
+
+            <p class="nav-label">DOKUMEN</p>
+            <a href="riwayat/index.html" class="nav-item">
+                <span class="nav-icon">≡</span><span>Riwayat</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="profile-avatar" id="profileAvatar">MS</div>
+                <div class="profile-info">
+                    <h4 id="profileName">Menteri Sekretariat Kabinet</h4>
+                    <p id="profileRole">Mensetkab</p>
+                </div>
+            </div>
+            <button type="button" class="logout-button" id="logoutButton">⇥ Keluar</button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div class="topbar-title">
+                <h2>Dashboard</h2>
+                <p>Persetujuan administrasi Kabinet Nala Sathya</p>
+            </div>
+            <div class="topbar-right"><div class="topbar-date" id="currentDate">Memuat tanggal...</div><div class="topbar-avatar" id="topbarAvatar">MS</div></div>
+        </header>
+
+        <section class="dashboard-content">
+            <section class="welcome-section">
+                <div>
+                    <p class="welcome-label">Selamat datang,</p>
+                    <h1 id="welcomeTitle">Menteri Sekretariat Kabinet</h1>
+                    <p>Periksa pengajuan yang telah diverifikasi Kementerian Sekretariat Kabinet dan berikan keputusan.</p>
+                </div>
+                <div class="welcome-icon">✓</div>
+            </section>
+
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">▧</div>
+                    <div class="stat-info">
+                        <p>Menunggu Persetujuan</p>
+                        <h2 id="statMenunggu">0</h2>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">◷</div>
+                    <div class="stat-info">
+                        <p>Sedang Diproses</p>
+                        <h2 id="statProses">0</h2>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">↻</div>
+                    <div class="stat-info">
+                        <p>Perlu Revisi</p>
+                        <h2 id="statRevisi">0</h2>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">✓</div>
+                    <div class="stat-info">
+                        <p>Selesai</p>
+                        <h2 id="statSelesai">0</h2>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-card dashboard-panel">
+                <div class="card-header">
+                    <div>
+                        <h3>Pengajuan Menunggu Persetujuan</h3>
+                        <p>Pengajuan yang sudah diverifikasi Kementerian Sekretariat Kabinet.</p>
+                    </div>
+                    <a href="pengajuan/index.html" class="btn-view-all">Lihat semua →</a>
+                </div>
+                <div class="table-wrapper dashboard-table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Pengajuan</th>
+                                <th>Asal Kementerian</th>
+                                <th>Jenis</th>
+                                <th>Status</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="latestBody">
+                            <tr><td colspan="5" class="empty-state">Memuat data...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="content-card activity-panel">
+                <div class="card-header">
+                    <div>
+                        <h3>Aktivitas Terbaru</h3>
+                        <p>Perubahan workflow terakhir yang berkaitan dengan Mensetkab.</p>
+                    </div>
+                </div>
+                <div id="activity" class="activity-list">
+                    <div class="empty-state">Memuat aktivitas...</div>
+                </div>
+            </section>
+        </section>
+    </main>
+</div>
+<script src="mensetkab.js"></script>
+</body>
+</html>

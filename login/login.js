@@ -322,6 +322,9 @@ const ROLE_ROUTES = {
     pimpinan:
         "../beranda/pimpinan/index.html",
 
+    dpm:
+        "../beranda/dpm/index.html",
+
     menko:
         "../beranda/menko/index.html",
 
@@ -332,7 +335,7 @@ const ROLE_ROUTES = {
         "../beranda/mensetkab/index.html",
 
     menkeu:
-        "../beranda/menkeu/index.html",
+        "../beranda/kemenkeu/index.html",
 
     tamu:
         "../beranda/tamu/index.html"
@@ -542,7 +545,7 @@ if (loginForm) {
 
 
                         KEM002:
-                            "../beranda/menkeu/index.html",
+                            "../beranda/kemenkeu/index.html",
 
 
                         KEM003:

@@ -1,652 +1,217 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-
-<head>
-
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>Kemenhubker | SITARA</title>
-
-    <!-- Google Font -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kementerian Hubungan Kerja Sama | SITARA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="kemenhubker.css" />
+    <style>
+      .nav-icon {
+        width: 22px;
+        height: 22px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 22px;
+      }
 
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
+      .nav-icon svg {
+        width: 19px;
+        height: 19px;
+        stroke-width: 1.9;
+      }
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet"
-    >
+      .nav-item.active .nav-icon svg {
+        stroke: currentColor;
+      }
+    </style>
 
-    <!-- CSS -->
-    <link
-        rel="stylesheet"
-        href="kemenhubker.css"
-    >
-
-</head>
-
-
-<body>
-
-<div class="kemen-container">
-
-
-    <!-- =========================================
-         SIDEBAR
-    ========================================== -->
-
-    <aside class="sidebar">
-
-
-        <!-- BRAND -->
-
+  </head>
+  <body>
+    <div class="kemen-container">
+      <aside class="sidebar">
         <div class="sidebar-brand">
-
-            <img
-                src="../../assets/images/logo.png"
-                alt="Logo SITARA"
-            >
-
-            <div class="brand-text">
-
-                <h2>SITARA</h2>
-
-                <p>Panel Kementerian</p>
-
-            </div>
-
+          <img src="../../assets/images/logo.png" alt="Logo SITARA" />
+          <div class="brand-text">
+            <h2>SITARA</h2>
+            <p>Panel Kementerian</p>
+          </div>
         </div>
-
-
-        <!-- NAVIGATION -->
-
         <nav class="sidebar-nav">
+  <p class="nav-label">MENU UTAMA</p>
 
+  <a href="index.html" class="nav-item active">
+    <span class="nav-icon"><i data-lucide="house"></i></span>
+    <span>Dashboard</span>
+  </a>
 
-            <!-- MENU UTAMA -->
+  <p class="nav-label">PENGAJUAN</p>
 
-            <p class="nav-label">
-                MENU UTAMA
-            </p>
+  <a href="tambah-pengajuan/index.html" class="nav-item">
+    <span class="nav-icon"><i data-lucide="file-plus-2"></i></span>
+    <span>Tambah Pengajuan</span>
+  </a>
 
+  <a href="tindak-lanjut/index.html" class="nav-item">
+    <span class="nav-icon"><i data-lucide="file-search"></i></span>
+    <span>Tindak Lanjut</span>
+  </a>
 
-            <a
-                href="index.html"
-                class="nav-item active"
-            >
+  <a href="riwayat-pengajuan/index.html" class="nav-item">
+    <span class="nav-icon"><i data-lucide="history"></i></span>
+    <span>Riwayat Pengajuan</span>
+  </a>
 
-                <span class="nav-icon">
-                    ▦
-                </span>
+  <p class="nav-label">DOKUMEN</p>
 
-                <span>
-                    Beranda
-                </span>
+  <a href="template-dokumen/index.html" class="nav-item">
+    <span class="nav-icon"><i data-lucide="files"></i></span>
+    <span>Template Dokumen</span>
+  </a>
 
-            </a>
-
-
-            <!-- ADMINISTRASI -->
-
-            <p class="nav-label">
-                ADMINISTRASI
-            </p>
-
-
-            <a
-                href="pengajuan/index.html"
-                class="nav-item"
-            >
-
-                <span class="nav-icon">
-                    ▧
-                </span>
-
-                <span>
-                    Pengajuan
-                </span>
-
-            </a>
-
-
-            <a
-                href="riwayat-pengajuan/index.html"
-                class="nav-item"
-            >
-
-                <span class="nav-icon">
-                    ≡
-                </span>
-
-                <span>
-                    Riwayat Pengajuan
-                </span>
-
-            </a>
-
-
-            <!-- DOKUMEN -->
-
-            <p class="nav-label">
-                DOKUMEN
-            </p>
-
-
-            <a
-                href="dokumen/index.html"
-                class="nav-item"
-            >
-
-                <span class="nav-icon">
-                    ▤
-                </span>
-
-                <span>
-                    Dokumen
-                </span>
-
-            </a>
-
-
-            <!-- PREFERENSI -->
-
-            <p class="nav-label">
-                PREFERENSI
-            </p>
-
-
-            <a
-                href="pengaturan/index.html"
-                class="nav-item"
-            >
-
-                <span class="nav-icon">
-                    ⚙
-                </span>
-
-                <span>
-                    Pengaturan
-                </span>
-
-            </a>
-
-
-        </nav>
-
-
-        <!-- SIDEBAR FOOTER -->
-
+  <a href="arsip-dokumen-final/index.html" class="nav-item">
+    <span class="nav-icon"><i data-lucide="folder"></i></span>
+    <span>Arsip Dokumen Final</span>
+  </a>
+</nav>
         <div class="sidebar-footer">
-
-
-            <div class="user-profile">
-
-                <div
-                    class="profile-avatar"
-                    id="profileAvatar"
-                >
-                    K
-                </div>
-
-
-                <div class="profile-info">
-
-                    <h4 id="profileName">
-                        Kemenhubker
-                    </h4>
-
-                    <p id="profileRole">
-                        Kementerian
-                    </p>
-
-                </div>
-
+          <div class="user-profile">
+            <div class="profile-avatar" id="profileAvatar">KB</div>
+            <div class="profile-info">
+              <h4 id="profileName">Kementerian Hubungan Kerja Sama</h4>
+              <p id="profileRole">Kementerian</p>
             </div>
-
-
-            <button
-                type="button"
-                class="logout-button"
-                id="logoutButton"
-            >
-
-                ⇥ Keluar
-
-            </button>
-
-
+          </div>
+          <button type="button" class="logout-button" id="logoutButton">
+            ⇥ Keluar
+          </button>
         </div>
-
-
-    </aside>
-
-
-
-    <!-- =========================================
-         MAIN CONTENT
-    ========================================== -->
-
-    <main class="main-content">
-
-
-        <!-- TOPBAR -->
-
+      </aside>
+      <main class="main-content">
         <header class="topbar">
-
-
-            <div class="topbar-title">
-
-                <h2>
-                    Beranda
-                </h2>
-
-                <p>
-                    Kementerian Hubungan Kerja Sama
-                </p>
-
-            </div>
-
-
-            <div class="topbar-right">
-
-                <div
-                    class="topbar-date"
-                    id="currentDate"
-                >
-                    Memuat tanggal...
-                </div>
-
-
-                <div
-                    class="topbar-avatar"
-                    id="topbarAvatar"
-                >
-                    K
-                </div>
-
-            </div>
-
-
+          <div class="topbar-title">
+            <h2>Dashboard</h2>
+            <p>Pusat pengelolaan dan pemantauan tata birokrasi</p>
+          </div>
+          <div class="topbar-right">
+            <div class="topbar-date" id="currentDate">Memuat tanggal...</div>
+            <div class="topbar-avatar" id="topbarAvatar">KB</div>
+          </div>
         </header>
-
-
-
-        <!-- =========================================
-             DASHBOARD CONTENT
-        ========================================== -->
-
         <section class="dashboard-content">
-
-
-            <!-- WELCOME -->
-
-            <div class="welcome-section">
-
-
-                <div>
-
-                    <p class="welcome-label">
-                        KEMENTERIAN HUBUNGAN KERJA SAMA
-                    </p>
-
-
-                    <h1 id="welcomeTitle">
-                        Selamat Datang
-                    </h1>
-
-
+          <section class="welcome-section">
+            <div>
+              <p class="welcome-label">SELAMAT DATANG,</p>
+              <h1 id="welcomeTitle">Ketua BEM</h1>
+              <p>
+                Mari wujudkan tata kelola administrasi yang lebih tertib,
+                transparan, dan terintegrasi melalui SITARA
+              </p>
+            </div>
+            <div class="welcome-icon">🏛️</div>
+          </section>
+          <section class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon">⏳</div>
+              <div class="stat-info">
+                <p>Menunggu Proses</p>
+                <h2 id="statMenunggu">0</h2>
+                <span>Pengajuan sedang diproses oleh Kemensetkab</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">📝</div>
+              <div class="stat-info">
+                <p>Perlu Revisi</p>
+                <h2 id="statRevisi">0</h2>
+                <span>Pengajuan dikembalikan untuk diperbaiki</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">✔️</div>
+              <div class="stat-info">
+                <p>Disetujui</p>
+                <h2 id="statDisetujui">0</h2>
+                <span>Pengajuan mendapatkan persetujuan akhir</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">❌</div>
+              <div class="stat-info">
+                <p>Ditolak</p>
+                <h2 id="statDitolak">0</h2>
+                <span>Pengajuan telah ditolak oleh pimpinan</span>
+              </div>
+            </div>
+          </section>
+          <section class="dashboard-two-column">
+            <section class="content-card dashboard-panel">
+              <div class="card-header">
+                <div class="card-title-with-icon">
+                  <div class="card-title-icon card-title-icon-document">📑</div>
+                  <div>
+                    <h3>Tindak Lanjut Pengajuan</h3>
                     <p>
-                        Kelola pengajuan, dokumen, dan
-                        administrasi Kementerian Hubungan
-                        Kerja Sama melalui SITARA.
+                      Daftar pengajuan yang perlu ditindaklanjuti atau telah mendapatkan keputusan
                     </p>
-
+                  </div>
                 </div>
+                <a href="tindak-lanjut/index.html" class="btn-view-all"
+                  >Lihat Semua →</a
+                >
+              </div>
+              <div class="table-wrapper dashboard-table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Pengajuan</th>
+                      <th>Jenis</th>
+                      <th>Tanggal</th>
+                      <th>Status</th>
+                      <th>Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody id="recentList">
+                    <tr>
+                      <td colspan="5" class="empty-state">Memuat data...</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
 
-
-            </div>
-
-
-
-            <!-- STATISTICS -->
-
-            <div class="stats-grid">
-
-
-                <!-- PENGAJUAN -->
-
-                <div class="stat-card">
-
-                    <div class="stat-icon">
-                        ▧
-                    </div>
-
-                    <div class="stat-info">
-
-                        <p>
-                            Total Pengajuan
-                        </p>
-
-                        <h2 id="totalPengajuan">
-                            0
-                        </h2>
-
-                        <span>
-                            Seluruh pengajuan
-                        </span>
-
-                    </div>
-
+            <section class="content-card activity-panel">
+              <div class="card-header">
+                <div class="card-title-with-icon">
+                  <div class="card-title-icon card-title-icon-activity">📈</div>
+                  <div>
+                    <h3>Riwayat Pengajuan</h3>
+                    <p>Pantau status dan riwayat tahapan pengajuan</p>
+                  </div>
                 </div>
-
-
-                <!-- PROSES -->
-
-                <div class="stat-card">
-
-                    <div class="stat-icon">
-                        ◷
-                    </div>
-
-                    <div class="stat-info">
-
-                        <p>
-                            Sedang Diproses
-                        </p>
-
-                        <h2 id="totalProses">
-                            0
-                        </h2>
-
-                        <span>
-                            Pengajuan aktif
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <!-- REVISI -->
-
-                <div class="stat-card">
-
-                    <div class="stat-icon">
-                        ↻
-                    </div>
-
-                    <div class="stat-info">
-
-                        <p>
-                            Perlu Revisi
-                        </p>
-
-                        <h2 id="totalRevisi">
-                            0
-                        </h2>
-
-                        <span>
-                            Menunggu perbaikan
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <!-- DOKUMEN -->
-
-                <div class="stat-card">
-
-                    <div class="stat-icon">
-                        ▤
-                    </div>
-
-                    <div class="stat-info">
-
-                        <p>
-                            Total Dokumen
-                        </p>
-
-                        <h2 id="totalDokumen">
-                            0
-                        </h2>
-
-                        <span>
-                            Dokumen tersimpan
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-            </div>
-
-
-
-            <!-- CONTENT GRID -->
-
-            <div class="dashboard-grid">
-
-
-                <!-- AKTIVITAS -->
-
-                <div class="content-card">
-
-
-                    <div class="card-header">
-
-                        <div>
-
-                            <h3>
-                                Aktivitas Terbaru
-                            </h3>
-
-                            <p>
-                                Aktivitas administrasi
-                                Kementerian Hubungan Kerja Sama.
-                            </p>
-
-                        </div>
-
-
-                        <a
-                            href="riwayat-pengajuan/index.html"
-                            class="btn-view-all"
-                        >
-                            Lihat Semua
-                        </a>
-
-                    </div>
-
-
-                    <div class="table-wrapper">
-
-                        <table>
-
-                            <thead>
-
-                                <tr>
-
-                                    <th>
-                                        No.
-                                    </th>
-
-                                    <th>
-                                        Aktivitas
-                                    </th>
-
-                                    <th>
-                                        Tanggal
-                                    </th>
-
-                                    <th>
-                                        Status
-                                    </th>
-
-                                </tr>
-
-                            </thead>
-
-
-                            <tbody id="activityTable">
-
-                                <tr>
-
-                                    <td
-                                        colspan="4"
-                                        class="empty-state"
-                                    >
-
-                                        Belum ada aktivitas.
-
-                                    </td>
-
-                                </tr>
-
-                            </tbody>
-
-                        </table>
-
-                    </div>
-
-
-                </div>
-
-
-
-                <!-- QUICK ACTION -->
-
-                <div class="content-card quick-card">
-
-
-                    <div class="card-header">
-
-                        <div>
-
-                            <h3>
-                                Akses Cepat
-                            </h3>
-
-                            <p>
-                                Menu administrasi yang sering digunakan.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="quick-actions">
-
-
-                        <a
-                            href="pengajuan/index.html"
-                            class="quick-action"
-                        >
-
-                            <div class="quick-icon">
-                                +
-                            </div>
-
-                            <div>
-
-                                <strong>
-                                    Buat Pengajuan
-                                </strong>
-
-                                <span>
-                                    Membuat pengajuan baru
-                                </span>
-
-                            </div>
-
-                        </a>
-
-
-                        <a
-                            href="riwayat-pengajuan/index.html"
-                            class="quick-action"
-                        >
-
-                            <div class="quick-icon">
-                                ≡
-                            </div>
-
-                            <div>
-
-                                <strong>
-                                    Riwayat Pengajuan
-                                </strong>
-
-                                <span>
-                                    Lihat status pengajuan
-                                </span>
-
-                            </div>
-
-                        </a>
-
-
-                        <a
-                            href="dokumen/index.html"
-                            class="quick-action"
-                        >
-
-                            <div class="quick-icon">
-                                ▤
-                            </div>
-
-                            <div>
-
-                                <strong>
-                                    Dokumen
-                                </strong>
-
-                                <span>
-                                    Kelola dokumen
-                                </span>
-
-                            </div>
-
-                        </a>
-
-
-                    </div>
-
-
-                </div>
-
-
-            </div>
-
-
+              </div>
+              <div id="activityList" class="activity-list">
+                <div class="empty-state">Memuat aktivitas...</div>
+              </div>
+            </section>
+          </section>
         </section>
-
-
-    </main>
-
-
-</div>
-
-
-<!-- JAVASCRIPT -->
-
-<script src="kemenhubker.js"></script>
-
-</body>
-
+      </main>
+    </div>
+    <script src="kemenhubker.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        if (window.lucide) {
+          lucide.createIcons();
+        }
+      });
+    </script>
+  </body>
 </html>

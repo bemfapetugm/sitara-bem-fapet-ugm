@@ -47,7 +47,27 @@
         href="pengajuan.css"
     >
 
-</head>
+<style>
+      .nav-icon {
+        width: 22px;
+        height: 22px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 22px;
+      }
+
+      .nav-icon svg {
+        width: 19px;
+        height: 19px;
+        stroke-width: 1.9;
+      }
+
+      .nav-item.active .nav-icon svg {
+        stroke: currentColor;
+      }
+    </style>
+  </head>
 
 
 <body>
@@ -86,117 +106,16 @@
         <!-- NAVIGATION -->
 
         <nav class="sidebar-nav">
-
-
-            <!-- MENU UTAMA -->
-
-            <p class="nav-label">
-                MENU UTAMA
-            </p>
-
-
-            <a
-                href="../index.html"
-                class="nav-item"
-            >
-
-                <span class="nav-icon">
-                    ▦
-                </span>
-
-                <span>
-                    Beranda
-                </span>
-
-            </a>
-
-
-            <!-- ADMINISTRASI -->
-
-            <p class="nav-label">
-                ADMINISTRASI
-            </p>
-
-
-            <a
-                href="index.html"
-                class="nav-item active"
-            >
-
-                <span class="nav-icon">
-                    ▧
-                </span>
-
-                <span>
-                    Pengajuan
-                </span>
-
-            </a>
-
-
-            <a
-                href="../riwayat-pengajuan/index.html"
-                class="nav-item"
-            >
-
-                <span class="nav-icon">
-                    ≡
-                </span>
-
-                <span>
-                    Riwayat Pengajuan
-                </span>
-
-            </a>
-
-
-            <!-- DOKUMEN -->
-
-            <p class="nav-label">
-                DOKUMEN
-            </p>
-
-
-            <a
-                href="../dokumen/index.html"
-                class="nav-item"
-            >
-
-                <span class="nav-icon">
-                    ▤
-                </span>
-
-                <span>
-                    Dokumen
-                </span>
-
-            </a>
-
-
-            <!-- PREFERENSI -->
-
-            <p class="nav-label">
-                PREFERENSI
-            </p>
-
-
-            <a
-                href="../pengaturan/index.html"
-                class="nav-item"
-            >
-
-                <span class="nav-icon">
-                    ⚙
-                </span>
-
-                <span>
-                    Pengaturan
-                </span>
-
-            </a>
-
-
-        </nav>
+  <p class="nav-label">MENU UTAMA</p>
+  <a href="../index.html" class="nav-item"><span class="nav-icon"><i data-lucide="house"></i></span><span>Dashboard</span></a>
+  <p class="nav-label">PENGAJUAN</p>
+  <a href="../tambah-pengajuan/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="file-plus-2"></i></span><span>Tambah Pengajuan</span></a>
+  <a href="../tindak-lanjut/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="file-search"></i></span><span>Tindak Lanjut</span></a>
+  <a href="../riwayat-pengajuan/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="history"></i></span><span>Riwayat Pengajuan</span></a>
+  <p class="nav-label">DOKUMEN</p>
+  <a href="../template-dokumen/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="files"></i></span><span>Template Dokumen</span></a>
+  <a href="../arsip-dokumen-final/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="folder"></i></span><span>Arsip Dokumen Final</span></a>
+</nav>
 
 
         <!-- SIDEBAR FOOTER -->
@@ -264,7 +183,7 @@
             <div class="topbar-title">
 
                 <h2>
-                    Pengajuan
+                    Pengajuan Masuk
                 </h2>
 
                 <p>
@@ -320,32 +239,14 @@
                     </p>
 
                     <h1>
-                        Pengajuan
+                        Pengajuan Masuk
                     </h1>
 
                     <p>
-                        Kelola dan ajukan dokumen administrasi
-                        Kementerian Hubungan Kerja Sama melalui SITARA.
+                        Pantau pengajuan yang telah diajukan oleh Kementerian Hubungan Kerja Sama melalui SITARA.
                     </p>
 
                 </div>
-
-
-                <button
-                    type="button"
-                    class="btn-primary"
-                    id="btnBuatPengajuan"
-                >
-
-                    <span class="btn-icon">
-                        +
-                    </span>
-
-                    Buat Pengajuan
-
-                </button>
-
-
             </div>
 
 
@@ -468,11 +369,11 @@
                     <div>
 
                         <h3>
-                            Daftar Pengajuan
+                            Daftar Pengajuan Masuk
                         </h3>
 
                         <p>
-                            Seluruh pengajuan yang dibuat oleh kementerian.
+                            Seluruh pengajuan yang telah diajukan oleh kementerian.
                         </p>
 
                     </div>
@@ -553,6 +454,22 @@
 
                             <option value="revisi">
                                 Perlu Revisi
+                            </option>
+
+                            <option value="menunggu_verifikasi">
+                                Menunggu Verifikasi
+                            </option>
+
+                            <option value="menunggu_persetujuan_mensetkab">
+                                Menunggu Persetujuan Mensetkab
+                            </option>
+
+                            <option value="menunggu_persetujuan_ketua">
+                                Menunggu Persetujuan Ketua
+                            </option>
+
+                            <option value="menunggu_eksternal">
+                                Menunggu Pihak Eksternal
                             </option>
 
                             <option value="selesai">
@@ -636,7 +553,7 @@
                                     </strong>
 
                                     <span>
-                                        Pengajuan yang dibuat akan muncul di sini.
+                                        Pengajuan yang telah diajukan akan muncul di sini.
                                     </span>
 
                                 </td>
@@ -666,158 +583,6 @@
 
 
 
-<!-- =========================================
-     MODAL PILIH JENIS PENGAJUAN
-========================================== -->
-
-<div
-    class="modal-overlay"
-    id="pengajuanModal"
->
-
-
-    <div class="pengajuan-modal">
-
-
-        <!-- MODAL HEADER -->
-
-        <div class="modal-header">
-
-
-            <div>
-
-                <p class="modal-label">
-                    PENGAJUAN BARU
-                </p>
-
-                <h2>
-                    Pilih Jenis Pengajuan
-                </h2>
-
-                <p>
-                    Pilih jenis dokumen yang ingin diajukan.
-                </p>
-
-            </div>
-
-
-            <button
-                type="button"
-                class="modal-close"
-                id="closePengajuanModal"
-                aria-label="Tutup"
-            >
-
-                ×
-
-            </button>
-
-
-        </div>
-
-
-
-        <!-- MODAL OPTIONS -->
-
-        <div class="pengajuan-options">
-
-
-            <!-- PROPOSAL -->
-
-            <button
-                type="button"
-                class="pengajuan-option"
-                data-type="proposal"
-            >
-
-                <div class="option-icon">
-                    ▧
-                </div>
-
-
-                <div class="option-content">
-
-                    <h3>
-                        Proposal Kegiatan
-                    </h3>
-
-                    <p>
-                        Ajukan proposal kegiatan untuk
-                        proses administrasi dan pendanaan.
-                    </p>
-
-                </div>
-
-
-                <span class="option-arrow">
-                    →
-                </span>
-
-            </button>
-
-
-
-            <!-- LPJ -->
-
-            <button
-                type="button"
-                class="pengajuan-option"
-                data-type="lpj"
-            >
-
-                <div class="option-icon">
-                    ▤
-                </div>
-
-
-                <div class="option-content">
-
-                    <h3>
-                        Laporan Pertanggungjawaban
-                    </h3>
-
-                    <p>
-                        Ajukan LPJ atas kegiatan dan
-                        penggunaan dana.
-                    </p>
-
-                </div>
-
-
-                <span class="option-arrow">
-                    →
-                </span>
-
-            </button>
-
-
-        </div>
-
-
-
-        <!-- MODAL FOOTER -->
-
-        <div class="modal-footer">
-
-            <button
-                type="button"
-                class="btn-secondary"
-                id="cancelPengajuanModal"
-            >
-
-                Batal
-
-            </button>
-
-        </div>
-
-
-    </div>
-
-
-</div>
-
-
 
 <!-- =========================================
      JAVASCRIPT
@@ -828,6 +593,8 @@
 ></script>
 
 
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>document.addEventListener("DOMContentLoaded",function(){if(window.lucide)lucide.createIcons();});</script>
 </body>
 
 </html>

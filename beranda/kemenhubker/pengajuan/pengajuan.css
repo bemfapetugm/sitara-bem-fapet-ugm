@@ -334,208 +334,6 @@
 }
 
 /* =========================================================
-   MODAL OVERLAY
-========================================================= */
-
-.modal-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    background: rgba(17, 24, 39, .45);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity .2s ease, visibility .2s ease;
-    backdrop-filter: blur(2px);
-}
-
-.modal-overlay.show {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* =========================================================
-   MODAL
-========================================================= */
-
-.pengajuan-modal {
-    width: 100%;
-    max-width: 590px;
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    box-shadow: 0 25px 70px rgba(16, 24, 40, .18);
-    transform: translateY(10px) scale(.98);
-    transition: transform .2s ease;
-}
-
-.modal-overlay.show .pengajuan-modal {
-    transform: translateY(0) scale(1);
-}
-
-.modal-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    padding: 25px 26px 19px;
-}
-
-.modal-label {
-    margin: 0 0 7px;
-    color: var(--primary);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1.2px;
-}
-
-.modal-header h2 {
-    margin: 0 0 7px;
-    color: var(--text-primary);
-    font-size: 20px;
-    font-weight: 700;
-}
-
-.modal-header > div > p:last-child {
-    margin: 0;
-    color: var(--text-secondary);
-    font-size: 12px;
-    line-height: 1.5;
-}
-
-.modal-close {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 34px;
-    height: 34px;
-    border-radius: 8px;
-    background: #F5F6F7;
-    color: #707785;
-    font-size: 22px;
-    line-height: 1;
-    cursor: pointer;
-    transition: background .2s ease, color .2s ease;
-}
-
-.modal-close:hover {
-    background: var(--primary-light);
-    color: var(--primary);
-}
-
-/* =========================================================
-   OPTIONS
-========================================================= */
-
-.pengajuan-options {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding: 5px 26px 23px;
-}
-
-.pengajuan-option {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    width: 100%;
-    padding: 16px;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    background: var(--white);
-    text-align: left;
-    cursor: pointer;
-    transition: border-color .2s ease, background .2s ease, transform .2s ease, box-shadow .2s ease;
-}
-
-.pengajuan-option:hover {
-    border-color: #C98A84;
-    background: #FFFAF9;
-    transform: translateY(-1px);
-    box-shadow: 0 6px 18px rgba(127, 45, 37, .07);
-}
-
-.option-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 0 0 46px;
-    width: 46px;
-    height: 46px;
-    border-radius: 10px;
-    background: var(--primary-light);
-    color: var(--primary);
-    font-size: 20px;
-    font-weight: 700;
-}
-
-.option-content {
-    flex: 1;
-    min-width: 0;
-}
-
-.option-content h3 {
-    margin: 0 0 5px;
-    color: var(--text-primary);
-    font-size: 13px;
-    font-weight: 700;
-}
-
-.option-content p {
-    margin: 0;
-    color: var(--text-secondary);
-    font-size: 11px;
-    line-height: 1.55;
-}
-
-.option-arrow {
-    flex: 0 0 auto;
-    color: var(--primary);
-    font-size: 19px;
-    font-weight: 600;
-    transition: transform .2s ease;
-}
-
-.pengajuan-option:hover .option-arrow {
-    transform: translateX(3px);
-}
-
-/* =========================================================
-   MODAL FOOTER
-========================================================= */
-
-.modal-footer {
-    display: flex;
-    justify-content: flex-end;
-    padding: 16px 26px 22px;
-    border-top: 1px solid var(--border);
-}
-
-.btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 40px;
-    padding: 0 17px;
-    border: 1px solid #D6D9DE;
-    border-radius: 8px;
-    background: var(--white);
-    color: #555C66;
-    font-size: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background .2s ease, border-color .2s ease, color .2s ease;
-}
-
-.btn-secondary:hover {
-    border-color: #C3C7CD;
-    background: #F8F9FA;
-    color: var(--text-primary);
-}
-
-/* =========================================================
    TABLE LABELS / STATUS / ACTION
 ========================================================= */
 
@@ -560,24 +358,48 @@
     color: #3F7561;
 }
 
-.status-diajukan {
-    background: #F1F3F5;
-    color: #69717D;
+.status-diajukan,
+.status-menunggu_verifikasi,
+.status-perlu_verifikasi {
+    background: #eef2f7;
+    color: #475569;
 }
 
-.status-diproses {
-    background: var(--warning-bg);
-    color: var(--warning);
+.status-diproses,
+.status-dalam_proses,
+.status-menunggu_persetujuan_mensetkab,
+.status-menunggu_persetujuan_ketua {
+    background: #eeeafe;
+    color: #5b3fa3;
 }
 
 .status-revisi {
-    background: var(--danger-bg);
-    color: var(--danger);
+    background: #fff3df;
+    color: #b56a00;
 }
 
+.status-diajukan_ke_dpm,
+.status-diajukan_ke_fakultas,
+.status-menunggu_eksternal,
+.status-menunggu_hasil_eksternal {
+    background: #fff4cc;
+    color: #8a6500;
+}
+
+.status-disetujui_dpm,
+.status-disetujui_fakultas,
 .status-selesai {
-    background: var(--success-bg);
-    color: var(--success);
+    background: #e8f6ed;
+    color: #287a48;
+}
+
+.status-ditolak {
+    background: #fdeaea;
+    color: #b42318;
+}
+
+.status-badge {
+    border: 1px solid transparent;
 }
 
 .table-action {
@@ -1478,3 +1300,490 @@ a:focus-visible {
     }
 
 }
+
+/* =========================================================
+   AKSI REVISI
+========================================================= */
+
+.detail-revision-action {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-top: 22px;
+    padding: 20px;
+    border: 1px solid #E8C9C5;
+    border-radius: 12px;
+    background: #FFFAF9;
+}
+
+.detail-revision-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: var(--primary-light);
+    color: var(--primary);
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.detail-revision-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.detail-revision-label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--primary);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.detail-revision-content h3 {
+    margin: 0 0 6px;
+    color: var(--text-primary);
+    font-size: 15px;
+}
+
+.detail-revision-content p {
+    margin: 0 0 14px;
+    color: var(--text-secondary);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.btn-revision-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0 16px;
+    border: 1px solid var(--primary);
+    border-radius: 8px;
+    background: var(--primary);
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .2s ease, border-color .2s ease, opacity .2s ease;
+}
+
+.btn-revision-primary:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+.btn-revision-primary:disabled {
+    opacity: .65;
+    cursor: wait;
+}
+
+/* =========================================================
+   MODAL UNGGAH REVISI
+========================================================= */
+
+.resubmit-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(17, 24, 39, .48);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .2s ease, visibility .2s ease;
+    backdrop-filter: blur(2px);
+}
+
+.resubmit-modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.resubmit-modal {
+    width: 100%;
+    max-width: 620px;
+    max-height: 90vh;
+    overflow: auto;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: 0 25px 70px rgba(16, 24, 40, .2);
+    transform: translateY(10px) scale(.98);
+    transition: transform .2s ease;
+}
+
+.resubmit-modal-overlay.show .resubmit-modal {
+    transform: translateY(0) scale(1);
+}
+
+.resubmit-modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 25px 26px 18px;
+    border-bottom: 1px solid var(--border);
+}
+
+.resubmit-modal-kicker {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--primary);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+}
+
+.resubmit-modal-header h2 {
+    margin: 0 0 5px;
+    color: var(--text-primary);
+    font-size: 20px;
+}
+
+.resubmit-modal-header p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+
+.resubmit-modal-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 34px;
+    width: 34px;
+    height: 34px;
+    border: 0;
+    border-radius: 8px;
+    background: #F5F6F7;
+    color: #707785;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.resubmit-modal-close:hover {
+    background: var(--primary-light);
+    color: var(--primary);
+}
+
+.resubmit-modal-body {
+    padding: 22px 26px;
+}
+
+.resubmit-info-box {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 18px;
+    padding: 14px 16px;
+    border: 1px solid #E8C9C5;
+    border-radius: 9px;
+    background: #FFFAF9;
+}
+
+.resubmit-info-box strong {
+    color: var(--text-primary);
+    font-size: 12px;
+}
+
+.resubmit-info-box span {
+    color: var(--text-secondary);
+    font-size: 11px;
+    line-height: 1.55;
+}
+
+.resubmit-document-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.resubmit-file-group {
+    padding: 15px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #FAFAFA;
+}
+
+.resubmit-file-group label {
+    display: block;
+    margin-bottom: 9px;
+    color: var(--text-primary);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.resubmit-file-group input[type="file"] {
+    display: block;
+    width: 100%;
+    padding: 9px;
+    border: 1px solid #D6D9DE;
+    border-radius: 8px;
+    background: var(--white);
+    color: var(--text-secondary);
+    font-size: 11px;
+    box-sizing: border-box;
+}
+
+.resubmit-file-group small {
+    display: block;
+    margin-top: 7px;
+    color: #999999;
+    font-size: 10px;
+}
+
+.resubmit-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 17px 26px;
+    border-top: 1px solid var(--border);
+    background: #FAFAFA;
+}
+
+@media (max-width: 700px) {
+
+    .detail-revision-action {
+        flex-direction: column;
+    }
+
+    .resubmit-modal-overlay {
+        padding: 12px;
+    }
+
+    .resubmit-modal-header,
+    .resubmit-modal-body,
+    .resubmit-modal-footer {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .resubmit-modal-footer {
+        flex-direction: column-reverse;
+    }
+
+    .resubmit-modal-footer button {
+        width: 100%;
+    }
+
+}
+
+
+/* DOCUMENT VERSIONING */
+.detail-document-version {
+    display: block;
+    margin-left: 51px;
+    margin-top: -4px;
+    font-size: 10px;
+    color: #92342c;
+    font-weight: 600;
+}
+.detail-document-history {
+    margin-left: 51px;
+    margin-top: -2px;
+    font-size: 11px;
+}
+.detail-document-history summary {
+    cursor: pointer;
+    color: #756c68;
+    font-weight: 600;
+    list-style: none;
+}
+.detail-document-history summary::-webkit-details-marker { display: none; }
+.detail-document-history summary::before { content: "⌄ "; }
+.detail-document-history-list {
+    margin-top: 8px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: #faf7f6;
+}
+.detail-document-history-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 7px 0;
+    border-bottom: 1px solid #eee8e6;
+}
+.detail-document-history-item:last-child { border-bottom: 0; }
+.detail-document-history-item strong,
+.detail-document-history-item span { display: block; }
+.detail-document-history-item strong { color: #4b423f; font-size: 11px; }
+.detail-document-history-item span { color: #8b817d; margin-top: 2px; }
+.detail-document-history-item a { color: #92342c; font-weight: 600; text-decoration: none; }
+
+
+.detail-long-item, .detail-long-item p, .detail-history-note { text-align:left; }
+.detail-document-button { text-decoration:none; }
+.detail-document-history-download { font-weight:700; color:#8f3027; text-decoration:none; }
+
+/* FINAL FIX: long text must always read as normal left-aligned text */
+.detail-long-item,
+.detail-long-item span,
+.detail-long-item p,
+.detail-history-note {
+    text-align: left !important;
+}
+.detail-long-item p,
+.detail-history-note {
+    display: block;
+    width: 100%;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   FINAL v6 — LONG TEXT ALIGNMENT
+   Deskripsi/Evaluasi dan Catatan use justified text while
+   keeping the final line aligned to the left.
+========================================================= */
+.detail-long-item p,
+.detail-history-note {
+    text-align: justify !important;
+    text-align-last: left !important;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    line-height: 1.75;
+}
+
+/* =========================================================
+   SITARA — KEMENHUBKER
+   FIX: MODAL UNGGAH DOKUMEN REVISI RESPONSIVE + SCROLL
+   Tempelkan di bagian paling bawah pengajuan.css / detail.css
+========================================================= */
+
+/* Overlay tetap memenuhi viewport, tetapi tidak ikut scroll halaman */
+.detail-modal-overlay,
+.revisi-modal-overlay,
+.revision-modal-overlay,
+.modal-overlay {
+    box-sizing: border-box;
+}
+
+/* Modal utama dibatasi oleh tinggi viewport */
+.detail-modal,
+.revisi-modal,
+.revision-modal,
+.pengajuan-modal {
+    max-height: calc(100vh - 32px);
+    max-height: calc(100dvh - 32px);
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+/* Area isi menjadi satu-satunya area yang melakukan scroll */
+.detail-modal-body,
+.revisi-modal-body,
+.revision-modal-body,
+.modal-body,
+.detail-modal-content,
+.revisi-modal-content,
+.revision-modal-content {
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex: 1 1 auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+}
+
+/* Footer/header tidak ikut terseret saat isi panjang */
+.detail-modal-header,
+.detail-modal-footer,
+.revisi-modal-header,
+.revisi-modal-footer,
+.revision-modal-header,
+.revision-modal-footer {
+    flex: 0 0 auto;
+}
+
+/* Form upload tidak boleh melebar keluar modal */
+.detail-modal input[type="file"],
+.revisi-modal input[type="file"],
+.revision-modal input[type="file"],
+.modal-body input[type="file"] {
+    max-width: 100%;
+}
+
+/* Laptop kecil / browser dengan viewport pendek */
+@media (max-height: 720px) {
+    .detail-modal,
+    .revisi-modal,
+    .revision-modal,
+    .pengajuan-modal {
+        max-height: calc(100dvh - 20px);
+    }
+}
+
+/* HP / layar sempit */
+@media (max-width: 700px) {
+    .detail-modal,
+    .revisi-modal,
+    .revision-modal,
+    .pengajuan-modal {
+        width: min(94vw, 680px);
+        max-height: calc(100dvh - 16px);
+    }
+}
+
+/* =========================================================
+   FINAL FIX — MODAL UNGGAH DOKUMEN REVISI
+   Modal menggunakan .detail-modal, sedangkan area isi
+   menggunakan .resubmit-modal-body. Area isi harus menjadi
+   satu-satunya bagian yang dapat di-scroll.
+========================================================= */
+
+.detail-modal > .resubmit-modal-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+}
+
+.detail-modal > .resubmit-modal-header,
+.detail-modal > .resubmit-modal-footer {
+    flex: 0 0 auto;
+}
+
+.detail-modal > .resubmit-modal-body .resubmit-document-list {
+    width: 100%;
+}
+
+.detail-modal > .resubmit-modal-body .resubmit-file-group {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* Pastikan modal tetap berada di dalam viewport pada laptop kecil. */
+@media (max-height: 720px) {
+    .detail-modal {
+        max-height: calc(100dvh - 20px);
+    }
+
+    .detail-modal > .resubmit-modal-body {
+        min-height: 0;
+    }
+}
+
+/* Layar sempit */
+@media (max-width: 700px) {
+    .detail-modal > .resubmit-modal-body {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+}
+

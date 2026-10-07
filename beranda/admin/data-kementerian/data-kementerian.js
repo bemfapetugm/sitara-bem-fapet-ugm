@@ -16,7 +16,7 @@ function checkAdminSession() {
     const sessionData = sessionStorage.getItem("sitaraUser");
 
     if (!sessionData) {
-        window.location.href = "../../../login/index.html";
+        window.location.href = "/login/index.html";
         return null;
     }
 
@@ -26,14 +26,14 @@ function checkAdminSession() {
 
         if (!user.session_token) {
             sessionStorage.removeItem("sitaraUser");
-            window.location.href = "../../../login/index.html";
+            window.location.href = "/login/index.html";
             return null;
         }
 
         const role = String(user.role || "").trim().toLowerCase();
 
         if (role !== "admin") {
-            window.location.href = "../../../login/index.html";
+            window.location.href = "/login/index.html";
             return null;
         }
 
@@ -44,7 +44,7 @@ function checkAdminSession() {
         console.error("Session error:", error);
 
         sessionStorage.removeItem("sitaraUser");
-        window.location.href = "../../../login/index.html";
+        window.location.href = "/login/index.html";
 
         return null;
     }
@@ -1595,6 +1595,6 @@ function logout() {
     sessionStorage.removeItem("sitaraUser");
 
     window.location.href =
-        "../../../login/index.html";
+        "/login/index.html";
 
 }

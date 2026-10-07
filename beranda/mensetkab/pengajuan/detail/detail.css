@@ -1,0 +1,26 @@
+/* Patch khusus fitur penomoran surat Mensetkab */
+.letter-number{margin-top:9px;padding:10px 11px;background:#faf7f6;border:1px solid #eadbd8;border-radius:9px;display:grid;grid-template-columns:1fr auto;gap:4px 10px;align-items:center}.letter-number span{grid-column:1/-1;font-size:9px;color:#8d949d;font-weight:600}.letter-number strong{font-size:11px;color:var(--primary);word-break:break-word}.copy-number,.number-button{border:0;border-radius:7px;padding:7px 10px;background:var(--primary);color:#fff;font:inherit;font-size:10px;font-weight:700;cursor:pointer}.number-action{display:flex;align-items:center;gap:9px;margin-top:10px;flex-wrap:wrap}.number-action span{font-size:9px;color:#8d949d}.final-status{margin-top:8px;font-size:9px;color:#986018;background:#fff7e8;border-radius:7px;padding:7px 9px}.final-status.done{color:#2f7d4b;background:#edf8f1}.final-file{font-size:9px;color:#68707a;margin-top:6px}.final-upload{margin-top:9px}.final-upload input{display:none}.final-upload label{display:inline-block;border:1px solid #eadbd8;border-radius:7px;padding:7px 10px;background:#fff9f8;color:var(--primary);font-size:10px;font-weight:700;cursor:pointer}.approval-warning{margin:0 0 12px;padding:9px 11px;border-radius:8px;background:#fff7e8;color:#986018;font-size:10px}.approval-ready{margin:0 0 12px;padding:9px 11px;border-radius:8px;background:#edf8f1;color:#2f7d4b;font-size:10px}.actions .approve:disabled{opacity:.45;cursor:not-allowed}.document-item{grid-template-columns:minmax(0,1fr) auto}.document-info{min-width:0}.download-button{align-self:start}
+/* PATCH: modul penomoran Mensetkab */
+.number-modal-box{position:relative;max-width:620px}.number-modal-close{position:absolute;right:18px;top:14px;border:0;background:transparent;font-size:28px;cursor:pointer}.number-modal-field{margin-top:18px}.number-modal-field label,.upload-title{display:block;font-weight:700;margin-bottom:8px}.number-display{padding:16px;border:1px solid #ead6d2;border-radius:10px;background:#fff8f6;font-weight:800;word-break:break-word}.number-modal-message{margin-top:14px;padding:10px;border-radius:8px;background:#fff7ed;color:#7c2d12}.final-upload-area{margin-top:20px;padding-top:18px;border-top:1px solid #eee}.final-upload-area p{font-size:13px;color:#6b7280}.final-upload-area input{display:block;margin:10px 0}.number-button,.copy-number,.upload-inline{cursor:pointer}.number-button:disabled,.copy-number:disabled,.upload-inline:disabled{opacity:.6;cursor:not-allowed}
+
+
+/* UI PATCH: tombol Salin Nomor dan pemilih file final */
+.sitara-red-button{display:inline-flex!important;align-items:center;justify-content:center;min-height:38px;padding:9px 16px!important;border:0!important;border-radius:8px!important;background:#8f3028!important;color:#fff!important;font-family:Inter,Arial,sans-serif!important;font-size:12px!important;font-weight:700!important;line-height:1.2!important;cursor:pointer!important;box-shadow:none!important;text-decoration:none!important}
+.sitara-red-button:hover{background:#7d2922!important}
+.sitara-red-button:disabled{background:#d9b9b5!important;color:#fff!important;cursor:not-allowed!important;opacity:1!important}
+.number-modal-actions{display:flex;align-items:center;margin-top:12px}
+.file-picker{width:100%;margin-top:12px}
+.file-picker input[type=file]{position:absolute!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important}
+.file-picker-box{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto auto;align-items:center;gap:3px 12px;width:100%;box-sizing:border-box;padding:12px 13px;border:1px solid #e4d4d1;border-radius:10px;background:#fff;cursor:pointer;transition:.15s ease}
+.file-picker-box:hover{border-color:#8f3028;background:#fffaf9}
+.file-picker-title{grid-column:1;font-size:11px;font-weight:700;color:#252525}
+.file-picker-name{grid-column:1;font-size:10px;color:#8a8f96;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.file-picker-name.has-file{color:#343434;font-weight:600}
+.file-picker-action{grid-column:2;grid-row:1 / span 2;align-self:center;padding:8px 12px;border-radius:7px;background:#f5e9e7;color:#8f3028;font-size:10px;font-weight:700;white-space:nowrap}
+.upload-word-button{margin-top:10px}
+@media (max-width:600px){.file-picker-box{grid-template-columns:1fr}.file-picker-action{grid-column:1;grid-row:auto;justify-self:start;margin-top:4px}}
+
+/* PATCH BUGFIX: akses kembali modul upload setelah nomor sudah dibuat + copy feedback */
+.upload-inline{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:8px;padding:9px 14px;background:var(--primary);color:#fff;font:inherit;font-size:10px;font-weight:700;cursor:pointer;text-decoration:none}
+.upload-inline:hover{filter:brightness(.94)}
+.copy-number.copied{background:#2f7d4b!important}
