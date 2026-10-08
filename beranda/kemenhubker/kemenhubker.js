@@ -135,7 +135,140 @@ function filterDashboardPengajuan(items) {
     .sort((a, b) => new Date(b.tanggal || 0).getTime() - new Date(a.tanggal || 0).getTime());
 }
 
-function renderItems(items) {
+/*
+ * Mengambil waktu keputusan/status TERKINI dari data Riwayat Pengajuan.
+ * Prioritas:
+ * 1. aktivitas riwayat yang cocok dengan nomor pengajuan + status
+ * 2. field timestamp keputusan yang mungkin dikirim backend
+ * 3. updated_at sebagai fallback
+ *
+ * Dengan begitu kolom Tanggal bukan lagi tanggal pengajuan awal.
+ */
+function getDecisionTimestamp(item, activities = []) {
+  const id = normalizeText(
+    item?.nomor_pengajuan ||
+      item?.pengajuan_id ||
+      item?.id_pengajuan ||
+      item?.id ||
+      ""
+  );
+
+  const status = normalizeText(item?.status_label || item?.status || "");
+
+  const matchesStatus = (activity) => {
+    const text = normalizeText(
+      activity?.aktivitas ||
+        activity?.aksi ||
+        activity?.status_label ||
+        activity?.status ||
+        ""
+    );
+
+    if (status.includes("revisi")) {
+      return text.includes("revisi");
+    }
+
+    if (
+      status.includes("tolak")
+    ) {
+      return text.includes("tolak");
+    }
+
+    if (
+      status.includes("selesai") ||
+      status.includes("disetujui") ||
+      status.includes("diterima")
+    ) {
+      return (
+        text.includes("setujui") ||
+        text.includes("disetujui") ||
+        text.includes("diterima") ||
+        text.includes("selesai")
+      );
+    }
+
+    return false;
+  };
+
+  const candidates = Array.isArray(activities)
+    ? activities.filter((activity) => {
+        const activityId = normalizeText(
+          activity?.pengajuan_id ||
+            activity?.nomor_pengajuan ||
+            activity?.id_pengajuan ||
+            activity?.id ||
+            ""
+        );
+
+        if (!id || !activityId || id !== activityId) return false;
+        return matchesStatus(activity);
+      })
+    : [];
+
+  // Jika ada beberapa riwayat dengan status yang sama, gunakan yang terbaru.
+  candidates.sort(
+    (a, b) =>
+      new Date(
+        b?.waktu ||
+          b?.timestamp ||
+          b?.created_at ||
+          b?.updated_at ||
+          0
+      ).getTime() -
+      new Date(
+        a?.waktu ||
+          a?.timestamp ||
+          a?.created_at ||
+          a?.updated_at ||
+          0
+      ).getTime()
+  );
+
+  if (candidates.length) {
+    return (
+      candidates[0]?.waktu ||
+      candidates[0]?.timestamp ||
+      candidates[0]?.created_at ||
+      candidates[0]?.updated_at ||
+      ""
+    );
+  }
+
+  // Dukungan untuk field timestamp keputusan jika backend menyediakannya.
+  return (
+    item?.tanggal_keputusan ||
+    item?.waktu_keputusan ||
+    item?.decision_at ||
+    item?.status_updated_at ||
+    item?.updated_at ||
+    ""
+  );
+}
+
+function formatDecisionDateTime(value) {
+  if (!value) return "-";
+
+  const d = new Date(value);
+  if (isNaN(d.getTime())) return esc(value);
+
+  const date = d.toLocaleDateString("id-ID", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+
+  const time = d.toLocaleTimeString("id-ID", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
+
+  return `<span class="decision-date">${esc(date)}</span>
+          <span class="decision-time">${esc(time)} WIB</span>`;
+}
+
+function renderItems(items, activities = []) {
   const body = $("recentList");
   if (!body) return;
 
@@ -148,18 +281,29 @@ function renderItems(items) {
   body.innerHTML = items
     .slice(0, 5)
     .map(
-      (x) => `
-        <tr>
-            <td>
-                <strong>${esc(x.perihal || "Pengajuan")}</strong>
-                <small>${esc(x.nomor_pengajuan || "-")}</small>
-            </td>
-            <td><span class="type-badge">${esc(x.jenis || "-")}</span></td>
-            <td>${dateID(x.tanggal)}</td>
-            <td><span class="status-badge ${statusClass(x.status)}">${esc(x.status_label || x.status || "-")}</span></td>
-            <td><a class="quick-open" href="pengajuan/index.html">Buka</a></td>
-        </tr>
-    `,
+      (x, index) => {
+        // Backend pada beberapa data menggunakan tanggal_pengajuan,
+        // sementara sebagian data lama menggunakan tanggal/created_at.
+        const statusText = x.status_label || x.status || "-";
+        const decisionAt = getDecisionTimestamp(x, activities);
+
+        return `
+          <tr>
+              <td class="dashboard-row-number">${index + 1}</td>
+              <td>
+                  <strong>${esc(x.perihal || x.judul_pengajuan || x.judul || "Pengajuan")}</strong>
+                  <small>${esc(x.nomor_pengajuan || x.pengajuan_id || "-")}</small>
+              </td>
+              <td><span class="type-badge">${esc(x.jenis || x.jenis_pengajuan || "-")}</span></td>
+              <td class="dashboard-decision-date">
+                ${decisionAt ? formatDecisionDateTime(decisionAt) : "-"}
+              </td>
+              <td class="dashboard-status-cell">
+                <span class="status-badge ${statusClass(statusText)}">${esc(statusText)}</span>
+              </td>
+          </tr>
+        `;
+      },
     )
     .join("");
 }
@@ -302,27 +446,85 @@ async function load() {
   }
 
   try {
-    const r = await api("getDashboardKementerian");
+    /*
+     * Statistik dan aktivitas tetap berasal dari dashboard.
+     * Tabel "Tindak Lanjut Pengajuan" sengaja mengambil data dari
+     * endpoint getPengajuan yang sama dengan halaman Tindak Lanjut.
+     * Dengan begitu sumber data tabel benar-benar sama dan tidak
+     * bergantung pada daftar pengajuan_terbaru dari dashboard.
+     */
+    const dashboardPromise = api("getDashboardKementerian");
 
-    if (!r.success) {
-      throw Error(r.message || "Gagal memuat dashboard.");
+    const token = session.session_token || session.token || "";
+    if (!token) {
+      throw new Error(
+        "Session token SITARA tidak tersedia. Silakan login kembali."
+      );
     }
 
-    const d = r.data || {};
+    const followUpPromise = fetch(SCRIPT_URL, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify({
+        action: "getPengajuan",
+        session_token: token,
+      }),
+    });
+
+    const [dashboardResult, followUpResponse] = await Promise.all([
+      dashboardPromise,
+      followUpPromise,
+    ]);
+
+    if (!dashboardResult.success) {
+      throw new Error(
+        dashboardResult.message || "Gagal memuat dashboard."
+      );
+    }
+
+    if (!followUpResponse.ok) {
+      throw new Error(
+        "Server pengajuan mengembalikan HTTP " + followUpResponse.status
+      );
+    }
+
+    const followUpResult = await followUpResponse.json();
+
+    if (!followUpResult.success || !Array.isArray(followUpResult.data)) {
+      throw new Error(
+        followUpResult.message || "Data tindak lanjut tidak tersedia."
+      );
+    }
+
+    const d = dashboardResult.data || {};
     const stat = d.statistik || {};
-    const allPengajuan = Array.isArray(d.pengajuan_terbaru) ? d.pengajuan_terbaru : [];
-    const pengajuan = filterDashboardPengajuan(allPengajuan);
-    const activities = Array.isArray(d.aktivitas_terbaru) ? d.aktivitas_terbaru : [];
+    const activities = Array.isArray(d.aktivitas_terbaru)
+      ? d.aktivitas_terbaru
+      : [];
+
+    /*
+     * getPengajuan sudah memfilter data berdasarkan kementerian dari
+     * session yang sedang login. Kita hanya mengambil tiga status
+     * yang memang ditampilkan pada Tindak Lanjut:
+     * - selesai/disetujui/diterima
+     * - revisi
+     * - ditolak
+     */
+    const followUpItems = followUpResult.data.filter((item) =>
+      isFollowUpStatus(item.status_label || item.status)
+    );
 
     setStats(stat);
-    renderItems(pengajuan);
-    renderActivities(activities, allPengajuan);
+    renderItems(followUpItems, activities);
+    renderActivities(activities, followUpResult.data);
   } catch (e) {
     console.error("Dashboard Kemenhubker gagal dimuat:", e);
 
     if ($("recentList")) {
       $("recentList").innerHTML =
-        `<tr><td colspan="5" class="empty-state">${esc(e.message || "Gagal memuat data.")}</td></tr>`;
+        `<tr><td colspan="5" class="empty-state">${esc(
+          e.message || "Gagal memuat data."
+        )}</td></tr>`;
     }
 
     if ($("activityList")) {

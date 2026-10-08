@@ -2449,7 +2449,7 @@ td {
 
 /* =========================================================
    FINAL PATCH — TINDAK LANJUT PENGAJUAN
-   Kolom dashboard harus tepat: Pengajuan | Jenis | Tanggal | Status | Aksi
+   Kolom dashboard: Pengajuan | Jenis | Tanggal | Status
 ========================================================= */
 .dashboard-two-column .dashboard-table-wrapper table {
   width: 100%;
@@ -3027,5 +3027,191 @@ td {
 
   .dashboard-two-column .activity-panel .activity-time {
     margin-top: 0;
+  }
+}
+
+/* =========================================================
+   FINAL PATCH — DASHBOARD TINDAK LANJUT
+   No. | Pengajuan | Jenis | Tanggal | Status
+   - Tanggal memakai fallback dari data pengajuan.
+   - Status benar-benar berada di tengah kolom.
+========================================================= */
+
+.dashboard-two-column .dashboard-table-wrapper table {
+  min-width: 760px;
+  table-layout: fixed;
+}
+
+.dashboard-two-column .dashboard-table-wrapper th,
+.dashboard-two-column .dashboard-table-wrapper td {
+  vertical-align: middle;
+}
+
+.dashboard-two-column .dashboard-table-wrapper th:nth-child(1),
+.dashboard-two-column .dashboard-table-wrapper td:nth-child(1) {
+  width: 4.5%;
+  min-width: 30px;
+}
+
+.dashboard-two-column .dashboard-table-wrapper th:nth-child(2),
+.dashboard-two-column .dashboard-table-wrapper td:nth-child(2) {
+  width: 25%;
+  min-width: 220px;
+  text-align: left;
+}
+
+.dashboard-two-column .dashboard-table-wrapper th:nth-child(3),
+.dashboard-two-column .dashboard-table-wrapper td:nth-child(3) {
+  width: 10%;
+  min-width: 100px;
+  text-align: center;
+}
+
+.dashboard-two-column .dashboard-table-wrapper th:nth-child(4),
+.dashboard-two-column .dashboard-table-wrapper td:nth-child(4) {
+  width: 18%;
+  min-width: 170px;
+  text-align: left;
+}
+
+.dashboard-two-column .dashboard-table-wrapper th:nth-child(5),
+.dashboard-two-column .dashboard-table-wrapper td:nth-child(5) {
+  width: 20%;
+  min-width: 120px;
+  text-align: left !important;
+}
+
+.dashboard-two-column .dashboard-table-wrapper .dashboard-no-header,
+.dashboard-two-column .dashboard-table-wrapper .dashboard-row-number {
+  text-align: center !important;
+}
+
+.dashboard-two-column .dashboard-table-wrapper .dashboard-row-number {
+  color: #777777;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.dashboard-two-column .dashboard-table-wrapper .dashboard-status-header {
+  text-align: center !important;
+}
+
+.dashboard-two-column .dashboard-table-wrapper .dashboard-status-cell {
+  text-align: center !important;
+}
+
+.dashboard-two-column .dashboard-table-wrapper .dashboard-status-cell .status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+@media (max-width: 1100px) {
+  .dashboard-two-column .dashboard-table-wrapper table {
+    min-width: 760px;
+  }
+}
+
+
+/* =========================================================
+   FINAL PATCH — TINDAK LANJUT TANPA HORIZONTAL SCROLL
+   Tabel wajib mengikuti lebar card/container.
+   ========================================================= */
+
+.dashboard-two-column .dashboard-table-wrapper {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.dashboard-two-column .dashboard-table-wrapper table {
+  width: 100%;
+  min-width: 0 !important;
+  max-width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.dashboard-two-column .dashboard-table-wrapper th,
+.dashboard-two-column .dashboard-table-wrapper td {
+  box-sizing: border-box;
+  padding: 11px 12px;
+  vertical-align: middle;
+}
+
+/* No. */
+.dashboard-two-column .dashboard-table-wrapper th:nth-child(1),
+.dashboard-two-column .dashboard-table-wrapper td:nth-child(1) {
+  width: 7%;
+  min-width: 0;
+  text-align: center;
+}
+
+/* Pengajuan */
+.dashboard-two-column .dashboard-table-wrapper th:nth-child(2),
+.dashboard-two-column .dashboard-table-wrapper td:nth-child(2) {
+  width: 38%;
+  min-width: 0;
+  text-align: left;
+}
+
+/* Jenis */
+.dashboard-two-column .dashboard-table-wrapper th:nth-child(3),
+.dashboard-two-column .dashboard-table-wrapper td:nth-child(3) {
+  width: 14%;
+  min-width: 0;
+  text-align: center;
+}
+
+/* Tanggal */
+.dashboard-two-column .dashboard-table-wrapper th:nth-child(4),
+.dashboard-two-column .dashboard-table-wrapper td:nth-child(4) {
+  width: 23%;
+  min-width: 0;
+  text-align: left;
+}
+
+/* Status */
+.dashboard-two-column .dashboard-table-wrapper th:nth-child(5),
+.dashboard-two-column .dashboard-table-wrapper td:nth-child(5) {
+  width: 18%;
+  min-width: 0;
+  text-align: center !important;
+}
+
+/* Isi pengajuan tetap bisa membungkus tanpa memaksa tabel melebar */
+.dashboard-two-column .dashboard-table-wrapper td:nth-child(2) strong,
+.dashboard-two-column .dashboard-table-wrapper td:nth-child(2) small {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+/* Tanggal boleh turun ke baris berikutnya */
+.dashboard-two-column .dashboard-table-wrapper td:nth-child(4) {
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+/* Badge tidak boleh menyebabkan tabel melebar */
+.dashboard-two-column .dashboard-table-wrapper .type-badge,
+.dashboard-two-column .dashboard-table-wrapper .status-badge {
+  max-width: 100%;
+}
+
+/* Nomor baris dan status tetap berada di tengah */
+.dashboard-two-column .dashboard-table-wrapper .dashboard-row-number,
+.dashboard-two-column .dashboard-table-wrapper .dashboard-status-header,
+.dashboard-two-column .dashboard-table-wrapper .dashboard-status-cell {
+  text-align: center !important;
+}
+
+@media (max-width: 576px) {
+  .dashboard-two-column .dashboard-table-wrapper th,
+  .dashboard-two-column .dashboard-table-wrapper td {
+    padding-left: 8px;
+    padding-right: 8px;
   }
 }

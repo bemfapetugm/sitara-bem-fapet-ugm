@@ -1,20 +1,18 @@
 <!doctype html>
 <html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tindak Lanjut | SITARA</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../kemenhubker.css">
-<style>
-.module-empty { max-width: 760px; margin: 24px auto; background: #fff; border:1px solid var(--border); border-radius:14px; box-shadow:var(--shadow); padding:42px 32px; text-align:center; }
-.module-empty .module-icon { width:64px;height:64px;margin:0 auto 18px;border-radius:16px;background:var(--primary-light);display:flex;align-items:center;justify-content:center;font-size:28px; }
-.module-empty h1 { margin:0 0 8px;font-size:22px;color:var(--text-primary); }
-.module-empty p { margin:0;color:var(--text-secondary);font-size:13px;line-height:1.7; }
-</style>
-<style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tindak Lanjut | SITARA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../kemenhubker.css" />
+    <link rel="stylesheet" href="tindak-lanjut.css" />
+    <style>
       .nav-icon {
         width: 22px;
         height: 22px;
@@ -23,65 +21,245 @@
         justify-content: center;
         flex: 0 0 22px;
       }
-
       .nav-icon svg {
         width: 19px;
         height: 19px;
         stroke-width: 1.9;
       }
-
       .nav-item.active .nav-icon svg {
         stroke: currentColor;
       }
     </style>
   </head>
-<body>
-<div class="kemen-container">
-<aside class="sidebar">
-<div class="sidebar-brand"><img src="../../../assets/images/logo.png" alt="Logo SITARA"><div class="brand-text"><h2>SITARA</h2><p>Panel Kementerian</p></div></div>
-<nav class="sidebar-nav">
-  <p class="nav-label">MENU UTAMA</p>
-  <a href="../index.html" class="nav-item"><span class="nav-icon"><i data-lucide="house"></i></span><span>Dashboard</span></a>
-  <p class="nav-label">PENGAJUAN</p>
-  <a href="../tambah-pengajuan/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="file-plus-2"></i></span><span>Tambah Pengajuan</span></a>
-  <a href="index.html" class="nav-item active"><span class="nav-icon"><i data-lucide="file-search"></i></span><span>Tindak Lanjut</span></a>
-  <a href="../riwayat-pengajuan/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="history"></i></span><span>Riwayat Pengajuan</span></a>
-  <p class="nav-label">DOKUMEN</p>
-  <a href="../template-dokumen/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="files"></i></span><span>Template Dokumen</span></a>
-  <a href="../arsip-dokumen-final/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="folder"></i></span><span>Arsip Dokumen Final</span></a>
-</nav>
-<div class="sidebar-footer">
-<div class="user-profile"><div class="profile-avatar" id="profileAvatar">KH</div><div class="profile-info"><h4 id="profileName">Kementerian Hubungan Kerja Sama</h4><p id="profileRole">Kementerian</p></div></div>
-<button type="button" class="logout-button" id="logoutButton">⇥ Keluar</button>
-</div>
-</aside>
-<main class="main-content">
-<header class="topbar"><div class="topbar-title"><h2>Tindak Lanjut</h2><p>Revisi, penolakan, dan pengajuan yang telah selesai</p></div><div class="topbar-right"><div class="topbar-date" id="currentDate">Memuat tanggal...</div><div class="topbar-avatar" id="topbarAvatar">KH</div></div></header>
-<section class="dashboard-content">
-<div class="module-empty"><div class="module-icon">⚑</div><h1>Tindak Lanjut</h1><p>Coming Soon. Fitur sedang dalam proses pengembangan oleh tim IT. Silakan untuk dapat kembali lagi nanti.</p></div>
-</section>
-</main>
-</div>
-<script>
-(function(){
- const s=JSON.parse(sessionStorage.getItem("sitaraUser")||"{}");
- const name=s.nama_lengkap||s.nama||s.name||"Pengguna";
- const role=s.role||"kementerian";
- const initials=String(name).trim().split(/\s+/).filter(Boolean).slice(0,2).map(x=>x[0]).join("").toUpperCase()||"KH";
- const d=new Date();
- const dateEl=document.getElementById("currentDate");
- if(dateEl) dateEl.textContent=d.toLocaleDateString("id-ID",{weekday:"long",day:"2-digit",month:"long",year:"numeric"});
- document.getElementById("profileName").textContent=name;
- document.getElementById("profileRole").textContent=role==="kementerian"?"Kementerian":role;
- document.getElementById("profileAvatar").textContent=initials;
- document.getElementById("topbarAvatar").textContent=initials;
- document.getElementById("logoutButton").addEventListener("click",function(){
-   if(!confirm("Apakah kamu yakin ingin keluar dari SITARA?")) return;
-   sessionStorage.removeItem("sitaraUser"); location.href="../../../login/index.html";
- });
-})();
-</script>
-<script src="https://unpkg.com/lucide@latest"></script>
-<script>document.addEventListener("DOMContentLoaded",function(){if(window.lucide)lucide.createIcons();});</script>
-</body>
+  <body>
+    <div class="kemen-container">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <img src="../../../assets/images/logo.png" alt="Logo SITARA" />
+          <div class="brand-text">
+            <h2>SITARA</h2>
+            <p>Panel Kementerian</p>
+          </div>
+        </div>
+        <nav class="sidebar-nav">
+          <p class="nav-label">MENU UTAMA</p>
+          <a href="../index.html" class="nav-item"
+            ><span class="nav-icon"><i data-lucide="house"></i></span
+            ><span>Dashboard</span></a
+          >
+          <p class="nav-label">PENGAJUAN</p>
+          <a href="../tambah-pengajuan/index.html" class="nav-item"
+            ><span class="nav-icon"><i data-lucide="file-plus-2"></i></span
+            ><span>Tambah Pengajuan</span></a
+          >
+          <a href="index.html" class="nav-item active"
+            ><span class="nav-icon"><i data-lucide="file-search"></i></span
+            ><span>Tindak Lanjut</span></a
+          >
+          <a href="../riwayat-pengajuan/index.html" class="nav-item"
+            ><span class="nav-icon"><i data-lucide="history"></i></span
+            ><span>Riwayat Pengajuan</span></a
+          >
+          <p class="nav-label">DOKUMEN</p>
+          <a href="../template-dokumen/index.html" class="nav-item"
+            ><span class="nav-icon"><i data-lucide="files"></i></span
+            ><span>Template Dokumen</span></a
+          >
+          <a href="../arsip-dokumen-final/index.html" class="nav-item"
+            ><span class="nav-icon"><i data-lucide="folder"></i></span
+            ><span>Arsip Dokumen Final</span></a
+          >
+        </nav>
+        <div class="sidebar-footer">
+          <div class="user-profile">
+            <div class="profile-avatar" id="profileAvatar">KH</div>
+            <div class="profile-info">
+              <h4 id="profileName">Kementerian Hubungan Kerja Sama</h4>
+              <p id="profileRole">Kementerian</p>
+            </div>
+          </div>
+          <button type="button" class="logout-button" id="logoutButton">
+            ⇥ Keluar
+          </button>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="topbar-title">
+            <h2>Tindak Lanjut</h2>
+            <p>
+              Kelola tindak lanjut pengajuan administrasi Kementerian Hubungan
+              Kerja Sama
+            </p>
+          </div>
+          <div class="topbar-right">
+            <div class="topbar-date" id="currentDate">Memuat tanggal...</div>
+            <div class="topbar-avatar" id="topbarAvatar">KH</div>
+          </div>
+        </header>
+
+        <section class="dashboard-content">
+          <div class="tl-page">
+            <div class="tl-stats">
+              <div class="tl-stat total">
+                <div class="tl-stat-icon"><i data-lucide="layers-3"></i></div>
+                <div>
+                  <div class="tl-stat-number" id="statTotal">0</div>
+                  <div class="tl-stat-label">Total Pengajuan</div>
+                  <div class="tl-stat-note">Perlu ditindaklanjuti</div>
+                </div>
+              </div>
+              <div class="tl-stat approved">
+                <div class="tl-stat-icon">
+                  <i data-lucide="circle-check"></i>
+                </div>
+                <div>
+                  <div class="tl-stat-number" id="statApproved">0</div>
+                  <div class="tl-stat-label">Disetujui</div>
+                  <div class="tl-stat-note">Dokumen final tersedia</div>
+                </div>
+              </div>
+              <div class="tl-stat revise">
+                <div class="tl-stat-icon">
+                  <i data-lucide="file-pen-line"></i>
+                </div>
+                <div>
+                  <div class="tl-stat-number" id="statRevise">0</div>
+                  <div class="tl-stat-label">Perlu Revisi</div>
+                  <div class="tl-stat-note">Menunggu perbaikan</div>
+                </div>
+              </div>
+              <div class="tl-stat rejected">
+                <div class="tl-stat-icon"><i data-lucide="circle-x"></i></div>
+                <div>
+                  <div class="tl-stat-number" id="statRejected">0</div>
+                  <div class="tl-stat-label">Ditolak</div>
+                  <div class="tl-stat-note">Perlu pengajuan ulang</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tl-toolbar">
+              <label class="tl-search"
+                ><i data-lucide="search"></i
+                ><input
+                  id="searchInput"
+                  type="search"
+                  placeholder="Cari nomor pengajuan atau nama kegiatan..."
+                  autocomplete="off"
+              /></label>
+              <label class="tl-select"
+                ><span class="tl-select-left"
+                  ><i data-lucide="calendar-range"></i
+                  ><select id="monthFilter">
+                    <option value="all">Semua Bulan</option>
+                    <option value="2026-10">Oktober 2026</option>
+                    <option value="2026-09">September 2026</option>
+                    <option value="2026-08">Agustus 2026</option>
+                  </select></span
+                ><i class="chev" data-lucide="chevron-down"></i
+              ></label>
+            </div>
+
+            <div class="tl-filters" role="tablist" aria-label="Filter status">
+              <button type="button" class="tl-filter active" data-filter="all">
+                Semua <span id="countAll">0</span>
+              </button>
+              <button
+                type="button"
+                class="tl-filter approved"
+                data-filter="approved"
+              >
+                Disetujui <span id="countApproved">0</span>
+              </button>
+              <button
+                type="button"
+                class="tl-filter revise"
+                data-filter="revise"
+              >
+                Perlu Revisi <span id="countRevise">0</span>
+              </button>
+              <button
+                type="button"
+                class="tl-filter rejected"
+                data-filter="rejected"
+              >
+                Ditolak <span id="countRejected">0</span>
+              </button>
+            </div>
+
+            <div class="tl-grid" id="cardGrid" aria-live="polite"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="tl-modal-wrap" id="detailModal" aria-hidden="true">
+      <div
+        class="tl-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+      >
+        <div class="tl-modal-head">
+          <div class="tl-modal-heading">
+            <div class="tl-modal-kicker-row">
+              <span class="tl-modal-kicker">DETAIL PENGAJUAN</span>
+              <span id="modalStatus" class="tl-status approved">Disetujui</span>
+            </div>
+            <div class="tl-modal-id" id="modalId">-</div>
+            <h2 id="modalTitle">Detail Pengajuan</h2>
+            <div class="tl-modal-subtitle" id="modalSubtitle">-</div>
+          </div>
+          <button
+            type="button"
+            class="tl-close"
+            id="modalClose"
+            aria-label="Tutup"
+          >
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <div class="tl-modal-body" id="modalBody">
+          <div class="tl-loading">Memuat detail...</div>
+        </div>
+        <div class="tl-modal-foot" id="modalFoot">
+          <button type="button" class="tl-secondary" id="modalCloseBottom">
+            Tutup
+          </button>
+          <div id="modalApprovedAction" class="tl-approved-action" hidden>
+            <div class="tl-approved-note">
+              <i data-lucide="circle-check"></i>
+              <div>
+                <strong>Tandai selesai</strong>
+                <span
+                  >Setelah selesai ditandai, pengajuan tidak akan muncul lagi di
+                  menu Tindak Lanjut.</span
+                >
+              </div>
+            </div>
+            <button type="button" class="tl-complete" id="markCompleteButton">
+              <i data-lucide="check"></i> Tandai Selesai
+            </button>
+          </div>
+          <div id="modalReviseAction" class="tl-revise-action" hidden>
+            <div class="tl-revise-note">
+              <i data-lucide="upload-cloud"></i>
+              <div>
+                <strong>Unggah dokumen hasil revisi</strong>
+                <span>Pilih dokumen yang telah diperbaiki untuk dikirim kembali ke Kementerian Sekretariat Kabinet dengan nomor agenda yang sama.</span>
+              </div>
+            </div>
+            <button type="button" class="tl-revise-submit" id="submitRevisionButton">
+              <i data-lucide="send"></i> Kirim Revisi
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="tindak-lanjut.js"></script>
+  </body>
 </html>
