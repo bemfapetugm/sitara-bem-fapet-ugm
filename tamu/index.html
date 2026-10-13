@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tamu SITARA</title>
+<link rel="stylesheet" href="tamu.css">
+</head>
+<body>
+
+<div class="overlay"></div>
+
+<main class="container">
+    <section class="brand">
+        <div class="logo-area">
+            <img src="assets/logo-fakultas.png" alt="Logo Fakultas">
+            <img src="assets/logo-sitara.png" alt="Logo SITARA">
+        </div>
+
+        <h1>SITARA</h1>
+        <p class="subtitle">Sistem Integrasi Tata Birokrasi Mahasiswa</p>
+    </section>
+
+    <section class="welcome">
+        <h2>Selamat Datang, <span>Tamu SITARA</span></h2>
+        <p>
+            Silakan pilih jenis akses sesuai kategori Anda<br>
+            untuk melanjutkan proses pengajuan atau layanan pada SITARA.
+        </p>
+
+        <div class="access-card-wrapper">
+
+            <div class="access-card">
+                <div class="icon">👥</div>
+                <h3>Badan Semi Otonom<br>(BSO)</h3>
+                <p>
+                    Akses untuk organisasi mahasiswa
+                    di bawah Fakultas.
+                </p>
+                <button onclick="masukBSO()">
+                    Lanjutkan <span>→</span>
+                </button>
+            </div>
+
+            <div class="access-card">
+                <div class="icon">🏛</div>
+                <h3>Pihak Eksternal<br>Fakultas</h3>
+                <p>
+                    Akses untuk pihak luar fakultas
+                    (mitra, lembaga, atau instansi lainnya).
+                </p>
+                <button onclick="masukEksternal()">
+                    Lanjutkan <span>→</span>
+                </button>
+            </div>
+
+        </div>
+    </section>
+</main>
+
+<script src="tamu.js"></script>
+</body>
+</html>

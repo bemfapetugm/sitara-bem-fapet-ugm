@@ -278,8 +278,7 @@ button {
     font-weight: 600;
 
     box-shadow:
-        0 4px 10px
-        rgba(127, 45, 37, .15);
+        0 4px 10px rgba(127, 45, 37, .15);
 
 }
 
@@ -458,26 +457,18 @@ button {
 
 
 .topbar-title h2 {
-
     font-size: 20px;
-
     font-weight: 700;
-
     color:
         var(--text-primary);
-
 }
 
 
 .topbar-title p {
-
     font-size: 12px;
-
     color:
         var(--text-secondary);
-
     margin-top: 2px;
-
 }
 
 
@@ -745,8 +736,7 @@ button {
     display: grid;
 
     grid-template-columns:
-        minmax(0, 1.7fr)
-        minmax(280px, 1fr);
+        minmax(0, 1.7fr) minmax(280px, 1fr);
 
     gap: 20px;
 
@@ -1273,32 +1263,2236 @@ td {
 
 
     .topbar-title h2 {
-
         font-size: 17px;
-
     }
 
 }
 
 /* ===== SITARA GLOBAL LABELS / KEMENSETKAB ===== */
-.dashboard-grid { align-items: start; }
-.quick-card { align-self: start; height: fit-content; }
-.dashboard-table-wrapper { max-height: 330px; overflow: auto; }
-.dashboard-table-wrapper thead th { position: sticky; top: 0; z-index: 2; background: #fafafa; }
-.status-badge, .jenis-badge { display:inline-flex; align-items:center; justify-content:center; white-space:nowrap; border-radius:999px; font-size:11px; font-weight:700; line-height:1.25; }
-.status-badge { padding:7px 10px; background:#f3f4f6; color:#6b7280; }
-.status-diajukan { background:#eef2f6; color:#475569; }
-.status-menunggu-verifikasi { background:#eaf3ff; color:#2563eb; }
-.status-perlu-revisi { background:#fff4df; color:#b45309; }
-.status-menunggu-mensetkab, .status-menunggu-ketua { background:#f1eaff; color:#6d3fd1; }
-.status-diajukan-dpm, .status-diajukan-fakultas { background:#fff4df; color:#b45309; }
-.status-disetujui-dpm, .status-disetujui-fakultas { background:#eaf8ef; color:#15803d; }
-.status-menunggu-fakultas, .status-dalam-proses { background:#eaf3ff; color:#2563eb; }
-.status-selesai { background:#eaf8ef; color:#15803d; }
-.status-ditolak { background:#fdecec; color:#b91c1c; }
-.status-lainnya { background:#f3f4f6; color:#6b7280; }
-.jenis-badge { padding:6px 10px; }
-.jenis-proposal { background:#f1eaff; color:#6d3fd1; }
-.jenis-lpj { background:#eaf8ef; color:#15803d; }
-.jenis-lainnya { background:#f3f4f6; color:#6b7280; }
-@media (max-width: 1200px) { .dashboard-table-wrapper { max-height: 360px; } }
+.dashboard-grid {
+    align-items: start;
+}
+
+.quick-card {
+    align-self: start;
+    height: fit-content;
+}
+
+.dashboard-table-wrapper {
+    max-height: 330px;
+    overflow: auto;
+}
+
+.dashboard-table-wrapper thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: #fafafa;
+}
+
+.status-badge,
+.jenis-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.status-badge {
+    padding: 7px 10px;
+    background: #f3f4f6;
+    color: #6b7280;
+}
+
+.status-diajukan {
+    background: #eef2f6;
+    color: #475569;
+}
+
+.status-menunggu-verifikasi {
+    background: #eaf3ff;
+    color: #2563eb;
+}
+
+.status-perlu-revisi {
+    background: #fff4df;
+    color: #b45309;
+}
+
+.status-menunggu-mensetkab,
+.status-menunggu-ketua {
+    background: #f1eaff;
+    color: #6d3fd1;
+}
+
+.status-diajukan-dpm,
+.status-diajukan-fakultas {
+    background: #fff4df;
+    color: #b45309;
+}
+
+.status-disetujui-dpm,
+.status-disetujui-fakultas {
+    background: #eaf8ef;
+    color: #15803d;
+}
+
+.status-menunggu-fakultas,
+.status-dalam-proses {
+    background: #eaf3ff;
+    color: #2563eb;
+}
+
+.status-selesai {
+    background: #eaf8ef;
+    color: #15803d;
+}
+
+.status-ditolak {
+    background: #fdecec;
+    color: #b91c1c;
+}
+
+.status-lainnya {
+    background: #f3f4f6;
+    color: #6b7280;
+}
+
+.jenis-badge {
+    padding: 6px 10px;
+}
+
+.jenis-proposal {
+    background: #f1eaff;
+    color: #6d3fd1;
+}
+
+.jenis-lpj {
+    background: #eaf8ef;
+    color: #15803d;
+}
+
+.jenis-lainnya {
+    background: #f3f4f6;
+    color: #6b7280;
+}
+
+@media (max-width: 1200px) {
+    .dashboard-table-wrapper {
+        max-height: 360px;
+    }
+}
+
+
+/* =========================================================
+   FINAL SIDEBAR PATCH — KEMENSETKAB
+   Mengunci ciri khas sidebar SITARA:
+   brand → menu aktif marun → grouped navigation →
+   profile → tombol keluar.
+========================================================= */
+
+.sidebar {
+    width: 268px;
+    min-width: 268px;
+    padding: 20px 14px 16px;
+}
+
+.sidebar-brand {
+    gap: 11px;
+    padding: 0 10px 30px;
+}
+
+.sidebar-brand img {
+    width: 44px;
+    height: 44px;
+}
+
+.brand-text h2 {
+    font-size: 25px;
+    letter-spacing: .5px;
+    line-height: 1.15;
+}
+
+.brand-text p {
+    font-size: 11px;
+    margin-top: 2px;
+}
+
+.sidebar-nav {
+    padding: 0 0 8px;
+}
+
+.nav-label {
+    padding: 17px 12px 9px;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.nav-item {
+    position: relative;
+    gap: 12px;
+    min-height: 44px;
+    padding: 11px 13px;
+    margin-bottom: 4px;
+    border-radius: 9px;
+    font-size: 13px;
+}
+
+.nav-icon {
+    width: 20px;
+    min-width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0;
+}
+
+.nav-icon svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.nav-item.active {
+    background: var(--primary);
+    color: var(--white);
+    box-shadow: 0 4px 10px rgba(127, 45, 37, .15);
+}
+
+.nav-badge {
+    margin-left: auto;
+    min-width: 21px;
+    height: 21px;
+    padding: 0 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: #d93636;
+    color: #fff;
+    font-size: 10px;
+    line-height: 1;
+    font-weight: 700;
+}
+
+.nav-item.active .nav-badge {
+    background: rgba(255, 255, 255, .22);
+    color: #fff;
+}
+
+.sidebar-footer {
+    padding-top: 16px;
+}
+
+.user-profile {
+    gap: 10px;
+    padding: 0 8px 14px;
+}
+
+.profile-avatar {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    background: var(--primary);
+    color: var(--white);
+}
+
+.profile-info h4 {
+    font-size: 11px;
+}
+
+.profile-info p {
+    font-size: 10px;
+    margin-top: 1px;
+}
+
+.logout-button {
+    padding: 11px 14px;
+    border: 1px solid transparent;
+    background: #fff3f1;
+    border-radius: 8px;
+}
+
+.logout-button:hover {
+    background: var(--primary);
+    color: var(--white);
+}
+
+/* The main area must start exactly after the wider sidebar. */
+.main-content {
+    margin-left: 268px;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 220px;
+        min-width: 220px;
+    }
+
+    .main-content {
+        margin-left: 220px;
+    }
+}
+
+@media (max-width: 576px) {
+    .sidebar {
+        width: 70px;
+        min-width: 70px;
+        padding: 20px 10px;
+    }
+
+    .main-content {
+        margin-left: 70px;
+    }
+}
+
+/* =========================================================
+   FINAL SIDEBAR PATCH — KEMENSETKAB
+   Disamakan dengan karakter sidebar Kemenhubker:
+   ikon line-style, spacing rapi, active state marun,
+   badge kanan, dan footer profil.
+========================================================= */
+
+.sidebar {
+    width: 268px;
+    min-width: 268px;
+    padding: 20px 14px 16px;
+}
+
+.sidebar-brand {
+    gap: 11px;
+    padding: 0 10px 30px;
+}
+
+.sidebar-brand img {
+    width: 44px;
+    height: 44px;
+}
+
+.brand-text h2 {
+    font-size: 25px;
+    letter-spacing: .5px;
+    line-height: 1.15;
+}
+
+.brand-text p {
+    font-size: 11px;
+    margin-top: 2px;
+}
+
+.sidebar-nav {
+    padding: 0 0 8px;
+}
+
+.nav-label {
+    padding: 17px 12px 9px;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.nav-item {
+    position: relative;
+    gap: 12px;
+    min-height: 44px;
+    padding: 11px 13px;
+    margin-bottom: 4px;
+    border-radius: 9px;
+    font-size: 13px;
+}
+
+.nav-icon {
+    width: 20px;
+    min-width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0;
+}
+
+.nav-icon svg {
+    width: 19px;
+    height: 19px;
+    stroke: currentColor;
+    stroke-width: 1.9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    display: block;
+}
+
+.nav-item.active {
+    background: var(--primary);
+    color: var(--white);
+    box-shadow: 0 4px 10px rgba(127, 45, 37, .15);
+}
+
+.nav-badge {
+    margin-left: auto;
+    min-width: 21px;
+    height: 21px;
+    padding: 0 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: #d93636;
+    color: #fff;
+    font-size: 10px;
+    line-height: 1;
+    font-weight: 700;
+}
+
+.nav-item.active .nav-badge {
+    background: rgba(255, 255, 255, .22);
+    color: #fff;
+}
+
+.sidebar-footer {
+    padding-top: 16px;
+}
+
+.user-profile {
+    gap: 10px;
+    padding: 0 8px 14px;
+}
+
+.profile-avatar {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    background: var(--primary);
+    color: var(--white);
+}
+
+.profile-info h4 {
+    font-size: 11px;
+}
+
+.profile-info p {
+    font-size: 10px;
+    margin-top: 1px;
+}
+
+.logout-button {
+    padding: 11px 14px;
+    border: 1px solid transparent;
+    background: #fff3f1;
+    border-radius: 8px;
+}
+
+.logout-button:hover {
+    background: var(--primary);
+    color: var(--white);
+}
+
+.main-content {
+    margin-left: 268px;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 220px;
+        min-width: 220px;
+    }
+
+    .main-content {
+        margin-left: 220px;
+    }
+}
+
+@media (max-width: 576px) {
+    .sidebar {
+        width: 70px;
+        min-width: 70px;
+        padding: 20px 10px;
+    }
+
+    .main-content {
+        margin-left: 70px;
+    }
+}
+
+
+/* =========================================================
+   FINAL PATCH — KEMENSETKAB SIDEBAR
+   Menggunakan Lucide Icons yang sama seperti Kemenhubker.
+   ========================================================= */
+
+.sidebar .nav-icon {
+    width: 22px;
+    min-width: 22px;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 22px;
+    font-size: 0;
+    line-height: 1;
+}
+
+.sidebar .nav-icon svg {
+    width: 19px;
+    height: 19px;
+    stroke: currentColor;
+    stroke-width: 1.9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    display: block;
+}
+
+.sidebar .nav-item.active .nav-icon svg {
+    stroke: currentColor;
+}
+
+/* =========================================================
+   FINAL PATCH — BADGE SIDEBAR KEMENSETKAB
+   Badge 0/empty harus hilang total.
+   Badge dengan jumlah > 0 tetap menggunakan desain existing.
+   ========================================================= */
+
+.nav-badge[hidden] {
+    display: none !important;
+}
+
+/* =========================================================
+   FINAL DASHBOARD CONTENT — KEMENSETKAB
+   Hanya area isi dashboard. Sidebar & header existing tetap.
+========================================================= */
+.dashboard-content {
+    padding: 20px 38px 38px;
+}
+
+/* HERO */
+.dashboard-hero {
+    min-height: 178px;
+    margin-bottom: 18px;
+    border-radius: 14px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 27px 30px;
+    color: #fff;
+    background:
+        radial-gradient(circle at 86% 18%, rgba(255, 255, 255, .13), transparent 28%),
+        linear-gradient(100deg, #74231e 0%, #8d3028 56%, #67201b 100%);
+    box-shadow: 0 6px 22px rgba(127, 45, 37, .12);
+}
+
+.dashboard-hero:after {
+    content: "";
+    position: absolute;
+    right: -100px;
+    top: -80px;
+    width: 430px;
+    height: 300px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, .10);
+    box-shadow: 0 0 0 30px rgba(255, 255, 255, .025), 0 0 0 60px rgba(255, 255, 255, .018);
+}
+
+.hero-copy {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+}
+
+.hero-label {
+    font-size: 11px !important;
+    letter-spacing: 2.4px !important;
+    font-weight: 700 !important;
+    color: #f8dfda !important;
+    margin: 0 0 6px !important;
+}
+
+.hero-copy h1 {
+    font-size: 29px;
+    line-height: 1.2;
+    font-weight: 700;
+    margin: 0 0 8px;
+    letter-spacing: -.4px;
+}
+
+.hero-copy>p:not(.hero-label) {
+    font-size: 13px;
+    color: #f9e9e6;
+    max-width: 660px;
+    margin: 0;
+    line-height: 1.55;
+}
+
+.hero-line {
+    display: block;
+    width: 58px;
+    height: 4px;
+    border-radius: 99px;
+    background: #f2c64b;
+    margin-top: 16px;
+}
+
+.hero-quote {
+    position: relative;
+    z-index: 2;
+    width: 255px;
+    min-width: 255px;
+    border: 1px solid rgba(255, 255, 255, .26);
+    border-radius: 14px;
+    padding: 13px 17px 12px 20px;
+    background: rgba(70, 10, 7, .10);
+}
+
+.hero-quote .quote-mark {
+    position: absolute;
+    left: 16px;
+    top: 5px;
+    font-size: 34px;
+    line-height: 1;
+    color: rgba(255, 255, 255, .38);
+    font-weight: 700;
+}
+
+.hero-quote p {
+    font-size: 11px;
+    line-height: 1.45;
+    font-style: italic;
+    color: #fff;
+    margin: 4px 0 10px 25px;
+}
+
+.hero-quote small {
+    display: block;
+    font-size: 9px;
+    line-height: 1.45;
+    color: #f7dfda;
+    margin-left: 25px;
+}
+
+.hero-quote>span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #e4bc40;
+    margin: 7px 0 0 auto;
+}
+
+/* STATS */
+.stats-grid-five {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.stats-grid-five .stat-card {
+    padding: 17px 16px;
+    gap: 12px;
+    min-height: 104px;
+    border-radius: 12px;
+}
+
+.stats-grid-five .stat-icon {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    border-radius: 10px;
+}
+
+.stats-grid-five .stat-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 1.8;
+}
+
+.stats-grid-five .stat-info p {
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.stats-grid-five .stat-info h2 {
+    font-size: 25px;
+    margin: 1px 0 0;
+}
+
+.stats-grid-five .stat-info span {
+    font-size: 10px;
+}
+
+.stat-card-red .stat-icon {
+    background: #fbe9e7;
+    color: #a52c24;
+}
+
+.stat-card-orange .stat-icon {
+    background: #fff0dc;
+    color: #b86b00;
+}
+
+.stat-card-yellow .stat-icon {
+    background: #fff4d8;
+    color: #b07900;
+}
+
+.stat-card-green .stat-icon {
+    background: #e3f7eb;
+    color: #16824b;
+}
+
+.stat-card-blue .stat-icon {
+    background: #e8f1ff;
+    color: #2e72c8;
+}
+
+/* CHARTS */
+.dashboard-chart-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(360px, 1fr);
+    gap: 18px;
+    margin-bottom: 18px;
+}
+
+.chart-card,
+.ministry-card {
+    min-height: 270px;
+}
+
+.chart-card .card-header,
+.ministry-card .card-header {
+    padding: 18px 21px 10px;
+}
+
+.chart-filter {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #4d4d4d;
+    white-space: nowrap;
+    background: #fff;
+}
+
+.chart-filter svg {
+    width: 13px;
+    height: 13px;
+}
+
+.monthly-chart {
+    height: 162px;
+    padding: 5px 21px 0;
+    display: flex;
+    align-items: flex-end;
+    gap: 13px;
+    position: relative;
+    background: linear-gradient(to bottom, transparent 24.5%, #f0f0f0 25%, transparent 25.5%, transparent 49.5%, #f0f0f0 50%, transparent 50.5%, transparent 74.5%, #f0f0f0 75%, transparent 75.5%);
+}
+
+.month-column {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
+    min-width: 35px;
+}
+
+.month-stack {
+    width: 54px;
+    max-width: 80%;
+    display: flex;
+    flex-direction: column-reverse;
+    border-radius: 4px 4px 0 0;
+    overflow: hidden;
+    min-height: 2px;
+}
+
+.month-segment {
+    width: 100%;
+    min-height: 0;
+    transition: height .2s ease;
+}
+
+.month-segment.done {
+    background: #5ac99a
+}
+
+.month-segment.process {
+    background: #ffd36a
+}
+
+.month-segment.revise {
+    background: #ff7d88
+}
+
+.month-segment.return {
+    background: #aeb3bb
+}
+
+.month-label {
+    position: absolute;
+    bottom: -22px;
+    font-size: 9px;
+    color: #777;
+    white-space: nowrap;
+}
+
+.chart-scale {
+    position: absolute;
+    left: 0;
+    top: 3px;
+    bottom: 22px;
+    width: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 8px;
+    color: #9a9a9a;
+    pointer-events: none;
+}
+
+.chart-legend {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 20px 12px 14px;
+    font-size: 9px;
+    color: #666;
+}
+
+.chart-legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.legend-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    display: inline-block
+}
+
+.legend-dot.done {
+    background: #5ac99a
+}
+
+.legend-dot.process {
+    background: #ffd36a
+}
+
+.legend-dot.revise {
+    background: #ff7d88
+}
+
+.legend-dot.return {
+    background: #aeb3bb
+}
+
+.chart-loading {
+    width: 100%;
+    text-align: center;
+    color: #aaa;
+    font-size: 10px;
+    padding: 55px 0;
+}
+
+.donut-layout {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 5px 18px 20px;
+    min-height: 195px;
+}
+
+.donut-chart {
+    width: 166px;
+    height: 166px;
+    min-width: 166px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: conic-gradient(#e9e9e9 0 100%);
+    position: relative;
+}
+
+.donut-chart:after {
+    content: "";
+    position: absolute;
+    width: 94px;
+    height: 94px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 0 1px #f3f3f3;
+}
+
+.donut-chart>span {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.05;
+}
+
+.donut-chart strong {
+    font-size: 22px
+}
+
+.donut-chart small {
+    font-size: 9px;
+    color: #777;
+    margin-top: 4px;
+}
+
+.donut-legend {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.ministry-item {
+    display: grid;
+    grid-template-columns: 9px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 7px;
+    font-size: 9.5px;
+}
+
+.ministry-item .dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+}
+
+.ministry-item .name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #444;
+}
+
+.ministry-item .count {
+    font-weight: 700;
+    color: #252525;
+    white-space: nowrap;
+}
+
+/* TABLE */
+.dashboard-bottom-grid {
+    grid-template-columns: minmax(0, 1.7fr) minmax(300px, 1fr);
+    gap: 18px;
+}
+
+.dashboard-bottom-grid .content-card {
+    border-radius: 12px;
+}
+
+.dashboard-table-wrapper {
+    max-height: 330px;
+    overflow: auto;
+}
+
+.dashboard-data-table {
+    min-width: 760px;
+}
+
+.dashboard-data-table th {
+    padding: 10px 14px;
+    font-size: 9.5px;
+    white-space: nowrap;
+}
+
+.dashboard-data-table td {
+    padding: 12px 14px;
+    font-size: 10.5px;
+    vertical-align: middle;
+}
+
+.dashboard-data-table tbody tr:hover {
+    background: #fffafa;
+}
+
+.dashboard-data-table td:nth-child(2) {
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.dashboard-data-table td:nth-child(3) {
+    max-width: 160px;
+}
+
+.table-date {
+    white-space: nowrap;
+    color: #666;
+    font-size: 10px;
+}
+
+.table-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: #f8efed;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.table-action svg {
+    width: 14px;
+    height: 14px;
+}
+
+.btn-view-all span {
+    margin-left: 4px;
+    font-size: 13px;
+}
+
+/* QUICK ACCESS */
+.quick-actions {
+    padding: 0 18px 18px;
+    gap: 8px;
+}
+
+.quick-action {
+    position: relative;
+    padding: 11px 35px 11px 11px;
+    gap: 11px;
+    border-radius: 9px;
+}
+
+.quick-action .quick-icon {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quick-action .quick-icon svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 1.8;
+}
+
+.quick-action strong {
+    font-size: 11px
+}
+
+.quick-action span {
+    font-size: 9.5px;
+}
+
+.quick-arrow {
+    position: absolute;
+    right: 10px;
+    width: 15px;
+    height: 15px;
+    color: #999;
+}
+
+.quick-revise .quick-icon {
+    background: #fde9e8;
+    color: #c33a31
+}
+
+.quick-return .quick-icon {
+    background: #eaf3ff;
+    color: #3b82d0
+}
+
+.quick-template .quick-icon {
+    background: #fff2d7;
+    color: #bf7b00
+}
+
+.quick-final .quick-icon {
+    background: #e3f7eb;
+    color: #16824b
+}
+
+
+/* =========================================================
+   FINAL PATCH — STATISTIK PENGAJUAN 3 DATA
+   Total Pengajuan | Selesai | Ditolak
+   ========================================================= */
+.monthly-chart {
+    display: block;
+    padding: 5px 21px 0;
+    position: relative;
+    overflow: visible;
+}
+
+.monthly-bars {
+    height: 100%;
+    margin-left: 20px;
+    display: flex;
+    align-items: stretch;
+    gap: 13px;
+}
+
+.monthly-bars .month-column {
+    flex: 1;
+    height: 100%;
+    min-width: 45px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
+}
+
+.month-bars {
+    width: 100%;
+    max-width: 72px;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 4px;
+}
+
+.bar-wrap {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    min-width: 0;
+}
+
+.month-bar {
+    width: 100%;
+    max-width: 18px;
+    min-height: 0;
+    border-radius: 4px 4px 0 0;
+    transition: height .2s ease;
+}
+
+.month-bar.total {
+    background: #78a9e8;
+}
+
+.month-bar.done {
+    background: #5ac99a;
+}
+
+.month-bar.rejected {
+    background: #ff7d88;
+}
+
+.chart-legend .legend-dot.total {
+    background: #78a9e8;
+}
+
+.chart-legend .legend-dot.done {
+    background: #5ac99a;
+}
+
+.chart-legend .legend-dot.rejected {
+    background: #ff7d88;
+}
+
+/* RESPONSIVE — content only */
+@media (max-width:1400px) {
+    .stats-grid-five {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .dashboard-bottom-grid {
+        grid-template-columns: minmax(0, 1.6fr) minmax(290px, 1fr);
+    }
+}
+
+/* ===== FINAL UPDATE: CHART KIRI-KANAN =====
+   Statistik Pengajuan tetap di kiri dan
+   Jumlah Pengajuan per Kementerian di kanan
+   selama masih pada ukuran desktop/tablet lebar.
+*/
+.dashboard-chart-grid {
+    grid-template-columns: minmax(0, 1.65fr) minmax(330px, 1fr);
+}
+
+@media (max-width:1100px) {
+    .dashboard-chart-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width:1100px) {
+    .dashboard-bottom-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .donut-layout {
+        justify-content: center;
+    }
+}
+
+@media (max-width:768px) {
+    .dashboard-content {
+        padding: 22px 18px 30px;
+    }
+
+    .dashboard-hero {
+        padding: 23px;
+        min-height: 160px;
+    }
+
+    .hero-quote {
+        display: none;
+    }
+
+    .hero-copy h1 {
+        font-size: 24px;
+    }
+
+    .stats-grid-five {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width:576px) {
+    .stats-grid-five {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-hero {
+        padding: 20px;
+    }
+
+    .hero-copy h1 {
+        font-size: 21px;
+    }
+
+    .donut-layout {
+        flex-direction: column;
+        padding-bottom: 24px;
+    }
+
+    .donut-legend {
+        width: 100%;
+    }
+}
+
+
+/* =========================================================
+   FINAL PATCH — STATISTIK KEMENSETKAB (4 KARTU)
+   Statistik dashboard hanya:
+   Menunggu Verifikasi | Perlu Perbaikan | Selesai | Total Dokumen
+========================================================= */
+.stats-grid-four {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.stats-grid-four .stat-card {
+    min-width: 0;
+    min-height: 104px;
+    padding: 17px 16px;
+    gap: 12px;
+    border-radius: 12px;
+}
+
+.stats-grid-four .stat-info {
+    min-width: 0;
+}
+
+.stats-grid-four .stat-info p {
+    font-size: 11px;
+    white-space: normal;
+    line-height: 1.35;
+}
+
+.stats-grid-four .stat-info h2 {
+    font-size: 25px;
+    margin: 1px 0 0;
+}
+
+.stats-grid-four .stat-info span {
+    display: block;
+    font-size: 10px;
+    line-height: 1.4;
+    max-width: 190px;
+}
+
+@media (max-width: 1200px) {
+    .stats-grid-four {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .stats-grid-four {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+
+/* =========================================================
+   FINAL UI REDESIGN — STATISTIK PENGAJUAN
+   Visual only: Total Pengajuan | Selesai | Ditolak
+   Data/JS structure intentionally unchanged.
+   ========================================================= */
+
+.chart-card {
+    min-height: 304px;
+}
+
+.chart-card .card-header {
+    padding: 20px 22px 12px;
+}
+
+.chart-card .card-header h3 {
+    font-size: 15px;
+    letter-spacing: -.1px;
+}
+
+.chart-card .card-header p {
+    font-size: 10.5px;
+    margin-top: 4px;
+}
+
+.chart-filter {
+    min-height: 34px;
+    padding: 8px 11px;
+    border-radius: 9px;
+    font-size: 10px;
+    color: #4b4b4b;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .02);
+}
+
+.monthly-chart {
+    height: 182px;
+    margin: 0 20px;
+    padding: 6px 0 0 30px;
+    border-top: 1px solid #f4f4f4;
+    border-bottom: 1px solid #f1f1f1;
+    background:
+        repeating-linear-gradient(to bottom,
+            transparent 0,
+            transparent calc(25% - 1px),
+            #f1f3f5 calc(25% - 1px),
+            #f1f3f5 25%);
+    border-radius: 0;
+    overflow: visible;
+}
+
+.monthly-bars {
+    margin-left: 0;
+    height: 100%;
+    gap: 10px;
+}
+
+.monthly-bars .month-column {
+    min-width: 42px;
+    height: 100%;
+    padding: 0 2px;
+}
+
+.month-bars {
+    max-width: 78px;
+    height: 100%;
+    gap: 5px;
+}
+
+.bar-wrap {
+    height: 100%;
+    max-width: 18px;
+}
+
+.month-bar {
+    width: 100%;
+    max-width: 14px;
+    border-radius: 5px 5px 0 0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .06);
+}
+
+.month-bar.total {
+    background: #78a9e8;
+}
+
+.month-bar.done {
+    background: #58c79a;
+}
+
+.month-bar.rejected {
+    background: #f47782;
+}
+
+.month-label {
+    bottom: -25px;
+    font-size: 9px;
+    font-weight: 500;
+    color: #777;
+}
+
+.chart-scale {
+    left: 0;
+    top: 5px;
+    bottom: 25px;
+    width: 24px;
+    padding-right: 4px;
+    align-items: flex-end;
+    font-size: 8px;
+    color: #9a9fa5;
+}
+
+.chart-legend {
+    gap: 24px;
+    padding: 30px 12px 15px;
+    font-size: 9.5px;
+    color: #666;
+}
+
+.chart-legend span {
+    gap: 6px;
+}
+
+.legend-dot {
+    width: 8px;
+    height: 8px;
+}
+
+.legend-dot.total {
+    background: #78a9e8;
+}
+
+.legend-dot.done {
+    background: #58c79a;
+}
+
+.legend-dot.rejected {
+    background: #f47782;
+}
+
+/* Empty state remains centered and visually quiet. */
+.monthly-chart .chart-loading {
+    height: 100%;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    font-size: 10px;
+    color: #a1a1a1;
+}
+
+/* Slightly tighter chart proportion beside the ministry donut. */
+.dashboard-chart-grid {
+    grid-template-columns: minmax(0, 1.65fr) minmax(340px, 1fr);
+    gap: 18px;
+}
+
+.ministry-card {
+    min-height: 304px;
+}
+
+@media (max-width: 1100px) {
+    .dashboard-chart-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .monthly-chart {
+        margin: 0 16px;
+        padding-left: 27px;
+    }
+
+    .monthly-bars {
+        gap: 6px;
+    }
+
+    .month-bars {
+        gap: 3px;
+    }
+
+    .month-bar {
+        max-width: 12px;
+    }
+
+    .month-label {
+        font-size: 8px;
+    }
+
+    .chart-legend {
+        gap: 16px;
+    }
+}
+
+
+/* =========================================================
+   FINAL PATCH — FILTER SEMESTER STATISTIK PENGAJUAN
+   Mengikuti CSS terbaru Kemensetkab.
+   ========================================================= */
+
+.chart-filter {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    min-width: 126px;
+    min-height: 34px;
+    padding: 8px 10px 8px 12px;
+    border: 1px solid #e8e8e8;
+    border-radius: 9px;
+    background: #fff;
+    color: #4d4d4d;
+    font-size: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+    transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.chart-filter:hover {
+    border-color: #d8c0bc;
+    background: #fffdfc;
+}
+
+.chart-filter:focus,
+.chart-filter:focus-visible {
+    outline: none;
+    border-color: #b9857e;
+    box-shadow: 0 0 0 3px rgba(127, 45, 37, .08);
+}
+
+.chart-filter svg {
+    width: 13px;
+    height: 13px;
+    flex: 0 0 13px;
+}
+
+.chart-filter-options {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    z-index: 50;
+    width: 160px;
+    padding: 5px;
+    border: 1px solid #ececec;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .10);
+    display: none;
+}
+
+.chart-filter.is-open .chart-filter-options {
+    display: block;
+}
+
+.chart-filter-option {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 9px 10px;
+    border-radius: 7px;
+    background: transparent;
+    color: #555;
+    font: inherit;
+    font-size: 10px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.chart-filter-option:hover {
+    background: #f8efed;
+    color: var(--primary);
+}
+
+.chart-filter-option.active {
+    background: #f8efed;
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.chart-filter-option svg {
+    width: 13px;
+    height: 13px;
+    color: var(--primary);
+}
+
+@media (max-width: 576px) {
+    .chart-filter {
+        min-width: 116px;
+    }
+
+    .chart-filter-options {
+        width: 150px;
+    }
+}
+
+
+/* =========================================================
+   FINAL POLISH — DROPDOWN SEMESTER STATISTIK
+   Menghilangkan tampilan kaku/native sebisa mungkin dan
+   menyamakan kontrol dengan bahasa visual SITARA.
+   ========================================================= */
+
+/* Custom dropdown container */
+.chart-filter {
+    position: relative;
+    box-sizing: border-box;
+    min-width: 126px;
+    min-height: 36px;
+    padding: 8px 34px 8px 12px;
+    border: 1px solid #e5e5e5;
+    border-radius: 9px;
+    background: #fff;
+    color: #4a4a4a;
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1.2;
+    cursor: pointer;
+    transition:
+        border-color .18s ease,
+        box-shadow .18s ease,
+        background .18s ease;
+}
+
+/* If .chart-filter is a native <select>, keep its closed state clean. */
+select.chart-filter {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #fff;
+    background-image:
+        linear-gradient(45deg, transparent 50%, #777 50%),
+        linear-gradient(135deg, #777 50%, transparent 50%);
+    background-position:
+        calc(100% - 14px) 15px,
+        calc(100% - 10px) 15px;
+    background-size: 4px 4px, 4px 4px;
+    background-repeat: no-repeat;
+    padding-right: 30px;
+}
+
+.chart-filter:hover {
+    border-color: #d7c0bc;
+    background-color: #fffdfc;
+}
+
+.chart-filter:focus,
+.chart-filter:focus-visible {
+    outline: none;
+    border-color: #b9857e;
+    box-shadow: 0 0 0 3px rgba(127, 45, 37, .07);
+}
+
+/* Native option typography where the browser permits it. */
+select.chart-filter option {
+    padding: 9px 10px;
+    background: #fff;
+    color: #444;
+    font-family: inherit;
+    font-size: 10px;
+}
+
+select.chart-filter option:checked {
+    color: var(--primary);
+    background: #f8efed;
+}
+
+/* Custom dropdown menu, when the semester control is rendered
+   with .chart-filter-options instead of native <select>. */
+.chart-filter-options {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    z-index: 1000;
+    width: 168px;
+    padding: 5px;
+    border: 1px solid #e9e5e4;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow:
+        0 10px 25px rgba(45, 25, 22, .10),
+        0 2px 6px rgba(45, 25, 22, .04);
+    overflow: hidden;
+}
+
+.chart-filter-option {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 8px 10px;
+    border: 0;
+    border-radius: 7px;
+    background: transparent;
+    color: #555;
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.2;
+    text-align: left;
+    cursor: pointer;
+    transition: background .15s ease, color .15s ease;
+}
+
+.chart-filter-option:hover {
+    background: #faf2f0;
+    color: var(--primary);
+}
+
+.chart-filter-option.active {
+    background: #f8eeec;
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.chart-filter-option.active::after {
+    content: "✓";
+    margin-left: auto;
+    color: var(--primary);
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.chart-filter-option svg {
+    width: 12px;
+    height: 12px;
+    flex: 0 0 12px;
+    stroke: currentColor;
+    stroke-width: 2;
+}
+
+/* On small screens keep the menu inside the card. */
+@media (max-width: 576px) {
+    .chart-filter {
+        min-width: 116px;
+        min-height: 34px;
+    }
+
+    .chart-filter-options {
+        width: 154px;
+        right: 0;
+    }
+}
+
+
+/* =========================================================
+   FINAL FIX — ALIGNMENT SKALA Y & GRID STATISTIK
+   Grid dan angka Y menggunakan titik koordinat yang sama.
+   ========================================================= */
+
+.monthly-chart {
+    --plot-top: 5px;
+    --plot-bottom: 25px;
+    position: relative;
+}
+
+/* Five horizontal levels: 4, 3, 2, 1, 0 */
+.monthly-chart::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: var(--plot-top);
+    bottom: var(--plot-bottom);
+    pointer-events: none;
+    background:
+        linear-gradient(to bottom,
+            transparent 0,
+            transparent calc(25% - .5px),
+            #f1f3f5 calc(25% - .5px),
+            #f1f3f5 calc(25% + .5px),
+            transparent calc(25% + .5px),
+            transparent calc(50% - .5px),
+            #f1f3f5 calc(50% - .5px),
+            #f1f3f5 calc(50% + .5px),
+            transparent calc(50% + .5px),
+            transparent calc(75% - .5px),
+            #f1f3f5 calc(75% - .5px),
+            #f1f3f5 calc(75% + .5px),
+            transparent calc(75% + .5px),
+            transparent 100%);
+    border-top: 1px solid #f1f3f5;
+    border-bottom: 1px solid #f1f3f5;
+}
+
+/* Bars occupy exactly the same vertical plot area as the scale. */
+.monthly-bars {
+    height: calc(100% - var(--plot-top) - var(--plot-bottom));
+    margin-top: var(--plot-top);
+}
+
+/* Y-axis labels: their centers sit exactly on grid levels. */
+.chart-scale {
+    top: var(--plot-top);
+    bottom: var(--plot-bottom);
+    height: auto;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0 4px 0 0;
+    line-height: 1;
+}
+
+/* Keep the baseline clean and make the month labels sit below it. */
+.month-label {
+    bottom: calc(-1 * var(--plot-bottom) + 1px);
+}
+
+/* Legend remains below the month labels. */
+.chart-legend {
+    padding-top: 30px;
+}
+
+/* Mobile keeps the exact same coordinate system. */
+@media (max-width: 768px) {
+    .monthly-chart {
+        --plot-top: 5px;
+        --plot-bottom: 25px;
+    }
+}
+
+
+/* =========================================================
+   FINAL FIX v3 — STATISTIK: GRID, SKALA Y, DAN BATANG
+   Satu sistem koordinat untuk 4 | 3 | 2 | 1 | 0.
+   ========================================================= */
+
+/* Remove every previous pseudo-grid so only this grid is visible. */
+.monthly-chart::before {
+    content: none !important;
+    display: none !important;
+}
+
+/* The chart itself is the single plot coordinate system. */
+.monthly-chart {
+    position: relative;
+    height: 182px;
+    padding: 0 0 0 30px;
+    margin: 0 20px;
+    border-top: 1px solid #f1f3f5;
+    border-bottom: 1px solid #f1f3f5;
+    background:
+        linear-gradient(to bottom,
+            #f1f3f5 0,
+            #f1f3f5 1px,
+            transparent 1px,
+            transparent 24.5%,
+            #f1f3f5 24.5%,
+            #f1f3f5 calc(25% + 0.5px),
+            transparent calc(25% + 0.5px),
+            transparent 49.5%,
+            #f1f3f5 49.5%,
+            #f1f3f5 calc(50% + 0.5px),
+            transparent calc(50% + 0.5px),
+            transparent 74.5%,
+            #f1f3f5 74.5%,
+            #f1f3f5 calc(75% + 0.5px),
+            transparent calc(75% + 0.5px),
+            transparent calc(100% - 1px),
+            #f1f3f5 calc(100% - 1px),
+            #f1f3f5 100%);
+    overflow: visible;
+}
+
+/* Bars now share the exact top and bottom of the grid. */
+.monthly-bars {
+    position: absolute;
+    inset: 0;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: stretch;
+    gap: 10px;
+}
+
+/* Each month column uses the full plot height. */
+.monthly-bars .month-column {
+    flex: 1;
+    height: 100%;
+    min-width: 42px;
+    padding: 0 2px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
+}
+
+/* Bar bottoms are exactly on the 0 baseline. */
+.month-bars,
+.bar-wrap {
+    height: 100%;
+}
+
+/* Y-axis labels use the exact same 0–100% coordinate system. */
+.chart-scale {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    height: auto;
+    width: 24px;
+    padding: 0 4px 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 8px;
+    line-height: 1;
+    color: #8f969d;
+    pointer-events: none;
+}
+
+/* Month labels sit below the 0 baseline, not inside the plot. */
+.month-label {
+    bottom: -25px;
+}
+
+/* Legend remains below the month labels. */
+.chart-legend {
+    padding-top: 30px;
+}
+
+@media (max-width: 768px) {
+    .monthly-chart {
+        margin: 0 16px;
+        padding-left: 27px;
+    }
+}
+
+/* =========================================================
+   FINAL PATCH — TABEL PENGAJUAN DASHBOARD KEMENSETKAB
+   Hanya pekerjaan yang membutuhkan perhatian Kemensetkab.
+   Kolom: No. | Judul Pengajuan | Nomor Agenda |
+           Asal Kementerian | Jenis | Status
+   Tanpa aksi dan tanpa horizontal scroll.
+   ========================================================= */
+
+.dashboard-table-wrapper {
+    max-height: none !important;
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+}
+
+.dashboard-data-table {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    table-layout: fixed !important;
+}
+
+.dashboard-data-table th,
+.dashboard-data-table td {
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.dashboard-data-table th {
+    white-space: nowrap;
+}
+
+.dashboard-data-table th:nth-child(1),
+.dashboard-data-table td:nth-child(1) {
+    width: 42px;
+    text-align: center;
+}
+
+.dashboard-data-table th:nth-child(2),
+.dashboard-data-table td:nth-child(2) {
+    width: 29%;
+}
+
+.dashboard-data-table th:nth-child(3),
+.dashboard-data-table td:nth-child(3) {
+    width: 15%;
+}
+
+.dashboard-data-table th:nth-child(4),
+.dashboard-data-table td:nth-child(4) {
+    width: 20%;
+}
+
+.dashboard-data-table th:nth-child(5),
+.dashboard-data-table td:nth-child(5) {
+    width: 12%;
+}
+
+.dashboard-data-table th:nth-child(6),
+.dashboard-data-table td:nth-child(6) {
+    width: 16%;
+}
+
+.dashboard-data-table .table-title {
+    font-weight: 600;
+    color: #252525;
+    white-space: normal;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.dashboard-data-table .table-agenda {
+    white-space: nowrap;
+    color: #555;
+    font-weight: 500;
+}
+
+.dashboard-data-table .table-ministry {
+    white-space: normal;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.dashboard-data-table td {
+    vertical-align: middle;
+}
+
+@media (max-width: 1200px) {
+
+    .dashboard-data-table th:nth-child(2),
+    .dashboard-data-table td:nth-child(2) {
+        width: 27%;
+    }
+
+    .dashboard-data-table th:nth-child(4),
+    .dashboard-data-table td:nth-child(4) {
+        width: 22%;
+    }
+
+    .dashboard-data-table th:nth-child(5),
+    .dashboard-data-table td:nth-child(5) {
+        width: 12%;
+    }
+
+    .dashboard-data-table th:nth-child(6),
+    .dashboard-data-table td:nth-child(6) {
+        width: 17%;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-table-wrapper {
+        overflow-x: hidden !important;
+        overflow-y: visible !important;
+    }
+
+    .dashboard-data-table {
+        table-layout: fixed !important;
+    }
+
+    .dashboard-data-table th,
+    .dashboard-data-table td {
+        padding: 10px 8px;
+        font-size: 10px;
+    }
+
+    .dashboard-data-table th:nth-child(1),
+    .dashboard-data-table td:nth-child(1) {
+        width: 34px;
+    }
+
+    .dashboard-data-table th:nth-child(2),
+    .dashboard-data-table td:nth-child(2) {
+        width: 27%;
+    }
+
+    .dashboard-data-table th:nth-child(3),
+    .dashboard-data-table td:nth-child(3) {
+        width: 15%;
+    }
+
+    .dashboard-data-table th:nth-child(4),
+    .dashboard-data-table td:nth-child(4) {
+        width: 20%;
+    }
+
+    .dashboard-data-table th:nth-child(5),
+    .dashboard-data-table td:nth-child(5) {
+        width: 13%;
+    }
+
+    .dashboard-data-table th:nth-child(6),
+    .dashboard-data-table td:nth-child(6) {
+        width: 16%;
+    }
+
+    .dashboard-data-table .jenis-badge,
+    .dashboard-data-table .status-badge {
+        font-size: 9px;
+        padding: 5px 7px;
+    }
+}
+
+
+/* =========================================================
+   FINAL FIX — TABEL PENGAJUAN DASHBOARD
+   Horizontal scroll diperbolehkan agar 6 kolom tetap nyaman.
+   Tidak ada vertical scroll khusus di dalam tabel.
+   ========================================================= */
+
+.dashboard-table-wrapper {
+    width: 100%;
+    max-height: none !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+}
+
+.dashboard-data-table {
+    width: 100%;
+    min-width: 920px !important;
+    max-width: none !important;
+    table-layout: auto !important;
+}
+
+/* Lebar minimum agar setiap informasi tetap terbaca */
+.dashboard-data-table th:nth-child(1),
+.dashboard-data-table td:nth-child(1) {
+    width: 48px;
+    min-width: 48px;
+    text-align: center;
+}
+
+.dashboard-data-table th:nth-child(2),
+.dashboard-data-table td:nth-child(2) {
+    min-width: 250px;
+}
+
+.dashboard-data-table th:nth-child(3),
+.dashboard-data-table td:nth-child(3) {
+    min-width: 130px;
+}
+
+.dashboard-data-table th:nth-child(4),
+.dashboard-data-table td:nth-child(4) {
+    min-width: 200px;
+}
+
+.dashboard-data-table th:nth-child(5),
+.dashboard-data-table td:nth-child(5) {
+    min-width: 105px;
+}
+
+.dashboard-data-table th:nth-child(6),
+.dashboard-data-table td:nth-child(6) {
+    min-width: 155px;
+}
+
+.dashboard-data-table th {
+    white-space: nowrap;
+}
+
+.dashboard-data-table td {
+    vertical-align: middle;
+    overflow: visible;
+}
+
+.dashboard-data-table .table-title {
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: normal;
+    line-height: 1.45;
+}
+
+.dashboard-data-table .table-agenda {
+    white-space: nowrap;
+}
+
+.dashboard-data-table .table-ministry {
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: normal;
+    line-height: 1.45;
+}
+
+/* Jangan mengecilkan badge status/jenis saat tabel digeser */
+.dashboard-data-table .jenis-badge,
+.dashboard-data-table .status-badge {
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* Pada layar kecil, tabel tetap boleh digeser horizontal */
+@media (max-width: 768px) {
+    .dashboard-table-wrapper {
+        max-height: none !important;
+        overflow-x: auto !important;
+        overflow-y: visible !important;
+    }
+
+    .dashboard-data-table {
+        min-width: 900px !important;
+        table-layout: auto !important;
+    }
+
+    .dashboard-data-table th,
+    .dashboard-data-table td {
+        padding: 10px 12px;
+        font-size: 10px;
+    }
+}
+
+
+/* =========================================================
+   FINAL PATCH — TANGGAL MASUK TABEL DASHBOARD
+   Menggantikan Nomor Agenda.
+   ========================================================= */
+.dashboard-data-table .table-date {
+    white-space: nowrap;
+    color: #666;
+    font-size: 10px;
+    font-weight: 500;
+}
+
+/* SITARA: transisi antarhalaman same-origin yang lebih halus.
+   Ini tidak mengubah routing, session, API, atau alur dokumen.
+   Browser yang belum mendukung View Transitions akan mengabaikan aturan ini. */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root) {
+  animation: sitara-page-out 120ms ease-in both;
+}
+
+::view-transition-new(root) {
+  animation: sitara-page-in 180ms ease-out both;
+}
+
+@keyframes sitara-page-out {
+  to { opacity: 0; }
+}
+
+@keyframes sitara-page-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}

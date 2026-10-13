@@ -1,1 +1,60 @@
-/* Styling tambahan memakai mensetkab.css */
+/* Gaya khusus isi konten Pengajuan Masuk. Header dan sidebar menggunakan shell yang sudah ada. */
+.pengajuan-page { padding: 18px 28px 38px; }
+.pengajuan-page .pm-banner { position:relative; display:grid; grid-template-columns:auto minmax(0,1fr) minmax(240px,330px); align-items:center; gap:22px; min-height:136px; padding:18px 30px; margin-bottom:20px; overflow:hidden; border:1px solid #f2dfdc; border-radius:14px; background:radial-gradient(ellipse at 82% 115%,rgba(199,104,94,.12),transparent 40%),linear-gradient(110deg,#f8ecea 0%,#fffafa 64%,#f9eeec 100%); }
+.pengajuan-page .pm-banner:after { content:""; position:absolute; right:-2%; bottom:-55%; width:55%; height:130%; border:1px solid rgba(190,88,79,.12); border-radius:50%; transform:rotate(-12deg); pointer-events:none; }
+.pengajuan-page .pm-banner-icon { display:grid; place-items:center; width:68px; height:68px; border-radius:13px; background:linear-gradient(145deg,#a52d27,#841e1a); color:#fff; box-shadow:0 8px 18px rgba(123,31,26,.14); z-index:1; }
+.pengajuan-page .pm-banner-icon svg { width:32px; height:32px; }
+.pengajuan-page .pm-banner-copy,.pengajuan-page .pm-banner-note { position:relative; z-index:1; }
+.pengajuan-page .pm-eyebrow { margin:0 0 9px; color:#8e2823; font-size:9px; font-weight:800; letter-spacing:2.1px; }
+.pengajuan-page .pm-banner h2 { margin:0 0 5px; color:#8f211d; font-size:clamp(19px,1.55vw,25px); line-height:1.25; font-weight:800; }
+.pengajuan-page .pm-banner-copy p:last-child { margin:0; max-width:610px; color:#606775; font-size:13px; line-height:1.6; }
+.pengajuan-page .pm-banner-note { display:flex; align-items:center; gap:14px; min-height:64px; padding-left:22px; border-left:1px solid #e5c5c1; color:#9b3028; font-size:13px; line-height:1.65; }
+.pengajuan-page .pm-banner-note svg { flex:0 0 34px; width:34px; height:34px; stroke-width:1.7; }
+.pengajuan-page .pm-list-card { overflow:hidden; border:1px solid #f0f0f2; border-radius:14px; background:#fff; box-shadow:0 7px 26px rgba(27,34,48,.045); }
+.pengajuan-page .pm-list-toolbar { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:23px 25px; border-bottom:1px solid #eceef1; }
+.pengajuan-page .pm-list-heading { display:flex; align-items:center; gap:14px; min-width:220px; }
+.pengajuan-page .pm-list-icon { display:grid; place-items:center; flex:0 0 48px; width:48px; height:48px; border-radius:12px; background:#f9eae8; color:#a12b25; }
+.pengajuan-page .pm-list-icon svg { width:25px; height:25px; }
+.pengajuan-page .pm-list-heading h3 { margin:0 0 4px; color:#202532; font-size:17px; font-weight:750; }
+.pengajuan-page .pm-list-heading p { margin:0; color:#737b8c; font-size:12px; line-height:1.5; }
+.pengajuan-page .pm-list-tools { display:flex; align-items:center; justify-content:flex-end; gap:12px; }
+.pengajuan-page .pm-search-wrap { display:flex; align-items:center; gap:10px; width:min(365px,30vw); min-width:220px; padding:0 14px; border:1px solid #dfe3e9; border-radius:11px; background:#fff; }
+.pengajuan-page .pm-search-wrap:focus-within { border-color:#bd807a; box-shadow:0 0 0 3px rgba(143,40,35,.07); }
+.pengajuan-page .pm-search-wrap svg { flex:0 0 19px; width:19px; height:19px; color:#596171; }
+.pengajuan-page .pm-search-wrap input { width:100%; min-width:0; height:47px; border:0; outline:0; background:transparent; color:#283040; font:inherit; font-size:12px; }
+.pengajuan-page .pm-sort { height:49px; max-width:190px; padding:0 13px; border:1px solid #dfe3e9; border-radius:11px; background:#fff; color:#202532; font:inherit; font-size:12px; cursor:pointer; }
+.pengajuan-page .pm-table-wrap { width:100%; overflow-x:auto; }
+.pengajuan-page .pm-table { width:100%; min-width:850px; border-collapse:collapse; }
+.pengajuan-page .pm-table thead { background:#fafafa; }
+.pengajuan-page .pm-table th { padding:17px 17px; border-bottom:1px solid #e9ebef; color:#555e6d; text-align:left; white-space:nowrap; font-size:11px; font-weight:750; }
+.pengajuan-page .pm-table td { padding:16px 17px; border-bottom:1px solid #f0f1f3; color:#424958; vertical-align:middle; font-size:12px; }
+.pengajuan-page .pm-table tbody tr:last-child td { border-bottom:0; }
+.pengajuan-page .pm-table tbody tr:hover { background:#fffdfd; }
+.pengajuan-page .pm-number { width:55px; color:#828998!important; }
+.pengajuan-page .pm-title-cell { min-width:190px; }
+.pengajuan-page .pm-title-cell strong { display:block; color:#222938; font-size:12px; font-weight:700; line-height:1.45; }
+.pengajuan-page .pm-title-cell small { display:block; margin-top:4px; color:#8b92a0; font-size:10px; }
+.pengajuan-page .pm-date { white-space:nowrap; }
+.pengajuan-page .pm-type,.pengajuan-page .pm-status { display:inline-flex; align-items:center; justify-content:center; max-width:190px; padding:6px 9px; border-radius:999px; white-space:nowrap; font-size:10px; font-weight:700; }
+.pengajuan-page .pm-type-proposal { background:#f0eafe; color:#6941a5; }
+.pengajuan-page .pm-type-lpj { background:#e8f6ee; color:#237c4d; }
+.pengajuan-page .pm-type-default { background:#f0f2f5; color:#5f6877; }
+.pengajuan-page .pm-status-pending { background:#fff3df; color:#a86612; }
+.pengajuan-page .pm-status-revision { background:#fff0e8; color:#bc4e27; }
+.pengajuan-page .pm-status-rejected { background:#fdeaea; color:#b32626; }
+.pengajuan-page .pm-status-done { background:#e7f6ed; color:#247b4c; }
+.pengajuan-page .pm-status-default { background:#eef2f6; color:#586273; }
+.pengajuan-page .pm-open { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:9px 13px; border:1px solid #9b2c26; border-radius:9px; background:#982923; color:#fff; text-decoration:none; white-space:nowrap; font-size:11px; font-weight:700; transition:background .18s ease,border-color .18s ease; }
+.pengajuan-page .pm-open:hover { border-color:#7f201b; background:#7f201b; }
+.pengajuan-page .pm-empty { display:flex; min-height:355px; flex-direction:column; align-items:center; justify-content:center; padding:35px 20px; text-align:center; }
+.pengajuan-page .pm-empty-illustration { width:118px; height:118px; margin-bottom:12px; }
+.pengajuan-page .pm-empty strong { color:#222733; font-size:16px; font-weight:750; }
+.pengajuan-page .pm-empty p { max-width:390px; margin:8px 0 0; color:#7b8393; font-size:13px; line-height:1.6; }
+.pengajuan-page .pm-empty-error .pm-empty-icon { display:grid; place-items:center; width:44px; height:44px; margin-bottom:14px; border-radius:50%; background:#fde8e7; color:#a42b25; font-size:24px; font-weight:800; }
+.pengajuan-page .pm-retry { margin-top:15px; padding:9px 15px; border:0; border-radius:8px; background:#982923; color:#fff; font:inherit; font-size:12px; cursor:pointer; }
+.pengajuan-page .pm-loading { display:flex; min-height:300px; align-items:center; justify-content:center; gap:12px; color:#777f8e; font-size:13px; }
+.pengajuan-page .pm-spinner { width:19px; height:19px; border:2px solid #f0d9d6; border-top-color:#982923; border-radius:50%; animation:pm-spin .75s linear infinite; }
+@keyframes pm-spin { to { transform:rotate(360deg); } }
+@media (max-width:1100px) { .pengajuan-page { padding:16px 20px 30px; } .pengajuan-page .pm-banner { grid-template-columns:auto minmax(0,1fr); gap:20px; } .pengajuan-page .pm-banner-note { grid-column:2; min-height:0; padding:12px 0 0; border-left:0; border-top:1px solid #e5c5c1; } .pengajuan-page .pm-list-toolbar { align-items:flex-start; flex-direction:column; } .pengajuan-page .pm-list-tools { width:100%; justify-content:flex-start; } .pengajuan-page .pm-search-wrap { width:100%; min-width:0; } }
+@media (max-width:640px) { .pengajuan-page { padding:12px 12px 24px; } .pengajuan-page .pm-banner { grid-template-columns:1fr; gap:14px; padding:20px; } .pengajuan-page .pm-banner-icon { width:62px; height:62px; border-radius:12px; } .pengajuan-page .pm-banner-icon svg { width:30px; height:30px; } .pengajuan-page .pm-banner-note { grid-column:1; gap:12px; font-size:12px; } .pengajuan-page .pm-banner-note svg { width:30px; height:30px; flex-basis:30px; } .pengajuan-page .pm-list-toolbar { padding:17px 15px; gap:16px; } .pengajuan-page .pm-list-heading { align-items:flex-start; min-width:0; } .pengajuan-page .pm-list-heading h3 { font-size:15px; } .pengajuan-page .pm-list-tools { align-items:stretch; flex-direction:column; } .pengajuan-page .pm-search-wrap { width:100%; } .pengajuan-page .pm-sort { width:100%; max-width:none; } .pengajuan-page .pm-empty { min-height:290px; } }
+@media (prefers-reduced-motion:reduce) { .pengajuan-page .pm-spinner { animation:none; } .pengajuan-page .pm-open { transition:none; } }

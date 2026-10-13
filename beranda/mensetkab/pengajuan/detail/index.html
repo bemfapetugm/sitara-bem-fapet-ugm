@@ -12,44 +12,44 @@
     />
     <link rel="stylesheet" href="../../mensetkab.css" />
     <link rel="stylesheet" href="detail.css" />
-  </head>
+  <script src="https://unpkg.com/lucide@latest"></script>    <link rel="stylesheet" href="../../mensetkab-shell.css">
+</head>
   <body>
     <div class="kemen-container">
       <aside class="sidebar">
-        <div class="sidebar-brand">
-          <img src="../../../../assets/images/logo.png" alt="Logo SITARA" />
-          <div class="brand-text">
-            <h2>SITARA</h2>
-            <p>Panel Menteri</p>
-          </div>
-        </div>
-        <nav class="sidebar-nav">
-          <p class="nav-label">MENU UTAMA</p>
-          <a href="../../index.html" class="nav-item"
-            ><span class="nav-icon">▦</span><span>Dashboard</span></a
-          >
-          <p class="nav-label">ADMINISTRASI</p>
-          <a href="../index.html" class="nav-item active"
-            ><span class="nav-icon">▧</span><span>Pengajuan Masuk</span></a
-          >
-          <p class="nav-label">DOKUMEN</p>
-          <a href="../../riwayat/index.html" class="nav-item"
-            ><span class="nav-icon">≡</span><span>Riwayat</span></a
-          >
-        </nav>
-        <div class="sidebar-footer">
-          <div class="user-profile">
-            <div class="profile-avatar" id="profileAvatar">MS</div>
-            <div class="profile-info">
-              <h4 id="profileName">Mensetkab</h4>
-              <p id="profileRole">Mensetkab</p>
+<div class="sidebar-brand">
+            <img src="../../../../assets/images/logo.png" alt="Logo SITARA">
+            <div class="brand-text">
+                <h2>SITARA</h2>
+                <p>Sistem Integrasi Tata Birokrasi Mahasiswa</p>
             </div>
-          </div>
-          <button type="button" class="logout-button" id="logoutBtn">
-            ⇥ Keluar
-          </button>
         </div>
-      </aside>
+<nav class="sidebar-nav" aria-label="Menu Mensetkab">
+<p class="nav-label">MENU UTAMA</p>
+<a href="../../index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="house"></i></span><span>Dashboard</span></a>
+<p class="nav-label">PENGELOLAAN PENGAJUAN</p>
+<a href="../../pengajuan/index.html" class="nav-item active" aria-current="page"><span class="nav-icon" aria-hidden="true"><i data-lucide="inbox"></i></span><span>Pengajuan Masuk</span></a>
+<a href="../../revisi/index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="refresh-cw"></i></span><span>Perlu Revisi</span></a>
+<p class="nav-label">KEPUTUSAN DAN HASIL</p>
+<a href="../../hasil/index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="clipboard-check"></i></span><span>Hasil Ketua BEM</span></a>
+<p class="nav-label">DOKUMEN</p>
+<a href="../../template/index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="files"></i></span><span>Template Dokumen</span></a>
+<p class="nav-label">MONITORING DAN AGENDA</p>
+<a href="../../riwayat/index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="history"></i></span><span>Riwayat Pengajuan</span></a>
+<a href="../../agenda/index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="calendar-days"></i></span><span>Agenda Kabinet</span></a>
+<a href="../../rekapitulasi/index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="chart-no-axes-combined"></i></span><span>Rekapitulasi</span></a>
+</nav>
+<div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="profile-avatar" id="profileAvatar">MS</div>
+                <div class="profile-info">
+                    <h4 id="profileName">Menteri Sekretariat Kabinet</h4>
+                    <p id="profileRole">Mensetkab</p>
+                </div>
+            </div>
+            <button type="button" class="logout-button" id="logoutBtn"><i data-lucide="log-out" aria-hidden="true"></i><span>Keluar</span></button>
+        </div>
+    </aside>
       <main class="main-content">
         <header class="topbar">
           <div class="topbar-title">
@@ -83,5 +83,6 @@
       </div>
     </div>
     <script src="detail.js"></script>
-  </body>
+  <script>if (window.lucide) lucide.createIcons();</script>    <script src="../../mensetkab-shell.js"></script>
+</body>
 </html>

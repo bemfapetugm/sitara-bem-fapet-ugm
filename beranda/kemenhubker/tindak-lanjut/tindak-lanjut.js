@@ -82,6 +82,23 @@
     const c = classify(x);
     if (!c) return null;
 
+    // Status revisi hanya ditampilkan jika revisi tersebut memang ditujukan
+    // kepada kementerian yang sedang login. Contohnya, "Perlu Revisi" dengan
+    // tahap_sekarang = KEM001 adalah revisi dari Mensetkab untuk Kemensetkab,
+    // bukan pekerjaan Kemenhubker. Karena itu, revisi lintas tahap disaring.
+    if (c === "revise") {
+      const currentMinistryId = String(session.kementerian_id || "")
+        .trim()
+        .toUpperCase();
+      const currentStage = String(x.tahap_sekarang || "")
+        .trim()
+        .toUpperCase();
+
+      if (!currentMinistryId || !currentStage || currentStage !== currentMinistryId) {
+        return null;
+      }
+    }
+
     const id = x.nomor_pengajuan || x.id || x.pengajuan_id || "-";
     const title = x.perihal || x.judul_pengajuan || x.judul || "Tanpa judul";
     const kind = String(x.jenis || x.jenis_pengajuan || "")
@@ -500,6 +517,99 @@
     );
   }
 
+  function toDirectDownloadUrl(url) {
+    const value = String(url || "").trim();
+    if (!value) return "";
+
+    // Google Drive /file/d/FILE_ID/view -> endpoint download langsung.
+    const fileMatch = value.match(/drive\.google\.com\/file\/d\/([A-Za-z0-9_-]+)/i);
+    if (fileMatch?.[1]) {
+      return `https://drive.google.com/uc?export=download&id=${encodeURIComponent(fileMatch[1])}`;
+    }
+
+    // Google Drive open?id=FILE_ID atau URL lain yang membawa parameter id.
+    const openMatch = value.match(/[?&]id=([A-Za-z0-9_-]+)/i);
+    if (/drive\.google\.com/i.test(value) && openMatch?.[1]) {
+      return `https://drive.google.com/uc?export=download&id=${encodeURIComponent(openMatch[1])}`;
+    }
+
+    return value;
+  }
+
+  async function downloadTindakLanjutDocument(dokumenId, fileName, button) {
+    const id = String(dokumenId || "").trim();
+    if (!id) {
+      alert("ID dokumen tidak ditemukan.");
+      return;
+    }
+
+    const token = session.session_token || session.token || "";
+    if (!token) {
+      alert("Session SITARA tidak tersedia. Silakan login kembali.");
+      return;
+    }
+
+    const originalText = button ? button.innerHTML : "";
+    if (button) {
+      button.disabled = true;
+      button.innerHTML = '<i data-lucide="loader-circle"></i> Mengunduh...';
+      drawIcons();
+    }
+
+    try {
+      const res = await fetch(apiUrl(), {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({
+          action: "downloadDokumenKemenhubker",
+          session_token: token,
+          dokumen_id: id,
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error("Server mengembalikan HTTP " + res.status);
+      }
+
+      const json = await res.json();
+      if (!json.success || !json.data || !json.data.base64) {
+        throw new Error(json.message || "Dokumen tidak dapat diunduh.");
+      }
+
+      const binary = atob(json.data.base64);
+      const bytes = new Uint8Array(binary.length);
+      for (let i = 0; i < binary.length; i++) {
+        bytes[i] = binary.charCodeAt(i);
+      }
+
+      const blob = new Blob([bytes], {
+        type: json.data.mime_type || "application/octet-stream",
+      });
+      const objectUrl = URL.createObjectURL(blob);
+      const anchor = document.createElement("a");
+      anchor.href = objectUrl;
+      anchor.download = String(
+        json.data.nama_file || fileName || "Dokumen SITARA"
+      );
+      document.body.appendChild(anchor);
+      anchor.click();
+      anchor.remove();
+      setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
+    } catch (err) {
+      console.error("Gagal mengunduh dokumen Tindak Lanjut:", err);
+      alert(
+        "Dokumen belum dapat diunduh.\n\n" +
+          (err.message || "Terjadi kesalahan pada server.")
+      );
+    } finally {
+      if (button) {
+        button.disabled = false;
+        button.innerHTML = originalText || '<i data-lucide="download"></i> Download';
+        drawIcons();
+      }
+    }
+  }
+
   function documentIcon(name) {
     return String(name || "")
       .toLowerCase()
@@ -568,7 +678,7 @@
               </div>
               ${
                 url
-                  ? `<a class="tl-download" href="${escAttr(url)}" target="_blank" rel="noopener"><i data-lucide="download"></i> Download</a>`
+                  ? `<button type="button" class="tl-download" data-dokumen-id="${escAttr(String(d.dokumen_id || d.document_id || d.id || ""))}" data-file-name="${escAttr(name)}"><i data-lucide="download"></i> Download</button>`
                   : `<span style="font-size:10.5px;color:#8793a5">Belum tersedia</span>`
               }
             </div>`;
@@ -1071,6 +1181,17 @@
     .getElementById("submitRevisionButton")
     .addEventListener("click", submitRevision);
   document.getElementById("detailModal").addEventListener("click", (e) => {
+    const downloadButton = e.target.closest(".tl-download[data-dokumen-id]");
+    if (downloadButton) {
+      e.preventDefault();
+      downloadTindakLanjutDocument(
+        downloadButton.dataset.dokumenId,
+        downloadButton.dataset.fileName,
+        downloadButton
+      );
+      return;
+    }
+
     if (e.target.id === "detailModal") closeModal();
   });
   document.addEventListener("keydown", (e) => {

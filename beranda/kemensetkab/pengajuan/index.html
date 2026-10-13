@@ -1,57 +1,436 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pengajuan Masuk | SITARA</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../kemensetkab.css">
-<link rel="stylesheet" href="pengajuan.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pengajuan Masuk | SITARA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../kemensetkab.css" />
+    <link rel="stylesheet" href="pengajuan.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <link rel="stylesheet" href="../kemensetkab-shell.css" data-sitara-shell="shared" />
 </head>
-<body>
-<div class="kemen-container">
-<aside class="sidebar">
-<div class="sidebar-brand">
-<img src="../../../assets/images/logo.png" alt="Logo SITARA">
-<div class="brand-text"><h2>SITARA</h2><p>Panel Kementerian</p></div>
-</div>
-<nav class="sidebar-nav">
-<p class="nav-label">MENU UTAMA</p>
-<a href="../index.html" class="nav-item"><span class="nav-icon">▦</span><span>Dashboard</span></a>
-<p class="nav-label">ADMINISTRASI</p>
-<a href="index.html" class="nav-item active"><span class="nav-icon">▧</span><span>Pengajuan Masuk</span></a>
-<p class="nav-label">KABINET</p>
-<a href="../agenda/index.html" class="nav-item"><span class="nav-icon">▣</span><span>Agenda Kabinet</span></a>
-<p class="nav-label">DOKUMEN</p>
-<a href="../administrasi/index.html" class="nav-item"><span class="nav-icon">▤</span><span>Administrasi</span></a>
-<a href="../dokumen/index.html" class="nav-item"><span class="nav-icon">▱</span><span>Dokumen</span></a>
-<a href="../rekapitulasi/index.html" class="nav-item"><span class="nav-icon">▦</span><span>Rekapitulasi</span></a>
-<a href="../riwayat/index.html" class="nav-item"><span class="nav-icon">≡</span><span>Riwayat</span></a>
-</nav>
-<div class="sidebar-footer">
-<div class="user-profile"><div class="profile-avatar" id="profileAvatar">KS</div><div class="profile-info"><h4 id="profileName">Pengguna</h4><p id="profileRole">Kementerian</p></div></div>
-<button class="logout-button" id="logoutButton">⇥ Keluar</button>
-</div>
-</aside>
-<main class="main-content">
-<header class="topbar"><div class="topbar-title"><h2>Pengajuan Masuk</h2><p>Kementerian Sekretariat Kabinet</p></div><div class="topbar-right"><div class="topbar-date" id="currentDate">Memuat tanggal...</div><div class="topbar-avatar" id="topbarAvatar">KS</div></div></header>
-<section class="content">
-<div class="page-header"><div><h1>Pengajuan Masuk</h1><p>Kelola seluruh pengajuan yang masuk ke Kementerian Sekretariat Kabinet.</p></div></div>
-<div class="status-tabs" id="statusTabs">
-<button class="status-tab active" data-filter="semua">Semua <span id="countSemua">0</span></button>
-<button class="status-tab" data-filter="verifikasi">Perlu Verifikasi <span id="countVerifikasi">0</span></button>
-<button class="status-tab" data-filter="menunggu_revisi">Menunggu Revisi Kementerian X <span id="countMenungguRevisi">0</span></button>
-<button class="status-tab" data-filter="perbaikan">Perlu Perbaikan <span id="countPerbaikan">0</span></button>
-<button class="status-tab" data-filter="proses">Dalam Proses <span id="countProses">0</span></button>
-<button class="status-tab" data-filter="eksternal">Menunggu Eksternal <span id="countEksternal">0</span></button>
-<button class="status-tab" data-filter="selesai">Selesai <span id="countSelesai">0</span></button>
-</div>
-<div class="submission-list" id="pengajuanContainer"><div class="loading">Memuat pengajuan...</div></div>
-</section>
-</main>
-</div>
-<script src="pengajuan.js"></script>
+  <body>
+    <div class="kemen-container">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <img src="../../../assets/images/logo.png" alt="Logo SITARA" />
+          <div class="brand-text">
+            <h2>SITARA</h2>
+            <p>Sistem Integrasi Tata Birokrasi Mahasiswa</p>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <p class="nav-label">MENU UTAMA</p>
+          <a href="../index.html" class="nav-item">
+            <span class="nav-icon" aria-hidden="true"
+              ><i data-lucide="house"></i></span
+            ><span>Dashboard</span>
+          </a>
+
+          <p class="nav-label">PENGELOLAAN PENGAJUAN</p>
+          <a href="../pengajuan/index.html" class="nav-item active">
+            <span class="nav-icon" aria-hidden="true"
+              ><i data-lucide="inbox"></i></span
+            ><span>Pengajuan Masuk</span>
+            <span class="nav-badge" id="badgePengajuanMasuk" hidden></span>
+          </a>
+          <a href="../perlu-revisi/index.html" class="nav-item">
+            <span class="nav-icon" aria-hidden="true"
+              ><i data-lucide="refresh-cw"></i></span
+            ><span>Perlu Revisi</span>
+            <span class="nav-badge" id="badgePerluRevisi" hidden></span>
+          </a>
+          <a href="../pengembalian/index.html" class="nav-item">
+            <span class="nav-icon" aria-hidden="true"
+              ><i data-lucide="corner-down-left"></i></span
+            ><span>Pengembalian Mensetkab</span>
+          </a>
+
+          <p class="nav-label">PENGAJUAN EKSTERNAL</p>
+          <a href="../pengajuan-dpm/index.html" class="nav-item">
+            <span class="nav-icon" aria-hidden="true"
+              ><i data-lucide="landmark"></i></span
+            ><span>Pengajuan ke DPM</span>
+            <span class="nav-badge" id="badgePengajuanDpm" hidden></span>
+          </a>
+          <a href="../fakultas/index.html" class="nav-item">
+            <span class="nav-icon" aria-hidden="true"
+              ><i data-lucide="building-2"></i></span
+            ><span>Pengajuan ke Fakultas</span>
+            <span class="nav-badge" id="badgeFakultas" hidden></span>
+          </a>
+
+          <p class="nav-label">DOKUMEN</p>
+          <a href="../dokumen-final/index.html" class="nav-item">
+            <span class="nav-icon" aria-hidden="true"
+              ><i data-lucide="file-check-2"></i></span
+            ><span>Dokumen Final</span>
+          </a>
+          <a href="../template/index.html" class="nav-item">
+            <span class="nav-icon" aria-hidden="true"
+              ><i data-lucide="files"></i></span
+            ><span>Template Dokumen</span>
+          </a>
+          <a href="../riwayat/index.html" class="nav-item">
+            <span class="nav-icon" aria-hidden="true"
+              ><i data-lucide="history"></i></span
+            ><span>Riwayat Pengajuan</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="user-profile">
+            <div class="profile-avatar" id="profileAvatar">KS</div>
+            <div class="profile-info">
+              <h4 id="profileName">Pengguna</h4>
+              <p id="profileRole">Kementerian</p>
+            </div>
+          </div>
+          <button type="button" class="logout-button" id="logoutButton">
+            ⇥ Keluar
+          </button>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="topbar-title">
+            <h2>Pengajuan Masuk</h2>
+            <p>Kementerian Sekretariat Kabinet</p>
+          </div>
+          <div class="topbar-right">
+            <div class="topbar-date" id="currentDate">Memuat tanggal...</div>
+            <div class="topbar-avatar" id="topbarAvatar">KS</div>
+          </div>
+        </header>
+
+        <section class="content pengajuan-page">
+          <section class="stat-grid" aria-label="Ringkasan pengajuan">
+            <article class="stat-card stat-total">
+              <div class="stat-icon"><i data-lucide="file-text"></i></div>
+              <div class="stat-content">
+                <strong id="statTotal">0</strong>
+                <h3>Total Pengajuan</h3>
+                <p>Seluruh pengajuan administrasi.</p>
+              </div>
+            </article>
+            <article class="stat-card stat-verifikasi">
+              <div class="stat-icon"><i data-lucide="clock-3"></i></div>
+              <div class="stat-content">
+                <strong id="statVerifikasi">0</strong>
+                <h3>Perlu Verifikasi</h3>
+                <p>
+                  Pengajuan perlu verifikasi dokumen.
+                </p>
+              </div>
+            </article>
+            <article class="stat-card stat-revisi">
+              <div class="stat-icon"><i data-lucide="refresh-cw"></i></div>
+              <div class="stat-content">
+                <strong id="statRevisi">0</strong>
+                <h3>Menunggu Revisi</h3>
+                <p>
+                  Pengajuan sedang masa perbaikan.
+                </p>
+              </div>
+            </article>
+          </section>
+
+          <section class="filter-card" aria-label="Filter pengajuan">
+            <div class="search-box">
+              <i data-lucide="search"></i>
+              <input
+                id="searchInput"
+                type="search"
+                placeholder="Cari judul, nomor pengajuan, atau nama kementerian..."
+                autocomplete="off"
+              />
+            </div>
+
+            <div class="filter-field custom-filter" id="statusFilterWrap">
+              <span class="filter-label">Filter Status</span>
+              <button
+                type="button"
+                class="custom-filter-trigger"
+                id="statusFilterTrigger"
+                aria-haspopup="listbox"
+                aria-expanded="false"
+              >
+                <span id="statusFilterLabel">Semua Status</span>
+                <i data-lucide="chevron-down" aria-hidden="true"></i>
+              </button>
+              <select id="statusFilter" class="native-filter-control" aria-hidden="true" tabindex="-1">
+                <option value="semua">Semua Status</option>
+                <option value="verifikasi">Perlu Verifikasi</option>
+                <option value="menunggu_revisi">Menunggu Revisi</option>
+                <option value="selesai">Selesai</option>
+              </select>
+              <div class="custom-filter-menu" id="statusFilterMenu" role="listbox" aria-label="Filter Status">
+                <button type="button" class="custom-filter-option selected" data-value="semua" role="option" aria-selected="true">Semua Status</button>
+                <button type="button" class="custom-filter-option" data-value="verifikasi" role="option" aria-selected="false">Perlu Verifikasi</button>
+                <button type="button" class="custom-filter-option" data-value="menunggu_revisi" role="option" aria-selected="false">Menunggu Revisi</button>
+                <button type="button" class="custom-filter-option" data-value="selesai" role="option" aria-selected="false">Selesai</button>
+              </div>
+            </div>
+
+            <div class="filter-field custom-filter" id="ministryFilterWrap">
+              <span class="filter-label">Filter Kementerian</span>
+              <button
+                type="button"
+                class="custom-filter-trigger"
+                id="ministryFilterTrigger"
+                aria-haspopup="listbox"
+                aria-expanded="false"
+              >
+                <span id="ministryFilterLabel">Semua Kementerian</span>
+                <i data-lucide="chevron-down" aria-hidden="true"></i>
+              </button>
+              <select id="ministryFilter" class="native-filter-control" aria-hidden="true" tabindex="-1">
+                <option value="semua">Semua Kementerian</option>
+              </select>
+              <div class="custom-filter-menu" id="ministryFilterMenu" role="listbox" aria-label="Filter Kementerian">
+                <button type="button" class="custom-filter-option selected" data-value="semua" role="option" aria-selected="true">Semua Kementerian</button>
+              </div>
+            </div>
+
+            <div class="filter-field custom-filter date-filter" id="dateFilterWrap">
+              <span class="filter-label">Rentang Tanggal</span>
+              <button
+                type="button"
+                class="custom-filter-trigger date-trigger"
+                id="dateFilterTrigger"
+                aria-label="Pilih tanggal"
+              >
+                <span id="dateFilterLabel">dd/mm/yyyy</span>
+                <i data-lucide="calendar-days" aria-hidden="true"></i>
+              </button>
+              <input id="dateFilter" class="native-date-control" type="date" aria-label="Rentang Tanggal" />
+            </div>
+          </section>
+
+          <section class="table-card">
+            <div class="table-toolbar">
+              <div class="table-heading">
+                <div class="table-heading-icon">
+                  <i data-lucide="file-text"></i>
+                </div>
+                <div>
+                  <h2>Daftar Pengajuan</h2>
+                  <p>Menampilkan pengajuan yang masuk ke Kemensetkab.</p>
+                </div>
+              </div>
+              <div class="table-tools">
+                <div class="sort-control custom-sort-control" id="sortFilterWrap">
+                  <span class="sort-label">Urutkan</span>
+                  <button
+                    type="button"
+                    class="sort-trigger"
+                    id="sortFilterTrigger"
+                    aria-haspopup="listbox"
+                    aria-expanded="false"
+                  >
+                    <span id="sortFilterLabel">Terbaru</span>
+                    <i data-lucide="chevron-down" aria-hidden="true"></i>
+                  </button>
+                  <select id="sortFilter" class="native-sort-select" aria-hidden="true" tabindex="-1">
+                    <option value="terbaru">Terbaru</option>
+                    <option value="terlama">Terlama</option>
+                    <option value="judul">Judul A-Z</option>
+                  </select>
+                  <div class="sort-menu" id="sortFilterMenu" role="listbox" aria-label="Urutkan">
+                    <button type="button" class="sort-option selected" data-value="terbaru" role="option" aria-selected="true">Terbaru</button>
+                    <button type="button" class="sort-option" data-value="terlama" role="option" aria-selected="false">Terlama</button>
+                    <button type="button" class="sort-option" data-value="judul" role="option" aria-selected="false">Judul A-Z</button>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  class="icon-button"
+                  id="refreshButton"
+                  title="Muat ulang"
+                  aria-label="Muat ulang"
+                >
+                  <i data-lucide="refresh-cw"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="table-wrap">
+              <table class="submission-table">
+                <thead>
+                  <tr>
+                    <th class="number-col">No.</th>
+                    <th class="title-col">Judul Pengajuan</th>
+                    <th class="ministry-col">Kementerian</th>
+                    <th class="subject-col">Perihal</th>
+                    <th class="date-col">Tanggal Masuk</th>
+                    <th class="status-col">Status</th>
+                    <th class="action-col">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody id="pengajuanTableBody">
+                  <tr>
+                    <td colspan="7" class="table-loading">
+                      Memuat pengajuan...
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="table-footer">
+              <div class="page-size">
+                Tampilkan
+                <select id="pageSize">
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+                  <option value="50">50</option></select
+                ><span id="dataSummary">dari 0 data</span>
+              </div>
+              <div class="pagination">
+                <button
+                  id="prevPage"
+                  type="button"
+                  aria-label="Halaman sebelumnya"
+                >
+                  <i data-lucide="chevron-left"></i></button
+                ><span id="pageNumber">1</span
+                ><button
+                  id="nextPage"
+                  type="button"
+                  aria-label="Halaman berikutnya"
+                >
+                  <i data-lucide="chevron-right"></i>
+                </button>
+              </div>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <!-- MODAL DETAIL PENGAJUAN -->
+    <div class="detail-modal" id="detailModal" aria-hidden="true">
+      <div class="detail-modal-backdrop" data-detail-close></div>
+      <section class="detail-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="detailModalTitle">
+        <header class="detail-modal-header">
+          <div class="detail-modal-heading">
+            <div class="detail-modal-icon"><i data-lucide="file-text"></i></div>
+            <div>
+              <h2 id="detailModalTitle">Detail Pengajuan</h2>
+              <p>Informasi lengkap pengajuan yang diterima dari kementerian.</p>
+            </div>
+          </div>
+          <button type="button" class="detail-close-button" id="detailCloseButton" aria-label="Tutup detail pengajuan">
+            <i data-lucide="x"></i>
+          </button>
+        </header>
+
+        <div class="detail-modal-body" id="detailModalBody">
+          <div class="detail-loading">
+            <div class="detail-spinner"></div>
+            <p>Memuat detail pengajuan...</p>
+          </div>
+        </div>
+
+        <footer class="detail-modal-footer" id="detailModalFooter">
+          <button type="button" class="detail-footer-button detail-footer-secondary" data-detail-close>Tutup</button>
+          <div class="detail-footer-actions">
+            <button type="button" class="detail-footer-button detail-footer-revision" id="detailRevisionButton" hidden>
+              <i data-lucide="corner-up-left"></i>
+              Kembalikan untuk Revisi
+            </button>
+            <button type="button" class="detail-footer-button detail-footer-primary" id="detailForwardButton" hidden>
+              <i data-lucide="send"></i>
+              Teruskan ke Mensetkab
+            </button>
+          </div>
+        </footer>
+      </section>
+    </div>
+
+    <!-- DIALOG CATATAN REVISI -->
+    <div class="revision-modal" id="revisionModal" aria-hidden="true">
+      <div class="revision-modal-backdrop" data-revision-close></div>
+      <section class="revision-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="revisionModalTitle">
+        <div class="revision-modal-header">
+          <div class="revision-modal-icon"><i data-lucide="message-square-warning"></i></div>
+          <div>
+            <h3 id="revisionModalTitle">Kembalikan untuk Revisi</h3>
+            <p>Berikan catatan agar kementerian mengetahui bagian yang perlu diperbaiki.</p>
+          </div>
+        </div>
+        <label class="revision-field-label" for="revisionNote">Catatan Revisi <span>*</span></label>
+        <textarea id="revisionNote" rows="5" maxlength="1000" placeholder="Tuliskan catatan revisi..."></textarea>
+        <div class="revision-modal-footer">
+          <button type="button" class="revision-cancel" data-revision-close>Batal</button>
+          <button type="button" class="revision-submit" id="revisionSubmitButton">
+            <i data-lucide="send"></i> Kirim Revisi
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <script src="pengajuan.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () =>
+        window.lucide?.createIcons(),
+      );
+    </script>
+  
+<script>
+  (() => {
+    const STORAGE_KEY = "sitara-kemensetkab-sidebar-scroll";
+    const getSidebarNav = () => document.querySelector(".sidebar-nav");
+
+    const saveSidebarScroll = () => {
+      const nav = getSidebarNav();
+      if (!nav) return;
+      try {
+        sessionStorage.setItem(STORAGE_KEY, String(nav.scrollTop));
+      } catch (_) {}
+    };
+
+    const restoreSidebarScroll = () => {
+      const nav = getSidebarNav();
+      if (!nav) return;
+
+      let savedScroll = 0;
+      try {
+        savedScroll = Number(sessionStorage.getItem(STORAGE_KEY) || 0);
+      } catch (_) {}
+
+      const applyScroll = () => {
+        nav.scrollTop = Math.min(
+          Math.max(0, savedScroll),
+          Math.max(0, nav.scrollHeight - nav.clientHeight)
+        );
+      };
+
+      requestAnimationFrame(() => {
+        applyScroll();
+        requestAnimationFrame(applyScroll);
+      });
+    };
+
+    document.addEventListener("click", (event) => {
+      const link = event.target.closest(".sidebar-nav a.nav-item");
+      if (link) saveSidebarScroll();
+    }, true);
+
+    window.addEventListener("pagehide", saveSidebarScroll);
+    window.addEventListener("pageshow", restoreSidebarScroll);
+    document.addEventListener("DOMContentLoaded", restoreSidebarScroll);
+  })();
+</script>
+
 </body>
 </html>

@@ -1,0 +1,413 @@
+/* SITARA — shared header/sidebar shell
+   Source of truth for the common navigation frame across Kemensetkab pages.
+   Loaded LAST in each page; page-specific content styles remain untouched. */
+:root {
+  --sitara-shell-sidebar-width: 260px;
+  --sitara-shell-header-height: 88px;
+  --sitara-shell-primary: #7F2D25;
+  --sitara-shell-primary-dark: #64221C;
+  --sitara-shell-primary-light: #F8EEEC;
+  --sitara-shell-surface: #FFFFFF;
+  --sitara-shell-border: #EEEEEE;
+  --sitara-shell-text: #252525;
+  --sitara-shell-muted: #777777;
+}
+
+/* Fixed geometry avoids different page CSS shifting the shared shell. */
+.kemen-container { min-height: 100vh; }
+.sidebar {
+  width: var(--sitara-shell-sidebar-width) !important;
+  min-width: var(--sitara-shell-sidebar-width) !important;
+  max-width: var(--sitara-shell-sidebar-width) !important;
+  height: 100vh !important;
+  min-height: 100vh !important;
+  box-sizing: border-box !important;
+  position: fixed !important;
+  inset: 0 auto 0 0 !important;
+  z-index: 1000 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 28px 18px 20px !important;
+  overflow: hidden !important;
+  background: var(--sitara-shell-surface) !important;
+  border-right: 1px solid var(--sitara-shell-border) !important;
+  box-shadow: none !important;
+  transform: none;
+}
+.sidebar-brand {
+  flex: 0 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  min-height: 48px !important;
+  padding: 0 12px 28px !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+}
+.sidebar-brand img {
+  display: block !important;
+  width: 38px !important;
+  height: 38px !important;
+  min-width: 38px !important;
+  max-width: 38px !important;
+  object-fit: contain !important;
+  flex: 0 0 38px !important;
+}
+.sidebar-brand .brand-text {
+  display: block !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+}
+.sidebar-brand .brand-text h2 {
+  margin: 0 !important;
+  color: var(--sitara-shell-primary) !important;
+  font-size: 18px !important;
+  line-height: 1.25 !important;
+  font-weight: 800 !important;
+  letter-spacing: .2px !important;
+}
+.sidebar-brand .brand-text p {
+  margin: 2px 0 0 !important;
+  color: var(--sitara-shell-muted) !important;
+  font-size: 10px !important;
+  line-height: 1.35 !important;
+  white-space: normal !important;
+}
+.sidebar-nav {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  width: 100% !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  scroll-behavior: auto !important;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.sidebar-nav .nav-label {
+  margin: 0 !important;
+  padding: 18px 13px 10px !important;
+  color: #A0A0A0 !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  line-height: 1.4 !important;
+  letter-spacing: 1.2px !important;
+}
+.sidebar-nav .nav-item {
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 13px !important;
+  width: 100% !important;
+  min-height: 42px !important;
+  padding: 11px 14px !important;
+  margin: 0 0 5px !important;
+  border: 0 !important;
+  border-radius: 9px !important;
+  background: transparent !important;
+  color: #666666 !important;
+  font-family: inherit !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  line-height: 1.35 !important;
+  text-decoration: none !important;
+  white-space: normal !important;
+  box-shadow: none !important;
+  transform: none !important;
+  transition: background-color .16s ease, color .16s ease !important;
+}
+.sidebar-nav .nav-item:hover {
+  background: #F8EEEC !important;
+  color: var(--sitara-shell-primary) !important;
+}
+.sidebar-nav .nav-item.active,
+.sidebar-nav .nav-item[aria-current="page"] {
+  background: var(--sitara-shell-primary-light) !important;
+  color: var(--sitara-shell-primary) !important;
+  font-weight: 700 !important;
+}
+.sidebar-nav .nav-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 20px !important;
+  min-width: 20px !important;
+  height: 20px !important;
+  flex: 0 0 20px !important;
+  margin: 0 !important;
+  font-size: 18px !important;
+  line-height: 1 !important;
+}
+.sidebar-nav .nav-icon svg,
+.sidebar-nav .nav-icon i {
+  width: 18px;
+  height: 18px;
+  max-width: 18px;
+  max-height: 18px;
+}
+.sidebar-nav .nav-item > span:not(.nav-icon):not(.nav-badge) {
+  min-width: 0 !important;
+  flex: 1 1 auto !important;
+}
+.sidebar-nav .nav-badge {
+  flex: 0 0 auto !important;
+  margin-left: auto !important;
+  min-width: 19px !important;
+  height: 19px !important;
+  padding: 0 5px !important;
+  border-radius: 999px !important;
+  background: #D92D20 !important;
+  color: #FFFFFF !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  line-height: 19px !important;
+  text-align: center !important;
+}
+.sidebar-nav .nav-badge[hidden],
+.sidebar-nav .nav-item .nav-badge:empty { display: none !important; }
+.sidebar-footer {
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 18px 0 0 !important;
+  margin: 0 !important;
+  border-top: 1px solid var(--sitara-shell-border) !important;
+  background: var(--sitara-shell-surface) !important;
+}
+.user-profile {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 0 8px 12px !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+}
+.profile-avatar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  flex: 0 0 40px !important;
+  border-radius: 50% !important;
+  background: var(--sitara-shell-primary-light) !important;
+  color: var(--sitara-shell-primary) !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+}
+.profile-info { min-width: 0 !important; overflow: hidden !important; }
+.profile-info h4, .profile-info strong, .profile-info .profile-name {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* One header geometry across all modules; title content itself stays page-specific. */
+.topbar {
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 24px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  height: var(--sitara-shell-header-height) !important;
+  min-height: var(--sitara-shell-header-height) !important;
+  max-height: var(--sitara-shell-header-height) !important;
+  padding: 0 38px !important;
+  margin: 0 !important;
+  background: var(--sitara-shell-surface) !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--sitara-shell-border) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  position: relative !important;
+  inset: auto !important;
+  transform: none !important;
+}
+.topbar-title { min-width: 0 !important; flex: 1 1 auto !important; }
+.topbar-title h2 {
+  margin: 0 !important;
+  color: var(--sitara-shell-text) !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  letter-spacing: 0 !important;
+}
+.topbar-title p {
+  margin: 3px 0 0 !important;
+  color: var(--sitara-shell-muted) !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  line-height: 1.4 !important;
+}
+.topbar-right {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 20px !important;
+  flex: 0 0 auto !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+}
+.topbar-date {
+  color: var(--sitara-shell-muted) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  line-height: 1.4 !important;
+  white-space: nowrap !important;
+}
+.topbar-avatar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  flex: 0 0 40px !important;
+  border-radius: 50% !important;
+  background: var(--sitara-shell-primary) !important;
+  color: #FFFFFF !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+}
+.main-content {
+  min-width: 0 !important;
+  margin-left: var(--sitara-shell-sidebar-width) !important;
+}
+
+@media (max-width: 1100px) {
+  .topbar { padding-left: 28px !important; padding-right: 28px !important; }
+}
+@media (max-width: 760px) {
+  .sidebar {
+    width: 224px !important;
+    min-width: 224px !important;
+    max-width: 224px !important;
+    padding: 22px 12px 14px !important;
+  }
+  .main-content { margin-left: 224px !important; }
+  .topbar {
+    height: auto !important;
+    min-height: var(--sitara-shell-header-height) !important;
+    max-height: none !important;
+    padding: 16px 20px !important;
+    gap: 12px !important;
+  }
+  .topbar-title h2 { font-size: 18px !important; }
+  .topbar-right { gap: 12px !important; }
+}
+@media (max-width: 560px) {
+  .sidebar {
+    width: 76px !important;
+    min-width: 76px !important;
+    max-width: 76px !important;
+    padding: 18px 8px 12px !important;
+  }
+  .sidebar-brand { justify-content: center !important; padding: 0 0 22px !important; }
+  .sidebar-brand .brand-text { display: none !important; }
+  .sidebar-nav .nav-label { display: none !important; }
+  .sidebar-nav .nav-item {
+    justify-content: center !important;
+    gap: 0 !important;
+    padding: 12px 4px !important;
+    min-height: 42px !important;
+    font-size: 0 !important;
+  }
+  .sidebar-nav .nav-item > span:not(.nav-icon):not(.nav-badge) { display: none !important; }
+  .sidebar-nav .nav-badge { position: absolute !important; transform: translate(13px, -10px) !important; }
+  .user-profile { justify-content: center !important; padding: 0 0 10px !important; }
+  .profile-info { display: none !important; }
+  .main-content { margin-left: 76px !important; }
+  .topbar { padding: 14px 14px !important; }
+  .topbar-title h2 { font-size: 16px !important; }
+  .topbar-title p { font-size: 10px !important; }
+  .topbar-date { display: none !important; }
+  .topbar-avatar { width: 34px !important; height: 34px !important; min-width: 34px !important; flex-basis: 34px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sidebar-nav .nav-item { transition: none !important; }
+}
+
+
+/* Mensetkab shared logout control: consistent with the approved compact style. */
+.sidebar-footer .logout-button,
+.sidebar-footer .logout-btn,
+.sidebar-footer #logoutButton,
+.sidebar-footer #logoutBtn,
+.sidebar-footer .btn-logout {
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 10px !important;
+  width: 100% !important;
+  min-height: 42px !important;
+  padding: 11px 14px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 9px !important;
+  background: #F8EEEC !important;
+  color: #7F2D25 !important;
+  font-family: inherit !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  line-height: 1.35 !important;
+  text-align: left !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+  transition: background-color .16s ease, color .16s ease !important;
+}
+.sidebar-footer .logout-button:hover,
+.sidebar-footer .logout-btn:hover,
+.sidebar-footer #logoutButton:hover,
+.sidebar-footer #logoutBtn:hover,
+.sidebar-footer .btn-logout:hover {
+  background: #F1DEDA !important;
+  color: #64221C !important;
+}
+.sidebar-footer .logout-button svg,
+.sidebar-footer .logout-btn svg,
+.sidebar-footer #logoutButton svg,
+.sidebar-footer #logoutBtn svg,
+.sidebar-footer .btn-logout svg {
+  width: 18px !important;
+  height: 18px !important;
+  flex: 0 0 18px !important;
+}
+
+/* Smooth navigation between Mensetkab pages.
+   Animate only page content: the header (.topbar) and sidebar remain completely still. */
+.main-content {
+  opacity: 1 !important;
+  transform: none !important;
+}
+.main-content > :not(.topbar) {
+  opacity: 1;
+  transform: translateY(0);
+}
+body.sitara-page-ready .main-content > :not(.topbar) {
+  animation: sitaraPageEnter .2s ease-out both;
+}
+body.sitara-page-leaving .main-content > :not(.topbar) {
+  animation: sitaraPageLeave .18s ease-in both;
+  pointer-events: none;
+}
+@keyframes sitaraPageEnter {
+  from { opacity: 0; transform: translateY(7px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes sitaraPageLeave {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-4px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.sitara-page-ready .main-content > :not(.topbar),
+  body.sitara-page-leaving .main-content > :not(.topbar) {
+    animation: none !important;
+  }
+}

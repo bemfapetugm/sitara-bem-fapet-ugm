@@ -1,0 +1,961 @@
+/* SITARA Mensetkab — Perlu Revisi content only. Shared shell/header/sidebar remain untouched. */
+.revisi-page-content {
+    padding-top: 24px
+}
+
+.revisi-toolbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 190px;
+    gap: 12px;
+    margin: 0 0 20px
+}
+
+.revisi-search,
+.revisi-sort {
+    height: 44px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #e8eaf0;
+    border-radius: 11px;
+    background: #fff;
+    padding: 0 14px;
+    color: #5c6677;
+    box-shadow: 0 3px 12px rgba(28, 35, 48, .025)
+}
+
+.revisi-search:focus-within,
+.revisi-sort:focus-within {
+    border-color: #d6a19c;
+    box-shadow: 0 0 0 3px rgba(166, 43, 38, .08)
+}
+
+.revisi-search svg,
+.revisi-sort svg {
+    width: 19px;
+    height: 19px;
+    flex: 0 0 auto
+}
+
+.revisi-search input,
+.revisi-sort select {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: #293241;
+    font: 500 13px Inter, Arial, sans-serif;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box
+}
+
+.revisi-search input::placeholder {
+    color: #7b8493
+}
+
+.revisi-sort select {
+    cursor: pointer;
+    appearance: auto;
+    padding-right: 2px;
+    white-space: nowrap
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0
+}
+
+.revisi-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px
+}
+
+.revisi-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: 84px minmax(0, 1fr) 48px;
+    grid-template-rows: minmax(0, 1fr) auto;
+    gap: 0 25px;
+    min-height: 205px;
+    padding: 22px 20px 19px 24px;
+    background: #fff;
+    border: 1px solid #edf0f4;
+    border-radius: 17px;
+    box-shadow: 0 7px 24px rgba(29, 37, 51, .045);
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease
+}
+
+.revisi-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(29, 37, 51, .075);
+    border-color: #e7d3d1
+}
+
+.revisi-card-icon {
+    grid-row: 1/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 84px;
+    height: 88px;
+    border-radius: 16px;
+    background: #fff0ef;
+    color: #b51f1b
+}
+
+.revisi-card-icon svg {
+    width: 42px;
+    height: 42px;
+    stroke-width: 1.9
+}
+
+.revisi-card-icon.type-lpj {
+    background: #eaf4ff;
+    color: #1684ef
+}
+
+.revisi-card-icon.type-facility {
+    background: #e6f8ef;
+    color: #169c5a
+}
+
+.revisi-card-icon.type-other {
+    background: #fff4e5;
+    color: #b87917
+}
+
+.revisi-card-main {
+    min-width: 0;
+    padding: 0 0 11px
+}
+
+.revisi-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 10px
+}
+
+.revisi-tag {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: 4px 10px;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.2
+}
+
+.revisi-tag.type-proposal {
+    background: #ffebeb;
+    color: #b52420
+}
+
+.revisi-tag.type-lpj {
+    background: #e5f2ff;
+    color: #0878d9
+}
+
+.revisi-tag.type-facility {
+    background: #e0f8eb;
+    color: #078d4c
+}
+
+.revisi-tag.type-other {
+    background: #f1efff;
+    color: #6650b5
+}
+
+.revisi-tag.status {
+    background: #fff0d4;
+    color: #9c4b00
+}
+
+.revisi-card h3 {
+    margin: 0 0 7px;
+    color: #121820;
+    font-size: 18px;
+    line-height: 1.4;
+    font-weight: 750;
+    overflow-wrap: anywhere
+}
+
+.revisi-origin {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    color: #697487;
+    font-size: 14px;
+    line-height: 1.45
+}
+
+.revisi-origin svg {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 auto;
+    margin-top: 1px
+}
+
+.revisi-card-menu {
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+    align-self: start;
+    position: relative
+}
+
+.revisi-more {
+    width: 30px;
+    height: 34px;
+    border: 0;
+    background: transparent;
+    color: #596274;
+    cursor: pointer;
+    border-radius: 8px;
+    display: grid;
+    place-items: center
+}
+
+.revisi-more:hover {
+    background: #f7f1f0;
+    color: #a52b27
+}
+
+.revisi-more svg {
+    width: 22px;
+    height: 22px
+}
+
+.revisi-card-meta {
+    grid-column: 2/4;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    color: #657083;
+    font-size: 13px;
+    margin-top: 12px;
+    padding-right: 43px
+}
+
+.revisi-meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    min-width: 0
+}
+
+.revisi-meta-item svg {
+    width: 19px;
+    height: 19px;
+    flex: 0 0 auto
+}
+
+.revisi-meta-separator {
+    width: 1px;
+    height: 19px;
+    background: #d9dee7
+}
+
+.revisi-open {
+    position: absolute;
+    right: 22px;
+    bottom: 18px;
+    width: 52px;
+    height: 52px;
+    border: 0;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #fff0ef;
+    color: #b31f1a;
+    cursor: pointer;
+    transition: background .16s, transform .16s
+}
+
+.revisi-open:hover {
+    background: #f8dfdd;
+    transform: translateX(2px)
+}
+
+.revisi-open svg {
+    width: 25px;
+    height: 25px;
+    stroke-width: 2.4
+}
+
+.revisi-notice {
+    margin: 0 0 16px;
+    padding: 12px 15px;
+    border-radius: 10px;
+    background: #fff3e8;
+    color: #92501a;
+    font-size: 13px
+}
+
+.revisi-notice[hidden],
+.revisi-modal[hidden] {
+    display: none !important
+}
+
+.revisi-state {
+    grid-column: 1/-1;
+    min-height: 300px;
+    border: 1px solid #edf0f4;
+    border-radius: 16px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+    padding: 32px;
+    color: #6f7887
+}
+
+.revisi-state strong {
+    color: #222b39;
+    font-size: 16px
+}
+
+.revisi-state p {
+    margin: 0;
+    max-width: 480px;
+    font-size: 13px;
+    line-height: 1.6
+}
+
+.revisi-state svg {
+    width: 54px;
+    height: 54px;
+    color: #c9827b
+}
+
+.revisi-spinner {
+    width: 28px;
+    height: 28px;
+    border: 3px solid #f2dedc;
+    border-top-color: #a52b27;
+    border-radius: 50%;
+    animation: revisi-spin .8s linear infinite
+}
+
+@keyframes revisi-spin {
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+.revisi-state button {
+    margin-top: 4px;
+    padding: 10px 15px;
+    border: 0;
+    border-radius: 9px;
+    background: #a52b27;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer
+}
+
+.revisi-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: grid;
+    place-items: center;
+    padding: 22px
+}
+
+.revisi-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(16, 22, 32, .52);
+    backdrop-filter: blur(3px)
+}
+
+.revisi-modal-panel {
+    position: relative;
+    z-index: 1;
+    width: min(760px, 100%);
+    max-height: min(90vh, 900px);
+    overflow: auto;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, .24)
+}
+
+.revisi-modal-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 23px 25px 18px;
+    border-bottom: 1px solid #edf0f4
+}
+
+.revisi-eyebrow {
+    font-size: 10px;
+    letter-spacing: .18em;
+    font-weight: 800;
+    color: #a52b27
+}
+
+.revisi-modal-header h3 {
+    margin: 6px 0 5px;
+    font-size: 22px;
+    color: #17202d
+}
+
+.revisi-modal-header p {
+    margin: 0;
+    color: #737d8c;
+    font-size: 13px
+}
+
+.revisi-close {
+    flex: 0 0 auto;
+    width: 38px;
+    height: 38px;
+    border: 0;
+    border-radius: 10px;
+    background: #f6f7f9;
+    color: #4d5665;
+    font-size: 27px;
+    line-height: 1;
+    cursor: pointer
+}
+
+.revisi-modal-body {
+    padding: 20px 25px 6px
+}
+
+.revisi-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px
+}
+
+.revisi-detail-field {
+    padding: 12px 14px;
+    border: 1px solid #edf0f4;
+    border-radius: 11px;
+    min-width: 0
+}
+
+.revisi-detail-field span {
+    display: block;
+    margin-bottom: 5px;
+    color: #778191;
+    font-size: 11px
+}
+
+.revisi-detail-field strong {
+    display: block;
+    color: #222b38;
+    font-size: 13px;
+    overflow-wrap: anywhere
+}
+
+.revisi-detail-note {
+    margin-top: 12px;
+    padding: 13px 15px;
+    border-radius: 11px;
+    background: #fff6ed;
+    color: #80501f;
+    font-size: 13px;
+    line-height: 1.6;
+    white-space: pre-wrap
+}
+
+.revisi-doc-heading {
+    margin: 18px 0 10px;
+    font-size: 14px;
+    color: #222b38
+}
+
+.revisi-doc-list {
+    display: grid;
+    gap: 8px
+}
+
+.revisi-doc-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 11px 13px;
+    border: 1px solid #edf0f4;
+    border-radius: 10px
+}
+
+.revisi-doc-name {
+    min-width: 0
+}
+
+.revisi-doc-name strong {
+    display: block;
+    font-size: 12px;
+    color: #293241;
+    overflow-wrap: anywhere
+}
+
+.revisi-doc-name small {
+    display: block;
+    margin-top: 4px;
+    color: #7a8493;
+    font-size: 11px
+}
+
+.revisi-doc-link {
+    flex: 0 0 auto;
+    text-decoration: none;
+    color: #a52b27;
+    font-size: 12px;
+    font-weight: 700
+}
+
+.revisi-upload-form {
+    margin: 20px 25px 25px;
+    padding: 18px;
+    border-radius: 14px;
+    background: #fbf8f7;
+    border: 1px solid #f0e5e3
+}
+
+.revisi-upload-heading {
+    display: flex;
+    gap: 11px;
+    align-items: flex-start
+}
+
+.revisi-upload-heading>svg {
+    width: 25px;
+    height: 25px;
+    color: #a52b27;
+    flex: 0 0 auto
+}
+
+.revisi-upload-heading strong {
+    display: block;
+    color: #202938;
+    font-size: 14px
+}
+
+.revisi-upload-heading p {
+    margin: 5px 0 14px;
+    color: #727c8b;
+    font-size: 12px;
+    line-height: 1.5
+}
+
+.revisi-upload-fields {
+    display: grid;
+    gap: 10px
+}
+
+.revisi-upload-field {
+    display: grid;
+    gap: 6px
+}
+
+.revisi-upload-field label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #424b59
+}
+
+.revisi-upload-field input {
+    width: 100%;
+    padding: 10px;
+    border: 1px dashed #d7b9b5;
+    border-radius: 9px;
+    background: #fff;
+    font: 12px Inter, Arial, sans-serif
+}
+
+.revisi-upload-field small {
+    color: #7a8493;
+    font-size: 11px
+}
+
+.revisi-note-label {
+    display: block;
+    margin: 14px 0 6px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #424b59
+}
+
+.revisi-upload-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    resize: vertical;
+    padding: 11px;
+    border: 1px solid #e2e5eb;
+    border-radius: 9px;
+    background: #fff;
+    font: 13px Inter, Arial, sans-serif;
+    outline: none
+}
+
+.revisi-upload-form textarea:focus {
+    border-color: #c88b85;
+    box-shadow: 0 0 0 3px rgba(165, 43, 39, .07)
+}
+
+.revisi-upload-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    margin-top: 14px
+}
+
+.revisi-upload-footer>span {
+    color: #7b8492;
+    font-size: 11px;
+    line-height: 1.5
+}
+
+.revisi-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex: 0 0 auto;
+    padding: 12px 15px;
+    border: 0;
+    border-radius: 10px;
+    background: #a52b27;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 750;
+    cursor: pointer
+}
+
+.revisi-submit:disabled {
+    opacity: .55;
+    cursor: wait
+}
+
+.revisi-submit svg {
+    width: 16px;
+    height: 16px
+}
+
+@media(max-width:1100px) {
+    .revisi-grid {
+        gap: 13px
+    }
+
+    .revisi-card {
+        grid-template-columns: 68px minmax(0, 1fr) 34px;
+        gap: 0 16px;
+        padding: 18px;
+        min-height: 205px
+    }
+
+    .revisi-card-icon {
+        width: 68px;
+        height: 72px
+    }
+
+    .revisi-card-icon svg {
+        width: 35px;
+        height: 35px
+    }
+
+    .revisi-card h3 {
+        font-size: 16px
+    }
+
+    .revisi-card-meta {
+        font-size: 12px;
+        gap: 10px
+    }
+}
+
+@media(max-width:760px) {
+    .revisi-toolbar {
+        grid-template-columns: minmax(0, 1fr) 180px
+    }
+
+    .revisi-grid {
+        grid-template-columns: 1fr
+    }
+
+    .revisi-card {
+        min-height: 175px
+    }
+
+    .revisi-modal {
+        padding: 10px
+    }
+
+    .revisi-modal-panel {
+        max-height: 94vh
+    }
+
+    .revisi-modal-header {
+        padding: 19px
+    }
+
+    .revisi-modal-body {
+        padding: 17px 19px 4px
+    }
+
+    .revisi-upload-form {
+        margin: 17px 19px 19px;
+        padding: 14px
+    }
+}
+
+@media(max-width:480px) {
+    .revisi-toolbar {
+        grid-template-columns: 1fr
+    }
+
+    .revisi-search,
+    .revisi-sort {
+        height: 44px
+    }
+
+    .revisi-card {
+        grid-template-columns: 56px minmax(0, 1fr) 28px;
+        gap: 0 12px;
+        padding: 15px;
+        min-height: 170px
+    }
+
+    .revisi-card-icon {
+        width: 56px;
+        height: 60px;
+        border-radius: 12px
+    }
+
+    .revisi-card-icon svg {
+        width: 29px;
+        height: 29px
+    }
+
+    .revisi-card h3 {
+        font-size: 14px
+    }
+
+    .revisi-origin {
+        font-size: 12px
+    }
+
+    .revisi-tag {
+        font-size: 10px;
+        min-height: 24px;
+        padding: 4px 7px
+    }
+
+    .revisi-card-meta {
+        grid-column: 1/-1;
+        padding-right: 48px;
+        margin-top: 15px;
+        font-size: 11px
+    }
+
+    .revisi-open {
+        width: 42px;
+        height: 42px;
+        right: 14px;
+        bottom: 13px
+    }
+
+    .revisi-detail-grid {
+        grid-template-columns: 1fr
+    }
+
+    .revisi-upload-footer {
+        align-items: stretch;
+        flex-direction: column
+    }
+
+    .revisi-submit {
+        width: 100%
+    }
+
+    .revisi-doc-row {
+        align-items: flex-start
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+
+    .revisi-card,
+    .revisi-open {
+        transition: none
+    }
+
+    .revisi-spinner {
+        animation: none
+    }
+}
+
+/* Feedback saat detail revisi sedang dimuat */
+.revisi-detail-loading {
+    min-height: 220px;
+    border: 0;
+    background: #fff
+}
+
+.revisi-card button:disabled {
+    opacity: .65;
+    cursor: wait
+}
+
+/* Penyegaran panel unggah hasil revisi: pilihan file Word, semua opsional */
+.revisi-upload-form {
+    margin: 20px 25px 25px;
+    padding: 22px;
+    border: 1px solid #eadbd8;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #fffdfc 0%, #fbf7f6 100%);
+    box-shadow: 0 8px 24px rgba(67, 35, 31, .045)
+}
+
+.revisi-upload-heading {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #efe4e2;
+    margin-bottom: 16px
+}
+
+.revisi-upload-heading>svg {
+    padding: 9px;
+    box-sizing: content-box;
+    width: 22px;
+    height: 22px;
+    border-radius: 12px;
+    background: #fff0ee
+}
+
+.revisi-upload-heading strong {
+    font-size: 15px;
+    letter-spacing: -.01em
+}
+
+.revisi-upload-heading p {
+    margin: 6px 0 0
+}
+
+.revisi-upload-fields {
+    grid-template-columns: 1fr;
+    gap: 13px
+}
+
+.revisi-upload-field {
+    position: relative;
+    gap: 8px;
+    padding: 13px;
+    border: 1px solid #e9e6e5;
+    border-radius: 12px;
+    background: #fff;
+    transition: border-color .15s, box-shadow .15s
+}
+
+.revisi-upload-field:focus-within {
+    border-color: #c87972;
+    box-shadow: 0 0 0 3px rgba(165, 43, 39, .07)
+}
+
+.revisi-upload-field label {
+    font-size: 12px;
+    line-height: 1.45;
+    color: #303948
+}
+
+.revisi-upload-field label::after {
+    content: "Opsional";
+    display: inline-flex;
+    margin-left: 8px;
+    padding: 3px 7px;
+    border-radius: 999px;
+    background: #f2f3f5;
+    color: #697384;
+    font-size: 10px;
+    font-weight: 600
+}
+
+.revisi-upload-field input {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 44px;
+    padding: 6px;
+    border: 1px dashed #d9c8c5;
+    border-radius: 9px;
+    background: #fffdfd;
+    color: #626d7c;
+    font: 12px Inter, Arial, sans-serif
+}
+
+.revisi-upload-field input::file-selector-button {
+    margin-right: 10px;
+    padding: 8px 12px;
+    border: 0;
+    border-radius: 7px;
+    background: #f8e9e7;
+    color: #942b26;
+    font: 600 12px Inter, Arial, sans-serif;
+    cursor: pointer
+}
+
+.revisi-upload-field input::file-selector-button:hover {
+    background: #f2d9d6
+}
+
+.revisi-upload-field small {
+    display: block;
+    overflow-wrap: anywhere;
+    line-height: 1.5;
+    color: #7a8493;
+    font-size: 11px
+}
+
+.revisi-upload-field small::before {
+    content: "File tersimpan: ";
+    font-weight: 600;
+    color: #687384
+}
+
+.revisi-note-label {
+    margin: 17px 0 7px
+}
+
+.revisi-upload-form textarea {
+    min-height: 82px
+}
+
+.revisi-upload-footer {
+    padding-top: 14px;
+    border-top: 1px solid #efe4e2
+}
+
+.revisi-upload-footer>span {
+    max-width: 62%
+}
+
+@media(max-width:760px) {
+    .revisi-upload-form {
+        margin: 16px 14px;
+        padding: 15px
+    }
+
+    .revisi-upload-footer>span {
+        max-width: none
+    }
+}

@@ -1,9 +1,70 @@
-<!doctype html><html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Riwayat | Mensetkab</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="../mensetkab.css"></head><body><div class="kemen-container"><aside class="sidebar">
-<div class="sidebar-brand"><img src="../../../assets/images/logo.png" alt="Logo SITARA"><div class="brand-text"><h2>SITARA</h2><p>Panel Menteri</p></div></div>
-<nav class="sidebar-nav">
-<p class="nav-label">MENU UTAMA</p><a href="../index.html" class="nav-item "><span class="nav-icon">▦</span><span>Dashboard</span></a>
-<p class="nav-label">ADMINISTRASI</p><a href="../pengajuan/index.html" class="nav-item "><span class="nav-icon">▧</span><span>Pengajuan Masuk</span></a>
-<p class="nav-label">DOKUMEN</p><a href="../riwayat/index.html" class="nav-item active"><span class="nav-icon">≡</span><span>Riwayat</span></a>
-</nav>
-<div class="sidebar-footer"><div class="user-profile"><div class="profile-avatar" id="profileAvatar">MS</div><div class="profile-info"><h4 id="profileName">Mensetkab</h4><p id="profileRole">Mensetkab</p></div></div><button type="button" class="logout-button" id="logoutBtn">⇥ Keluar</button></div>
-</aside><main class="main-content"><header class="topbar"><div class="topbar-title"><h2>Riwayat</h2><p>Rekam jejak proses administrasi yang melibatkan Mensetkab.</p></div><div class="topbar-right"><div class="topbar-date" id="currentDate">Memuat tanggal...</div><div class="topbar-avatar" id="topbarAvatar">MS</div></div></header><section class="page-content"><section class="content-card page-panel"><div class="card-header"><div><h3>Riwayat Pengajuan</h3><p id="count">Memuat...</p></div><input id="search" class="page-search" placeholder="Cari pengajuan..."></div><div class="table-wrapper bounded-table history-table"><table><thead><tr><th>Pengajuan</th><th>Aksi</th><th>Dari</th><th>Ke</th><th>Status</th><th>Waktu</th></tr></thead><tbody id="body"><tr><td colspan="6" class="empty-state">Memuat...</td></tr></tbody></table></div></section></section></main></div><script src="riwayat.js"></script></body></html>
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Riwayat | Mensetkab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../mensetkab.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="../mensetkab-shell.css" />
+    <link rel="stylesheet" href="riwayat.css" />
+  </head>
+  <body>
+    <div class="kemen-container">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <img src="../../../assets/images/logo.png" alt="Logo SITARA" />
+          <div class="brand-text"><h2>SITARA</h2><p>Sistem Integrasi Tata Birokrasi Mahasiswa</p></div>
+        </div>
+        <nav class="sidebar-nav" aria-label="Menu Mensetkab">
+          <p class="nav-label">MENU UTAMA</p>
+          <a href="../index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="house"></i></span><span>Dashboard</span></a>
+          <p class="nav-label">PENGELOLAAN PENGAJUAN</p>
+          <a href="../pengajuan/index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="inbox"></i></span><span>Pengajuan Masuk</span></a>
+          <a href="../revisi/index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="refresh-cw"></i></span><span>Perlu Revisi</span></a>
+          <p class="nav-label">KEPUTUSAN DAN HASIL</p>
+          <a href="../hasil/index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="clipboard-check"></i></span><span>Hasil Ketua BEM</span></a>
+          <p class="nav-label">DOKUMEN</p>
+          <a href="../template/index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="files"></i></span><span>Template Dokumen</span></a>
+          <p class="nav-label">MONITORING DAN AGENDA</p>
+          <a href="../riwayat/index.html" class="nav-item active" aria-current="page"><span class="nav-icon" aria-hidden="true"><i data-lucide="history"></i></span><span>Riwayat Pengajuan</span></a>
+          <a href="../agenda/index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="calendar-days"></i></span><span>Agenda Kabinet</span></a>
+          <a href="../rekapitulasi/index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="chart-no-axes-combined"></i></span><span>Rekapitulasi</span></a>
+        </nav>
+        <div class="sidebar-footer">
+          <div class="user-profile"><div class="profile-avatar" id="profileAvatar">MS</div><div class="profile-info"><h4 id="profileName">Menteri Sekretariat Kabinet</h4><p id="profileRole">Mensetkab</p></div></div>
+          <button type="button" class="logout-button" id="logoutBtn"><i data-lucide="log-out" aria-hidden="true"></i><span>Keluar</span></button>
+        </div>
+      </aside>
+      <main class="main-content">
+        <header class="topbar">
+          <div class="topbar-title"><h2>Riwayat</h2><p>Rekam jejak proses administrasi yang melibatkan Mensetkab.</p></div>
+          <div class="topbar-right"><div class="topbar-date" id="currentDate">Memuat tanggal...</div><div class="topbar-avatar" id="topbarAvatar">MS</div></div>
+        </header>
+        <section class="page-content history-page">
+          <section class="content-card page-panel history-panel">
+            <div class="history-toolbar">
+              <label class="history-search-wrap"><i data-lucide="search" aria-hidden="true"></i><input id="search" type="search" placeholder="Cari nomor pengajuan, aktivitas, atau kata kunci..." aria-label="Cari riwayat pengajuan" /></label>
+              <label class="history-select-wrap"><i data-lucide="arrow-down-up" aria-hidden="true"></i><select id="sortOrder" aria-label="Urutkan riwayat"><option value="newest" selected>Terbaru diperbarui</option><option value="oldest">Terlama diperbarui</option></select></label>
+              <label class="history-select-wrap"><i data-lucide="calendar-days" aria-hidden="true"></i><select id="dateFilter" aria-label="Filter tanggal"><option value="all">Semua Tanggal</option><option value="today">Hari Ini</option><option value="7">7 Hari Terakhir</option><option value="30">30 Hari Terakhir</option></select></label>
+            </div>
+            <div class="history-table-heading"><span>Daftar Aktivitas</span><span id="resultCount">Memuat riwayat...</span></div>
+            <div class="table-wrapper history-table">
+              <table>
+                <thead><tr><th class="history-id-col">No. Pengajuan</th><th class="history-activity-col">Aktivitas</th><th>Dari</th><th>Ke</th><th>Status</th><th class="history-time-col">Waktu</th></tr></thead>
+                <tbody id="body"><tr><td colspan="6" class="empty-state">Memuat riwayat...</td></tr></tbody>
+              </table>
+            </div>
+            <nav class="history-pagination" id="pagination" aria-label="Navigasi halaman riwayat" hidden></nav>
+          </section>
+        </section>
+      </main>
+    </div>
+    <script src="riwayat.js"></script>
+    <script>if (window.lucide) lucide.createIcons();</script>
+    <script src="../mensetkab-shell.js"></script>
+  </body>
+</html>

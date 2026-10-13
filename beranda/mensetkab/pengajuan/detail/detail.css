@@ -24,3 +24,35 @@
 .upload-inline{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:8px;padding:9px 14px;background:var(--primary);color:#fff;font:inherit;font-size:10px;font-weight:700;cursor:pointer;text-decoration:none}
 .upload-inline:hover{filter:brightness(.94)}
 .copy-number.copied{background:#2f7d4b!important}
+
+
+/* UI PATCH: letak sejajar Kontak dan Catatan dengan ikon label yang ringan */
+.detail-grid .contact-note-field{min-width:0;align-self:stretch}
+.detail-grid .contact-note-field .field-label{display:flex;align-items:center;gap:7px;margin-bottom:7px;color:#7f8996;font-size:10px;font-weight:600}
+.detail-grid .contact-note-field .field-label svg{width:14px;height:14px;stroke:#9a3932;stroke-width:1.8;flex:0 0 14px}
+.detail-grid .contact-note-field>div{font-size:12px;line-height:1.6;overflow-wrap:anywhere}
+.detail-grid .contact-note-field .multiline{white-space:pre-wrap;text-align:left}
+@media(max-width:900px){.detail-grid .contact-note-field{grid-column:auto}}
+
+
+/* UI PATCH: ikon konsisten pada seluruh field informasi detail */
+.detail-grid .field-label{display:flex;align-items:center;gap:7px;margin-bottom:7px;color:#7f8996;font-size:10px;font-weight:600;line-height:1.35}
+.detail-grid .field-label svg{width:14px;height:14px;stroke:#9a3932;stroke-width:1.8;flex:0 0 14px}
+.detail-grid .field-label span{min-width:0}
+@media(max-width:600px){.detail-grid .field-label{gap:6px}}
+
+
+/* Unggah Word opsional: pemilih file ringkas dengan aksi unggah yang jelas. */
+.optional-word-upload{margin-top:12px;padding:12px 13px;border:1px solid #eee0de;border-radius:10px;background:#fffdfc;max-width:720px;box-sizing:border-box}
+.optional-upload-label{display:block;margin-bottom:9px;color:#8f3028;font-size:11px;font-weight:700}
+.optional-word-input{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.optional-upload-controls{display:flex;align-items:center;gap:9px;min-width:0}
+.choose-word-button{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:38px;padding:9px 12px;border:1px solid #e7d3d0;border-radius:8px;background:#fff;color:#8f3028;font:inherit;font-size:11px;font-weight:700;white-space:nowrap;cursor:pointer;transition:background .15s,border-color .15s}
+.choose-word-button:hover{background:#fff5f3;border-color:#cda5a0}
+.choose-word-button svg{width:15px;height:15px;stroke:currentColor}
+.optional-upload-filename{flex:1;min-width:0;color:#89919d;font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.optional-upload-filename.has-file{color:#343a40;font-weight:600}
+.optional-upload-button{flex:0 0 auto;white-space:nowrap;min-height:38px}
+.optional-upload-button:disabled{opacity:.48;cursor:not-allowed}
+.optional-upload-hint{display:block;margin-top:8px;color:#8a929e;font-size:10px;line-height:1.45}
+@media(max-width:600px){.optional-upload-controls{display:grid;grid-template-columns:minmax(0,1fr);align-items:stretch}.choose-word-button,.optional-upload-button{width:100%;box-sizing:border-box}.optional-upload-filename{min-height:18px;white-space:normal;overflow-wrap:anywhere}}

@@ -1,9 +1,50 @@
-<!doctype html><html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Pengajuan Masuk | Mensetkab</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="../mensetkab.css"></head><body><div class="kemen-container"><aside class="sidebar">
-<div class="sidebar-brand"><img src="../../../assets/images/logo.png" alt="Logo SITARA"><div class="brand-text"><h2>SITARA</h2><p>Panel Menteri</p></div></div>
-<nav class="sidebar-nav">
-<p class="nav-label">MENU UTAMA</p><a href="../index.html" class="nav-item "><span class="nav-icon">▦</span><span>Dashboard</span></a>
-<p class="nav-label">ADMINISTRASI</p><a href="index.html" class="nav-item active"><span class="nav-icon">▧</span><span>Pengajuan Masuk</span></a>
-<p class="nav-label">DOKUMEN</p><a href="../riwayat/index.html" class="nav-item "><span class="nav-icon">≡</span><span>Riwayat</span></a>
+<!doctype html><html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Pengajuan Masuk | Mensetkab</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="../mensetkab.css"><script src="https://unpkg.com/lucide@latest"></script>    <link rel="stylesheet" href="../mensetkab-shell.css">
+<link rel="stylesheet" href="pengajuan.css">
+</head><body><div class="kemen-container"><aside class="sidebar">
+<div class="sidebar-brand">
+            <img src="../../../assets/images/logo.png" alt="Logo SITARA">
+            <div class="brand-text">
+                <h2>SITARA</h2>
+                <p>Sistem Integrasi Tata Birokrasi Mahasiswa</p>
+            </div>
+        </div>
+<nav class="sidebar-nav" aria-label="Menu Mensetkab">
+<p class="nav-label">MENU UTAMA</p>
+<a href="../index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="house"></i></span><span>Dashboard</span></a>
+<p class="nav-label">PENGELOLAAN PENGAJUAN</p>
+<a href="../pengajuan/index.html" class="nav-item active" aria-current="page"><span class="nav-icon" aria-hidden="true"><i data-lucide="inbox"></i></span><span>Pengajuan Masuk</span></a>
+<a href="../revisi/index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="refresh-cw"></i></span><span>Perlu Revisi</span></a>
+<p class="nav-label">KEPUTUSAN DAN HASIL</p>
+<a href="../hasil/index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="clipboard-check"></i></span><span>Hasil Ketua BEM</span></a>
+<p class="nav-label">DOKUMEN</p>
+<a href="../template/index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="files"></i></span><span>Template Dokumen</span></a>
+<p class="nav-label">MONITORING DAN AGENDA</p>
+<a href="../riwayat/index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="history"></i></span><span>Riwayat Pengajuan</span></a>
+<a href="../agenda/index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="calendar-days"></i></span><span>Agenda Kabinet</span></a>
+<a href="../rekapitulasi/index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="chart-no-axes-combined"></i></span><span>Rekapitulasi</span></a>
 </nav>
-<div class="sidebar-footer"><div class="user-profile"><div class="profile-avatar" id="profileAvatar">MS</div><div class="profile-info"><h4 id="profileName">Mensetkab</h4><p id="profileRole">Mensetkab</p></div></div><button type="button" class="logout-button" id="logoutBtn">⇥ Keluar</button></div>
-</aside><main class="main-content"><header class="topbar"><div class="topbar-title"><h2>Pengajuan Masuk</h2><p>Pengajuan yang telah diverifikasi Kementerian Sekretariat Kabinet.</p></div><div class="topbar-right"><div class="topbar-date" id="currentDate">Memuat tanggal...</div><div class="topbar-avatar" id="topbarAvatar">MS</div></div></header><section class="page-content"><section class="content-card page-panel"><div class="card-header"><div><h3>Pengajuan Masuk</h3><p id="count">Memuat...</p></div><input id="search" class="page-search" placeholder="Cari pengajuan..."></div><div class="tabs"><button class="tab active" data-filter="all">Semua</button><button class="tab" data-filter="proposal">Proposal</button><button class="tab" data-filter="lpj">LPJ</button></div><div class="table-wrapper bounded-table"><table><thead><tr><th>Pengajuan</th><th>Asal Kementerian</th><th>Judul</th><th>Jenis</th><th>Status</th><th>Tanggal</th><th>Aksi</th></tr></thead><tbody id="body"><tr><td colspan="7" class="empty-state">Memuat data...</td></tr></tbody></table></div></section></section></main></div><script src="pengajuan.js"></script></body></html>
+<div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="profile-avatar" id="profileAvatar">MS</div>
+                <div class="profile-info">
+                    <h4 id="profileName">Menteri Sekretariat Kabinet</h4>
+                    <p id="profileRole">Mensetkab</p>
+                </div>
+            </div>
+            <button type="button" class="logout-button" id="logoutBtn"><i data-lucide="log-out" aria-hidden="true"></i><span>Keluar</span></button>
+        </div>
+    </aside><main class="main-content"><header class="topbar"><div class="topbar-title"><h2>Pengajuan Masuk</h2><p>Pengajuan yang telah diverifikasi Kementerian Sekretariat Kabinet.</p></div><div class="topbar-right"><div class="topbar-date" id="currentDate">Memuat tanggal...</div><div class="topbar-avatar" id="topbarAvatar">MS</div></div></header><section class="page-content pengajuan-page">
+<section class="pm-banner" aria-labelledby="pmBannerTitle">
+  <div class="pm-banner-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 6.2 5h11.6l2.2 5.5"/><path d="M3 10.5h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M8 10.5v2a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2"/></svg></div>
+  <div class="pm-banner-copy"><p class="pm-eyebrow">PENGAJUAN MASUK</p><h2 id="pmBannerTitle">Daftar pengajuan yang perlu diverifikasi</h2><p>Periksa detail informasi dan dokumen, kemudian berikan keputusan pada setiap pengajuan.</p></div>
+  <div class="pm-banner-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="m8 15 2.2 2.2L15.5 12"/></svg><span>Pastikan seluruh informasi dan dokumen telah sesuai sebelum memberikan keputusan.</span></div>
+</section>
+<section class="pm-list-card" aria-labelledby="pmListTitle">
+  <div class="pm-list-toolbar">
+    <div class="pm-list-heading"><span class="pm-list-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8"/></svg></span><div><h3 id="pmListTitle">Daftar Pengajuan</h3><p id="count">Memuat daftar pengajuan...</p></div></div>
+    <div class="pm-list-tools"><label class="pm-search-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="search" type="search" placeholder="Cari pengajuan, judul, atau kementerian..." aria-label="Cari pengajuan, judul, atau kementerian"></label><label><span class="sr-only" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">Urutkan pengajuan</span><select id="sortOrder" class="pm-sort"><option value="newest">⇅ &nbsp; Urutkan: Terbaru</option><option value="oldest">⇅ &nbsp; Urutkan: Terlama</option></select></label></div>
+  </div>
+  <div class="pm-table-wrap"><table class="pm-table"><thead><tr><th>No</th><th>Judul Pengajuan</th><th>Asal Kementerian</th><th>Jenis</th><th>Tanggal Masuk ↓</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="body"><tr><td colspan="7"><div class="pm-loading"><span class="pm-spinner" aria-hidden="true"></span>Memuat daftar pengajuan...</div></td></tr></tbody></table></div>
+</section>
+</section></main></div><script src="pengajuan.js"></script><script>if (window.lucide) lucide.createIcons();</script>    <script src="../mensetkab-shell.js"></script>
+</body></html>

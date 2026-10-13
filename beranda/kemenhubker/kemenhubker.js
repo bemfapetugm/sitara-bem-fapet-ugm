@@ -73,16 +73,27 @@ function setProfile() {
   if ($("profileRole")) $("profileRole").textContent = "Kementerian";
 }
 
-function setStats(stat) {
-  // Statistik mengikuti status TERKINI pengajuan milik kementerian.
-  // Menunggu Proses = pengajuan yang masih aktif diproses.
-  // Perlu Revisi   = pengajuan dengan status revisi.
-  // Disetujui      = pengajuan selesai/disetujui/diterima.
-  // Ditolak        = pengajuan dengan status ditolak.
-  $("statMenunggu").textContent = stat.sedang_diproses ?? 0;
-  $("statRevisi").textContent = stat.perlu_revisi ?? 0;
-  $("statDisetujui").textContent = stat.disetujui ?? 0;
-  $("statDitolak").textContent = stat.ditolak ?? 0;
+function setStats(stat, pengajuan = []) {
+  // Statistik dihitung dari pengajuan milik kementerian yang login.
+  // Revisi hanya dihitung jika tahap_sekarang menunjuk Kemenhubker.
+  const rows = Array.isArray(pengajuan) ? pengajuan : [];
+  const revisi = rows.filter(isRevisionForCurrentMinistry).length;
+  const menunggu = rows.filter((item) => {
+    const s = normalizeText(item.status_label || item.status);
+    return !s.includes("revisi") && !s.includes("tolak") &&
+      !s.includes("selesai") && !s.includes("disetujui") &&
+      !s.includes("diterima");
+  }).length;
+  const disetujui = rows.filter((item) => {
+    const s = normalizeText(item.status_label || item.status);
+    return s.includes("selesai") || s.includes("disetujui") || s.includes("diterima");
+  }).length;
+  const ditolak = rows.filter((item) => normalizeText(item.status_label || item.status).includes("tolak")).length;
+
+  $("statMenunggu").textContent = menunggu;
+  $("statRevisi").textContent = revisi;
+  $("statDisetujui").textContent = disetujui;
+  $("statDitolak").textContent = ditolak;
 }
 
 
@@ -124,6 +135,35 @@ function isFollowUpStatus(status) {
   if (s.includes("selesai") || s.includes("disetujui") || s.includes("diterima")) return true;
 
   return false;
+}
+
+function isRevisionForCurrentMinistry(item) {
+  const status = normalizeText(item?.status_label || item?.status || "");
+  if (!status.includes("revisi")) return false;
+
+  const currentId = normalizeText(
+    session.kementerian_id || session.kementerianId || session.id_kementerian || ""
+  );
+  const currentName = normalizeText(
+    session.nama_unit || session.nama_kementerian || session.kementerian || ""
+  );
+  const stage = normalizeText(item?.tahap_sekarang || item?.tahap || item?.unit_tujuan || "");
+  if (!stage) return false;
+
+  // Cocokkan ID terlebih dahulu, lalu label kementerian jika backend mengirim nama.
+  if (currentId && stage === currentId) return true;
+  if (currentName && stage === currentName) return true;
+
+  // Dukungan variasi label yang umum dipakai untuk Kementerian Hubungan Kerja Sama.
+  return stage.includes("hubungan kerja sama") || stage.includes("kemenhubker");
+}
+
+function isDashboardFollowUpItem(item) {
+  const status = item?.status_label || item?.status;
+  if (!isFollowUpStatus(status)) return false;
+  const normalized = normalizeText(status);
+  if (normalized.includes("revisi")) return isRevisionForCurrentMinistry(item);
+  return true;
 }
 
 function filterDashboardPengajuan(items) {
@@ -381,11 +421,45 @@ function isActivityOwnedByCurrentMinistry(activity, ownedPengajuanIds) {
   return !!pengajuanId && ownedPengajuanIds.has(pengajuanId);
 }
 
+function getActivityTimestamp(item) {
+  return (
+    item?.waktu ||
+    item?.timestamp ||
+    item?.updated_at ||
+    item?.update_at ||
+    item?.status_updated_at ||
+    item?.tanggal_keputusan ||
+    item?.waktu_keputusan ||
+    item?.tanggal ||
+    item?.tanggal_pengajuan ||
+    item?.created_at ||
+    ""
+  );
+}
+
+function isCompletedStatus(status) {
+  const s = normalizeText(status);
+  return (
+    s.includes("selesai") ||
+    s.includes("disetujui") ||
+    s.includes("diterima")
+  );
+}
+
+function buildDashboardActivities(items) {
+  // Sumber aktivitas Dashboard adalah `riwayat_pengajuan`
+  // yang dikirim backend melalui getDashboardKementerian.
+  // Jangan membuat aktivitas sintetis dari sheet `pengajuan`.
+  return Array.isArray(items) ? [...items] : [];
+}
+
 function renderActivities(items, ownedPengajuan) {
   const box = $("activityList");
   if (!box) return;
 
-  if (!Array.isArray(items) || !items.length) {
+  const allActivities = buildDashboardActivities(items);
+
+  if (!allActivities.length) {
     box.innerHTML = '<div class="empty-state">Belum ada aktivitas.</div>';
     return;
   }
@@ -400,8 +474,10 @@ function renderActivities(items, ownedPengajuan) {
       .filter(Boolean)
   );
 
-  // Hanya aktivitas pengajuan milik kementerian yang sedang login.
-  const ownedActivities = items.filter((x) =>
+  // Aktivitas dengan identitas kementerian tetap diverifikasi.
+  // Aktivitas tanpa identitas pemilik mengikuti daftar pengajuan milik
+  // kementerian dari endpoint getPengajuan.
+  const ownedActivities = allActivities.filter((x) =>
     isActivityOwnedByCurrentMinistry(x, ownedPengajuanIds)
   );
 
@@ -412,15 +488,14 @@ function renderActivities(items, ownedPengajuan) {
 
   // Aktivitas terbaru berada paling atas.
   const sorted = [...ownedActivities].sort((a, b) => {
-    const ta = new Date(a?.waktu || 0).getTime();
-    const tb = new Date(b?.waktu || 0).getTime();
+    const ta = new Date(getActivityTimestamp(a)).getTime();
+    const tb = new Date(getActivityTimestamp(b)).getTime();
     return tb - ta;
   });
 
   box.innerHTML = sorted
-    .slice(0, 8)
     .map((x) => {
-      const dt = dateTimeID(x.waktu);
+      const dt = dateTimeID(getActivityTimestamp(x));
       return `
         <div class="activity-item">
           <div class="activity-dot" aria-hidden="true"></div>
@@ -428,7 +503,7 @@ function renderActivities(items, ownedPengajuan) {
             <strong>${esc(x.aktivitas || "Aktivitas pengajuan")}</strong>
             <p>${esc(x.pengajuan_id || x.nomor_pengajuan || "-")}</p>
           </div>
-          <time datetime="${esc(x.waktu || "")}">
+          <time datetime="${esc(getActivityTimestamp(x))}">
             <span class="activity-date">${dt.date}</span>
             <span class="activity-time">${dt.time} WIB</span>
           </time>
@@ -447,11 +522,10 @@ async function load() {
 
   try {
     /*
-     * Statistik dan aktivitas tetap berasal dari dashboard.
-     * Tabel "Tindak Lanjut Pengajuan" sengaja mengambil data dari
-     * endpoint getPengajuan yang sama dengan halaman Tindak Lanjut.
-     * Dengan begitu sumber data tabel benar-benar sama dan tidak
-     * bergantung pada daftar pengajuan_terbaru dari dashboard.
+     * Statistik dan aktivitas berasal dari getDashboardKementerian.
+     * Backend membaca aktivitas langsung dari sheet
+     * `riwayat_pengajuan` dan mempertahankan `pengajuan_id`.
+     * Tabel Tindak Lanjut tetap mengambil data dari getPengajuan.
      */
     const dashboardPromise = api("getDashboardKementerian");
 
@@ -510,11 +584,12 @@ async function load() {
      * - revisi
      * - ditolak
      */
-    const followUpItems = followUpResult.data.filter((item) =>
-      isFollowUpStatus(item.status_label || item.status)
-    );
+    const ministryItems = followUpResult.data.filter(isOwnedByCurrentMinistry);
+    const followUpItems = ministryItems.filter(isDashboardFollowUpItem);
 
-    setStats(stat);
+    // Jangan gunakan agregat statistik backend untuk angka revisi karena
+    // agregat tersebut belum membedakan unit yang menjadi tujuan revisi.
+    setStats(stat, ministryItems);
     renderItems(followUpItems, activities);
     renderActivities(activities, followUpResult.data);
   } catch (e) {

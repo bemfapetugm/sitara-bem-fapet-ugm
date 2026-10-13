@@ -1,0 +1,41 @@
+/* SITARA Mensetkab — Rekapitulasi page scaffold */
+.mensetkab-placeholder {
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 28px;
+  text-align: center;
+  border: 1px solid #EEEEEE;
+  border-radius: 14px;
+  background: #FFFFFF;
+}
+.mensetkab-placeholder .placeholder-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  margin-bottom: 16px;
+  border-radius: 14px;
+  background: #F8EEEC;
+  color: #7F2D25;
+}
+.mensetkab-placeholder .placeholder-icon svg { width: 26px; height: 26px; }
+.mensetkab-placeholder h3 {
+  margin: 0 0 8px;
+  color: #252525;
+  font-size: 18px;
+  font-weight: 700;
+}
+.mensetkab-placeholder p {
+  max-width: 520px;
+  margin: 0;
+  color: #777777;
+  font-size: 13px;
+  line-height: 1.65;
+}
+@media (max-width: 700px) {
+  .mensetkab-placeholder { min-height: 220px; padding: 28px 18px; }
+}

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agenda Kabinet | Mensetkab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="../mensetkab.css">
+  <link rel="stylesheet" href="../mensetkab-shell.css">
+  <link rel="stylesheet" href="agenda.css">
+</head>
+<body>
+  <div class="kemen-container">
+    <aside class="sidebar">
+<div class="sidebar-brand">
+            <img src="../../../assets/images/logo.png" alt="Logo SITARA">
+            <div class="brand-text">
+                <h2>SITARA</h2>
+                <p>Sistem Integrasi Tata Birokrasi Mahasiswa</p>
+            </div>
+        </div>
+<nav class="sidebar-nav" aria-label="Menu Mensetkab">
+<p class="nav-label">MENU UTAMA</p>
+<a href="../index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="house"></i></span><span>Dashboard</span></a>
+<p class="nav-label">PENGELOLAAN PENGAJUAN</p>
+<a href="../pengajuan/index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="inbox"></i></span><span>Pengajuan Masuk</span></a>
+<a href="../revisi/index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="refresh-cw"></i></span><span>Perlu Revisi</span></a>
+<p class="nav-label">KEPUTUSAN DAN HASIL</p>
+<a href="../hasil/index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="clipboard-check"></i></span><span>Hasil Ketua BEM</span></a>
+<p class="nav-label">DOKUMEN</p>
+<a href="../template/index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="files"></i></span><span>Template Dokumen</span></a>
+<p class="nav-label">MONITORING DAN AGENDA</p>
+<a href="../riwayat/index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="history"></i></span><span>Riwayat Pengajuan</span></a>
+<a href="../agenda/index.html" class="nav-item active" aria-current="page"><span class="nav-icon" aria-hidden="true"><i data-lucide="calendar-days"></i></span><span>Agenda Kabinet</span></a>
+<a href="../rekapitulasi/index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="chart-no-axes-combined"></i></span><span>Rekapitulasi</span></a>
+</nav>
+<div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="profile-avatar" id="profileAvatar">MS</div>
+                <div class="profile-info">
+                    <h4 id="profileName">Menteri Sekretariat Kabinet</h4>
+                    <p id="profileRole">Mensetkab</p>
+                </div>
+            </div>
+            <button type="button" class="logout-button" id="logoutBtn"><i data-lucide="log-out" aria-hidden="true"></i><span>Keluar</span></button>
+        </div>
+    </aside>
+    <main class="main-content">
+      <header class="topbar"><div class="topbar-title"><h2>Agenda Kabinet</h2><p>Halaman ini disiapkan untuk pengembangan berikutnya.</p></div><div class="topbar-right"><div class="topbar-date" id="currentDate">Memuat tanggal...</div><div class="topbar-avatar" id="topbarAvatar">MS</div></div></header>
+      <section class="page-content">
+        <section class="content-card mensetkab-placeholder">
+          <div class="placeholder-icon"><i data-lucide="calendar-days" aria-hidden="true"></i></div>
+          <h3>Agenda Kabinet</h3>
+          <p>Kerangka halaman sudah aktif. Konten dan fungsi menu ini akan dikembangkan pada tahap berikutnya.</p>
+        </section>
+      </section>
+    </main>
+  </div>
+  <script src="../mensetkab-page.js"></script>
+  <script src="agenda.js"></script>
+  <script>if (window.lucide) lucide.createIcons();</script>
+  <script src="../mensetkab-shell.js"></script>
+</body>
+</html>

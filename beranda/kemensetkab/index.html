@@ -19,7 +19,39 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="kemensetkab.css" />
-  </head>
+  <style>
+/* FINAL PATCH — Semester filter Statistik Pengajuan */
+.chart-period-control{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  min-height:34px;
+  padding:0 9px 0 11px;
+  cursor:pointer;
+}
+.chart-period-control select{
+  appearance:none;
+  -webkit-appearance:none;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:#4d4d4d;
+  font:700 10px/1 Inter,sans-serif;
+  padding:8px 19px 8px 0;
+  cursor:pointer;
+}
+.chart-period-control svg{
+  width:13px;
+  height:13px;
+  pointer-events:none;
+  margin-left:-17px;
+}
+</style>
+
+  <link rel="stylesheet" href="kemensetkab-shell.css" data-sitara-shell="shared" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
 
   <body>
     <div class="kemen-container">
@@ -36,73 +68,89 @@
           <div class="brand-text">
             <h2>SITARA</h2>
 
-            <p>Panel Kementerian</p>
+            <p>Sistem Integrasi Tata Birokrasi Mahasiswa</p>
           </div>
         </div>
 
         <!-- NAVIGATION -->
-
         <nav class="sidebar-nav">
-          <!-- MENU UTAMA -->
 
           <p class="nav-label">MENU UTAMA</p>
 
           <a href="index.html" class="nav-item active">
-            <span class="nav-icon"> ▦ </span>
-
-            <span> Dashboard </span>
+            <span class="nav-icon" aria-hidden="true">
+              <i data-lucide="house"></i>
+            </span>
+            <span>Dashboard</span>
           </a>
 
-          <!-- ADMINISTRASI -->
-
-          <p class="nav-label">ADMINISTRASI</p>
+          <p class="nav-label">PENGELOLAAN PENGAJUAN</p>
 
           <a href="pengajuan/index.html" class="nav-item">
-            <span class="nav-icon"> ▧ </span>
-
-            <span> Pengajuan Masuk </span>
-          </a>
-<!-- KABINET -->
-
-          <p class="nav-label">KABINET</p>
-
-          <a href="agenda/index.html" class="nav-item">
-            <span class="nav-icon"> ▣ </span>
-
-            <span> Agenda Kabinet </span>
+            <span class="nav-icon" aria-hidden="true">
+              <i data-lucide="inbox"></i>
+            </span>
+            <span>Pengajuan Masuk</span>
+            <span class="nav-badge" id="badgePengajuanMasuk" hidden></span>
           </a>
 
-          <!-- DOKUMEN -->
+          <a href="perlu-revisi/index.html" class="nav-item">
+            <span class="nav-icon" aria-hidden="true">
+              <i data-lucide="refresh-cw"></i>
+            </span>
+            <span>Perlu Revisi</span>
+            <span class="nav-badge" id="badgePerluRevisi" hidden></span>
+          </a>
+
+          <a href="pengembalian/index.html" class="nav-item">
+            <span class="nav-icon" aria-hidden="true">
+              <i data-lucide="corner-down-left"></i>
+            </span>
+            <span>Pengembalian Mensetkab</span>
+          </a>
+
+          <p class="nav-label">PENGAJUAN EKSTERNAL</p>
+
+          <a href="pengajuan-dpm/index.html" class="nav-item">
+            <span class="nav-icon" aria-hidden="true">
+              <i data-lucide="landmark"></i>
+            </span>
+            <span>Pengajuan ke DPM</span>
+            <span class="nav-badge" id="badgePengajuanDpm" hidden></span>
+          </a>
+
+          <a href="fakultas/index.html" class="nav-item">
+            <span class="nav-icon" aria-hidden="true">
+              <i data-lucide="building-2"></i>
+            </span>
+            <span>Pengajuan ke Fakultas</span>
+            <span class="nav-badge" id="badgeFakultas" hidden></span>
+          </a>
 
           <p class="nav-label">DOKUMEN</p>
 
-          <a href="administrasi/index.html" class="nav-item">
-            <span class="nav-icon"> ▤ </span>
-
-            <span> Administrasi </span>
+          <a href="dokumen-final/index.html" class="nav-item">
+            <span class="nav-icon" aria-hidden="true">
+              <i data-lucide="file-check-2"></i>
+            </span>
+            <span>Dokumen Final</span>
           </a>
 
-          <a href="dokumen/index.html" class="nav-item">
-            <span class="nav-icon"> ▱ </span>
-
-            <span> Dokumen </span>
-          </a>
-
-          <a href="rekapitulasi/index.html" class="nav-item">
-            <span class="nav-icon"> ▦ </span>
-
-            <span> Rekapitulasi </span>
+          <a href="template/index.html" class="nav-item">
+            <span class="nav-icon" aria-hidden="true">
+              <i data-lucide="files"></i>
+            </span>
+            <span>Template Dokumen</span>
           </a>
 
           <a href="riwayat/index.html" class="nav-item">
-            <span class="nav-icon"> ≡ </span>
-
-            <span> Riwayat </span>
+            <span class="nav-icon" aria-hidden="true">
+              <i data-lucide="history"></i>
+            </span>
+            <span>Riwayat Pengajuan</span>
           </a>
 
-          <!-- PREFERENSI -->
-
-          </nav>
+        </nav>
 
         <!-- SIDEBAR FOOTER -->
 
@@ -149,170 +197,120 @@
         ========================================== -->
 
         <section class="dashboard-content">
-          <!-- WELCOME -->
-
-          <div class="welcome-section">
-            <div>
-              <p class="welcome-label">KEMENTERIAN SEKRETARIAT KABINET</p>
-
-              <h1 id="welcomeTitle">Selamat Datang</h1>
-
-              <p>
-                Kelola pengajuan masuk, verifikasi, administrasi kabinet,
-                dokumen, dan agenda organisasi melalui SITARA.
-              </p>
+          <!-- WELCOME / HERO -->
+          <section class="dashboard-hero">
+            <div class="hero-copy">
+              <p class="hero-label">SELAMAT DATANG,</p>
+              <h1>Kementerian Sekretariat Kabinet</h1>
+              <p>Kelola pengajuan masuk, verifikasi, administrasi kabinet, dokumen, dan agenda organisasi melalui SITARA</p>
+              <span class="hero-line"></span>
             </div>
-          </div>
+            <div class="hero-quote">
+              <div class="quote-mark">“</div>
+              <p>Administrasi yang tertib<br>mendukung gerak organisasi<br>yang lebih berdampak.</p>
+              <small>SITARA<br>Kementerian Sekretariat Kabinet</small>
+              <span></span>
+            </div>
+          </section>
 
-          <!-- STATISTICS -->
-
-          <div class="stats-grid">
-            <!-- PENGAJUAN -->
-
-            <div class="stat-card">
-              <div class="stat-icon">▧</div>
-
+          <!-- SUMMARY -->
+          <section class="stats-grid stats-grid-four">
+            <article class="stat-card stat-card-orange">
+              <div class="stat-icon"><i data-lucide="clipboard-check"></i></div>
               <div class="stat-info">
-                <p>Total Pengajuan</p>
-
-                <h2 id="totalPengajuan">0</h2>
-
-                <span> Seluruh pengajuan </span>
+                <p>Menunggu Verifikasi</p>
+                <h2 id="totalMenungguVerifikasi">0</h2>
+                <span>Menunggu verifikasi Kemensetkab</span>
               </div>
-            </div>
+            </article>
 
-            <!-- PROSES -->
-
-            <div class="stat-card">
-              <div class="stat-icon">◷</div>
-
-              <div class="stat-info">
-                <p>Sedang Diproses</p>
-
-                <h2 id="totalProses">0</h2>
-
-                <span> Pengajuan aktif </span>
-              </div>
-            </div>
-
-            <!-- REVISI -->
-
-            <div class="stat-card">
-              <div class="stat-icon">↻</div>
-
+            <article class="stat-card stat-card-yellow">
+              <div class="stat-icon"><i data-lucide="refresh-cw"></i></div>
               <div class="stat-info">
                 <p>Perlu Perbaikan</p>
-
-                <h2 id="totalRevisi">0</h2>
-
-                <span> Menunggu perbaikan </span>
+                <h2 id="totalPerbaikan">0</h2>
+                <span>Menunggu perbaikan Kemensetkab</span>
               </div>
-            </div>
+            </article>
 
-            <!-- DOKUMEN -->
+            <article class="stat-card stat-card-green">
+              <div class="stat-icon"><i data-lucide="circle-check"></i></div>
+              <div class="stat-info">
+                <p>Selesai</p>
+                <h2 id="totalSelesai">0</h2>
+                <span>Pengajuan disetujui oleh pihak fakultas</span>
+              </div>
+            </article>
 
-            <div class="stat-card">
-              <div class="stat-icon">▤</div>
-
+            <article class="stat-card stat-card-blue">
+              <div class="stat-icon"><i data-lucide="file-text"></i></div>
               <div class="stat-info">
                 <p>Total Dokumen</p>
-
                 <h2 id="totalDokumen">0</h2>
-
-                <span> Dokumen tersimpan </span>
+                <span>Dokumen administrasi di sistem arsip SITARA</span>
               </div>
-            </div>
-          </div>
+            </article>
+          </section>
 
-          <!-- CONTENT GRID -->
-
-          <div class="dashboard-grid">
-            <!-- AKTIVITAS -->
-
-            <div class="content-card">
+          <!-- CHARTS -->
+          <section class="dashboard-chart-grid">
+            <article class="content-card chart-card">
               <div class="card-header">
-                <div>
-                  <h3>Pengajuan Masuk Terbaru</h3>
-
-                  <p>Daftar pengajuan yang masuk dari seluruh kementerian.</p>
-                </div>
-
-                <a href="pengajuan/index.html" class="btn-view-all">
-                  Lihat Semua
-                </a>
+                <div><h3>Statistik Pengajuan</h3><p id="chartPeriodLabel">Rekapitulasi pengajuan Januari – Juni.</p></div>
+                <label class="chart-filter chart-period-control" for="chartPeriod">
+  <select id="chartPeriod" aria-label="Pilih periode statistik">
+    <option value="1">Januari – Juni</option>
+    <option value="2">Juli – Desember</option>
+  </select>
+  <i data-lucide="chevron-down" aria-hidden="true"></i>
+</label>
               </div>
+              <div class="monthly-chart" id="monthlyChart">
+                <div class="chart-loading">Memuat statistik...</div>
+              </div>
+              <div class="chart-legend">
+                <span><i class="legend-dot total"></i>Total Pengajuan</span>
+                <span><i class="legend-dot done"></i>Selesai</span>
+                <span><i class="legend-dot rejected"></i>Ditolak</span>
+              </div>
+            </article>
 
+            <article class="content-card ministry-card">
+              <div class="card-header">
+                <div><h3>Jumlah Pengajuan per Kementerian</h3><p>Total pengajuan berdasarkan kementerian asal.</p></div>
+              </div>
+              <div class="donut-layout">
+                <div class="donut-chart" id="ministryDonut"><span><strong id="donutTotal">0</strong><small>Total</small></span></div>
+                <div class="donut-legend" id="ministryLegend"><div class="chart-loading">Memuat data...</div></div>
+              </div>
+            </article>
+          </section>
+
+          <!-- TABLE + QUICK ACCESS -->
+          <section class="dashboard-grid dashboard-bottom-grid">
+            <article class="content-card">
+              <div class="card-header">
+                <div><h3>Pengajuan Masuk Terbaru</h3><p>Daftar pengajuan yang masuk dari seluruh kementerian.</p></div>
+                <a href="pengajuan/index.html" class="btn-view-all">Lihat Semua <span>→</span></a>
+              </div>
               <div class="table-wrapper dashboard-table-wrapper">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>No.</th>
-
-                      <th>Nomor Pengajuan</th>
-
-                      <th>Asal Kementerian</th>
-
-                      <th>Jenis</th>
-
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-
-                  <tbody id="pengajuanTerbaruBody">
-                    <tr>
-                      <td colspan="5" class="empty-state">
-                        Belum ada pengajuan masuk.
-                      </td>
-                    </tr>
-                  </tbody>
+                <table class="dashboard-data-table">
+                  <thead><tr><th>No.</th><th>Judul Pengajuan</th><th>Tanggal Masuk</th><th>Asal Kementerian</th><th>Jenis</th><th>Status</th></tr></thead>
+                  <tbody id="pengajuanTerbaruBody"><tr><td colspan="6" class="empty-state">Memuat pengajuan...</td></tr></tbody>
                 </table>
               </div>
-            </div>
+            </article>
 
-            <!-- QUICK ACTION -->
-
-            <div class="content-card quick-card">
-              <div class="card-header">
-                <div>
-                  <h3>Akses Cepat</h3>
-
-                  <p>Menu administrasi yang sering digunakan.</p>
-                </div>
-              </div>
-
+            <article class="content-card quick-card">
+              <div class="card-header"><div><h3>Akses Cepat</h3><p>Menu administrasi yang sering digunakan.</p></div></div>
               <div class="quick-actions">
-<a href="agenda/index.html" class="quick-action">
-                  <div class="quick-icon">📅</div>
-
-                  <div>
-                    <strong> Agenda Kabinet </strong>
-
-                    <span> Mengelola agenda kegiatan kabinet. </span>
-                  </div>
-                </a>
-
-                <a href="rekapitulasi/index.html" class="quick-action">
-                  <div class="quick-icon">📊</div>
-
-                  <div>
-                    <strong> Rekapitulasi </strong>
-
-                    <span> Melihat laporan dan statistik administrasi. </span>
-                  </div>
-                </a>
-
-                <a href="riwayat/index.html" class="quick-action">
-                  <div class="quick-icon">🕘</div>
-
-                  <div>
-                    <strong> Riwayat </strong>
-
-                    <span> Melihat rekam jejak proses pengajuan. </span>
-                  </div>
-                </a>
+                <a href="perlu-revisi/index.html" class="quick-action quick-revise"><div class="quick-icon"><i data-lucide="refresh-cw"></i></div><div><strong>Perlu Revisi</strong><span>Lihat pengajuan yang perlu diperbaiki.</span></div><i class="quick-arrow" data-lucide="chevron-right"></i></a>
+                <a href="pengembalian/index.html" class="quick-action quick-return"><div class="quick-icon"><i data-lucide="corner-down-left"></i></div><div><strong>Pengembalian Mensetkab</strong><span>Lihat pengajuan yang dikembalikan.</span></div><i class="quick-arrow" data-lucide="chevron-right"></i></a>
+                <a href="template/index.html" class="quick-action quick-template"><div class="quick-icon"><i data-lucide="file-archive"></i></div><div><strong>Template Dokumen</strong><span>Akses dan kelola template surat.</span></div><i class="quick-arrow" data-lucide="chevron-right"></i></a>
+                <a href="dokumen-final/index.html" class="quick-action quick-final"><div class="quick-icon"><i data-lucide="folder-check"></i></div><div><strong>Dokumen Final</strong><span>Lihat dokumen yang sudah disetujui.</span></div><i class="quick-arrow" data-lucide="chevron-right"></i></a>
               </div>
-            </div>
-          </div>
+            </article>
+          </section>
         </section>
       </main>
     </div>
@@ -320,5 +318,59 @@
     <!-- JAVASCRIPT -->
 
     <script src="kemensetkab.js"></script>
-  </body>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        if (window.lucide) {
+          lucide.createIcons();
+        }
+      });
+    </script>
+  
+<script>
+  (() => {
+    const STORAGE_KEY = "sitara-kemensetkab-sidebar-scroll";
+    const getSidebarNav = () => document.querySelector(".sidebar-nav");
+
+    const saveSidebarScroll = () => {
+      const nav = getSidebarNav();
+      if (!nav) return;
+      try {
+        sessionStorage.setItem(STORAGE_KEY, String(nav.scrollTop));
+      } catch (_) {}
+    };
+
+    const restoreSidebarScroll = () => {
+      const nav = getSidebarNav();
+      if (!nav) return;
+
+      let savedScroll = 0;
+      try {
+        savedScroll = Number(sessionStorage.getItem(STORAGE_KEY) || 0);
+      } catch (_) {}
+
+      const applyScroll = () => {
+        nav.scrollTop = Math.min(
+          Math.max(0, savedScroll),
+          Math.max(0, nav.scrollHeight - nav.clientHeight)
+        );
+      };
+
+      requestAnimationFrame(() => {
+        applyScroll();
+        requestAnimationFrame(applyScroll);
+      });
+    };
+
+    document.addEventListener("click", (event) => {
+      const link = event.target.closest(".sidebar-nav a.nav-item");
+      if (link) saveSidebarScroll();
+    }, true);
+
+    window.addEventListener("pagehide", saveSidebarScroll);
+    window.addEventListener("pageshow", restoreSidebarScroll);
+    document.addEventListener("DOMContentLoaded", restoreSidebarScroll);
+  })();
+</script>
+
+</body>
 </html>

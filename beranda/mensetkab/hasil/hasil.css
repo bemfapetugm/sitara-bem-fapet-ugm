@@ -1,0 +1,287 @@
+/* SITARA — Hasil Ketua BEM. Seluruh gaya khusus halaman ini berada di file ini. */
+.hasil-page{padding-top:24px}
+.hasil-toolbar{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:24px;flex-wrap:wrap}
+.hasil-filters{display:flex;gap:8px;flex-wrap:wrap}
+.hasil-filter{display:inline-flex;align-items:center;gap:10px;border:1px solid transparent;border-radius:12px;padding:12px 16px;background:#f8eeee;color:#8b241d;font:600 14px Inter,Arial,sans-serif;cursor:pointer;transition:background .18s,transform .18s}
+.hasil-filter:hover{transform:translateY(-1px)}
+.hasil-filter svg{width:19px;height:19px}
+.hasil-filter b{display:inline-grid;place-items:center;min-width:28px;height:28px;padding:0 7px;border-radius:999px;background:#fff;border:1px solid #efd8d5;font-size:13px}
+.hasil-filter.active{background:#8f211b;color:#fff;box-shadow:0 5px 14px #8f211b20}
+.hasil-filter.active b{color:#8f211b}
+.hasil-filter.approved{background:#edf8f0;color:#138447}.hasil-filter.approved.active{background:#16834a;color:#fff}.hasil-filter.approved b{border-color:#c7e8d2}
+.hasil-filter.rejected{background:#fff0ef;color:#c62b25}.hasil-filter.rejected.active{background:#c52c26;color:#fff}.hasil-filter.rejected b{border-color:#f3d0ce}
+.hasil-tools{display:flex;gap:10px;flex:1;justify-content:flex-end;min-width:300px}
+.hasil-search,.hasil-sort{height:48px;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #e0e5ed;border-radius:12px;padding:0 14px;color:#657185}
+.hasil-search{flex:1;max-width:440px}.hasil-search svg,.hasil-sort svg{width:20px;height:20px;flex-shrink:0}
+.hasil-search input{border:0;outline:0;width:100%;min-width:0;font:500 13px Inter,Arial,sans-serif;color:#273142;background:transparent}
+.hasil-sort select{border:0;outline:0;background:transparent;color:#303847;font:600 13px Inter,Arial,sans-serif;max-width:170px}
+.hasil-message{min-height:250px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;border:1px solid #e8ebf0;border-radius:16px;background:#fff;color:#687386;text-align:center;padding:28px}
+.hasil-message strong{font-size:14px;font-weight:600}.hasil-message.error{color:#b42318}.hasil-message[hidden],.hasil-grid[hidden],.hasil-modal-backdrop[hidden]{display:none!important}
+.hasil-spinner{width:28px;height:28px;border:3px solid #f0d8d5;border-top-color:#9b2c25;border-radius:50%;animation:hasil-spin .8s linear infinite}
+@keyframes hasil-spin{to{transform:rotate(360deg)}}
+.hasil-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.hasil-card{position:relative;display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:16px;align-items:start;background:#fff;border:1px solid #edf0f4;border-radius:16px;padding:20px;box-shadow:0 5px 18px #26364a08;min-width:0;transition:box-shadow .2s,transform .2s}
+.hasil-card:hover{box-shadow:0 10px 26px #26364a12;transform:translateY(-1px)}
+.hasil-type-icon{width:64px;height:64px;display:grid;place-items:center;border-radius:14px;background:#fff0ef;color:#b52620}
+.hasil-type-icon svg{width:32px;height:32px}.hasil-type-icon.lpj{background:#edf5ff;color:#1684ee}.hasil-type-icon.fasilitas{background:#eaf8ef;color:#149c59}
+.hasil-card-main{min-width:0;padding-top:1px}
+.hasil-badges{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:9px}
+.hasil-badge{display:inline-flex;align-items:center;border-radius:6px;padding:5px 9px;font-size:12px;font-weight:700;background:#fff0ef;color:#b72a24}
+.hasil-badge.status-approved{background:#eaf8ef;color:#168348}.hasil-badge.status-rejected{background:#fff0ef;color:#c42b25}.hasil-badge.type-lpj{background:#eaf3ff;color:#1475d2}.hasil-badge.type-fasilitas{background:#eaf8ef;color:#168348}
+.hasil-card h3{font-size:16px;line-height:1.45;font-weight:750;color:#202734;margin:0 0 7px;overflow-wrap:anywhere}
+.hasil-ministry{display:flex;align-items:flex-start;gap:7px;color:#657186;font-size:13px;line-height:1.5}.hasil-ministry svg{width:17px;height:17px;flex-shrink:0;margin-top:1px}
+.hasil-decision{min-width:135px;max-width:160px;border-radius:10px;padding:12px 13px;text-align:center;background:#edf8f0;color:#168348;font-size:12px;line-height:1.5}
+.hasil-decision.rejected{background:#fff0ef;color:#bf2923}.hasil-decision strong{display:flex;justify-content:center;align-items:center;gap:6px;font-size:13px;margin-bottom:4px}.hasil-decision svg{width:18px;height:18px}
+.hasil-card-footer{grid-column:1/3;display:flex;gap:18px;align-items:center;flex-wrap:wrap;color:#647084;font-size:12px;margin-top:2px}
+.hasil-card-footer span{display:inline-flex;align-items:center;gap:7px}.hasil-card-footer svg{width:17px;height:17px}
+.hasil-open{position:absolute;right:20px;bottom:18px;width:46px;height:46px;border:0;border-radius:50%;display:grid;place-items:center;background:#fff0ef;color:#b52620;cursor:pointer}
+.hasil-open:hover{background:#8f211b;color:#fff}.hasil-open svg{width:22px;height:22px}
+.hasil-modal-backdrop{position:fixed;inset:0;z-index:2000;background:#17202db0;display:flex;align-items:center;justify-content:center;padding:24px}
+.hasil-modal{position:relative;width:min(900px,100%);max-height:min(88vh,900px);overflow:auto;background:#fff;border-radius:18px;padding:28px;box-shadow:0 24px 80px #0003}
+.hasil-modal-close{position:sticky;top:0;float:right;width:38px;height:38px;border:1px solid #e5e7eb;border-radius:50%;background:#fff;display:grid;place-items:center;cursor:pointer;z-index:2}
+.hasil-modal h2{margin:2px 48px 6px 0;font-size:22px;line-height:1.35;color:#202734}.hasil-modal-subtitle{margin:0 0 20px;color:#657185;font-size:13px}
+.hasil-detail-section{border-top:1px solid #edf0f4;padding:18px 0}.hasil-detail-section h3{margin:0 0 12px;font-size:15px;color:#273142}
+.hasil-info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.hasil-info{padding:12px;border:1px solid #edf0f4;border-radius:10px;min-width:0}.hasil-info small{display:block;color:#7b8493;font-size:11px;margin-bottom:5px}.hasil-info strong{display:block;color:#273142;font-size:13px;overflow-wrap:anywhere}
+.hasil-doc{display:flex;align-items:center;gap:12px;border:1px solid #e7ebf1;border-radius:11px;padding:13px;margin-top:9px}
+.hasil-doc-icon{width:40px;height:40px;display:grid;place-items:center;border-radius:9px;background:#fff0ef;color:#a52a23;flex-shrink:0}.hasil-doc-icon svg{width:21px;height:21px}
+.hasil-doc-main{flex:1;min-width:0}.hasil-doc-main strong{display:block;font-size:13px;color:#273142;overflow-wrap:anywhere}.hasil-doc-main small{display:block;margin-top:4px;color:#7b8493;font-size:11px}
+.hasil-download{display:inline-flex;align-items:center;gap:6px;border-radius:8px;background:#8f211b;color:white;text-decoration:none;padding:9px 12px;font-size:12px;font-weight:700;white-space:nowrap}.hasil-download svg{width:15px;height:15px}
+.hasil-rejection-note{border:1px solid #f2d0cd;border-radius:12px;background:#fff7f6;padding:16px;color:#8e2a25;font-size:13px;line-height:1.65;white-space:pre-wrap}
+.hasil-empty-doc{color:#7b8493;font-size:13px;padding:12px 0}
+@media(max-width:1100px){.hasil-grid{grid-template-columns:1fr}.hasil-toolbar{align-items:stretch}.hasil-tools{max-width:none}.hasil-card{grid-template-columns:58px minmax(0,1fr) auto}.hasil-type-icon{width:58px;height:58px}}
+@media(max-width:700px){.hasil-page{padding-top:16px}.hasil-toolbar{gap:12px}.hasil-filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.hasil-filter{justify-content:center;gap:5px;padding:10px 5px;font-size:12px}.hasil-filter svg{width:16px;height:16px}.hasil-filter b{min-width:22px;height:22px;font-size:11px;padding:0 4px}.hasil-tools{min-width:0;flex-direction:column}.hasil-search,.hasil-sort{max-width:none;width:auto;height:44px}.hasil-sort select{max-width:none;flex:1}.hasil-card{grid-template-columns:48px minmax(0,1fr);padding:14px;gap:12px}.hasil-type-icon{width:48px;height:48px}.hasil-type-icon svg{width:25px;height:25px}.hasil-decision{grid-column:2;grid-row:2;justify-self:start;max-width:none;min-width:0;padding:8px 10px}.hasil-card-footer{grid-column:1/3;padding-right:48px;gap:12px}.hasil-open{right:13px;bottom:13px;width:40px;height:40px}.hasil-modal-backdrop{padding:10px}.hasil-modal{padding:20px 16px;max-height:92vh}.hasil-modal h2{font-size:19px}.hasil-info-grid{grid-template-columns:1fr}.hasil-doc{align-items:flex-start;flex-wrap:wrap}.hasil-download{margin-left:52px}}
+
+.hasil-retry{border:0;border-radius:8px;background:#8f211b;color:#fff;padding:10px 16px;font-weight:700;cursor:pointer}
+
+/* Penyesuaian proporsi kartu Hasil Ketua BEM — perubahan visual saja */
+.hasil-page{padding-top:20px}
+.hasil-toolbar{gap:14px;margin-bottom:18px}
+.hasil-filter{gap:8px;padding:10px 13px;font-size:13px}
+.hasil-filter svg{width:18px;height:18px}
+.hasil-filter b{min-width:25px;height:25px;font-size:12px}
+.hasil-tools{gap:8px}
+.hasil-search,.hasil-sort{height:44px;padding:0 12px}
+.hasil-grid{gap:14px}
+.hasil-card{grid-template-columns:54px minmax(0,1fr) auto;gap:13px;padding:17px;border-radius:15px}
+.hasil-type-icon{width:54px;height:54px;border-radius:13px}
+.hasil-type-icon svg{width:28px;height:28px}
+.hasil-badges{gap:6px;margin-bottom:7px}
+.hasil-badge{padding:4px 8px;font-size:11.5px}
+.hasil-card h3{font-size:15px;line-height:1.4;margin-bottom:6px}
+.hasil-ministry{font-size:12.5px;line-height:1.45;gap:6px}
+.hasil-ministry svg{width:16px;height:16px}
+.hasil-decision{min-width:124px;max-width:148px;padding:9px 10px;font-size:11.5px;line-height:1.45}
+.hasil-decision strong{font-size:12px;margin-bottom:3px}
+.hasil-decision svg{width:16px;height:16px}
+.hasil-card-footer{gap:14px;font-size:11.5px;margin-top:0}
+.hasil-card-footer span{gap:6px}
+.hasil-card-footer svg{width:16px;height:16px}
+.hasil-open{right:16px;bottom:15px;width:40px;height:40px}
+.hasil-open svg{width:20px;height:20px}
+@media(max-width:1100px){
+  .hasil-card{grid-template-columns:50px minmax(0,1fr) auto;gap:12px;padding:16px}
+  .hasil-type-icon{width:50px;height:50px}
+}
+@media(max-width:700px){
+  .hasil-page{padding-top:14px}
+  .hasil-toolbar{gap:10px;margin-bottom:16px}
+  .hasil-filter{padding:9px 4px;font-size:11.5px}
+  .hasil-card{grid-template-columns:44px minmax(0,1fr);padding:13px;gap:10px}
+  .hasil-type-icon{width:44px;height:44px}
+  .hasil-type-icon svg{width:23px;height:23px}
+  .hasil-card h3{font-size:14px}
+  .hasil-ministry{font-size:12px}
+  .hasil-decision{padding:7px 9px}
+  .hasil-card-footer{gap:10px;padding-right:44px}
+  .hasil-open{right:11px;bottom:11px;width:36px;height:36px}
+}
+
+
+/* Modal loading detail — ilustrasi animasi khusus Hasil Ketua BEM */
+.hasil-modal.is-loading{
+  width:min(484px,calc(100vw - 32px));
+  max-height:none;
+  min-height:430px;
+  overflow:hidden;
+  padding:28px 28px 30px;
+  border-radius:22px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:stretch;
+}
+.hasil-modal.is-loading .hasil-modal-close{
+  position:absolute;
+  top:18px;
+  right:18px;
+  float:none;
+}
+.hasil-detail-loading{
+  display:flex;
+  min-height:360px;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:16px 4px 0;
+  color:#263142;
+}
+.hasil-loading-illustration{
+  position:relative;
+  width:228px;
+  height:178px;
+  margin:2px auto 12px;
+  display:grid;
+  place-items:center;
+}
+.hasil-loading-halo{
+  position:absolute;
+  width:196px;
+  height:150px;
+  top:12px;
+  left:16px;
+  border-radius:50%;
+  background:radial-gradient(circle at 50% 45%,#fff8f7 0,#fdeceb 72%,#fbe4e2 100%);
+  animation:hasil-halo-pulse 2.2s ease-in-out infinite;
+}
+.hasil-loading-paper{
+  position:absolute;
+  width:94px;
+  height:112px;
+  border:2px solid #f1b8b4;
+  border-radius:10px;
+  background:#fff;
+  box-shadow:0 7px 16px #8f211b12;
+}
+.hasil-loading-paper-back{
+  top:30px;
+  left:57px;
+  transform:rotate(-7deg);
+  background:#f9d9d7;
+  border-color:#e9a4a0;
+  animation:hasil-paper-back 2.2s ease-in-out infinite;
+}
+.hasil-loading-paper-front{
+  top:25px;
+  left:73px;
+  padding:24px 12px 0;
+  transform:rotate(2deg);
+  z-index:1;
+  animation:hasil-paper-front 2.2s ease-in-out infinite;
+}
+.hasil-loading-paper-front span{
+  display:block;
+  height:5px;
+  margin:0 0 9px;
+  border-radius:99px;
+  background:#f2d2d0;
+}
+.hasil-loading-paper-front span:nth-child(2){width:82%}
+.hasil-loading-paper-front span:nth-child(3){width:62%}
+.hasil-loading-lens{
+  position:absolute;
+  z-index:2;
+  width:75px;
+  height:75px;
+  top:72px;
+  left:119px;
+  border:9px solid #b52620;
+  border-radius:50%;
+  background:linear-gradient(145deg,#fff 25%,#fce9e8);
+  box-shadow:0 4px 9px #8f211b20,inset 0 0 0 5px #f9d9d7;
+  animation:hasil-lens-bob 1.8s ease-in-out infinite;
+}
+.hasil-loading-lens:after{
+  content:"";
+  position:absolute;
+  width:45px;
+  height:13px;
+  border-radius:9px;
+  background:linear-gradient(90deg,#b52620,#8f211b);
+  right:-34px;
+  bottom:-20px;
+  transform:rotate(48deg);
+  transform-origin:left center;
+  box-shadow:0 3px 5px #8f211b22;
+}
+.hasil-loading-lens i{
+  position:absolute;
+  width:20px;
+  height:20px;
+  top:14px;
+  left:15px;
+  border-top:4px solid #d98782;
+  border-radius:50%;
+  transform:rotate(25deg);
+}
+.hasil-loading-orbit{
+  position:absolute;
+  z-index:3;
+  width:11px;
+  height:11px;
+  border:3px solid #e9a09b;
+  border-radius:50%;
+  background:#fff;
+  animation:hasil-orbit-pulse 1.8s ease-in-out infinite;
+}
+.hasil-loading-orbit.orbit-one{left:17px;top:83px}
+.hasil-loading-orbit.orbit-two{right:23px;top:49px;width:9px;height:9px;animation-delay:.5s}
+.hasil-loading-shadow{
+  position:absolute;
+  bottom:5px;
+  left:61px;
+  width:116px;
+  height:13px;
+  border-radius:50%;
+  background:#f7d6d4;
+  animation:hasil-shadow-pulse 1.8s ease-in-out infinite;
+}
+.hasil-detail-loading h2{
+  margin:0 0 8px;
+  color:#17202d;
+  font-size:21px;
+  font-weight:750;
+  line-height:1.35;
+}
+.hasil-detail-loading p{
+  margin:0;
+  color:#657185;
+  font-size:14px;
+  line-height:1.6;
+}
+.hasil-loading-dots{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-top:28px;
+}
+.hasil-loading-dots span{
+  display:block;
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:#f3cecb;
+  animation:hasil-dot-bounce 1.05s ease-in-out infinite;
+}
+.hasil-loading-dots span:first-child{background:#b52620;animation-delay:0s}
+.hasil-loading-dots span:nth-child(2){animation-delay:.15s}
+.hasil-loading-dots span:nth-child(3){animation-delay:.3s}
+@keyframes hasil-dot-bounce{0%,60%,100%{transform:translateY(0);opacity:.55}30%{transform:translateY(-6px);opacity:1}}
+@keyframes hasil-halo-pulse{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.045);opacity:1}}
+@keyframes hasil-paper-back{0%,100%{transform:translateY(0) rotate(-7deg)}50%{transform:translateY(-4px) rotate(-4deg)}}
+@keyframes hasil-paper-front{0%,100%{transform:translateY(0) rotate(2deg)}50%{transform:translateY(-5px) rotate(0deg)}}
+@keyframes hasil-lens-bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-4px) rotate(-4deg)}}
+@keyframes hasil-orbit-pulse{0%,100%{transform:scale(.85);opacity:.65}50%{transform:scale(1.15);opacity:1}}
+@keyframes hasil-shadow-pulse{0%,100%{transform:scaleX(.9);opacity:.7}50%{transform:scaleX(1.05);opacity:1}}
+@media(max-width:520px){
+  .hasil-modal.is-loading{width:calc(100vw - 28px);min-height:400px;padding:22px 18px 24px}
+  .hasil-detail-loading{min-height:350px}
+  .hasil-loading-illustration{transform:scale(.9);margin-top:-2px;margin-bottom:2px}
+  .hasil-detail-loading h2{font-size:19px}
+  .hasil-detail-loading p{font-size:13px;max-width:290px}
+}
+@media(prefers-reduced-motion:reduce){
+  .hasil-loading-halo,.hasil-loading-paper-back,.hasil-loading-paper-front,.hasil-loading-lens,
+  .hasil-loading-orbit,.hasil-loading-shadow,.hasil-loading-dots span{animation:none!important}
+}

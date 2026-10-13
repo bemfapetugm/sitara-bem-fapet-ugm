@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Template Dokumen | Mensetkab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="../mensetkab.css">
+  <link rel="stylesheet" href="../mensetkab-shell.css">
+  <link rel="stylesheet" href="template.css">
+</head>
+<body>
+  <div class="kemen-container">
+    <aside class="sidebar">
+<div class="sidebar-brand">
+            <img src="../../../assets/images/logo.png" alt="Logo SITARA">
+            <div class="brand-text">
+                <h2>SITARA</h2>
+                <p>Sistem Integrasi Tata Birokrasi Mahasiswa</p>
+            </div>
+        </div>
+<nav class="sidebar-nav" aria-label="Menu Mensetkab">
+<p class="nav-label">MENU UTAMA</p>
+<a href="../index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="house"></i></span><span>Dashboard</span></a>
+<p class="nav-label">PENGELOLAAN PENGAJUAN</p>
+<a href="../pengajuan/index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="inbox"></i></span><span>Pengajuan Masuk</span></a>
+<a href="../revisi/index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="refresh-cw"></i></span><span>Perlu Revisi</span></a>
+<p class="nav-label">KEPUTUSAN DAN HASIL</p>
+<a href="../hasil/index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="clipboard-check"></i></span><span>Hasil Ketua BEM</span></a>
+<p class="nav-label">DOKUMEN</p>
+<a href="../template/index.html" class="nav-item active" aria-current="page"><span class="nav-icon" aria-hidden="true"><i data-lucide="files"></i></span><span>Template Dokumen</span></a>
+<p class="nav-label">MONITORING DAN AGENDA</p>
+<a href="../riwayat/index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="history"></i></span><span>Riwayat Pengajuan</span></a>
+<a href="../agenda/index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="calendar-days"></i></span><span>Agenda Kabinet</span></a>
+<a href="../rekapitulasi/index.html" class="nav-item"><span class="nav-icon" aria-hidden="true"><i data-lucide="chart-no-axes-combined"></i></span><span>Rekapitulasi</span></a>
+</nav>
+<div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="profile-avatar" id="profileAvatar">MS</div>
+                <div class="profile-info">
+                    <h4 id="profileName">Menteri Sekretariat Kabinet</h4>
+                    <p id="profileRole">Mensetkab</p>
+                </div>
+            </div>
+            <button type="button" class="logout-button" id="logoutBtn"><i data-lucide="log-out" aria-hidden="true"></i><span>Keluar</span></button>
+        </div>
+    </aside>
+    <main class="main-content">
+      <header class="topbar"><div class="topbar-title"><h2>Template Dokumen</h2><p>Template resmi yang dipublikasikan oleh Kemensetkab.</p></div><div class="topbar-right"><div class="topbar-date" id="currentDate">Memuat tanggal...</div><div class="topbar-avatar" id="topbarAvatar">MS</div></div></header>
+      <section class="page-content template-page-content">
+        <section class="template-panel" aria-label="Daftar template dokumen">
+          <div class="template-tools">
+            <label class="template-search"><i data-lucide="search" aria-hidden="true"></i><input id="searchTemplate" type="search" placeholder="Cari nama template atau kata kunci..." aria-label="Cari template dokumen"></label>
+            <label class="template-category-select"><i data-lucide="layout-grid" aria-hidden="true"></i><select id="filterTemplateCategory" aria-label="Filter kategori template"><option value="all">Semua Kategori</option></select></label>
+          </div>
+          <div class="template-filter-row">
+            <div class="template-category-chips" id="templateCategoryChips" aria-label="Pilih kategori template"></div>
+            <label class="template-sort"><i data-lucide="arrow-up-down" aria-hidden="true"></i><select id="sortTemplate" aria-label="Urutkan template"><option value="newest">Terbaru</option><option value="az">Nama A–Z</option><option value="za">Nama Z–A</option></select></label>
+          </div>
+          <div class="template-results-row"><p id="templateResultsText" aria-live="polite">Memuat template...</p><div class="template-view-toggle" role="group" aria-label="Tampilan template"><button type="button" class="active" id="templateGridView" aria-label="Tampilan kartu" aria-pressed="true"><i data-lucide="layout-grid"></i></button><button type="button" id="templateListView" aria-label="Tampilan daftar" aria-pressed="false"><i data-lucide="list"></i></button></div></div>
+          <div class="template-cards" id="templateCards" aria-live="polite"></div>
+          <div class="template-empty" id="templateEmpty" hidden><span class="template-empty-icon"><i data-lucide="files" aria-hidden="true"></i></span><h3 id="templateEmptyTitle">Belum ada template dokumen</h3><p id="templateEmptyMessage">Template yang dipublikasikan Kemensetkab akan muncul di sini.</p></div>
+        </section>
+      </section>
+    </main>
+  </div>
+  <script src="../mensetkab-page.js"></script>
+  <script src="template.js"></script>
+  <script>if (window.lucide) lucide.createIcons();</script>
+  <script src="../mensetkab-shell.js"></script>
+</body>
+</html>

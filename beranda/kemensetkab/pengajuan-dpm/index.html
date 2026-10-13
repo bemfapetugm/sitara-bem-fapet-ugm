@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pengajuan ke DPM | SITARA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../kemensetkab.css" />
+    <link rel="stylesheet" href="pengajuan-dpm.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <link rel="stylesheet" href="../kemensetkab-shell.css" data-sitara-shell="shared" />
+</head>
+  <body>
+    <div class="kemen-container">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <img src="../../../assets/images/logo.png" alt="Logo SITARA" />
+          <div class="brand-text">
+            <h2>SITARA</h2>
+            <p>Sistem Integrasi Tata Birokrasi Mahasiswa</p>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <p class="nav-label">MENU UTAMA</p>
+          <a href="../index.html" class="nav-item">
+            <span class="nav-icon" aria-hidden="true"
+              ><i data-lucide="house"></i></span
+            ><span>Dashboard</span>
+          </a>
+
+          <p class="nav-label">PENGELOLAAN PENGAJUAN</p>
+          <a href="../pengajuan/index.html" class="nav-item">
+            <span class="nav-icon" aria-hidden="true"
+              ><i data-lucide="inbox"></i></span
+            ><span>Pengajuan Masuk</span>
+            <span class="nav-badge" id="badgePengajuanMasuk" hidden></span>
+          </a>
+          <a href="../perlu-revisi/index.html" class="nav-item">
+            <span class="nav-icon" aria-hidden="true"
+              ><i data-lucide="refresh-cw"></i></span
+            ><span>Perlu Revisi</span>
+            <span class="nav-badge" id="badgePerluRevisi" hidden></span>
+          </a>
+          <a href="../pengembalian/index.html" class="nav-item">
+            <span class="nav-icon" aria-hidden="true"
+              ><i data-lucide="corner-down-left"></i></span
+            ><span>Pengembalian Mensetkab</span>
+          </a>
+
+          <p class="nav-label">PENGAJUAN EKSTERNAL</p>
+          <a href="index.html" class="nav-item active">
+            <span class="nav-icon" aria-hidden="true"
+              ><i data-lucide="landmark"></i></span
+            ><span>Pengajuan ke DPM</span>
+            <span class="nav-badge" id="badgePengajuanDpm" hidden></span>
+          </a>
+          <a href="../fakultas/index.html" class="nav-item">
+            <span class="nav-icon" aria-hidden="true"
+              ><i data-lucide="building-2"></i></span
+            ><span>Pengajuan ke Fakultas</span>
+            <span class="nav-badge" id="badgeFakultas" hidden></span>
+          </a>
+
+          <p class="nav-label">DOKUMEN</p>
+          <a href="../dokumen-final/index.html" class="nav-item">
+            <span class="nav-icon" aria-hidden="true"
+              ><i data-lucide="file-check-2"></i></span
+            ><span>Dokumen Final</span>
+          </a>
+          <a href="../template/index.html" class="nav-item">
+            <span class="nav-icon" aria-hidden="true"
+              ><i data-lucide="files"></i></span
+            ><span>Template Dokumen</span>
+          </a>
+          <a href="../riwayat/index.html" class="nav-item">
+            <span class="nav-icon" aria-hidden="true"
+              ><i data-lucide="history"></i></span
+            ><span>Riwayat Pengajuan</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="user-profile">
+            <div class="profile-avatar" id="profileAvatar">KS</div>
+            <div class="profile-info">
+              <h4 id="profileName">Pengguna</h4>
+              <p id="profileRole">Kementerian</p>
+            </div>
+          </div>
+          <button type="button" class="logout-button" id="logoutButton">
+            ⇥ Keluar
+          </button>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="topbar-title">
+            <h2>Pengajuan ke DPM</h2>
+            <p>Kementerian Sekretariat Kabinet</p>
+          </div>
+          <div class="topbar-right">
+            <div class="topbar-date" id="currentDate">Memuat tanggal...</div>
+            <div class="topbar-avatar" id="topbarAvatar">KS</div>
+          </div>
+        </header>
+
+        <section class="content dpm-content">
+          <div class="dpm-stat-grid" aria-label="Statistik pengajuan">
+            <article class="dpm-stat-card">
+              <div class="dpm-stat-copy"><span class="dpm-stat-label"><i class="stat-dot waiting"></i>Menunggu Diteruskan</span><strong id="statWaiting">0</strong></div>
+              <div class="dpm-stat-icon waiting"><i data-lucide="file-clock"></i></div>
+            </article>
+            <article class="dpm-stat-card">
+              <div class="dpm-stat-copy"><span class="dpm-stat-label"><i class="stat-dot revision"></i>Perlu Revisi</span><strong id="statRevision">0</strong></div>
+              <div class="dpm-stat-icon revision"><i data-lucide="file-warning"></i></div>
+            </article>
+            <article class="dpm-stat-card">
+              <div class="dpm-stat-copy"><span class="dpm-stat-label"><i class="stat-dot total"></i>Total Pengajuan</span><strong id="statTotal">0</strong></div>
+              <div class="dpm-stat-icon total"><i data-lucide="files"></i></div>
+            </article>
+          </div>
+
+          <div class="dpm-filter-panel">
+            <label class="dpm-search"><i data-lucide="search"></i><input id="searchInput" type="search" placeholder="Cari judul pengajuan atau kementerian..." autocomplete="off" aria-label="Cari judul pengajuan atau kementerian"></label>
+            <div class="dpm-filter-control dpm-status-dropdown" id="statusDropdown">
+              <span class="sr-only" id="statusFilterLabel">Filter status</span>
+              <select id="statusFilter" class="dpm-native-status" aria-label="Filter status">
+                <option value="semua">Semua Status</option>
+                <option value="siap">Menunggu diteruskan</option>
+                <option value="revisi">Perlu Revisi</option>
+              </select>
+              <button type="button" class="dpm-status-trigger" id="statusTrigger" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="statusFilterLabel statusCurrent">
+                <span id="statusCurrent">Semua Status</span><i data-lucide="chevron-down" aria-hidden="true"></i>
+              </button>
+              <div class="dpm-status-menu" id="statusMenu" role="listbox" aria-label="Pilih status" hidden>
+                <button type="button" role="option" data-status-value="semua" aria-selected="true">Semua Status</button>
+                <button type="button" role="option" data-status-value="siap" aria-selected="false">Menunggu diteruskan</button>
+                <button type="button" role="option" data-status-value="revisi" aria-selected="false">Perlu Revisi</button>
+              </div>
+            </div>
+            <label class="dpm-filter-control dpm-date-filter"><i data-lucide="calendar-days"></i><span class="sr-only">Tanggal persetujuan</span><input id="dateFilter" type="date" aria-label="Filter tanggal pengajuan"></label>
+          </div>
+
+          <div id="notice" class="dpm-notice" hidden role="status" aria-live="polite"></div>
+          <section class="dpm-table-panel" aria-label="Daftar pengajuan disetujui Ketua BEM">
+            <div class="dpm-table-scroll">
+              <table class="dpm-table">
+                <thead><tr><th class="col-number">No.</th><th>Judul Pengajuan</th><th>Asal Kementerian</th><th>Tanggal Disetujui</th><th>Status</th><th class="col-action">Aksi</th></tr></thead>
+                <tbody id="submissionRows"><tr><td colspan="6"><div class="dpm-loading"><span class="loader"></span><p>Memuat pengajuan yang disetujui Ketua BEM...</p></div></td></tr></tbody>
+              </table>
+            </div>
+            <div class="dpm-table-footer"><span id="resultCount">Memuat data...</span><div class="dpm-pagination"><button id="prevPage" type="button" disabled aria-label="Halaman sebelumnya"><i data-lucide="chevron-left"></i></button><span id="pageLabel">1 / 1</span><button id="nextPage" type="button" disabled aria-label="Halaman berikutnya"><i data-lucide="chevron-right"></i></button></div></div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+
+    <div class="dpm-modal-backdrop" id="revisionModal" hidden>
+      <section class="dpm-confirm-modal dpm-revision-modal" role="dialog" aria-modal="true" aria-labelledby="revisionTitle">
+        <button type="button" class="dpm-modal-close" id="closeRevision" aria-label="Tutup dialog">×</button>
+        <div class="dpm-confirm-icon"><i data-lucide="file-warning"></i></div>
+        <h2 id="revisionTitle">Unggah Dokumen Revisi</h2>
+        <p>Pilih hanya dokumen yang sudah diperbaiki. Tidak perlu mengunggah semuanya; minimal satu file wajib dipilih.</p>
+        <div class="dpm-confirm-summary"><span>Nomor Pengajuan</span><strong id="revisionId">-</strong><span>Judul Pengajuan</span><strong id="revisionSubject">-</strong></div>
+        <div id="revisionUploadList" class="dpm-revision-upload-list"></div>
+        <div class="dpm-revision-selection-note"><i data-lucide="info"></i><span id="revisionSelectedCount">Pilih minimal 1 dokumen untuk mengirim revisi</span></div>
+        <div id="revisionNotice" class="dpm-notice" hidden role="status" aria-live="polite"></div>
+        <div class="dpm-confirm-actions"><button type="button" class="dpm-cancel-button" id="cancelRevision">Batal</button><button type="button" class="dpm-confirm-send" id="submitRevision" disabled><i data-lucide="upload-cloud"></i> Kirim Revisi ke DPM</button></div>
+      </section>
+    </div>
+
+    <div class="dpm-modal-backdrop" id="confirmModal" hidden>
+      <section class="dpm-confirm-modal" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+        <button type="button" class="dpm-modal-close" id="closeConfirm" aria-label="Tutup dialog">×</button>
+        <div class="dpm-confirm-icon"><i data-lucide="send"></i></div>
+        <h2 id="confirmTitle">Teruskan pengajuan ke DPM?</h2>
+        <p>Pengajuan yang telah disetujui Ketua BEM akan diteruskan ke DPM untuk diproses.</p>
+        <div class="dpm-confirm-summary"><span>Nomor Pengajuan</span><strong id="confirmId">-</strong><span>Judul Pengajuan</span><strong id="confirmSubject">-</strong></div>
+        <div class="dpm-confirm-actions"><button type="button" class="dpm-cancel-button" id="cancelConfirm">Batal</button><button type="button" class="dpm-confirm-send" id="confirmSend"><i data-lucide="send"></i> Teruskan ke DPM</button></div>
+      </section>
+    </div>
+
+    <script src="pengajuan-dpm.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () =>
+        window.lucide?.createIcons(),
+      );
+    </script>
+    <script>
+      (() => {
+        const initStatusDropdown = () => {
+          const root = document.getElementById('statusDropdown');
+          const nativeSelect = document.getElementById('statusFilter');
+          const trigger = document.getElementById('statusTrigger');
+          const current = document.getElementById('statusCurrent');
+          const menu = document.getElementById('statusMenu');
+          if (!root || !nativeSelect || !trigger || !current || !menu || root.dataset.enhanced === 'true') return;
+          root.dataset.enhanced = 'true';
+          const options = [...menu.querySelectorAll('[data-status-value]')];
+          const closeMenu = (restoreFocus = false) => {
+            menu.hidden = true;
+            trigger.setAttribute('aria-expanded', 'false');
+            root.classList.remove('is-open');
+            if (restoreFocus) trigger.focus();
+          };
+          const openMenu = () => {
+            menu.hidden = false;
+            trigger.setAttribute('aria-expanded', 'true');
+            root.classList.add('is-open');
+            const selected = options.find(option => option.dataset.statusValue === nativeSelect.value) || options[0];
+            selected.focus();
+          };
+          const syncSelection = (value, dispatch = false) => {
+            const option = options.find(item => item.dataset.statusValue === value) || options[0];
+            nativeSelect.value = option.dataset.statusValue;
+            current.textContent = option.textContent.trim();
+            options.forEach(item => {
+              const selected = item === option;
+              item.setAttribute('aria-selected', String(selected));
+              item.classList.toggle('is-selected', selected);
+            });
+            if (dispatch) nativeSelect.dispatchEvent(new Event('change', { bubbles: true }));
+          };
+          trigger.addEventListener('click', () => menu.hidden ? openMenu() : closeMenu());
+          options.forEach((option, index) => {
+            option.addEventListener('click', () => {
+              syncSelection(option.dataset.statusValue, true);
+              closeMenu(true);
+            });
+            option.addEventListener('keydown', event => {
+              if (event.key === 'Escape') { event.preventDefault(); closeMenu(true); }
+              else if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+                event.preventDefault();
+                const delta = event.key === 'ArrowDown' ? 1 : -1;
+                options[(index + delta + options.length) % options.length].focus();
+              } else if (event.key === 'Home' || event.key === 'End') {
+                event.preventDefault(); options[event.key === 'Home' ? 0 : options.length - 1].focus();
+              } else if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault(); option.click();
+              }
+            });
+          });
+          nativeSelect.addEventListener('change', () => syncSelection(nativeSelect.value, false));
+          document.addEventListener('click', event => { if (!root.contains(event.target)) closeMenu(); });
+          document.addEventListener('keydown', event => { if (event.key === 'Escape' && !menu.hidden) closeMenu(true); });
+          syncSelection(nativeSelect.value || 'semua');
+        };
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initStatusDropdown);
+        else initStatusDropdown();
+      })();
+    </script>
+
+  
+<script>
+  (() => {
+    const STORAGE_KEY = "sitara-kemensetkab-sidebar-scroll";
+    const getSidebarNav = () => document.querySelector(".sidebar-nav");
+
+    const saveSidebarScroll = () => {
+      const nav = getSidebarNav();
+      if (!nav) return;
+      try {
+        sessionStorage.setItem(STORAGE_KEY, String(nav.scrollTop));
+      } catch (_) {}
+    };
+
+    const restoreSidebarScroll = () => {
+      const nav = getSidebarNav();
+      if (!nav) return;
+
+      let savedScroll = 0;
+      try {
+        savedScroll = Number(sessionStorage.getItem(STORAGE_KEY) || 0);
+      } catch (_) {}
+
+      const applyScroll = () => {
+        nav.scrollTop = Math.min(
+          Math.max(0, savedScroll),
+          Math.max(0, nav.scrollHeight - nav.clientHeight)
+        );
+      };
+
+      requestAnimationFrame(() => {
+        applyScroll();
+        requestAnimationFrame(applyScroll);
+      });
+    };
+
+    document.addEventListener("click", (event) => {
+      const link = event.target.closest(".sidebar-nav a.nav-item");
+      if (link) saveSidebarScroll();
+    }, true);
+
+    window.addEventListener("pagehide", saveSidebarScroll);
+    window.addEventListener("pageshow", restoreSidebarScroll);
+    document.addEventListener("DOMContentLoaded", restoreSidebarScroll);
+  })();
+</script>
+
+</body>
+</html>

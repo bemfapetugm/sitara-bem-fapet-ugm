@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template Dokumen | SITARA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="template.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      .final-content {
+        padding: 28px 34px 36px;
+      }
+      .page-intro {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 18px;
+        margin-bottom: 22px;
+      }
+      .page-intro h1 {
+        font-size: 22px;
+        font-weight: 750;
+        color: #292929;
+        margin-bottom: 5px;
+      }
+      .page-intro p {
+        font-size: 13px;
+        color: #777;
+        max-width: 720px;
+      }
+      .document-summary {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+        margin-bottom: 22px;
+      }
+      .summary-card {
+        background: #fff;
+        border: 1px solid #eee;
+        border-radius: 12px;
+        padding: 18px 20px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.025);
+      }
+      .summary-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 11px;
+        background: #f8eeec;
+        color: #7f2d25;
+        display: grid;
+        place-items: center;
+        font-size: 18px;
+        flex-shrink: 0;
+      }
+      .summary-label {
+        font-size: 12px;
+        color: #777;
+        margin-bottom: 3px;
+      }
+      .summary-value {
+        font-size: 23px;
+        line-height: 1.25;
+        font-weight: 750;
+        color: #292929;
+      }
+      .document-panel {
+        background: #fff;
+        border: 1px solid #eee;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.025);
+      }
+      .panel-heading {
+        padding: 20px 22px 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        border-bottom: 1px solid #eee;
+      }
+      .panel-heading h2 {
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 3px;
+      }
+      .panel-heading p {
+        font-size: 12px;
+        color: #888;
+      }
+      .document-tools {
+        padding: 16px 22px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        border-bottom: 1px solid #f0f0f0;
+      }
+      .search-wrap {
+        position: relative;
+        flex: 1;
+        min-width: 210px;
+        max-width: 420px;
+      }
+      .search-wrap i {
+        position: absolute;
+        left: 13px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #999;
+        font-size: 13px;
+      }
+      .search-wrap input,
+      .filter-select {
+        height: 39px;
+        border: 1px solid #e5e5e5;
+        border-radius: 8px;
+        background: #fff;
+        color: #333;
+        font:
+          400 12px Inter,
+          sans-serif;
+        outline: none;
+      }
+      .search-wrap input {
+        width: 100%;
+        padding: 0 12px 0 36px;
+      }
+      .filter-select {
+        padding: 0 32px 0 12px;
+        min-width: 160px;
+      }
+      .search-wrap input:focus,
+      .filter-select:focus {
+        border-color: #a86a63;
+        box-shadow: 0 0 0 3px rgba(127, 45, 37, 0.08);
+      }
+      .table-wrap {
+        width: 100%;
+        overflow-x: auto;
+      }
+      .final-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 720px;
+      }
+      .final-table th {
+        background: #fafafa;
+        color: #777;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.45px;
+        font-weight: 700;
+        text-align: left;
+        padding: 13px 18px;
+        border-bottom: 1px solid #eee;
+        white-space: nowrap;
+      }
+      .final-table td {
+        padding: 16px 18px;
+        font-size: 12px;
+        color: #4c4c4c;
+        border-bottom: 1px solid #f1f1f1;
+        vertical-align: middle;
+      }
+      .final-table tbody tr:last-child td {
+        border-bottom: 0;
+      }
+      .final-table tbody tr:hover {
+        background: #fdfafa;
+      }
+      .doc-title {
+        font-weight: 650;
+        color: #333;
+      }
+      .doc-subtitle {
+        display: block;
+        color: #999;
+        font-size: 11px;
+        margin-top: 3px;
+      }
+      .status-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 5px 9px;
+        border-radius: 20px;
+        background: #e8f5ec;
+        color: #218838;
+        font-size: 10px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+      .status-pill:before {
+        content: "";
+        width: 5px;
+        height: 5px;
+        background: currentColor;
+        border-radius: 50%;
+      }
+      .download-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        padding: 8px 11px;
+        border-radius: 7px;
+        background: #7f2d25;
+        color: #fff;
+        font-size: 11px;
+        font-weight: 650;
+        text-decoration: none;
+        white-space: nowrap;
+      }
+      .download-btn:hover {
+        background: #64221c;
+      }
+      .empty-state {
+        padding: 48px 20px;
+        text-align: center;
+        color: #888;
+      }
+      .empty-state .empty-icon {
+        width: 56px;
+        height: 56px;
+        margin: 0 auto 14px;
+        border-radius: 16px;
+        background: #f8eeec;
+        color: #7f2d25;
+        display: grid;
+        place-items: center;
+        font-size: 22px;
+      }
+      .empty-state h3 {
+        font-size: 14px;
+        color: #444;
+        margin-bottom: 5px;
+      }
+      .empty-state p {
+        font-size: 12px;
+        max-width: 440px;
+        margin: 0 auto;
+      }
+      .table-footer {
+        padding: 13px 22px;
+        border-top: 1px solid #eee;
+        font-size: 11px;
+        color: #999;
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      @media (max-width: 900px) {
+        .final-content {
+          padding: 22px 18px;
+        }
+        .document-summary {
+          grid-template-columns: 1fr 1fr;
+        }
+        .page-intro {
+          flex-direction: column;
+        }
+      }
+      @media (max-width: 560px) {
+        .document-summary {
+          grid-template-columns: 1fr;
+        }
+        .panel-heading {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+        .document-tools {
+          padding: 14px;
+        }
+        .search-wrap {
+          max-width: none;
+          min-width: 100%;
+        }
+        .filter-select {
+          width: 100%;
+        }
+        .final-content {
+          padding: 18px 12px;
+        }
+        .table-footer {
+          flex-direction: column;
+        }
+      }
+    </style>
+
+    <link rel="stylesheet" href="../kemensetkab.css" />
+    <link
+      rel="stylesheet"
+      href="../kemensetkab-shell.css"
+      data-sitara-shell="shared"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+      .template-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;padding:22px}
+      .template-card{display:flex;gap:14px;align-items:flex-start;border:1px solid #eee;border-radius:12px;padding:18px;background:#fff;min-width:0;transition:box-shadow .2s,border-color .2s}
+      .template-card:hover{border-color:#e2c9c5;box-shadow:0 8px 24px rgba(50,20,15,.06)}
+      .template-file-icon{display:grid;place-items:center;flex:0 0 46px;height:46px;border-radius:12px;background:#f8eeec;color:#7f2d25;font-size:20px}
+      .template-card-body{flex:1;min-width:0}.template-card-body h3{font-size:14px;line-height:1.45;color:#303030;font-weight:700;margin:1px 0 6px;overflow-wrap:anywhere}
+      .template-card-body p{font-size:12px;line-height:1.55;color:#777;margin:0 0 12px;overflow-wrap:anywhere}
+      .template-meta{display:flex;gap:8px 12px;flex-wrap:wrap;color:#999;font-size:10px}.template-meta span:first-child{color:#7f2d25;background:#f8eeec;border-radius:20px;padding:4px 8px;font-weight:650}
+      .template-actions{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:15px}.template-action-secondary,.template-action-danger{border:1px solid #e5e5e5;border-radius:7px;padding:8px 10px;background:#fff;color:#555;font:600 11px Inter,sans-serif;cursor:pointer}.template-action-danger{color:#a72e26;border-color:#f0d8d5}.template-action-secondary:hover{background:#f8f8f8}.unavailable-label{font-size:11px;color:#999}
+      .template-upload-panel{display:none;padding:0 22px 20px;border-bottom:1px solid #eee}.template-upload-panel.is-open{display:block}.template-upload-form{border:1px solid #ead9d6;background:#fffdfc;border-radius:12px;padding:18px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+      .template-form-heading,.template-form-wide,.template-form-actions{grid-column:1/-1}.template-form-heading h3{font-size:14px;margin:0 0 4px;color:#333}.template-form-heading p{font-size:11px;color:#888}.template-upload-form label{display:flex;flex-direction:column;gap:7px;font-size:11px;font-weight:650;color:#555}.template-upload-form input,.template-upload-form select,.template-upload-form textarea{width:100%;box-sizing:border-box;border:1px solid #e4e4e4;border-radius:7px;padding:10px;background:#fff;color:#333;font:400 12px Inter,sans-serif}.template-form-actions{display:flex;justify-content:flex-end;gap:8px}.template-loading,.template-error{grid-column:1/-1;padding:28px;color:#888;font-size:12px}.template-error{color:#a72e26}.template-upload-form button:disabled{opacity:.6;cursor:wait}
+      @media(max-width:760px){.template-cards{grid-template-columns:1fr;padding:14px}.template-upload-panel{padding:0 14px 14px}.template-upload-form{grid-template-columns:1fr;padding:14px}.template-form-heading,.template-form-wide,.template-form-actions{grid-column:auto}.template-card{padding:14px}.template-actions{margin-left:-60px;padding-top:4px}}
+    </style>
+  </head>
+  <body>
+    <div class="kemen-container">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <img src="../../../assets/images/logo.png" alt="Logo SITARA" />
+          <div class="brand-text">
+            <h2>SITARA</h2>
+            <p>Sistem Integrasi Tata Birokrasi Mahasiswa</p>
+          </div>
+        </div>
+        <nav class="sidebar-nav">
+          <p class="nav-label">MENU UTAMA</p>
+          <a href="../index.html" class="nav-item"
+            ><span class="nav-icon"><i data-lucide="house"></i></span
+            ><span>Dashboard</span></a
+          >
+          <p class="nav-label">PENGELOLAAN PENGAJUAN</p>
+          <a href="../pengajuan/index.html" class="nav-item"
+            ><span class="nav-icon"><i data-lucide="inbox"></i></span
+            ><span>Pengajuan Masuk</span
+            ><span class="nav-badge" id="badgePengajuanMasuk" hidden></span
+          ></a>
+          <a href="../perlu-revisi/index.html" class="nav-item"
+            ><span class="nav-icon"><i data-lucide="refresh-cw"></i></span
+            ><span>Perlu Revisi</span
+            ><span class="nav-badge" id="badgePerluRevisi" hidden></span
+          ></a>
+          <a href="../pengembalian/index.html" class="nav-item"
+            ><span class="nav-icon"><i data-lucide="corner-down-left"></i></span
+            ><span>Pengembalian Mensetkab</span></a
+          >
+          <p class="nav-label">PENGAJUAN EKSTERNAL</p>
+          <a href="../pengajuan-dpm/index.html" class="nav-item"
+            ><span class="nav-icon"><i data-lucide="landmark"></i></span
+            ><span>Pengajuan ke DPM</span
+            ><span class="nav-badge" id="badgePengajuanDpm" hidden></span
+          ></a>
+          <a href="../fakultas/index.html" class="nav-item"
+            ><span class="nav-icon"><i data-lucide="building-2"></i></span
+            ><span>Pengajuan ke Fakultas</span
+            ><span class="nav-badge" id="badgeFakultas" hidden></span
+          ></a>
+          <p class="nav-label">DOKUMEN</p>
+          <a href="../dokumen-final/index.html" class="nav-item"
+            ><span class="nav-icon"><i data-lucide="file-check-2"></i></span
+            ><span>Dokumen Final</span></a
+          >
+          <a href="index.html" class="nav-item active" aria-current="page"
+            ><span class="nav-icon"><i data-lucide="files"></i></span
+            ><span>Template Dokumen</span></a
+          >
+          <a href="../riwayat/index.html" class="nav-item"
+            ><span class="nav-icon"><i data-lucide="history"></i></span
+            ><span>Riwayat Pengajuan</span></a
+          >
+        </nav>
+        <div class="sidebar-footer">
+          <div class="user-profile">
+            <div class="profile-avatar" id="profileAvatar">KS</div>
+            <div class="profile-info">
+              <h4 id="profileName">Pengguna</h4>
+              <p id="profileRole">Kementerian</p>
+            </div>
+          </div>
+          <button type="button" class="logout-button" id="logoutButton">
+            ⇥ Keluar
+          </button>
+        </div>
+      </aside>
+      <main class="main-content">
+        <header class="topbar">
+          <div class="topbar-title">
+            <h2>Template Dokumen</h2>
+            <p>Kementerian Sekretariat Kabinet</p>
+          </div>
+          <div class="topbar-right">
+            <div class="topbar-date" id="currentDate">Memuat tanggal...</div>
+            <div class="topbar-avatar" id="topbarAvatar">KS</div>
+          </div>
+        </header>
+        <section class="final-content">
+          <section
+            class="document-summary"
+            aria-label="Ringkasan template dokumen"
+          >
+            <article class="summary-card">
+              <div class="summary-icon"><i data-lucide="files"></i></div>
+              <div>
+                <p class="summary-label">Total Template</p>
+                <p class="summary-value" id="totalFinal">0</p>
+              </div>
+            </article>
+            <article class="summary-card">
+              <div class="summary-icon">
+                <i data-lucide="calendar-check"></i>
+              </div>
+              <div>
+                <p class="summary-label">Kategori Template</p>
+                <p class="summary-value" id="totalKategori">0</p>
+              </div>
+            </article>
+            <article class="summary-card">
+              <div class="summary-icon"><i data-lucide="download"></i></div>
+              <div>
+                <p class="summary-label">Template Tersedia</p>
+                <p class="summary-value" id="totalTersedia">0</p>
+              </div>
+            </article>
+          </section>
+          <section class="document-panel">
+            <div class="panel-heading">
+              <div><h2>Daftar Template</h2><p>Unduh template dokumen resmi yang tersedia untuk seluruh kementerian.</p></div>
+              <div id="adminTemplateTools"><button type="button" class="download-btn" id="addTemplateButton"><i data-lucide="plus"></i> Tambah Template</button></div>
+            </div>
+            <div class="template-modal" id="templateUploadPanel" aria-hidden="true">
+              <div class="template-modal-backdrop" data-close-template-modal></div>
+              <section class="template-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="templateModalTitle" aria-describedby="templateModalDescription">
+                <div class="template-modal-header">
+                  <div class="template-modal-heading"><span class="template-modal-icon"><i data-lucide="file-plus-2"></i></span><div><h3 id="templateModalTitle">Tambah Template Dokumen</h3><p id="templateModalDescription">Tambahkan template resmi agar dapat diunduh oleh seluruh kementerian.</p></div></div>
+                  <button type="button" class="template-modal-close" id="closeTemplateModal" aria-label="Tutup modal"><i data-lucide="x"></i></button>
+                </div>
+                <form id="templateUploadForm" class="template-upload-form">
+                  <p class="template-modal-note"><i data-lucide="shield-check"></i> Pengelolaan template hanya untuk Kemensetkab. Ukuran file maksimal 8 MB.</p>
+                  <label>Nama Template<input id="templateName" required maxlength="150" placeholder="Contoh: Format Surat Pengajuan"></label>
+                  <label>Kategori<select id="templateCategory" required><option value="" disabled selected>Pilih kategori template</option><option value="Proposal">Proposal</option><option value="Laporan Pertanggungjawaban">Laporan Pertanggungjawaban</option><option value="Surat">Surat</option><option value="Sertifikat">Sertifikat</option><option value="Berita Acara / Pers">Berita Acara / Pers</option><option value="Administrasi Organisasi">Administrasi Organisasi</option></select></label>
+                  <label class="template-form-wide">Deskripsi<textarea id="templateDescription" rows="3" maxlength="500" placeholder="Keterangan singkat template (opsional)"></textarea></label>
+                  <label class="template-form-wide">File Template<input id="templateFile" type="file" required accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.odt,.ods,.odp,.rtf,.txt"><span class="template-file-hint">Format dokumen umum · Maksimal 8 MB</span></label>
+                  <div class="template-form-actions"><button type="button" class="template-action-secondary" id="cancelTemplateButton">Batal</button><button type="submit" class="download-btn" id="saveTemplateButton"><i data-lucide="upload"></i> Simpan Template</button></div>
+                </form>
+              </section>
+            </div>
+            <div class="document-tools">
+              <label class="search-wrap"
+                ><i data-lucide="search"></i
+                ><input
+                  id="searchDocument"
+                  type="search"
+                  placeholder="Cari nama template atau kategori..."
+                  aria-label="Cari template" /></label
+              ><select
+                id="filterCategory"
+                class="filter-select"
+                aria-label="Filter kategori"
+              >
+                <option value="all">Semua Kategori</option>
+                <option value="proposal">Proposal</option>
+                <option value="laporan pertanggungjawaban">Laporan Pertanggungjawaban</option>
+                <option value="surat">Surat</option>
+                <option value="sertifikat">Sertifikat</option>
+                <option value="berita acara / pers">Berita Acara / Pers</option>
+                <option value="administrasi organisasi">Administrasi Organisasi</option>
+              </select>
+            </div>
+            <div class="template-cards" id="templateCards"></div>
+            <div class="empty-state" id="emptyState">
+              <div class="empty-icon"><i data-lucide="files"></i></div>
+              <h3>Belum ada template dokumen</h3>
+              <p>
+                Template resmi yang aktif akan ditampilkan di sini setelah dimuat dari database SITARA.
+              </p>
+            </div>
+            <div class="table-footer">
+              <span id="resultCount">Menampilkan 0 template</span
+              ><span>Template Dokumen · SITARA</span>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+    <script src="template.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () =>
+        window.lucide?.createIcons(),
+      );
+    </script>
+
+    <script>
+      (() => {
+        const STORAGE_KEY = "sitara-kemensetkab-sidebar-scroll";
+        const getSidebarNav = () => document.querySelector(".sidebar-nav");
+
+        const saveSidebarScroll = () => {
+          const nav = getSidebarNav();
+          if (!nav) return;
+          try {
+            sessionStorage.setItem(STORAGE_KEY, String(nav.scrollTop));
+          } catch (_) {}
+        };
+
+        const restoreSidebarScroll = () => {
+          const nav = getSidebarNav();
+          if (!nav) return;
+
+          let savedScroll = 0;
+          try {
+            savedScroll = Number(sessionStorage.getItem(STORAGE_KEY) || 0);
+          } catch (_) {}
+
+          const applyScroll = () => {
+            nav.scrollTop = Math.min(
+              Math.max(0, savedScroll),
+              Math.max(0, nav.scrollHeight - nav.clientHeight),
+            );
+          };
+
+          requestAnimationFrame(() => {
+            applyScroll();
+            requestAnimationFrame(applyScroll);
+          });
+        };
+
+        document.addEventListener(
+          "click",
+          (event) => {
+            const link = event.target.closest(".sidebar-nav a.nav-item");
+            if (link) saveSidebarScroll();
+          },
+          true,
+        );
+
+        window.addEventListener("pagehide", saveSidebarScroll);
+        window.addEventListener("pageshow", restoreSidebarScroll);
+        document.addEventListener("DOMContentLoaded", restoreSidebarScroll);
+      })();
+    </script>
+  </body>
+</html>

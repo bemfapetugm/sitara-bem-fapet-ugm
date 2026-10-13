@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dokumen Final | SITARA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="dokumen-final.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      .final-content {
+        padding: 28px 34px 36px;
+      }
+      .page-intro {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 18px;
+        margin-bottom: 22px;
+      }
+      .page-intro h1 {
+        font-size: 22px;
+        font-weight: 750;
+        color: #292929;
+        margin-bottom: 5px;
+      }
+      .page-intro p {
+        font-size: 13px;
+        color: #777;
+        max-width: 720px;
+      }
+      .document-summary {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+        margin-bottom: 22px;
+      }
+      .summary-card {
+        background: #fff;
+        border: 1px solid #eee;
+        border-radius: 12px;
+        padding: 18px 20px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.025);
+      }
+      .summary-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 11px;
+        background: #f8eeec;
+        color: #7f2d25;
+        display: grid;
+        place-items: center;
+        font-size: 18px;
+        flex-shrink: 0;
+      }
+      .summary-label {
+        font-size: 12px;
+        color: #777;
+        margin-bottom: 3px;
+      }
+      .summary-value {
+        font-size: 23px;
+        line-height: 1.25;
+        font-weight: 750;
+        color: #292929;
+      }
+      .document-panel {
+        background: #fff;
+        border: 1px solid #eee;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.025);
+      }
+      .panel-heading {
+        padding: 20px 22px 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        border-bottom: 1px solid #eee;
+      }
+      .panel-heading h2 {
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 3px;
+      }
+      .panel-heading p {
+        font-size: 12px;
+        color: #888;
+      }
+      .document-tools {
+        padding: 16px 22px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        border-bottom: 1px solid #f0f0f0;
+      }
+      .search-wrap {
+        position: relative;
+        flex: 1;
+        min-width: 210px;
+        max-width: 420px;
+      }
+      .search-wrap i {
+        position: absolute;
+        left: 13px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #999;
+        font-size: 13px;
+      }
+      .search-wrap input,
+      .filter-select {
+        height: 39px;
+        border: 1px solid #e5e5e5;
+        border-radius: 8px;
+        background: #fff;
+        color: #333;
+        font:
+          400 12px Inter,
+          sans-serif;
+        outline: none;
+      }
+      .search-wrap input {
+        width: 100%;
+        padding: 0 12px 0 36px;
+      }
+      .filter-select {
+        padding: 0 32px 0 12px;
+        min-width: 160px;
+      }
+      .search-wrap input:focus,
+      .filter-select:focus {
+        border-color: #a86a63;
+        box-shadow: 0 0 0 3px rgba(127, 45, 37, 0.08);
+      }
+      .table-wrap {
+        width: 100%;
+        overflow-x: auto;
+      }
+      .final-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 720px;
+      }
+      .final-table th {
+        background: #fafafa;
+        color: #777;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.45px;
+        font-weight: 700;
+        text-align: left;
+        padding: 13px 18px;
+        border-bottom: 1px solid #eee;
+        white-space: nowrap;
+      }
+      .final-table td {
+        padding: 16px 18px;
+        font-size: 12px;
+        color: #4c4c4c;
+        border-bottom: 1px solid #f1f1f1;
+        vertical-align: middle;
+      }
+      .final-table tbody tr:last-child td {
+        border-bottom: 0;
+      }
+      .final-table tbody tr:hover {
+        background: #fdfafa;
+      }
+      .doc-title {
+        font-weight: 650;
+        color: #333;
+      }
+      .doc-subtitle {
+        display: block;
+        color: #999;
+        font-size: 11px;
+        margin-top: 3px;
+      }
+      .status-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 5px 9px;
+        border-radius: 20px;
+        background: #e8f5ec;
+        color: #218838;
+        font-size: 10px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+      .status-pill:before {
+        content: "";
+        width: 5px;
+        height: 5px;
+        background: currentColor;
+        border-radius: 50%;
+      }
+      .download-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        padding: 8px 11px;
+        border-radius: 7px;
+        background: #7f2d25;
+        color: #fff;
+        font-size: 11px;
+        font-weight: 650;
+        text-decoration: none;
+        white-space: nowrap;
+      }
+      .download-btn:hover {
+        background: #64221c;
+      }
+      .empty-state {
+        padding: 48px 20px;
+        text-align: center;
+        color: #888;
+      }
+      .empty-state .empty-icon {
+        width: 56px;
+        height: 56px;
+        margin: 0 auto 14px;
+        border-radius: 16px;
+        background: #f8eeec;
+        color: #7f2d25;
+        display: grid;
+        place-items: center;
+        font-size: 22px;
+      }
+      .empty-state h3 {
+        font-size: 14px;
+        color: #444;
+        margin-bottom: 5px;
+      }
+      .empty-state p {
+        font-size: 12px;
+        max-width: 440px;
+        margin: 0 auto;
+      }
+      .table-footer {
+        padding: 13px 22px;
+        border-top: 1px solid #eee;
+        font-size: 11px;
+        color: #999;
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      @media (max-width: 900px) {
+        .final-content {
+          padding: 22px 18px;
+        }
+        .document-summary {
+          grid-template-columns: 1fr 1fr;
+        }
+        .page-intro {
+          flex-direction: column;
+        }
+      }
+      @media (max-width: 560px) {
+        .document-summary {
+          grid-template-columns: 1fr;
+        }
+        .panel-heading {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+        .document-tools {
+          padding: 14px;
+        }
+        .search-wrap {
+          max-width: none;
+          min-width: 100%;
+        }
+        .filter-select {
+          width: 100%;
+        }
+        .final-content {
+          padding: 18px 12px;
+        }
+        .table-footer {
+          flex-direction: column;
+        }
+      }
+    
+
+/* FINAL FIX — TOOLBAR PENCARIAN & FILTER PERIODE
+   Selector sesuai markup aktual Dokumen Final; mendukung ikon Lucide SVG. */
+.document-tools {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 12px !important;
+  width: 100%;
+  box-sizing: border-box;
+  flex-wrap: nowrap !important;
+  padding: 16px 22px !important;
+}
+.document-tools .search-wrap {
+  position: relative !important;
+  display: block !important;
+  flex: 1 1 420px !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: 420px !important;
+  height: 40px !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+}
+.document-tools .search-wrap > i,
+.document-tools .search-wrap > svg {
+  position: absolute !important;
+  left: 12px !important;
+  top: 50% !important;
+  right: auto !important;
+  bottom: auto !important;
+  display: block !important;
+  width: 20px !important;
+  height: 20px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: translateY(-50%) !important;
+  color: #333 !important;
+  stroke: currentColor;
+  pointer-events: none !important;
+  z-index: 2;
+}
+.document-tools .search-wrap > input {
+  display: block !important;
+  width: 100% !important;
+  height: 40px !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  padding: 0 14px 0 36px !important;
+  line-height: normal !important;
+  border: 1px solid #e2e2e2 !important;
+  border-radius: 9px !important;
+  background: #fff !important;
+  font: 400 12px Inter, sans-serif !important;
+}
+.document-tools > .filter-select {
+  display: block !important;
+  flex: 0 0 160px !important;
+  width: 160px !important;
+  min-width: 160px !important;
+  max-width: 160px !important;
+  height: 40px !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  padding: 0 12px !important;
+  border: 1px solid #e2e2e2 !important;
+  border-radius: 9px !important;
+  background-color: #fff !important;
+  font: 400 12px Inter, sans-serif !important;
+}
+@media (max-width: 600px) {
+  .document-tools { flex-wrap: wrap !important; padding: 14px 16px !important; }
+  .document-tools .search-wrap { flex: 1 1 100% !important; max-width: none !important; width: 100% !important; }
+  .document-tools > .filter-select { flex: 1 1 100% !important; width: 100% !important; min-width: 0 !important; max-width: none !important; }
+}
+
+    </style>
+
+    <link
+      rel="stylesheet"
+      href="../kemensetkab-shell.css"
+      data-sitara-shell="shared"
+    />
+  </head>
+  <body>
+    <div class="kemen-container">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <img src="../../../assets/images/logo.png" alt="Logo SITARA" />
+          <div class="brand-text">
+            <h2>SITARA</h2>
+            <p>Sistem Integrasi Tata Birokrasi Mahasiswa</p>
+          </div>
+        </div>
+        <nav class="sidebar-nav">
+          <p class="nav-label">MENU UTAMA</p>
+          <a href="../index.html" class="nav-item"
+            ><span class="nav-icon"><i data-lucide="house"></i></span
+            ><span>Dashboard</span></a
+          >
+          <p class="nav-label">PENGELOLAAN PENGAJUAN</p>
+          <a href="../pengajuan/index.html" class="nav-item"
+            ><span class="nav-icon"><i data-lucide="inbox"></i></span
+            ><span>Pengajuan Masuk</span
+            ><span class="nav-badge" id="badgePengajuanMasuk" hidden></span
+          ></a>
+          <a href="../perlu-revisi/index.html" class="nav-item"
+            ><span class="nav-icon"><i data-lucide="refresh-cw"></i></span
+            ><span>Perlu Revisi</span
+            ><span class="nav-badge" id="badgePerluRevisi" hidden></span
+          ></a>
+          <a href="../pengembalian/index.html" class="nav-item"
+            ><span class="nav-icon"><i data-lucide="corner-down-left"></i></span
+            ><span>Pengembalian Mensetkab</span></a
+          >
+          <p class="nav-label">PENGAJUAN EKSTERNAL</p>
+          <a href="../pengajuan-dpm/index.html" class="nav-item"
+            ><span class="nav-icon"><i data-lucide="landmark"></i></span
+            ><span>Pengajuan ke DPM</span
+            ><span class="nav-badge" id="badgePengajuanDpm" hidden></span
+          ></a>
+          <a href="../fakultas/index.html" class="nav-item"
+            ><span class="nav-icon"><i data-lucide="building-2"></i></span
+            ><span>Pengajuan ke Fakultas</span
+            ><span class="nav-badge" id="badgeFakultas" hidden></span
+          ></a>
+          <p class="nav-label">DOKUMEN</p>
+          <a href="index.html" class="nav-item active" aria-current="page"
+            ><span class="nav-icon"><i data-lucide="file-check-2"></i></span
+            ><span>Dokumen Final</span></a
+          >
+          <a href="../template/index.html" class="nav-item"
+            ><span class="nav-icon"><i data-lucide="files"></i></span
+            ><span>Template Dokumen</span></a
+          >
+          <a href="../riwayat/index.html" class="nav-item"
+            ><span class="nav-icon"><i data-lucide="history"></i></span
+            ><span>Riwayat Pengajuan</span></a
+          >
+        </nav>
+        <div class="sidebar-footer">
+          <div class="user-profile">
+            <div class="profile-avatar" id="profileAvatar">KS</div>
+            <div class="profile-info">
+              <h4 id="profileName">Pengguna</h4>
+              <p id="profileRole">Kementerian</p>
+            </div>
+          </div>
+          <button type="button" class="logout-button" id="logoutButton">
+            ⇥ Keluar
+          </button>
+        </div>
+      </aside>
+      <main class="main-content">
+        <header class="topbar">
+          <div class="topbar-title">
+            <h2>Dokumen Final</h2>
+            <p>Kementerian Sekretariat Kabinet</p>
+          </div>
+          <div class="topbar-right">
+            <div class="topbar-date" id="currentDate">Memuat tanggal...</div>
+            <div class="topbar-avatar" id="topbarAvatar">KS</div>
+          </div>
+        </header>
+        <section class="final-content">
+          <section class="document-summary" aria-label="Ringkasan dokumen">
+            <article class="summary-card">
+              <div class="summary-icon"><i data-lucide="files"></i></div>
+              <div>
+                <p class="summary-label">Total Dokumen Final</p>
+                <p class="summary-value" id="totalFinal">0</p>
+              </div>
+            </article>
+            <article class="summary-card">
+              <div class="summary-icon">
+                <i data-lucide="calendar-check"></i>
+              </div>
+              <div>
+                <p class="summary-label">Dokumen Bulan Ini</p>
+                <p class="summary-value" id="totalBulanIni">0</p>
+              </div>
+            </article>
+            <article class="summary-card">
+              <div class="summary-icon"><i data-lucide="download"></i></div>
+              <div>
+                <p class="summary-label">Siap Diunduh</p>
+                <p class="summary-value" id="totalSiapUnduh">0</p>
+              </div>
+            </article>
+          </section>
+          <section class="document-panel">
+            <div class="panel-heading">
+              <div>
+                <h2>Daftar Dokumen</h2>
+                <p>Gunakan pencarian untuk menemukan dokumen final.</p>
+              </div>
+            </div>
+            <div class="document-tools">
+              <label class="search-wrap"
+                ><i data-lucide="search"></i
+                ><input
+                  id="searchDocument"
+                  type="search"
+                  placeholder="Cari judul dokumen atau kementerian..."
+                  aria-label="Cari dokumen" /></label
+              ><div class="period-filter" id="periodFilter">
+                <button type="button" class="period-filter-trigger" id="filterPeriodButton" aria-haspopup="listbox" aria-expanded="false">
+                  <span id="filterPeriodLabel">Semua Periode</span><i data-lucide="chevron-down"></i>
+                </button>
+                <div class="period-filter-menu" id="filterPeriodMenu" role="listbox" aria-label="Pilih bulan arsip" hidden></div>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table class="final-table">
+                <thead>
+                  <tr>
+                    <th>No.</th>
+                    <th>Nama Dokumen</th>
+                    <th>Kementerian / Pengaju</th>
+                    <th>Tanggal Final</th>
+                    <th>Status</th>
+                    <th>Aksi</th>
+                  </tr>
+                </thead>
+                <tbody id="documentTableBody"></tbody>
+              </table>
+            </div>
+            <div class="empty-state" id="emptyState">
+              <div class="empty-icon"><i data-lucide="file-search"></i></div>
+              <h3>Belum ada data dokumen final</h3>
+              <p>
+                Dokumen akan ditampilkan di sini setelah data dokumen final
+                dihubungkan ke layanan SITARA.
+              </p>
+            </div>
+            <div class="table-footer">
+              <span id="resultCount">Menampilkan 0 dokumen</span
+              ><span>Dokumen Final · SITARA</span>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () =>
+        window.lucide?.createIcons(),
+      );
+    </script>
+    <script src="dokumen-final.js"></script>
+
+    <script>
+      (() => {
+        const STORAGE_KEY = "sitara-kemensetkab-sidebar-scroll";
+        const getSidebarNav = () => document.querySelector(".sidebar-nav");
+
+        const saveSidebarScroll = () => {
+          const nav = getSidebarNav();
+          if (!nav) return;
+          try {
+            sessionStorage.setItem(STORAGE_KEY, String(nav.scrollTop));
+          } catch (_) {}
+        };
+
+        const restoreSidebarScroll = () => {
+          const nav = getSidebarNav();
+          if (!nav) return;
+
+          let savedScroll = 0;
+          try {
+            savedScroll = Number(sessionStorage.getItem(STORAGE_KEY) || 0);
+          } catch (_) {}
+
+          const applyScroll = () => {
+            nav.scrollTop = Math.min(
+              Math.max(0, savedScroll),
+              Math.max(0, nav.scrollHeight - nav.clientHeight),
+            );
+          };
+
+          requestAnimationFrame(() => {
+            applyScroll();
+            requestAnimationFrame(applyScroll);
+          });
+        };
+
+        document.addEventListener(
+          "click",
+          (event) => {
+            const link = event.target.closest(".sidebar-nav a.nav-item");
+            if (link) saveSidebarScroll();
+          },
+          true,
+        );
+
+        window.addEventListener("pagehide", saveSidebarScroll);
+        window.addEventListener("pageshow", restoreSidebarScroll);
+        document.addEventListener("DOMContentLoaded", restoreSidebarScroll);
+      })();
+    </script>
+  </body>
+</html>
