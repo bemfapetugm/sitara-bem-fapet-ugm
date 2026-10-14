@@ -2166,3 +2166,19 @@ td {
   .modal-backdrop .modal{max-height:90vh!important;}
   .modal-header,#noteWrap,#uploadWrap,.modal-actions{padding-left:18px!important;padding-right:18px!important;}
 }
+
+/* SITARA DPM PATCH: backdrop modal harus berada di atas sidebar shell (z-index 1000). */
+.modal-backdrop {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 2000 !important;
+}
+
+.modal-backdrop.show {
+  display: flex !important;
+}
+
+.modal-backdrop .modal {
+  position: relative !important;
+  z-index: 2001 !important;
+}

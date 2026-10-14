@@ -335,7 +335,7 @@ const ROLE_ROUTES = {
         "../beranda/mensetkab/index.html",
 
     menkeu:
-        "../beranda/kemenkeu/index.html",
+        "../beranda/menkeu/index.html",
 
     tamu:
         "../beranda/tamu/index.html"

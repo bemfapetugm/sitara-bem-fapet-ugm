@@ -87,57 +87,40 @@ function openModal(action,docs){
   $("modal").setAttribute("aria-hidden","false");
   $("modalNote").value="";
   $("noteWrap").style.display=action==="revisi"?"block":"none";
-  $("uploadWrap").style.display=action==="setujui"?"block":"none";
+  $("uploadWrap").style.display="block";
+  const d=docs[0];
   if(action==="revisi"){
     $("modalTitle").textContent="Minta Revisi";
-    $("modalText").textContent="Sampaikan catatan revisi yang akan diteruskan kepada BEM Fakultas Peternakan UGM.";
+    $("modalText").textContent="Sampaikan catatan revisi dan unggah dokumen yang sudah diberi komentar untuk dikembalikan kepada Kemensetkab.";
     $("noteLabel").textContent="Catatan Revisi";
     $("modalNote").placeholder="Tuliskan bagian yang perlu direvisi...";
+    $("uploadHelp").textContent="Unggah dokumen yang telah diberi komentar/catatan revisi oleh DPM. Format Word (.doc/.docx), maksimal 15 MB.";
     $("confirmBtn").textContent="Kirim Revisi";
     $("confirmBtn").className="btn btn-revisi";
+    $("uploadList").innerHTML=d?`<div class="upload-row">
+      <div class="upload-meta"><strong>Dokumen dengan catatan revisi</strong><span>${esc(d.nama_file||d.nama||d.jenis_dokumen||"Dokumen utama")}</span></div>
+      <label class="file-input-label"><span class="file-choice-text">Pilih Word</span>
+        <input class="final-file" type="file" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" data-dokumen-id="${esc(d.dokumen_id||"")}">
+      </label></div>`:'<div class="upload-empty">Dokumen utama belum tersedia.</div>';
   }else{
     $("modalTitle").textContent="Setujui Pengajuan";
     $("modalText").textContent="Unggah satu dokumen final yang telah ditandatangani DPM sebelum dikembalikan ke BEM Fakultas Peternakan UGM.";
+    $("uploadHelp").textContent="Unggah dokumen final dalam format Word (.doc/.docx), maksimal 15 MB.";
     $("confirmBtn").textContent="Disetujui";
     $("confirmBtn").className="btn btn-success";
-    const d=docs[0];
     $("uploadList").innerHTML=d?`<div class="upload-row">
       <div class="upload-meta"><strong>${esc(d.jenis_dokumen||d.jenis||"Dokumen")}</strong><span>${esc(d.nama_file||d.nama||"Dokumen")}</span></div>
       <label class="file-input-label"><span class="file-choice-text">Pilih Word</span>
         <input class="final-file" type="file" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" data-dokumen-id="${esc(d.dokumen_id||"")}">
-      </label>
-    </div>`:'<div class="upload-empty">Dokumen utama belum tersedia.</div>';
-    const input=$(".final-file");
-    if(input){
-      const label=input.closest(".file-input-label");
-      // Pastikan kontrol file benar-benar menerima klik di semua browser.
-      // CSS lama memberi pointer-events:none pada input tersembunyi sehingga
-      // klik tombol dapat gagal membuka/menyimpan pilihan file.
-      if(label){
-        label.style.position="relative";
-        input.style.position="absolute";
-        input.style.inset="0";
-        input.style.width="100%";
-        input.style.height="100%";
-        input.style.opacity="0";
-        input.style.pointerEvents="auto";
-        input.style.cursor="pointer";
-        input.style.zIndex="5";
-      }
-      const updateSelectedFile=()=>{
-        const l=input.closest(".file-input-label");
-        const f=input.files && input.files.length ? input.files[0] : null;
-        const t=l?.querySelector(".file-choice-text");
-        if(t){
-          t.textContent=f ? "✓ " + f.name : "Pilih Word";
-          t.title=f ? f.name : "";
-        }
-        if(l)l.classList.toggle("has-file",!!f);
-      };
-      input.onchange=updateSelectedFile;
-      input.addEventListener("change",updateSelectedFile);
-    }
+      </label></div>`:'<div class="upload-empty">Dokumen utama belum tersedia.</div>';
   }
+  bindFileInput();
+}
+function bindFileInput(){
+  const input=$(".final-file"); if(!input)return;
+  const label=input.closest(".file-input-label");
+  if(label){label.style.position="relative";input.style.position="absolute";input.style.inset="0";input.style.width="100%";input.style.height="100%";input.style.opacity="0";input.style.pointerEvents="auto";input.style.cursor="pointer";input.style.zIndex="5";}
+  input.onchange=()=>{const f=input.files&&input.files.length?input.files[0]:null;const t=label?.querySelector(".file-choice-text");if(t){t.textContent=f?"✓ "+f.name:"Pilih Word";t.title=f?f.name:"";}if(label)label.classList.toggle("has-file",!!f);};
 }
 function closeModal(){
   $("modal").classList.remove("show");
@@ -148,7 +131,7 @@ $("closeBtn").onclick=closeModal;
 $("cancelBtn").onclick=closeModal;
 $("modal").onclick=e=>{if(e.target===$("modal"))closeModal();};
 function fileToBase64(file){return new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>{const x=String(r.result||"");resolve(x.includes(",")?x.split(",")[1]:x)};r.onerror=()=>reject(new Error("Gagal membaca file: "+file.name));r.readAsDataURL(file);});}
-async function uploadAll(){
+async function uploadAll(action){
   const input=document.querySelector(".final-file");
   if(!input)throw Error("Dokumen utama tidak ditemukan.");
   const file=input.files && input.files.length ? input.files[0] : null;
@@ -163,7 +146,7 @@ async function uploadAll(){
   const data=await fileToBase64(file);
   if(!data)throw Error("File tidak berhasil dibaca oleh browser.");
   const mime=file.type||(/\.docx$/i.test(file.name)?"application/vnd.openxmlformats-officedocument.wordprocessingml.document":"application/msword");
-  const r=await api("uploadDokumenFinalDPM",{
+  const r=await api(action==="revisi"?"uploadDokumenRevisiDPM":"uploadDokumenFinalDPM",{
     pengajuan_id:id,
     dokumen_id:sourceId,
     file:{name:file.name,type:mime,data:data}
@@ -181,8 +164,8 @@ $("confirmBtn").onclick=async()=>{
   try{
     let uploaded=[];
     const note=$("modalNote").value.trim();
-    if(action==="setujui")uploaded=await uploadAll();
-    else if(!note)throw Error("Catatan revisi wajib diisi.");
+    if(action==="setujui")uploaded=await uploadAll("setujui");
+    else {if(!note)throw Error("Catatan revisi wajib diisi.");uploaded=await uploadAll("revisi");}
     const r=await api("prosesPersetujuanDPM",{pengajuan_id:id,aksi:action,catatan:action==="revisi"?note:"",uploaded_doc_ids:uploaded});
     if(!r.success)throw Error(r.message||"Gagal memproses pengajuan.");
     closeModal();

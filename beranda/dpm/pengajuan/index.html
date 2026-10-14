@@ -1,3 +1,42 @@
-<!doctype html><html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Pengajuan Masuk | DPM</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="pengajuan.css"></head><body>
-<div class="kemen-container"><aside class="sidebar"><div class="sidebar-brand"><img src="../../../assets/images/logo.png"><div class="brand-text"><h2>SITARA</h2><p>Sistem Integrasi Tata Birokrasi Mahasiswa</p></div></div><nav class="sidebar-nav"><p class="nav-label">MENU UTAMA</p><a href="../index.html" class="nav-item"><span class="nav-icon">▦</span><span>Dashboard</span></a><p class="nav-label">ADMINISTRASI</p><a href="index.html" class="nav-item active"><span class="nav-icon">▧</span><span>Pengajuan Masuk</span></a><p class="nav-label">DOKUMEN</p><a href="../riwayat/index.html" class="nav-item"><span class="nav-icon">≡</span><span>Riwayat</span></a></nav><div class="sidebar-footer"><div class="user-profile"><div class="profile-avatar" id="profileAvatar">DP</div><div class="profile-info"><h4 id="profileName">DPM</h4><p>DPM</p></div></div><button class="logout-button" id="logoutButton">⇥ Keluar</button></div></aside>
-<main class="main-content"><header class="topbar"><div class="topbar-title"><h2>Pengajuan Masuk</h2><p>Proposal dan LPJ yang menunggu keputusan DPM</p></div><div class="topbar-right"><div class="topbar-date" id="currentDate">Memuat tanggal...</div><div class="topbar-avatar" id="topbarAvatar">DP</div></div></header><section class="dashboard-content"><section class="content-card"><div class="card-header"><div><h3>Pengajuan</h3><p>Hanya pengajuan yang telah diteruskan ke DPM.</p></div></div><div class="filter-row"><input id="search" class="search-input" placeholder="Cari pengajuan..."><select id="filter" class="filter-select"><option value="">Semua Dokumen</option><option value="Proposal">Proposal</option><option value="LPJ">LPJ</option></select></div><div id="list"></div></section></section></main></div><script src="pengajuan.js"></script></body></html>
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengajuan Masuk | DPM - SITARA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="pengajuan.css"><link rel="stylesheet" href="../dpm-shell.css"><link rel="stylesheet" href="pengajuan-redesign.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<div class="kemen-container">
+  <aside class="sidebar">
+    <div class="sidebar-brand"><img src="../../../assets/images/logo.png" alt="Logo SITARA"><div class="brand-text"><h2>SITARA</h2><p>Sistem Integrasi Tata Birokrasi Mahasiswa</p></div></div>
+    <nav class="sidebar-nav">
+      <p class="nav-label">MENU UTAMA</p><a href="../index.html" class="nav-item"><span class="nav-icon"><i data-lucide="house"></i></span><span>Dashboard</span></a>
+      <p class="nav-label">ADMINISTRASI</p><a href="index.html" class="nav-item active" aria-current="page"><span class="nav-icon"><i data-lucide="inbox"></i></span><span>Pengajuan Masuk</span></a>
+      <p class="nav-label">DOKUMEN</p><a href="../riwayat/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="history"></i></span><span>Riwayat</span></a>
+    </nav>
+    <div class="sidebar-footer"><div class="user-profile"><div class="profile-avatar" id="profileAvatar">DP</div><div class="profile-info"><h4 id="profileName">DPM</h4><p id="profileRole">DPM</p></div></div><button class="logout-button" id="logoutButton"><i data-lucide="log-out"></i><span>Keluar</span></button></div>
+  </aside>
+  <main class="main-content">
+    <header class="topbar"><div class="topbar-title"><h2>Pengajuan Masuk DPM</h2><p>Daftar pengajuan yang diteruskan setelah keputusan Ketua BEM.</p></div><div class="topbar-right"><div class="topbar-date" id="currentDate">Memuat tanggal...</div><div class="topbar-avatar" id="topbarAvatar">DP</div></div></header>
+    <section class="dashboard-content submission-content">
+      <section class="submission-stats" aria-label="Ringkasan pengajuan">
+        <article class="submission-stat stat-new"><div class="stat-icon"><i data-lucide="inbox"></i></div><div class="stat-copy"><strong id="countNew">0</strong><h3>Pengajuan Baru</h3><p>Dokumen yang baru diterima dari Kemensetkab.</p></div></article>
+        <article class="submission-stat stat-revision"><div class="stat-icon"><i data-lucide="file-pen-line"></i></div><div class="stat-copy"><strong id="countRevision">0</strong><h3>Sedang Revisi</h3><p>Dokumen yang sedang direvisi oleh Kemensetkab.</p></div></article>
+      </section>
+      <section class="filter-panel">
+        <div class="section-heading"><div class="heading-icon"><i data-lucide="sliders-horizontal"></i></div><div><h2>Filter &amp; Pencarian</h2><p>Temukan pengajuan berdasarkan judul, jenis dokumen, atau status.</p></div></div>
+        <div class="filter-controls"><label class="search-box"><i data-lucide="search"></i><input id="search" type="search" placeholder="Cari judul pengajuan atau asal permohonan..." aria-label="Cari pengajuan"></label><label class="select-box"><i data-lucide="file-text"></i><select id="filter" aria-label="Filter jenis dokumen"><option value="">Semua Jenis Dokumen</option><option value="proposal">Proposal</option><option value="lpj">LPJ</option></select></label><button id="resetFilters" class="reset-button" type="button"><i data-lucide="rotate-ccw"></i> Reset</button></div>
+      </section>
+      <section class="submission-list-panel">
+        <div class="list-panel-heading"><div class="section-heading"><div class="heading-icon"><i data-lucide="files"></i></div><div><h2>Daftar Pengajuan Masuk DPM</h2><p>Pengajuan yang telah diteruskan kepada Dewan Perwakilan Mahasiswa.</p></div></div><div class="list-tools"><span id="resultCount">Memuat data...</span><label class="page-size-wrap">Tampilkan <select id="pageSize" aria-label="Jumlah data per halaman"><option value="5">5</option><option value="10" selected>10</option><option value="20">20</option></select></label></div></div>
+        <div id="list" class="submission-table-container"><div class="loading-state"><span class="loading-dot"></span>Memuat pengajuan...</div></div>
+        <div id="pagination" class="pagination" hidden></div>
+      </section>
+    </section>
+  </main>
+</div>
+<script src="pengajuan.js"></script><script src="../dpm-shell.js"></script><script>if(window.lucide)window.lucide.createIcons();</script>
+</body></html>

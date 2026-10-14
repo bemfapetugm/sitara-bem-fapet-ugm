@@ -69,6 +69,7 @@ function bindDpmEvents() {
   document.getElementById("submitFinalDocs")?.addEventListener("click", uploadFinalFacultyDocs);
   bindFinalFilePicker("finalPayoutFile", "finalPayoutFileName", "Belum ada PDF dipilih");
   bindFinalFilePicker("finalFacilityFile", "finalFacilityFileName", "Belum ada PDF dipilih");
+  bindFinalFilePicker("finalLpjFile", "finalLpjFileName", "Belum ada dokumen dipilih");
   document.getElementById("closeRevision")?.addEventListener("click", closeRevisionModal);
   document.getElementById("cancelRevision")?.addEventListener("click", closeRevisionModal);
   document.getElementById("revisionModal")?.addEventListener("click", e => { if (e.target.id === "revisionModal") closeRevisionModal(); });
@@ -105,7 +106,7 @@ async function loadDpmRows(silent = false) {
     showDpmNotice("", "");
   }
   try {
-    // Endpoint khusus Fakultas: hanya pengajuan Proposal yang sudah disetujui DPM
+    // Endpoint Fakultas menampilkan Proposal dan LPJ yang sudah disetujui DPM
     // dan tahapnya sudah kembali ke Kemensetkab (KEM001).
     const result = await postDpmAction("getPengajuanKeFakultas");
     if (!result.success) throw new Error(result.message || "Gagal memuat pengajuan ke Fakultas.");
@@ -114,7 +115,7 @@ async function loadDpmRows(silent = false) {
       const status = normalizeDpm(item.status_label || item.status);
       const stage = normalizeDpm(item.tahap_sekarang);
       const type = normalizeDpm(item.jenis);
-      return type === "proposal" && ((status === "disetujui dpm" && stage === "kem001") || (status === "diajukan ke fakultas" && stage === "fakultas"));
+      return ["proposal", "lpj"].includes(type) && ((status === "disetujui dpm" && stage === "kem001") || (status === "diajukan ke fakultas" && stage === "fakultas"));
     }).map(item => {
       const status = normalizeDpm(item.status_label || item.status);
       const isAwaitingFinal = status === "diajukan ke fakultas" || normalizeDpm(item.tahap_sekarang) === "fakultas";
@@ -232,14 +233,27 @@ function openFinalDocsModal(id) {
   finalDocsTarget = item;
   setText("finalDocsId", item.pengajuan_id);
   setText("finalDocsSubject", item.perihal || item.judul || "Tanpa judul");
+  const isLpj = normalizeDpm(item.jenis) === "lpj";
   const payout = document.getElementById("finalPayoutFile");
   const facility = document.getElementById("finalFacilityFile");
+  const lpj = document.getElementById("finalLpjFile");
   if (payout) payout.value = "";
   if (facility) facility.value = "";
+  if (lpj) lpj.value = "";
   setText("finalPayoutFileName", "Belum ada PDF dipilih");
   setText("finalFacilityFileName", "Belum ada PDF dipilih");
+  setText("finalLpjFileName", "Belum ada dokumen dipilih");
   document.getElementById("finalPayoutPicker")?.classList.remove("has-file");
   document.getElementById("finalFacilityPicker")?.classList.remove("has-file");
+  document.getElementById("finalLpjPicker")?.classList.remove("has-file");
+  const payoutField = document.getElementById("finalPayoutField");
+  const facilityField = document.getElementById("finalFacilityField");
+  const lpjField = document.getElementById("finalLpjField");
+  if (payoutField) payoutField.hidden = isLpj;
+  if (facilityField) facilityField.hidden = isLpj;
+  if (lpjField) lpjField.hidden = !isLpj;
+  const intro = document.getElementById("finalDocsIntro");
+  if (intro) intro.textContent = isLpj ? "Unggah satu dokumen LPJ final yang diterima dari Fakultas." : "Unggah dokumen final yang diterima dari Fakultas. Surat Pencairan Dana wajib, sedangkan Surat Peminjaman Fasilitas opsional.";
   const note = document.getElementById("finalDocsNotice");
   if (note) { note.hidden = true; note.textContent = ""; note.className = "dpm-notice"; }
   document.getElementById("finalDocsModal").hidden = false;
@@ -264,9 +278,10 @@ function bindFinalFilePicker(inputId, nameId, emptyText) {
     if (notice) notice.hidden = true;
   });
 }
-async function finalFilePayload(file, kind) {
+async function finalFilePayload(file, kind, allowWord = false) {
   if (!file) return null;
-  if (!/\.pdf$/i.test(file.name) || (file.type && file.type !== "application/pdf")) throw new Error(`File "${file.name}" harus berformat PDF (.pdf).`);
+  const allowed = allowWord ? /\.(pdf|doc|docx)$/i.test(file.name) : /\.pdf$/i.test(file.name);
+  if (!allowed || (!allowWord && file.type && file.type !== "application/pdf")) throw new Error(allowWord ? `File "${file.name}" harus berformat PDF, DOC, atau DOCX.` : `File "${file.name}" harus berformat PDF (.pdf).`);
   if (file.size > 15 * 1024 * 1024) throw new Error("Ukuran setiap dokumen maksimal 15 MB.");
   const dataUrl = await new Promise((resolve, reject) => {
     const reader = new FileReader(); reader.onload = () => resolve(String(reader.result || ""));
@@ -279,11 +294,19 @@ async function uploadFinalFacultyDocs() {
   const button = document.getElementById("submitFinalDocs"), notice = document.getElementById("finalDocsNotice");
   const setNotice = (type, message) => { if (!notice) return; notice.className = "dpm-notice" + (type ? " " + type : ""); notice.textContent = message; notice.hidden = !message; };
   try {
-    const payoutFile = document.getElementById("finalPayoutFile")?.files?.[0];
-    const facilityFile = document.getElementById("finalFacilityFile")?.files?.[0];
-    if (!payoutFile) throw new Error("Surat Pencairan Dana wajib diunggah.");
-    const files = [await finalFilePayload(payoutFile, "Surat Pencairan Dana")];
-    if (facilityFile) files.push(await finalFilePayload(facilityFile, "Surat Peminjaman Fasilitas"));
+    const isLpj = normalizeDpm(finalDocsTarget.jenis) === "lpj";
+    let files = [];
+    if (isLpj) {
+      const lpjFile = document.getElementById("finalLpjFile")?.files?.[0];
+      if (!lpjFile) throw new Error("Dokumen LPJ final wajib diunggah.");
+      files = [await finalFilePayload(lpjFile, "Dokumen LPJ", true)];
+    } else {
+      const payoutFile = document.getElementById("finalPayoutFile")?.files?.[0];
+      const facilityFile = document.getElementById("finalFacilityFile")?.files?.[0];
+      if (!payoutFile) throw new Error("Surat Pencairan Dana wajib diunggah.");
+      files = [await finalFilePayload(payoutFile, "Surat Pencairan Dana")];
+      if (facilityFile) files.push(await finalFilePayload(facilityFile, "Surat Peminjaman Fasilitas"));
+    }
     finalDocsUploading = true;
     if (button) { button.disabled = true; button.innerHTML = '<span class="loader small"></span> Menyimpan...'; }
     setNotice("", "");

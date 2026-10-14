@@ -161,12 +161,16 @@ function toggleDocument(card) {
     if (existingIndex >= 0) {
         selectedDocuments.splice(existingIndex, 1);
     } else {
-        // Halaman ini saat ini hanya menyediakan alur Proposal.
-        if (group !== "proposal") {
+        // Dalam satu pengajuan, dokumen dari dua workflow tidak boleh dicampur.
+        if (!["proposal", "lpj"].includes(group)) {
+            return;
+        }
+        if (selectedGroup && selectedGroup !== group) {
+            alert("Proposal dan LPJ harus diajukan secara terpisah.");
             return;
         }
 
-        selectedGroup = "proposal";
+        selectedGroup = group;
 
         selectedDocuments.push({
             doc: doc,
@@ -205,8 +209,8 @@ function updateSelectionUI() {
 
         card.classList.toggle("selected", selected);
 
-        // Saat ini hanya kartu Proposal yang tersedia.
-        const disabled = group !== "proposal";
+        // Kunci kelompok lain setelah pengguna memilih satu jenis workflow.
+        const disabled = Boolean(selectedGroup && group !== selectedGroup);
         card.classList.toggle("disabled", Boolean(disabled));
         card.setAttribute("aria-pressed", selected ? "true" : "false");
     });
@@ -226,7 +230,9 @@ function updateSelectionUI() {
     if (summaryType) {
         summaryType.textContent = selectedGroup === "proposal"
             ? "Jenis: Proposal"
-            : "Jenis: —";
+            : selectedGroup === "lpj"
+                ? "Jenis: Laporan Pertanggungjawaban"
+                : "Jenis: —";
     }
 
     if (!summaryBody) {
@@ -318,14 +324,14 @@ function restoreSelection() {
 
         const saved = JSON.parse(raw);
 
-        if (!saved || saved.group !== "proposal" || !Array.isArray(saved.documents)) {
+        if (!saved || !["proposal", "lpj"].includes(saved.group) || !Array.isArray(saved.documents)) {
             sessionStorage.removeItem(STORAGE_KEY);
             return;
         }
 
-        selectedGroup = "proposal";
+        selectedGroup = saved.group;
         selectedDocuments = saved.documents.filter(function (item) {
-            return item && item.group === "proposal";
+            return item && item.group === saved.group;
         });
 
         if (!selectedDocuments.length) {
@@ -427,6 +433,7 @@ function continueToInformation() {
         return;
     }
 
-    // Alur LPJ belum tersedia. Saat ini hanya Proposal yang dapat dilanjutkan.
-    return;
+    if (group === "lpj") {
+        window.location.href = "lpj/index.html";
+    }
 }

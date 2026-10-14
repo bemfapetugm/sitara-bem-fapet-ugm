@@ -12,6 +12,7 @@
     />
     <link rel="stylesheet" href="../kemensetkab.css" />
     <link rel="stylesheet" href="fakultas.css" />
+    <style>#finalPayoutField[hidden], #finalFacilityField[hidden], #finalLpjField[hidden] { display: none !important; }</style>
     <script src="https://unpkg.com/lucide@latest"></script>
   
   <link rel="stylesheet" href="../kemensetkab-shell.css" data-sitara-shell="shared" />
@@ -197,9 +198,9 @@
         <button type="button" class="dpm-modal-close" id="closeFinalDocs" aria-label="Tutup dialog">×</button>
         <div class="dpm-confirm-icon"><i data-lucide="file-check-2"></i></div>
         <h2 id="finalDocsTitle">Unggah Dokumen Final Fakultas</h2>
-        <p>Unggah dokumen final yang diterima dari Fakultas. Surat Pencairan Dana wajib, sedangkan Surat Peminjaman Fasilitas opsional.</p>
+        <p id="finalDocsIntro">Unggah dokumen final yang diterima dari Fakultas. Surat Pencairan Dana wajib, sedangkan Surat Peminjaman Fasilitas opsional.</p>
         <div class="dpm-confirm-summary"><span>Nomor Pengajuan</span><strong id="finalDocsId">-</strong><span>Judul Pengajuan</span><strong id="finalDocsSubject">-</strong></div>
-        <div class="dpm-final-file-field">
+        <div class="dpm-final-file-field" id="finalPayoutField">
           <label for="finalPayoutFile">Surat Pencairan Dana <span class="dpm-required">Wajib</span></label>
           <div class="dpm-final-file-picker" id="finalPayoutPicker">
             <input id="finalPayoutFile" type="file" accept=".pdf,application/pdf" required>
@@ -207,12 +208,20 @@
             <div class="dpm-final-file-copy"><strong id="finalPayoutFileName">Belum ada PDF dipilih</strong><small>PDF saja · Maksimal 15 MB</small></div>
           </div>
         </div>
-        <div class="dpm-final-file-field">
+        <div class="dpm-final-file-field" id="finalFacilityField">
           <label for="finalFacilityFile">Surat Peminjaman Fasilitas <span class="dpm-optional">Opsional</span></label>
           <div class="dpm-final-file-picker" id="finalFacilityPicker">
             <input id="finalFacilityFile" type="file" accept=".pdf,application/pdf">
             <label class="dpm-final-file-pick-button" for="finalFacilityFile"><i data-lucide="file-up"></i><span>Pilih file PDF</span></label>
             <div class="dpm-final-file-copy"><strong id="finalFacilityFileName">Belum ada PDF dipilih</strong><small>PDF saja · Maksimal 15 MB</small></div>
+          </div>
+        </div>
+        <div class="dpm-final-file-field" id="finalLpjField" hidden>
+          <label for="finalLpjFile">Dokumen LPJ Final <span class="dpm-required">Wajib</span></label>
+          <div class="dpm-final-file-picker" id="finalLpjPicker">
+            <input id="finalLpjFile" type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+            <label class="dpm-final-file-pick-button" for="finalLpjFile"><i data-lucide="upload-cloud"></i><span>Pilih dokumen final</span></label>
+            <div class="dpm-final-file-copy"><strong id="finalLpjFileName">Belum ada dokumen dipilih</strong><small>PDF, DOC, atau DOCX · Maksimal 15 MB</small></div>
           </div>
         </div>
         <div id="finalDocsNotice" class="dpm-notice" hidden role="status" aria-live="polite"></div>
