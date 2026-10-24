@@ -1,0 +1,62 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Presensi Kegiatan | SITARA</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>
+:root{--sitara-primary:#7F2D25;--sitara-primary-dark:#64221C;--sitara-primary-light:#F8EEEC;--sitara-border:#E9DEDC;--sitara-text:#252525;--sitara-muted:#777777;--sitara-surface:#FFFFFF;--sitara-page:#F7F5F4;--sitara-gold:#B9854A}
+*{box-sizing:border-box}
+html{min-height:100%;background:var(--sitara-page)}
+body{margin:0;min-height:100vh;background:var(--sitara-page);font-family:Inter,Arial,sans-serif;font-size:14px;color:var(--sitara-text);line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{width:min(100% - 32px,620px);margin:34px auto;padding:0}
+.card{background:var(--sitara-surface);border:1px solid var(--sitara-border);border-radius:16px;padding:26px;box-shadow:0 8px 28px rgba(70,35,31,.06)}
+.brand{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--sitara-primary)}
+.logo{font-size:23px;font-weight:800;letter-spacing:-.035em;color:var(--sitara-primary);margin:8px 0 4px;line-height:1.25}
+.muted{color:var(--sitara-muted);font-size:12px;line-height:1.7;margin:6px 0 0}
+.event{margin:22px 0;padding:17px 18px;background:var(--sitara-primary-light);border:1px solid #F0E2DF;border-left:3px solid var(--sitara-primary);border-radius:12px}
+.event h1{font-size:19px;font-weight:750;letter-spacing:-.02em;color:var(--sitara-primary);margin:0 0 10px;line-height:1.35;overflow-wrap:anywhere}
+.event p{display:flex;align-items:flex-start;gap:9px;margin:9px 0;font-size:12px;color:#5F5553;line-height:1.6;overflow-wrap:anywhere}.event .meta-icon{width:25px;height:25px;flex:0 0 25px;display:inline-flex;align-items:center;justify-content:center;border-radius:7px;background:#F3E2DE;color:var(--sitara-primary);margin-top:-2px}.event .meta-icon svg{width:15px;height:15px;display:block;stroke:currentColor}.event .meta-copy{flex:1;min-width:0}.field-label{display:flex;align-items:center;gap:8px}.field-icon{width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;color:var(--sitara-primary);flex:0 0 18px}.field-icon svg{width:18px;height:18px;stroke:currentColor;display:block}
+.event p:last-child{margin-bottom:0}
+.event p b{color:#443431;font-weight:700}
+.field{display:flex;flex-direction:column;gap:7px;margin:15px 0;font-size:12px;font-weight:700;color:#514744}
+.field input,.field textarea,.field select{width:100%;min-height:44px;appearance:none;background-color:#fff;border:1px solid #DED3D1;border-radius:9px;padding:11px 12px;color:var(--sitara-text);font:400 13px Inter,Arial,sans-serif;outline:none;transition:border-color .16s ease,box-shadow .16s ease,background-color .16s ease}
+.field textarea{min-height:100px;resize:vertical;line-height:1.55}
+.field select{padding-right:38px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237F2D25' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:16px}
+.field input::placeholder,.field textarea::placeholder{color:#A39A98}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--sitara-primary);box-shadow:0 0 0 3px rgba(127,45,37,.1)}
+.submit{display:flex;align-items:center;justify-content:center;width:100%;min-height:46px;margin-top:20px;border:1px solid var(--sitara-primary);border-radius:9px;background:var(--sitara-primary);color:#fff;padding:13px 16px;font:700 13px Inter,Arial,sans-serif;cursor:pointer;transition:background .16s ease,transform .16s ease,box-shadow .16s ease}
+.submit .field-icon{color:#fff;width:16px;height:16px;margin-right:9px}.submit .field-icon svg{width:16px;height:16px}.submit:hover:not(:disabled){background:var(--sitara-primary-dark);box-shadow:0 5px 14px rgba(127,45,37,.16)}
+.submit:active:not(:disabled){transform:translateY(1px)}
+.submit:focus-visible{outline:3px solid rgba(127,45,37,.22);outline-offset:2px}
+.submit:disabled{opacity:.6;cursor:wait}
+.notice{padding:13px 14px;border:1px solid #E9DEDC;border-radius:9px;background:#F8EEEC;color:var(--sitara-primary-dark);font-size:12px;line-height:1.65;margin:14px 0 0}
+.notice.error{background:#FFF1F0;border-color:#F5D3D0;color:#9F2D26}
+.notice.success{background:#EFF8F0;border-color:#D4EAD8;color:#216A40}
+[hidden]{display:none!important}
+@media(max-width:480px){.wrap{width:100%;margin:0 auto;padding:12px}.card{padding:20px 17px;border-radius:13px}.logo{font-size:21px}.event{margin:18px 0;padding:15px}.event h1{font-size:18px}.field{margin:14px 0}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;scroll-behavior:auto!important}}
+
+
+/* Loading state: animated, branded and compact */
+.loading-event{min-height:190px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px 18px!important;overflow:hidden;position:relative}
+.loading-event:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 35%,rgba(185,133,74,.10),transparent 58%);pointer-events:none}
+.loading-visual{width:64px;height:64px;position:relative;display:grid;place-items:center;margin:0 auto 13px;color:var(--sitara-primary)}
+.loading-core{width:42px;height:42px;border-radius:14px;background:#fff;border:1px solid #EBD8D3;box-shadow:0 5px 16px rgba(127,45,37,.10);display:grid;place-items:center;animation:loading-float 1.8s ease-in-out infinite}
+.loading-core svg{width:22px;height:22px}
+.loading-orbit{position:absolute;border:2px solid transparent;border-top-color:var(--sitara-primary);border-right-color:rgba(127,45,37,.22);border-radius:50%;inset:1px;animation:loading-spin 1.2s linear infinite}
+.loading-orbit.orbit-two{inset:7px;border-top-color:var(--sitara-gold);border-right-color:rgba(185,133,74,.18);animation:loading-spin 1.8s linear infinite reverse}
+.loading-title{position:relative;color:var(--sitara-primary);font-size:14px;font-weight:800;letter-spacing:-.01em}
+.loading-copy{position:relative!important;margin:4px 0 0!important;color:var(--sitara-muted)!important;font-size:12px!important;line-height:1.5!important}
+.loading-dots{display:flex;gap:5px;align-items:center;justify-content:center;margin-top:11px;position:relative}
+.loading-dots span{width:5px;height:5px;border-radius:50%;background:var(--sitara-primary);animation:loading-pulse 1s ease-in-out infinite}
+.loading-dots span:nth-child(2){animation-delay:.15s;background:#A95A4E}
+.loading-dots span:nth-child(3){animation-delay:.3s;background:var(--sitara-gold)}
+@keyframes loading-spin{to{transform:rotate(360deg)}}
+@keyframes loading-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes loading-pulse{0%,60%,100%{opacity:.35;transform:translateY(0) scale(.85)}30%{opacity:1;transform:translateY(-3px) scale(1)}}
+@media(prefers-reduced-motion:reduce){.loading-orbit,.loading-core,.loading-dots span{animation:none!important}}
+</style></head><body><main class="wrap"><section class="card"><div class="logo">Presensi Kegiatan</div><p class="muted">Isi formulir berikut untuk mencatat kehadiran. Data hanya digunakan untuk administrasi kegiatan.</p><div id="event" class="event loading-event" role="status" aria-live="polite">
+<div class="loading-visual" aria-hidden="true">
+  <div class="loading-orbit orbit-one"></div>
+  <div class="loading-orbit orbit-two"></div>
+  <div class="loading-core"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="16" rx="2.2"/><path d="M8 3v4M16 3v4M3.5 10h17M8 14h3m-3 3h6"/></svg></div>
+</div>
+<div class="loading-title">Menyiapkan presensi</div>
+<p class="loading-copy">Sedang mengambil informasi kegiatan</p>
+<div class="loading-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+</div><form id="form"></form><div id="notice" class="notice" hidden></div></section></main><script src="peserta.js"></script></body></html>

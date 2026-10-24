@@ -8,7 +8,10 @@
 // ==========================================
 
 const SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbwct7tEZPpWxZNRYElhCPGQkL7IXXN96PswSLwlwFwo5DZuD7mH5t3kHaTOq69Z86cn-g/exec";
+    (window.location.hostname === "127.0.0.1" ||
+     window.location.hostname === "localhost")
+        ? "http://127.0.0.1:3000/api/exec"
+        : "https://script.google.com/macros/s/AKfycbwct7tEZPpWxZNRYElhCPGQkL7IXXN96PswSLwlwFwo5DZuD7mH5t3kHaTOq69Z86cn-g/exec";
 
 
 // ==========================================

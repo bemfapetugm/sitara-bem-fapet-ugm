@@ -1,0 +1,477 @@
+/* SITARA — Riwayat Pengajuan content UI
+   Final layer loaded after riwayat.css and shared UI core.
+   Visual-only rules; does not alter application behavior. */
+:root {
+  --sitara-navy: #15365B;
+  --sitara-gold: #D4AE7C;
+  --sitara-page: #F5F6F8;
+  --sitara-border: #D9E2EE;
+  --sitara-muted: #60738B;
+}
+
+.history-page {
+  padding: 28px 30px 40px !important;
+  color: var(--sitara-navy) !important;
+  font-family: Inter, sans-serif !important;
+  box-sizing: border-box !important;
+}
+
+/* Panel intro: plain SITARA white card, no old pink banner or illustration. */
+.history-header {
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  min-height: 86px !important;
+  height: auto !important;
+  margin: 0 0 16px !important;
+  padding: 16px 20px !important;
+  border: 1px solid var(--sitara-border) !important;
+  border-radius: 12px !important;
+  background: #fff !important;
+  background-image: none !important;
+  box-shadow: 0 3px 12px rgba(21, 54, 91, .045) !important;
+  overflow: visible !important;
+}
+
+.history-header::before,
+.history-header::after {
+  content: none !important;
+  display: none !important;
+}
+
+.history-header-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 52px !important;
+  height: 52px !important;
+  min-width: 52px !important;
+  flex: 0 0 52px !important;
+  border-radius: 12px !important;
+  color: var(--sitara-navy) !important;
+  background: #EAF0F7 !important;
+}
+
+.history-header-icon svg {
+  width: 25px !important;
+  height: 25px !important;
+  stroke: currentColor !important;
+}
+
+.history-header-content {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+}
+
+.history-header h1 {
+  margin: 0 0 4px !important;
+  color: var(--sitara-navy) !important;
+  font-size: 20px !important;
+  line-height: 1.3 !important;
+  font-weight: 700 !important;
+}
+
+.history-header p {
+  margin: 0 !important;
+  color: var(--sitara-muted) !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+}
+
+/* Search + month filter: match the single-border controls from Tindak Lanjut. */
+.history-toolbar {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 272px !important;
+  gap: 12px !important;
+  align-items: center !important;
+  margin: 0 0 16px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+
+.history-search-wrap,
+.history-month-wrap {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
+  height: 48px !important;
+  min-width: 0 !important;
+  padding: 0 14px !important;
+  border: 1px solid var(--sitara-border) !important;
+  border-radius: 10px !important;
+  background: #fff !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+}
+
+.history-search-wrap:focus-within,
+.history-month-wrap:focus-within {
+  border-color: #9BB2CF !important;
+  box-shadow: 0 0 0 3px rgba(21, 54, 91, .08) !important;
+}
+
+.history-search-icon,
+.history-month-icon {
+  display: block !important;
+  position: static !important;
+  flex: 0 0 20px !important;
+  width: 20px !important;
+  height: 20px !important;
+  margin: 0 10px 0 0 !important;
+  color: #6A829F !important;
+  pointer-events: none !important;
+}
+
+.history-search-icon svg,
+.history-month-icon svg {
+  display: block !important;
+  width: 19px !important;
+  height: 19px !important;
+  stroke: currentColor !important;
+}
+
+#historySearch {
+  display: block !important;
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--sitara-navy) !important;
+  font: 400 13px/1.4 Inter, sans-serif !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+}
+
+#historySearch::placeholder {
+  color: #7B8DA4 !important;
+  opacity: 1 !important;
+}
+
+#historySearch::-webkit-search-cancel-button {
+  cursor: pointer;
+}
+
+#historyMonthFilter {
+  display: block !important;
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 24px 0 0 !important;
+  border: 0 !important;
+  outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--sitara-navy) !important;
+  font: 500 13px/1.4 Inter, sans-serif !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  cursor: pointer !important;
+}
+
+.history-month-chevron {
+  position: absolute !important;
+  right: 12px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 16px !important;
+  height: 16px !important;
+  color: #6A829F !important;
+  pointer-events: none !important;
+}
+
+.history-month-chevron svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* Results panel and empty/loading states */
+.history-table-card {
+  border: 1px solid var(--sitara-border) !important;
+  border-radius: 14px !important;
+  background: #fff !important;
+  box-shadow: 0 4px 14px rgba(21, 54, 91, .04) !important;
+  overflow: hidden !important;
+}
+
+.history-empty {
+  min-height: 150px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 28px 20px !important;
+  color: var(--sitara-muted) !important;
+  text-align: center !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+}
+
+.history-footer {
+  border-top: 1px solid #E7ECF2 !important;
+  padding: 14px 18px !important;
+  background: #fff !important;
+}
+
+.history-pagination button,
+.history-pagination .page-btn {
+  border-radius: 8px !important;
+}
+
+@media (max-width: 900px) {
+  .history-page {
+    padding: 22px 20px 32px !important;
+  }
+
+  .history-toolbar {
+    grid-template-columns: minmax(0, 1fr) 240px !important;
+  }
+}
+
+@media (max-width: 620px) {
+  .history-page {
+    padding: 16px 14px 28px !important;
+  }
+
+  .history-header {
+    gap: 12px !important;
+    padding: 14px !important;
+  }
+
+  .history-header-icon {
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    flex-basis: 44px !important;
+  }
+
+  .history-header h1 {
+    font-size: 18px !important;
+  }
+
+  .history-header p {
+    font-size: 12px !important;
+  }
+
+  .history-toolbar {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  .history-search-wrap,
+  .history-month-wrap {
+    width: 100% !important;
+    height: 46px !important;
+  }
+}
+
+
+/* Icon alignment correction: Lucide replaces <i> with the SVG itself. */
+.history-toolbar .history-search-wrap>.history-search-icon,
+.history-toolbar .history-month-wrap>.history-month-icon,
+.history-toolbar .history-month-wrap>.history-month-chevron {
+  position: relative !important;
+  inset: auto !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  align-self: center !important;
+  vertical-align: middle !important;
+  flex: 0 0 20px !important;
+  width: 20px !important;
+  min-width: 20px !important;
+  height: 20px !important;
+  margin: 0 10px 0 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  color: #6A829F !important;
+  pointer-events: none !important;
+}
+
+.history-toolbar .history-search-wrap>.history-search-icon,
+.history-toolbar .history-month-wrap>.history-month-icon {
+  stroke: currentColor !important;
+}
+
+.history-toolbar .history-search-wrap>.history-search-icon *,
+.history-toolbar .history-month-wrap>.history-month-icon * {
+  stroke: currentColor !important;
+}
+
+.history-toolbar .history-month-wrap>.history-month-chevron {
+  position: absolute !important;
+  inset: 50% 12px auto auto !important;
+  transform: translateY(-50%) !important;
+  flex: 0 0 16px !important;
+  width: 16px !important;
+  min-width: 16px !important;
+  height: 16px !important;
+  margin: 0 !important;
+  z-index: 2 !important;
+}
+
+.history-toolbar .history-month-wrap>.history-month-chevron svg {
+  width: 16px !important;
+  height: 16px !important;
+  display: block !important;
+}
+
+.history-toolbar .history-month-wrap {
+  padding-right: 14px !important;
+}
+
+.history-toolbar #historyMonthFilter {
+  padding-right: 0 !important;
+}
+
+.history-toolbar .history-search-wrap {
+  gap: 0 !important;
+}
+
+.history-toolbar #historySearch {
+  flex: 1 1 0% !important;
+}
+
+
+/* Custom month dropdown — visual behavior matched to Tindak Lanjut */
+.history-month-wrap {
+  overflow: visible !important;
+  z-index: 20 !important;
+}
+
+#historyMonthFilter.history-native-select {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  min-width: 1px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  clip-path: inset(50%) !important;
+}
+
+.history-month-custom {
+  position: relative !important;
+  display: block !important;
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  height: 100% !important;
+}
+
+.history-month-trigger {
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0 24px 0 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--sitara-navy) !important;
+  font: 500 13px/1.4 Inter, sans-serif !important;
+  text-align: left !important;
+  cursor: pointer !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.history-month-trigger:focus-visible {
+  outline: 2px solid #9BB2CF !important;
+  outline-offset: -3px !important;
+}
+
+.history-month-trigger-chevron {
+  position: absolute !important;
+  right: 0 !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 16px !important;
+  height: 16px !important;
+  color: #6A829F !important;
+  pointer-events: none !important;
+}
+
+.history-month-menu {
+  position: absolute !important;
+  z-index: 1000 !important;
+  top: calc(100% + 7px) !important;
+  right: 0 !important;
+  width: max(100%, 208px) !important;
+  max-height: 240px !important;
+  overflow-y: auto !important;
+  padding: 6px !important;
+  display: none !important;
+  background: #fff !important;
+  border: 1px solid #E1E7EF !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 24px rgba(21, 54, 91, .14) !important;
+}
+
+.history-month-custom.open .history-month-menu {
+  display: block !important;
+}
+
+.history-month-option {
+  display: block !important;
+  width: 100% !important;
+  min-height: 36px !important;
+  padding: 9px 10px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 7px !important;
+  background: transparent !important;
+  color: #15365B !important;
+  font: 500 13px/1.35 Inter, sans-serif !important;
+  text-align: left !important;
+  cursor: pointer !important;
+  box-shadow: none !important;
+}
+
+.history-month-option:hover,
+.history-month-option:focus-visible {
+  background: #F3F6FA !important;
+  outline: none !important;
+}
+
+.history-month-option.active {
+  background: #EAF0F7 !important;
+  color: #15365B !important;
+  font-weight: 600 !important;
+}
+
+.history-month-option.active::after {
+  content: none !important;
+}
+
+@media (max-width: 680px) {
+  .history-month-menu {
+    width: 100% !important;
+  }
+}
+
+
+/* Fix v2: hide the original static chevron when the custom month dropdown is active.
+   The custom trigger already renders its own chevron, so showing both creates a double icon. */
+.history-month-wrap:has(.history-month-custom)>.history-month-chevron {
+  display: none !important;
+}

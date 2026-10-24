@@ -1,0 +1,47 @@
+/* SITARA Design Tokens v1
+   Acuan identitas visual: Panduan Identitas Visual SITARA.
+   File ini saat ini dipakai pada pilot dashboard Kemenhubker saja.
+*/
+:root {
+  --sitara-navy: #15365B;
+  --sitara-navy-deep: #0C2948;
+  --sitara-navy-soft: #244A70;
+  --sitara-gold: #D4AE7C;
+  --sitara-gold-soft: #F7EEDD;
+  --sitara-surface: #FFFFFF;
+  --sitara-background: #F5F6F8;
+  --sitara-text: #172B43;
+  --sitara-text-muted: #64748B;
+  --sitara-border: #E4E9F0;
+  --sitara-success: #238653;
+  --sitara-success-bg: #E9F5EE;
+  --sitara-warning: #9A650B;
+  --sitara-warning-bg: #FFF5E2;
+  --sitara-danger: #B93832;
+  --sitara-danger-bg: #FCEDEA;
+  --sitara-info: #2C6295;
+  --sitara-info-bg: #EAF2FA;
+
+  --sitara-radius-sm: 8px;
+  --sitara-radius-md: 12px;
+  --sitara-radius-lg: 16px;
+  --sitara-shadow-card: 0 4px 18px rgba(21, 54, 91, 0.055);
+  --sitara-shadow-nav: 0 5px 14px rgba(212, 174, 124, 0.18);
+
+  /* Bridge tokens for the existing Kemenhubker stylesheet. */
+  --primary: var(--sitara-navy);
+  --primary-dark: var(--sitara-navy-deep);
+  --primary-light: var(--sitara-gold-soft);
+  --background: var(--sitara-background);
+  --white: var(--sitara-surface);
+  --text-primary: var(--sitara-text);
+  --text-secondary: var(--sitara-text-muted);
+  --border: var(--sitara-border);
+  --success: var(--sitara-success);
+  --success-bg: var(--sitara-success-bg);
+  --warning: var(--sitara-warning);
+  --warning-bg: var(--sitara-warning-bg);
+  --danger: var(--sitara-danger);
+  --danger-bg: var(--sitara-danger-bg);
+  --shadow: var(--sitara-shadow-card);
+}

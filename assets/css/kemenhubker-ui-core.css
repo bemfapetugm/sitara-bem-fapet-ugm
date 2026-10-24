@@ -1,0 +1,160 @@
+/* SITARA Kemenhubker — shared UI foundation v1
+   Loaded AFTER page-specific CSS so shared typography and header rules win consistently.
+   Scope: common page header, typography defaults, form controls, cards and focus states.
+   Page-specific layouts and business behavior are intentionally left intact. */
+:root {
+  --sitara-navy-deep: #15365B;
+  --sitara-navy: #1B426B;
+  --sitara-gold: #D4AE7C;
+  --sitara-bg: #F5F6F8;
+  --sitara-surface: #FFFFFF;
+  --sitara-text: #15365B;
+  --sitara-text-muted: #64748B;
+  --sitara-border: #DCE3EC;
+  --sitara-radius-md: 12px;
+  --sitara-radius-lg: 16px;
+  --sitara-shadow-soft: 0 4px 14px rgba(21, 54, 91, .055);
+}
+html { -webkit-text-size-adjust: 100%; }
+body {
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  color: var(--sitara-text);
+}
+button, input, select, textarea { font: inherit; }
+button, input, select, textarea { accent-color: var(--sitara-navy); }
+
+/* Shared page header — match the approved Kemenhubker dashboard */
+.kemen-container > .main-content > header.topbar,
+.main-content > header.topbar,
+header.topbar {
+  box-sizing: border-box;
+  min-height: 88px !important;
+  height: auto !important;
+  padding: 16px 32px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 20px !important;
+  background: #FFFFFF !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+  box-shadow: none !important;
+}
+header.topbar .topbar-title {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+header.topbar .topbar-title h1,
+header.topbar .topbar-title h2 {
+  margin: 0 !important;
+  color: #15365B !important;
+  font-family: Inter, "Segoe UI", Arial, sans-serif !important;
+  font-size: 24px !important;
+  font-weight: 750 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -.35px !important;
+}
+header.topbar .topbar-title p {
+  margin: 5px 0 0 !important;
+  color: #64748B !important;
+  font-family: Inter, "Segoe UI", Arial, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  letter-spacing: 0 !important;
+}
+header.topbar .topbar-right {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 16px !important;
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+header.topbar .topbar-date {
+  color: #52657D !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  line-height: 1.4 !important;
+  white-space: nowrap;
+}
+header.topbar .topbar-avatar {
+  width: 42px !important;
+  height: 42px !important;
+  min-width: 42px !important;
+  flex: 0 0 42px;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+  background: #D4AE7C !important;
+  color: #15365B !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  border: 0 !important;
+}
+header.topbar .sidebar-toggle {
+  flex: 0 0 auto;
+}
+
+/* Shared control foundations without overriding page-specific dimensions or behavior */
+input:not([type="checkbox"]):not([type="radio"]),
+select,
+textarea {
+  color: #15365B;
+}
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid rgba(21, 54, 91, .22);
+  outline-offset: 2px;
+}
+
+/* Keep scroll surfaces visually quiet and consistent */
+* {
+  scrollbar-color: #CBD5E1 transparent;
+  scrollbar-width: thin;
+}
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover { background: #94A3B8; background-clip: padding-box; }
+
+@media (max-width: 900px) {
+  header.topbar,
+  .kemen-container > .main-content > header.topbar,
+  .main-content > header.topbar {
+    min-height: 76px !important;
+    padding: 14px 20px !important;
+    gap: 14px !important;
+  }
+  header.topbar .topbar-title h1,
+  header.topbar .topbar-title h2 { font-size: 21px !important; }
+  header.topbar .topbar-right { gap: 10px !important; }
+}
+@media (max-width: 600px) {
+  header.topbar,
+  .kemen-container > .main-content > header.topbar,
+  .main-content > header.topbar {
+    min-height: 72px !important;
+    padding: 12px 16px !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+  }
+  header.topbar .topbar-title h1,
+  header.topbar .topbar-title h2 { font-size: 19px !important; }
+  header.topbar .topbar-title p { font-size: 12px !important; line-height: 1.45 !important; }
+  header.topbar .topbar-right { gap: 8px !important; }
+  header.topbar .topbar-date { white-space: normal; text-align: right; font-size: 11px !important; }
+  header.topbar .topbar-avatar { width: 36px !important; height: 36px !important; min-width: 36px !important; flex-basis: 36px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}

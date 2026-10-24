@@ -11,6 +11,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="kemenhubker.css" />
+    <link rel="stylesheet" href="../../assets/css/sitara-design-tokens.css" />
+    <link rel="stylesheet" href="../../assets/css/kemenhubker-dashboard-pilot.css" />
     <style>
       .nav-icon {
         width: 22px;
@@ -32,69 +34,19 @@
       }
     </style>
 
-  </head>
+      <link rel="stylesheet" href="../../assets/css/kemenhubker-sidebar-theme.css">
+    <link rel="stylesheet" href="../../assets/css/kemenhubker-ui-core.css">
+</head>
   <body>
     <div class="kemen-container">
-      <aside class="sidebar">
-        <div class="sidebar-brand">
-          <img src="../../assets/images/logo.png" alt="Logo SITARA" />
-          <div class="brand-text">
-            <h2>SITARA</h2>
-            <p>Sistem Integrasi Tata Birokrasi Mahasiswa</p>
-          </div>
-        </div>
-        <nav class="sidebar-nav">
-  <p class="nav-label">MENU UTAMA</p>
-
-  <a href="index.html" class="nav-item active">
-    <span class="nav-icon"><i data-lucide="house"></i></span>
-    <span>Dashboard</span>
-  </a>
-
-  <p class="nav-label">PENGAJUAN</p>
-
-  <a href="tambah-pengajuan/index.html" class="nav-item">
-    <span class="nav-icon"><i data-lucide="file-plus-2"></i></span>
-    <span>Tambah Pengajuan</span>
-  </a>
-
-  <a href="tindak-lanjut/index.html" class="nav-item">
-    <span class="nav-icon"><i data-lucide="file-search"></i></span>
-    <span>Tindak Lanjut</span>
-  </a>
-
-  <a href="riwayat-pengajuan/index.html" class="nav-item">
-    <span class="nav-icon"><i data-lucide="history"></i></span>
-    <span>Riwayat Pengajuan</span>
-  </a>
-
-  <p class="nav-label">DOKUMEN</p>
-
-  <a href="template-dokumen/index.html" class="nav-item">
-    <span class="nav-icon"><i data-lucide="files"></i></span>
-    <span>Template Dokumen</span>
-  </a>
-
-  <a href="arsip-dokumen-final/index.html" class="nav-item">
-    <span class="nav-icon"><i data-lucide="folder"></i></span>
-    <span>Arsip Dokumen Final</span>
-  </a>
-</nav>
-        <div class="sidebar-footer">
-          <div class="user-profile">
-            <div class="profile-avatar" id="profileAvatar">KB</div>
-            <div class="profile-info">
-              <h4 id="profileName">Kementerian Hubungan Kerja Sama</h4>
-              <p id="profileRole">Kementerian</p>
-            </div>
-          </div>
-          <button type="button" class="logout-button" id="logoutButton">
-            ⇥ Keluar
-          </button>
-        </div>
-      </aside>
+      <aside class="sidebar" id="sitaraSidebar" aria-label="Navigasi SITARA"></aside>
+<script src="../../assets/js/kemenhubker-sidebar.js"></script>
+      <button type="button" class="sidebar-overlay" id="sidebarOverlay" aria-label="Tutup menu navigasi" tabindex="-1"></button>
       <main class="main-content">
         <header class="topbar">
+          <button type="button" class="sidebar-toggle" id="sidebarToggle" aria-label="Buka menu navigasi" aria-controls="sitaraSidebar" aria-expanded="false">
+            <i data-lucide="menu" aria-hidden="true"></i>
+          </button>
           <div class="topbar-title">
             <h2>Dashboard</h2>
             <p>Pusat pengelolaan dan pemantauan tata birokrasi</p>
@@ -114,11 +66,11 @@
                 transparan, dan terintegrasi melalui SITARA
               </p>
             </div>
-            <div class="welcome-icon">🏛️</div>
+            <div class="welcome-icon" aria-hidden="true"><i data-lucide="landmark"></i></div>
           </section>
           <section class="stats-grid">
             <div class="stat-card">
-              <div class="stat-icon">⏳</div>
+              <div class="stat-icon stat-icon-wait" aria-hidden="true"><i data-lucide="hourglass"></i></div>
               <div class="stat-info">
                 <p>Menunggu Proses</p>
                 <h2 id="statMenunggu">0</h2>
@@ -126,7 +78,7 @@
               </div>
             </div>
             <div class="stat-card">
-              <div class="stat-icon">📝</div>
+              <div class="stat-icon stat-icon-revision" aria-hidden="true"><i data-lucide="file-pen-line"></i></div>
               <div class="stat-info">
                 <p>Perlu Revisi</p>
                 <h2 id="statRevisi">0</h2>
@@ -134,7 +86,7 @@
               </div>
             </div>
             <div class="stat-card">
-              <div class="stat-icon">✔️</div>
+              <div class="stat-icon stat-icon-success" aria-hidden="true"><i data-lucide="check"></i></div>
               <div class="stat-info">
                 <p>Disetujui</p>
                 <h2 id="statDisetujui">0</h2>
@@ -142,7 +94,7 @@
               </div>
             </div>
             <div class="stat-card">
-              <div class="stat-icon">❌</div>
+              <div class="stat-icon stat-icon-danger" aria-hidden="true"><i data-lucide="x"></i></div>
               <div class="stat-info">
                 <p>Ditolak</p>
                 <h2 id="statDitolak">0</h2>
@@ -154,7 +106,7 @@
             <section class="content-card dashboard-panel">
               <div class="card-header">
                 <div class="card-title-with-icon">
-                  <div class="card-title-icon card-title-icon-document">📑</div>
+                  <div class="card-title-icon card-title-icon-document" aria-hidden="true"><i data-lucide="file-text"></i></div>
                   <div>
                     <h3>Tindak Lanjut Pengajuan</h3>
                     <p>
@@ -189,7 +141,7 @@
             <section class="content-card activity-panel">
               <div class="card-header">
                 <div class="card-title-with-icon">
-                  <div class="card-title-icon card-title-icon-activity">📈</div>
+                  <div class="card-title-icon card-title-icon-activity" aria-hidden="true"><i data-lucide="chart-no-axes-column"></i></div>
                   <div>
                     <h3>Riwayat Pengajuan</h3>
                     <p>Pantau status dan riwayat tahapan pengajuan</p>
@@ -212,6 +164,42 @@
           lucide.createIcons();
         }
       });
+    </script>
+    <script>
+      (function () {
+        const sidebar = document.getElementById("sitaraSidebar");
+        const toggle = document.getElementById("sidebarToggle");
+        const overlay = document.getElementById("sidebarOverlay");
+        if (!sidebar || !toggle || !overlay) return;
+
+        function isMobileLayout() { return window.matchMedia("(max-width: 900px)").matches; }
+        function openSidebar() {
+          if (!isMobileLayout()) return;
+          sidebar.classList.add("sidebar-open");
+          overlay.classList.add("sidebar-overlay-visible");
+          toggle.setAttribute("aria-expanded", "true");
+          toggle.setAttribute("aria-label", "Tutup menu navigasi");
+          document.body.classList.add("sidebar-menu-open");
+        }
+        function closeSidebar() {
+          sidebar.classList.remove("sidebar-open");
+          overlay.classList.remove("sidebar-overlay-visible");
+          toggle.setAttribute("aria-expanded", "false");
+          toggle.setAttribute("aria-label", "Buka menu navigasi");
+          document.body.classList.remove("sidebar-menu-open");
+        }
+        toggle.addEventListener("click", function () {
+          sidebar.classList.contains("sidebar-open") ? closeSidebar() : openSidebar();
+        });
+        overlay.addEventListener("click", closeSidebar);
+        sidebar.querySelectorAll("a.nav-item").forEach(function (link) {
+          link.addEventListener("click", function () { if (isMobileLayout()) closeSidebar(); });
+        });
+        document.addEventListener("keydown", function (event) {
+          if (event.key === "Escape") closeSidebar();
+        });
+        window.addEventListener("resize", function () { if (!isMobileLayout()) closeSidebar(); });
+      })();
     </script>
   </body>
 </html>

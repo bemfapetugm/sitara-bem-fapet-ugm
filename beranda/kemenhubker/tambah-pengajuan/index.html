@@ -32,50 +32,18 @@
         stroke: currentColor;
       }
     </style>
-  </head>
+      <link rel="stylesheet" href="../../../assets/css/kemenhubker-sidebar-theme.css">
+    <link rel="stylesheet" href="../../../assets/css/kemenhubker-ui-core.css">
+    <link rel="stylesheet" href="tambah-pengajuan-content-polish.css">
+</head>
 
 <body>
 
 <div class="kemen-container">
 
     <!-- SIDEBAR -->
-    <aside class="sidebar">
-
-        <div class="sidebar-brand">
-            <img src="../../../assets/images/logo.png" alt="Logo SITARA">
-            <div class="brand-text">
-                <h2>SITARA</h2>
-                <p>Sistem Integrasi Tata Birokrasi Mahasiswa</p>
-            </div>
-        </div>
-
-        <nav class="sidebar-nav">
-  <p class="nav-label">MENU UTAMA</p>
-  <a href="../index.html" class="nav-item"><span class="nav-icon"><i data-lucide="house"></i></span><span>Dashboard</span></a>
-  <p class="nav-label">PENGAJUAN</p>
-  <a href="index.html" class="nav-item active"><span class="nav-icon"><i data-lucide="file-plus-2"></i></span><span>Tambah Pengajuan</span></a>
-  <a href="../tindak-lanjut/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="file-search"></i></span><span>Tindak Lanjut</span></a>
-  <a href="../riwayat-pengajuan/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="history"></i></span><span>Riwayat Pengajuan</span></a>
-  <p class="nav-label">DOKUMEN</p>
-  <a href="../template-dokumen/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="files"></i></span><span>Template Dokumen</span></a>
-  <a href="../arsip-dokumen-final/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="folder"></i></span><span>Arsip Dokumen Final</span></a>
-</nav>
-
-        <div class="sidebar-footer">
-            <div class="user-profile">
-                <div class="profile-avatar" id="profileAvatar">KH</div>
-                <div class="profile-info">
-                    <h4 id="profileName">Kementerian Hubungan Kerja Sama</h4>
-                    <p id="profileRole">Kementerian</p>
-                </div>
-            </div>
-
-            <button type="button" class="logout-button" id="logoutButton">
-                ⇥ Keluar
-            </button>
-        </div>
-
-    </aside>
+    <aside class="sidebar" id="sitaraSidebar" aria-label="Navigasi SITARA"></aside>
+<script src="../../../assets/js/kemenhubker-sidebar.js"></script>
 
     <!-- MAIN -->
     <main class="main-content">

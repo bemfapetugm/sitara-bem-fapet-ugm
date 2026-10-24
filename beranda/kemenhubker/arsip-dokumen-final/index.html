@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../kemenhubker.css">
+<link rel="stylesheet" href="../../../assets/css/kemenhubker-sidebar-theme.css">
 <style>
 .module-empty { max-width: 760px; margin: 24px auto; background: #fff; border:1px solid var(--border); border-radius:14px; box-shadow:var(--shadow); padding:42px 32px; text-align:center; }
 .module-empty .module-icon { width:64px;height:64px;margin:0 auto 18px;border-radius:16px;background:var(--primary-light);display:flex;align-items:center;justify-content:center;font-size:28px; }
@@ -34,27 +35,11 @@
         stroke: currentColor;
       }
     </style>
-  </head>
+      <link rel="stylesheet" href="../../../assets/css/kemenhubker-ui-core.css">
+</head>
 <body>
 <div class="kemen-container">
-<aside class="sidebar">
-<div class="sidebar-brand"><img src="../../../assets/images/logo.png" alt="Logo SITARA"><div class="brand-text"><h2>SITARA</h2><p>Sistem Integrasi Tata Birokrasi Mahasiswa</p></div></div>
-<nav class="sidebar-nav">
-  <p class="nav-label">MENU UTAMA</p>
-  <a href="../index.html" class="nav-item"><span class="nav-icon"><i data-lucide="house"></i></span><span>Dashboard</span></a>
-  <p class="nav-label">PENGAJUAN</p>
-  <a href="../tambah-pengajuan/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="file-plus-2"></i></span><span>Tambah Pengajuan</span></a>
-  <a href="../tindak-lanjut/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="file-search"></i></span><span>Tindak Lanjut</span></a>
-  <a href="../riwayat-pengajuan/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="history"></i></span><span>Riwayat Pengajuan</span></a>
-  <p class="nav-label">DOKUMEN</p>
-  <a href="../template-dokumen/index.html" class="nav-item"><span class="nav-icon"><i data-lucide="files"></i></span><span>Template Dokumen</span></a>
-  <a href="index.html" class="nav-item active"><span class="nav-icon"><i data-lucide="folder"></i></span><span>Arsip Dokumen Final</span></a>
-</nav>
-<div class="sidebar-footer">
-<div class="user-profile"><div class="profile-avatar" id="profileAvatar">KH</div><div class="profile-info"><h4 id="profileName">Kementerian Hubungan Kerja Sama</h4><p id="profileRole">Kementerian</p></div></div>
-<button type="button" class="logout-button" id="logoutButton">⇥ Keluar</button>
-</div>
-</aside>
+<aside class="sidebar" id="sitaraSidebar" aria-label="Navigasi SITARA"></aside>
 <main class="main-content">
 <header class="topbar"><div class="topbar-title"><h2>Arsip Dokumen Final</h2><p>Arsip dokumen hasil pengajuan yang disetujui</p></div><div class="topbar-right"><div class="topbar-date" id="currentDate">Memuat tanggal...</div><div class="topbar-avatar" id="topbarAvatar">KH</div></div></header>
 <section class="dashboard-content">
@@ -62,6 +47,7 @@
 </section>
 </main>
 </div>
+<script src="../../../assets/js/kemenhubker-sidebar.js"></script>
 <script>
 (function(){
  const s=JSON.parse(sessionStorage.getItem("sitaraUser")||"{}");

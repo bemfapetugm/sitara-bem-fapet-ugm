@@ -1,0 +1,643 @@
+* {
+    box-sizing: border-box
+}
+
+.presensi-page {
+    padding-top: 26px
+}
+
+.presensi-intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 22px
+}
+
+.eyebrow {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .13em;
+    color: #B9854A
+}
+
+.presensi-intro h1 {
+    margin: 6px 0;
+    font-size: 25px;
+    color: #7F2D25
+}
+
+.presensi-intro p {
+    margin: 0;
+    color: #738096;
+    font-size: 13px
+}
+
+.primary-button,
+.secondary-button,
+.icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 0;
+    border-radius: 10px;
+    padding: 11px 15px;
+    font: 600 12px Inter, sans-serif;
+    cursor: pointer
+}
+
+.primary-button {
+    background: #7F2D25;
+    color: #fff;
+    box-shadow: 0 5px 14px #7F2D251B
+}
+
+.primary-button:hover {
+    background: #64221C
+}
+
+.secondary-button {
+    background: #fff;
+    border: 1px solid #e0e5ec;
+    color: #34445b
+}
+
+.primary-button svg,
+.secondary-button svg {
+    width: 15px;
+    height: 15px
+}
+
+.presensi-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 22px
+}
+
+.presensi-stats article {
+    background: #fff;
+    border: 1px solid #e8ecf2;
+    border-radius: 14px;
+    padding: 19px 20px;
+    box-shadow: 0 5px 18px #142c4810
+}
+
+.presensi-stats span {
+    display: block;
+    color: #778398;
+    font-size: 12px
+}
+
+.presensi-stats strong {
+    display: block;
+    color: #7F2D25;
+    font-size: 27px;
+    margin-top: 8px
+}
+
+.presensi-toolbar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 14px
+}
+
+.searchbox {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    background: #fff;
+    border: 1px solid #e1e6ed;
+    border-radius: 10px;
+    padding: 0 12px;
+    flex: 1;
+    min-width: 160px
+}
+
+.searchbox svg {
+    width: 16px;
+    color: #8390a2
+}
+
+.searchbox input {
+    border: 0;
+    outline: 0;
+    width: 100%;
+    padding: 12px 0;
+    font: 400 12px Inter, sans-serif
+}
+
+.presensi-toolbar select {
+    background: #fff;
+    border: 1px solid #e1e6ed;
+    border-radius: 10px;
+    padding: 0 12px;
+    color: #40516a;
+    font: 500 12px Inter, sans-serif
+}
+
+.table-card {
+    background: #fff;
+    border: 1px solid #e7ebf1;
+    border-radius: 14px;
+    overflow: hidden
+}
+
+.table-scroll {
+    overflow: auto
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 760px
+}
+
+th {
+    background: #f7f9fc;
+    color: #748198;
+    font-size: 10px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 14px 16px;
+    font-weight: 800
+}
+
+td {
+    padding: 15px 16px;
+    border-top: 1px solid #edf0f4;
+    font-size: 12px;
+    color: #42516a;
+    vertical-align: middle
+}
+
+td strong {
+    display: block;
+    color: #443431;
+    font-size: 12px;
+    margin-bottom: 4px
+}
+
+td small {
+    color: #8590a1
+}
+
+.empty {
+    text-align: center;
+    color: #8590a1;
+    padding: 36px !important
+}
+
+.status-pill {
+    display: inline-flex;
+    border-radius: 30px;
+    padding: 5px 9px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: capitalize
+}
+
+.status-aktif {
+    background: #e3f5eb;
+    color: #24794c
+}
+
+.status-ditutup {
+    background: #fff1d9;
+    color: #8d631a
+}
+
+.status-selesai {
+    background: #e9edf3;
+    color: #56647a
+}
+
+.row-actions {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap
+}
+
+.small-button {
+    border: 1px solid #e0e6ee;
+    background: #fff;
+    color: #344d6d;
+    border-radius: 7px;
+    padding: 7px 9px;
+    font: 600 10px Inter, sans-serif;
+    cursor: pointer
+}
+
+.small-button:hover {
+    background: #f2f6fb
+}
+
+.notice {
+    margin-bottom: 14px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    background: #edf5ff;
+    color: #7F2D25;
+    font-size: 12px
+}
+
+.notice.error {
+    background: #fff0f0;
+    color: #7F2D25
+}
+
+.event-dialog {
+    border: 0;
+    border-radius: 18px;
+    padding: 24px;
+    width: min(680px, calc(100% - 28px));
+    max-height: 90vh;
+    overflow: auto;
+    box-shadow: 0 25px 80px #101c2e38
+}
+
+.event-dialog::backdrop {
+    background: #101c2e70;
+    backdrop-filter: blur(3px)
+}
+
+.dialog-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px
+}
+
+.dialog-head h2 {
+    margin: 5px 0 0;
+    color: #7F2D25;
+    font-size: 22px
+}
+
+.icon-button {
+    padding: 4px 10px;
+    background: #f2f5f8;
+    color: #526176;
+    font-size: 23px
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px
+}
+
+.form-grid label {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #526176
+}
+
+.form-grid .full {
+    grid-column: 1/-1
+}
+
+.form-grid input,
+.form-grid textarea {
+    width: 100%;
+    border: 1px solid #dfe5ec;
+    border-radius: 9px;
+    padding: 11px 12px;
+    font: 400 12px Inter, sans-serif;
+    color: #1d2d42;
+    outline: 0
+}
+
+.form-grid input:focus,
+.form-grid textarea:focus {
+    border-color: #527da8;
+    box-shadow: 0 0 0 3px #7F2D2512
+}
+
+.form-hint {
+    font-size: 11px;
+    color: #78869a;
+    line-height: 1.6;
+    background: #f7f9fc;
+    border-radius: 9px;
+    padding: 10px 12px;
+    margin: 16px 0
+}
+
+.dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 9px;
+    margin-top: 18px
+}
+
+.detail-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 14px 0
+}
+
+.detail-meta div {
+    padding: 12px;
+    background: #f7f9fc;
+    border-radius: 9px
+}
+
+.detail-meta span {
+    display: block;
+    font-size: 10px;
+    color: #758197;
+    margin-bottom: 5px
+}
+
+.detail-meta strong {
+    font-size: 12px;
+    color: #64221C
+}
+
+.qr-note {
+    background: #f8f5ef;
+    border: 1px solid #eee3d2;
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 11px;
+    color: #725c3c;
+    overflow-wrap: anywhere
+}
+
+.detail-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 14px 0
+}
+
+@media(max-width:760px) {
+    .presensi-intro {
+        align-items: flex-start;
+        flex-direction: column
+    }
+
+    .presensi-stats {
+        grid-template-columns: 1fr
+    }
+
+    .presensi-toolbar {
+        flex-wrap: wrap
+    }
+
+    .searchbox {
+        flex-basis: 100%
+    }
+
+    .presensi-toolbar select {
+        min-height: 40px;
+        flex: 1
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr
+    }
+
+    .form-grid .full {
+        grid-column: auto
+    }
+
+    .detail-meta {
+        grid-template-columns: 1fr
+    }
+}
+
+/* Layout correction: keep the presensi content inside the available main column. */
+.main-content {
+    min-width: 0 !important;
+    width: calc(100% - var(--sitara-shell-sidebar-width)) !important;
+    overflow-x: clip;
+}
+
+.presensi-page {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 28px clamp(20px, 2.2vw, 32px) 36px !important;
+    overflow: visible !important;
+}
+
+.presensi-intro {
+    width: 100%;
+    min-width: 0;
+    align-items: center;
+    margin: 0 0 20px;
+    padding: 0;
+}
+
+.presensi-intro>div {
+    min-width: 0;
+}
+
+.presensi-intro h1 {
+    font-size: 23px;
+    line-height: 1.3;
+    margin: 7px 0 5px;
+}
+
+.presensi-intro p {
+    max-width: 680px;
+    line-height: 1.55;
+}
+
+.presensi-intro .primary-button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+
+.presensi-stats {
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.presensi-stats article {
+    min-width: 0;
+    padding: 18px 20px;
+}
+
+.presensi-toolbar {
+    min-width: 0;
+    align-items: stretch;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.presensi-toolbar .searchbox {
+    min-width: 0;
+}
+
+.presensi-toolbar select {
+    min-height: 42px;
+}
+
+.presensi-toolbar .secondary-button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+
+.table-card {
+    width: 100%;
+    min-width: 0;
+}
+
+.table-scroll {
+    width: 100%;
+}
+
+table {
+    min-width: 720px;
+}
+
+.empty {
+    height: 76px;
+    padding: 24px 16px !important;
+}
+
+@media (max-width: 1100px) {
+    .main-content {
+        width: calc(100% - 224px) !important;
+    }
+
+    .presensi-page {
+        padding: 24px 22px 30px !important;
+    }
+
+    .presensi-stats {
+        gap: 12px;
+    }
+}
+
+@media (max-width: 760px) {
+    .main-content {
+        width: calc(100% - 76px) !important;
+    }
+
+    .presensi-page {
+        padding: 20px 14px 26px !important;
+    }
+
+    .presensi-intro {
+        align-items: stretch;
+    }
+
+    .presensi-intro .primary-button {
+        align-self: flex-start;
+    }
+
+    .presensi-stats {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .presensi-stats article {
+        padding: 15px 17px;
+    }
+
+    .presensi-toolbar {
+        flex-wrap: wrap;
+    }
+
+    .presensi-toolbar .searchbox {
+        flex: 1 1 100%;
+    }
+
+    .presensi-toolbar select {
+        flex: 1 1 140px;
+    }
+
+    .presensi-toolbar .secondary-button {
+        flex: 0 0 auto;
+    }
+}
+
+
+/* Final modal positioning fix: center dialogs in the viewport, overriding shell-level dialog rules. */
+dialog.event-dialog {
+    position: fixed !important;
+    inset: 50% auto auto 50% !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
+    width: min(680px, calc(100vw - 32px)) !important;
+    max-width: calc(100vw - 32px) !important;
+    max-height: min(88vh, 820px) !important;
+    overflow: auto !important;
+    z-index: 10050 !important;
+}
+
+dialog.event-dialog[open] {
+    display: block;
+}
+
+dialog.event-dialog::backdrop {
+    background: rgba(18, 31, 49, .48) !important;
+    backdrop-filter: blur(3px);
+}
+
+@media (max-width: 760px) {
+    dialog.event-dialog {
+        width: calc(100vw - 24px) !important;
+        max-width: calc(100vw - 24px) !important;
+        max-height: 90vh !important;
+        padding: 20px !important;
+    }
+}
+/* Pastikan field kondisional benar-benar tersembunyi meski label memakai display:grid. */
+[hidden] { display: none !important; }
+
+
+/* Custom appearance for dropdowns inside the Create Activity form */
+.form-grid select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: block;
+    width: 100%;
+    min-width: 0;
+    min-height: 43px;
+    padding: 11px 40px 11px 12px;
+    border: 1px solid #d9e2ee;
+    border-radius: 11px;
+    background-color: #fff;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23677991' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 13px center;
+    background-size: 15px 15px;
+    color: #7F2D25;
+    font: 500 12px Inter, sans-serif;
+    line-height: 1.4;
+    cursor: pointer;
+    outline: none;
+    transition: border-color .18s ease, box-shadow .18s ease, background-color .18s ease;
+}
+.form-grid select:hover {
+    border-color: #b9c9dc;
+    background-color: #fcfdff;
+}
+.form-grid select:focus {
+    border-color: #527da8;
+    box-shadow: 0 0 0 3px #7F2D2512;
+}
+.form-grid select:disabled {
+    background-color: #f4f6f9;
+    color: #8793a4;
+    cursor: not-allowed;
+    opacity: 1;
+}
+.form-grid select option {
+    color: #7F2D25;
+    background: #fff;
+}
